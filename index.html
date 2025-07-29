@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christine Shin - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/styles.scss">
+</head>
+<body data-barba="wrapper">
+    <div data-barba="container" data-barba-namespace="home">
+        
+        <!-- Intro Book Animation Container -->
+        <div id="intro-book" data-controller="intro-book">
+            <div class="book-images">
+                <!-- Six placeholder images for the intro animation -->
+                <div class="book-image" data-src="content 2/photography/serenity/IMG_0594.JPG.jpg"></div>
+                <div class="book-image" data-src="content 2/photography/spirit/IMG_1833_Original.jpg"></div>
+                <div class="book-image" data-src="content 2/photography/texture/IMG_3692.JPG.jpg"></div>
+                <div class="book-image" data-src="content 2/marketing/lewkin/modeling/DSC01604.JPG"></div>
+                <div class="book-image" data-src="content 2/photography/commencement/P1096231.jpg"></div>
+                <div class="book-image" data-src="content 2/photography/community/IMG_4623.jpeg"></div>
+            </div>
+        </div>
+
+        <!-- Hero Bar -->
+        <header class="hero-bar" data-controller="hero-bar">
+            <div class="logo">
+                <h1>Christine Shin</h1>
+            </div>
+            <nav class="menu-trigger" data-controller="menu-trigger">
+                <button>Menu</button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content" data-controller="scroll-animations">
+            <section class="hero">
+                <h2 data-lcp>Creative Director & Visual Storyteller</h2>
+                <p>Photography • Film • Marketing • Journalism</p>
+            </section>
+
+            <!-- Vibes Section -->
+            <section class="vibes" data-controller="vibes-panels">
+                <div class="vibe-panel" data-vibe="1" style="--vibe-color: #90867C">
+                    <h3>Serenity</h3>
+                    <img src="content 2/photography/serenity/IMG_0594.JPG.jpg" alt="Serenity">
+                </div>
+                <div class="vibe-panel" data-vibe="2" style="--vibe-color: #D5C7B6">
+                    <h3>Spirit</h3>
+                    <img src="content 2/photography/spirit/IMG_1833_Original.jpg" alt="Spirit">
+                </div>
+                <div class="vibe-panel" data-vibe="3" style="--vibe-color: #4E4B46">
+                    <h3>Texture</h3>
+                    <img src="content 2/photography/texture/IMG_3692.JPG.jpg" alt="Texture">
+                </div>
+                <div class="vibe-panel" data-vibe="4" style="--vibe-color: #9C432E">
+                    <h3>Community</h3>
+                    <img src="content 2/photography/community/IMG_4623.jpeg" alt="Community">
+                </div>
+            </section>
+        </main>
+
+        <!-- Menu Overlay -->
+        <div class="menu-overlay" data-controller="menu-overlay">
+            <button class="menu-close">&times;</button>
+            <nav class="menu-nav">
+                <ul>
+                    <li><a href="/" data-thumb="content 2/photography/serenity/IMG_0594.JPG.jpg">Home</a></li>
+                    <li><a href="/about.html" data-thumb="content 2/photography/spirit/IMG_1833_Original.jpg">About</a></li>
+                    <li><a href="/work.html" data-thumb="content 2/photography/texture/IMG_3692.JPG.jpg">Work</a></li>
+                    <li><a href="/contact.html" data-thumb="content 2/photography/community/IMG_4623.jpeg">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

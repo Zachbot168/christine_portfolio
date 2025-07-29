@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Christine Shin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/styles.scss">
+</head>
+<body data-barba="wrapper">
+    <div data-barba="container" data-barba-namespace="about">
+        
+        <!-- Hero Bar -->
+        <header class="hero-bar" data-controller="hero-bar">
+            <div class="logo">
+                <h1><a href="/">Christine Shin</a></h1>
+            </div>
+            <nav class="menu-trigger" data-controller="menu-trigger">
+                <button>Menu</button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content" data-controller="scroll-animations">
+            <section class="about-hero">
+                <h2>About Christine</h2>
+                <p>Creative director and visual storyteller with a passion for capturing authentic moments and crafting compelling narratives.</p>
+            </section>
+
+            <section class="about-content">
+                <div class="about-text">
+                    <h3>Background</h3>
+                    <p>With expertise spanning photography, film, marketing, and journalism, Christine brings a multidisciplinary approach to visual storytelling.</p>
+                </div>
+                <div class="about-image">
+                    <img src="content/photography/spirit/IMG_2258_Original.jpg" alt="Christine Shin">
+                </div>
+            </section>
+        </main>
+
+        <!-- Menu Overlay -->
+        <div class="menu-overlay" data-controller="menu-overlay">
+            <button class="menu-close">&times;</button>
+            <nav class="menu-nav">
+                <ul>
+                    <li><a href="/" data-thumb="content/photography/serenity/IMG_0594.JPG.jpg">Home</a></li>
+                    <li><a href="/about.html" data-thumb="content/photography/spirit/IMG_1833_Original.jpg">About</a></li>
+                    <li><a href="/work.html" data-thumb="content/photography/texture/IMG_3692.JPG.jpg">Work</a></li>
+                    <li><a href="/contact.html" data-thumb="content/photography/community/IMG_4623.jpeg">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

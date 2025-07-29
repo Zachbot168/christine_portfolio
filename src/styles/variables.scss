@@ -1,0 +1,30 @@
+// Color palettes
+$color-vibe-1: #90867C;
+$color-vibe-2: #D5C7B6; 
+$color-vibe-3: #4E4B46;
+$color-vibe-4: #9C432E;
+
+// Terracotta for menu overlay
+$color-terracotta: rgba(156, 67, 46, 0.8);
+
+// Typography
+$font-serif: 'Playfair Display', serif;
+$font-grotesque: 'Inter', sans-serif;
+
+// Layout
+$hairline: 0.5px;
+$spacing-unit: 1rem;
+
+// Mixins
+@mixin hairline-border {
+  border: $hairline solid rgba(0, 0, 0, 0.1);
+}
+
+@mixin negative-space {
+  margin: $spacing-unit * 2 0;
+}
+
+@mixin squared-module {
+  border-radius: 0;
+  @include hairline-border;
+}
