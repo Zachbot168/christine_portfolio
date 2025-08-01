@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spirit - Christine Shin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/styles.scss">
+    <style>
+        .hero-btn {
+            display: inline-block !important;
+            padding: 0.875rem 2rem !important;
+            font-size: 0.95rem !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+            border-radius: 2px !important;
+            letter-spacing: 0.5px !important;
+            text-transform: uppercase !important;
+            transition: all 0.3s ease !important;
+            cursor: pointer !important;
+            border: 2px solid #000 !important;
+        }
+
+        .hero-btn--secondary {
+            background-color: #fff !important;
+            color: #000 !important;
+        }
+
+        .hero-btn--secondary:hover {
+            background-color: #000 !important;
+            color: #fff !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+    </style>
+</head>
+<body data-barba="wrapper">
+    <div data-barba="container" data-barba-namespace="spirit">
+        
+        <!-- Hero Bar -->
+        <header class="hero-bar visible">
+            <div class="logo">
+                <h1><a href="/" style="color: inherit; text-decoration: none;">Christine Shin</a></h1>
+            </div>
+            <nav class="menu-trigger" data-controller="menu-trigger">
+                <button>Menu</button>
+            </nav>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="main-content" style="margin-top: 80px; padding: 2rem;">
+            
+            <!-- Page Header -->
+            <section class="page-hero" style="text-align: center; margin-bottom: 4rem; background: linear-gradient(135deg, #F5C2D6 0%, #F8D5E4 50%, #FCE8F1 100%); padding: 4rem 2rem; border-radius: 8px; animation: gentleShimmer 4s ease-in-out infinite alternate;">
+                <h1 style="font-size: clamp(3rem, 8vw, 5rem); margin-bottom: 1rem; color: white; filter: none; opacity: 1;">Spirit</h1>
+                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: rgba(255, 255, 255, 0.9); line-height: 1.6;">
+                    Capturing the essence of human energy and emotion through powerful portraits and dynamic moments. 
+                    These images celebrate the vibrancy of life, the strength of character, and the beauty of authentic expression.
+                </p>
+            </section>
+            
+            <!-- Image Gallery -->
+            <section class="gallery">
+                <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; grid-auto-rows: auto;">
+                    
+                    <div class="gallery-item">
+                        <img src="content 2/photography/spirit/IMG_1833_Original.jpg" alt="Spirit" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transform: translateZ(0); backface-visibility: hidden;">
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="content 2/photography/spirit/IMG_2258_Original.jpg" alt="Spirit" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transform: translateZ(0); backface-visibility: hidden;">
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="content 2/photography/spirit/IMG_2557.jpeg" alt="Spirit" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transform: translateZ(0); backface-visibility: hidden;">
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="content 2/photography/spirit/IMG_2815.JPG.jpg" alt="Spirit" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transform: translateZ(0); backface-visibility: hidden;">
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="content 2/photography/spirit/IMG_3420.jpeg" alt="Spirit" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transform: translateZ(0); backface-visibility: hidden;">
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="content 2/photography/spirit/IMG_3559.jpg" alt="Spirit" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transform: translateZ(0); backface-visibility: hidden;">
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="content 2/photography/spirit/IMG_3772.jpg" alt="Spirit" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transform: translateZ(0); backface-visibility: hidden;">
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="content 2/photography/spirit/IMG_5373.jpg" alt="Spirit" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transform: translateZ(0); backface-visibility: hidden;">
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="content 2/photography/spirit/IMG_9253_Original.jpg" alt="Spirit" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transform: translateZ(0); backface-visibility: hidden;">
+                    </div>
+                    
+                </div>
+            </section>
+            
+            <!-- Back Button -->
+            <section style="text-align: center; margin: 4rem 0;">
+                <a href="/" class="hero-btn hero-btn--secondary">
+                    ← Back to Home
+                </a>
+            </section>
+            
+        </main>
+
+        <!-- Menu Overlay -->
+        <div class="menu-overlay" data-controller="menu-overlay">
+            <button class="menu-close">&times;</button>
+            <nav class="menu-nav">
+                <ul>
+                    <li><a href="/" data-thumb="content 2/photography/serenity/IMG_0594.JPG.jpg">Home</a></li>
+                    <li><a href="/about.html" data-thumb="content 2/photography/spirit/IMG_1833_Original.jpg">About</a></li>
+                    <li><a href="/work.html" data-thumb="content 2/photography/texture/IMG_3692.JPG.jpg">Work</a></li>
+                    <li><a href="/contact.html" data-thumb="content 2/photography/community/IMG_4623.jpeg">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

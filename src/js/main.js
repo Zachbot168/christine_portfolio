@@ -3,6 +3,9 @@ import { initIntroBook } from './introBook.js';
 import { initScrollAnimations } from './scrollAnimations.js';
 import { initMenuOverlay } from './menuOverlay.js';
 import { initPageTransitions } from './pageTransitions.js';
+import { initVibeCheck } from './vibeCheck.js';
+import { initCornerReveal } from './cornerReveal.js';
+import { initVibeCornerReveal } from './vibeCornerReveal.js';
 
 // STEP 1: Initialize all controllers based on data-controller attributes
 function initControllers() {
@@ -21,6 +24,15 @@ function initControllers() {
       case 'menu-overlay':
       case 'menu-trigger':
         initMenuOverlay();
+        break;
+      case 'vibe-check':
+        initVibeCheck();
+        break;
+      case 'corner-reveal':
+        initCornerReveal();
+        break;
+      case 'vibe-corner-reveal':
+        initVibeCornerReveal();
         break;
       default:
         console.warn(`Unknown controller: ${controllerName}`);

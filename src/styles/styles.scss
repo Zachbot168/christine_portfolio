@@ -7,11 +7,38 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: $font-grotesque;
   line-height: 1.6;
   color: $color-vibe-3;
   background: white;
+  overflow-x: hidden;
+  transition: background 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  // Vibe color states for full page background - using sunshine-enhanced pastel colors
+  &.vibe-color-serenity, &.vibe-color-serenity * {
+    background: linear-gradient(135deg, #B8E6E1 0%, #D4F1ED 50%, #E8F8F6 100%) !important; // Sunshine mint gradient
+    animation: gentleShimmer 4s ease-in-out infinite alternate;
+  }
+  
+  &.vibe-color-spirit, &.vibe-color-spirit * {
+    background: linear-gradient(135deg, #F5C2D6 0%, #F8D5E4 50%, #FCE8F1 100%) !important; // Sunshine pink gradient
+    animation: gentleShimmer 4s ease-in-out infinite alternate;
+  }
+  
+  &.vibe-color-texture, &.vibe-color-texture * {
+    background: linear-gradient(135deg, #F5D49C 0%, #F8E2B8 50%, #FBF0D4 100%) !important; // Sunshine peach gradient
+    animation: gentleShimmer 4s ease-in-out infinite alternate;
+  }
+  
+  &.vibe-color-adventure, &.vibe-color-adventure * {
+    background: linear-gradient(135deg, #F2B8B8 0%, #F6CFC9 50%, #FAE6E0 100%) !important; // Sunshine coral gradient
+    animation: gentleShimmer 4s ease-in-out infinite alternate;
+  }
 }
 
 // Typography
@@ -30,14 +57,15 @@ h1, h2, h3, h4, h5, h6 {
 
 // Intro Book Animation Styles
 #intro-book {
-  position: fixed;
+  position: absolute; // Constrained to hero container
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 9999;
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  width: 100%;
+  height: 100%; // Full height of hero container
+  z-index: 1150; // In front of title but behind header
+  background: transparent; // Transparent background
   overflow: hidden;
+  pointer-events: none; // Don't block interactions
   
   canvas {
     display: block;
@@ -78,7 +106,7 @@ h1, h2, h3, h4, h5, h6 {
 
 // Hero Bar (hidden initially, shown after intro)
 .hero-bar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -87,17 +115,11 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
-  opacity: 0;
-  transform: translateY(-100%);
-  transition: all 0.8s ease;
-  
-  &.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  background: rgba(255, 255, 255, 0.05); // Much more transparent
+  backdrop-filter: blur(3px);
+  z-index: 1200; // Above everything in hero
+  opacity: 1;
+  transition: opacity 0.3s ease;
   
   .logo h1 {
     font-size: 1.5rem;
@@ -123,10 +145,11 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-// Main content (offset to account for hero bar)
+// Main content (no offset needed since header is inside hero)
 .main-content {
-  margin-top: 80px;
-  padding: 2rem;
+  margin-top: 0;
+  padding: 0; // Remove padding so hero can be full-screen
+  overflow-x: hidden; // Prevent horizontal scroll from large elements
 }
 
 // Responsive design
@@ -146,8 +169,8 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .main-content {
-    margin-top: 60px;
-    padding: 1rem;
+    margin-top: 0; // No offset needed
+    padding: 0; // Keep full-screen on mobile too
   }
   
   #intro-book {
@@ -157,6 +180,50 @@ h1, h2, h3, h4, h5, h6 {
       height: 30px;
       border-width: 2px;
     }
+  }
+  
+  // Corner photos - smaller on mobile, still edge-to-edge
+  .corner-photos .corner-photo {
+    width: 250px;
+    height: 167px;
+    
+    &--top-left {
+      top: 80px; // Moved down for mobile header too
+      left: 0;
+    }
+    
+    &--bottom-right {
+      bottom: 0; // Keep edge-to-edge on mobile
+      right: 0;
+    }
+  }
+  
+  // Ensure hero content doesn't get cut off by photos on mobile
+  .hero .hero-content {
+    padding: 0 1rem;
+    max-width: calc(100vw - 250px); // Leave space for smaller mobile photos
+    
+    h2 {
+      font-size: clamp(2.5rem, 8vw, 4rem); // Bigger mobile title too
+      line-height: 1.2;
+      font-weight: 700;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+  
+  // Mobile button styles
+  .hero-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .hero-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
   }
 }
 
@@ -179,100 +246,512 @@ h1, h2, h3, h4, h5, h6 {
 
 // Hero Section
 .hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 4rem 0;
-  @include negative-space;
+  overflow: hidden;
   
-  h2 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    margin-bottom: 1rem;
-    filter: blur(6px);
-    opacity: 0;
+  .hero-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(248, 249, 250, 0.8) 0%, rgba(255, 255, 255, 0.9) 100%);
+    backdrop-filter: blur(20px);
+    z-index: 1;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 1050; // Above intro animation
+    padding: 0 2rem;
+    max-width: calc(100vw - 700px); // Leave space for corner photos
+    margin: 0 auto;
     
-    &.revealed {
-      filter: blur(0);
-      opacity: 1;
-      transition: all 0.8s ease;
+    h2 {
+      font-size: clamp(3.5rem, 8vw, 6rem); // Much bigger title
+      margin-bottom: 1rem;
+      filter: blur(6px);
+      opacity: 0;
+      line-height: 1.1;
+      font-weight: 700;
+      
+      &.revealed {
+        filter: blur(0);
+        opacity: 1;
+        transition: all 0.8s ease;
+      }
+    }
+    
+    p {
+      font-size: 1.1rem;
+      color: rgba($color-vibe-3, 0.7);
+      opacity: 0;
+      transform: translateY(20px);
+      
+      &.revealed {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 0.6s ease 0.3s;
+      }
     }
   }
   
-  p {
-    font-size: 1.1rem;
-    color: rgba($color-vibe-3, 0.7);
+  // Hero Action Buttons
+  .hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2.5rem;
     opacity: 0;
     transform: translateY(20px);
     
     &.revealed {
       opacity: 1;
       transform: translateY(0);
-      transition: all 0.6s ease 0.3s;
+      transition: all 0.6s ease 0.5s; // Delay after text
+    }
+  }
+  
+  .hero-btn {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    &--primary {
+      background-color: #000;
+      color: #fff;
+      border: 2px solid #000;
+      
+      &:hover {
+        background-color: #fff;
+        color: #000;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+    }
+    
+    &--secondary {
+      background-color: #fff;
+      color: #000;
+      border: 2px solid #000;
+      
+      &:hover {
+        background-color: #000;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+  
+  .hero-scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    opacity: 0;
+    transform: translateY(20px);
+    
+    &.revealed {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.6s ease 0.8s;
+    }
+    
+    .hero-scroll-arrow {
+      font-size: 1.5rem;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      animation: bounce 2s infinite;
+      margin-bottom: 0.5rem;
+    }
+    
+    .hero-scroll-text {
+      color: white;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      margin: 0;
+    }
+  }
+  
+  // Corner reveal photos
+  .corner-photos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1100; // Above intro animation (z-index 1000)
+    pointer-events: none;
+    
+    .corner-photo {
+      position: absolute;
+      width: 350px;
+      height: 250px;
+      overflow: hidden;
+      border-radius: 0; // Sharp edges, no curves
+      box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.4),
+        0 15px 40px rgba(0, 0, 0, 0.3),
+        0 5px 15px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      
+      &--top-left {
+        top: 100px; // Moved down to avoid header clash
+        left: 0; // Edge of screen
+        transform: translateX(-400px); // Start further off-screen
+        
+        &.revealed {
+          opacity: 1;
+          transform: translateX(0);
+          transition: all 1.0s cubic-bezier(0.23, 1, 0.32, 1) 0.3s;
+        }
+        
+        &.hidden {
+          opacity: 0;
+          transform: translateX(400px);
+          transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+      }
+      
+      &--bottom-right {
+        bottom: 0; // Edge of screen
+        right: 0; // Edge of screen
+        transform: translateX(400px); // Start further off-screen
+        
+        &.revealed {
+          opacity: 1;
+          transform: translateX(0);
+          transition: all 1.0s cubic-bezier(0.23, 1, 0.32, 1) 0.6s;
+        }
+        
+        &.hidden {
+          opacity: 0;
+          transform: translateX(-400px);
+          transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
+        }
+      }
     }
   }
 }
 
-// Vibes Section
-.vibes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin: 4rem 0;
+// Spacer section - add padding back for non-hero content
+.spacer {
+  height: 50vh;
+  background: white;
+  margin: 0 2rem; // Add margins for content sections
+}
+
+// Vibe Check Section
+.vibe-check-section {
+  min-height: 500vh;
+  position: relative;
+  background: transparent; // Let JavaScript handle background changes
+  transition: background-color 1.5s cubic-bezier(0.4, 0, 0.2, 1);
   
-  .vibe-panel {
-    @include squared-module;
-    padding: 2rem;
-    text-align: center;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
+  // Animated Title
+  .vibe-check-title {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
     
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: var(--vibe-color);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 1;
+    .title-line {
+      overflow: hidden;
+      height: clamp(4rem, 12vw, 8rem);
+      
+      .title-word {
+        font-size: clamp(4rem, 12vw, 8rem);
+        font-weight: 900;
+        margin: 0;
+        line-height: 1;
+        color: white;
+        transform: translateY(100%);
+        transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+        
+        &.revealed {
+          transform: translateY(0) !important;
+        }
+        
+        &--vibe {
+          transform: translateY(-100%);
+          
+          &.revealed {
+            transform: translateY(0) !important;
+          }
+        }
+      }
     }
     
-    &.active {
-      opacity: 1;
+    .title-divider {
+      width: 200px;
+      height: 2px;
+      background: white;
+      margin: 1rem 0;
+      transform: scaleX(0);
+      transition: transform 0.8s ease 0.5s;
       
-      &::before {
-        opacity: 0.1;
+      &.revealed {
+        transform: scaleX(1) !important;
+      }
+    }
+  }
+  
+  // Vibe Items List
+  .vibe-items-list {
+    position: absolute;
+    top: 100vh;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    
+    .vibe-item {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4rem;
+      background: transparent; // Let body background show through
+      transition: background-color 1.2s ease;
+      
+      .paper-expand-container {
+        position: relative;
+        display: inline-block;
+        
+        .paper-expand {
+          position: relative;
+          display: block;
+          transform: scaleX(0);
+          transform-origin: center center;
+          transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+          box-shadow: 
+            0 25px 80px rgba(0, 0, 0, 0.4),
+            0 12px 40px rgba(0, 0, 0, 0.3),
+            0 6px 20px rgba(0, 0, 0, 0.2),
+            0 2px 8px rgba(0, 0, 0, 0.1);
+          text-decoration: none;
+          cursor: pointer;
+          
+          &:hover {
+            transform: scaleX(1.02);
+            box-shadow: 
+              0 35px 100px rgba(0, 0, 0, 0.5),
+              0 18px 50px rgba(0, 0, 0, 0.4),
+              0 8px 25px rgba(0, 0, 0, 0.3),
+              0 3px 10px rgba(0, 0, 0, 0.2);
+          }
+          
+          img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            max-width: 60vw;
+            object-fit: cover;
+            display: block;
+          }
+          
+          .vibe-title-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: $font-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+            pointer-events: none;
+            z-index: 3;
+            opacity: 0;
+            transition: opacity 0.4s ease 0.2s;
+          }
+          
+          &.expanded {
+            transform: scaleX(1);
+            
+            .vibe-title-overlay {
+              opacity: 1;
+            }
+          }
+        }
       }
       
-      img {
-        transform: scale(1.05);
+      // Vibe corner photos styling (similar to hero corner photos)
+      .vibe-corner-photos {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 200;
+        pointer-events: none;
+        
+        .vibe-corner-photo {
+          position: absolute;
+          overflow: hidden;
+          border-radius: 0;
+          box-shadow: 
+            0 40px 120px rgba(0, 0, 0, 0.5),
+            0 20px 60px rgba(0, 0, 0, 0.4),
+            0 10px 30px rgba(0, 0, 0, 0.3),
+            0 5px 15px rgba(0, 0, 0, 0.2);
+          opacity: 0;
+          
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+          
+          &--top-left {
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 187px;
+            transform: translateX(-350px);
+            
+            &.revealed {
+              opacity: 1;
+              transform: translateX(0);
+              transition: all 1.0s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
+            }
+            
+            &.hidden {
+              opacity: 0;
+              transform: translateX(-350px);
+              transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            }
+          }
+          
+          &--bottom-right {
+            bottom: 0;
+            right: 0;
+            width: 320px;
+            height: 213px;
+            transform: translateX(400px);
+            
+            &.revealed {
+              opacity: 1;
+              transform: translateX(0);
+              transition: all 1.0s cubic-bezier(0.23, 1, 0.32, 1) 0.4s;
+            }
+            
+            &.hidden {
+              opacity: 0;
+              transform: translateX(400px);
+              transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
+            }
+          }
+        }
+      }
+      
+      // Unique sizes for each vibe (background colors moved to section level)
+      &[data-vibe="serenity"] .vibe-corner-photos {
+        .vibe-corner-photo--top-left {
+          width: 380px;
+          height: 253px;
+        }
+        .vibe-corner-photo--bottom-right {
+          width: 420px;
+          height: 280px;
+        }
+      }
+      
+      &[data-vibe="spirit"] .vibe-corner-photos {
+        .vibe-corner-photo--top-left {
+          width: 440px;
+          height: 293px;
+        }
+        .vibe-corner-photo--bottom-right {
+          width: 400px;
+          height: 267px;
+        }
+      }
+      
+      &[data-vibe="texture"] .vibe-corner-photos {
+        .vibe-corner-photo--top-left {
+          width: 420px;
+          height: 280px;
+        }
+        .vibe-corner-photo--bottom-right {
+          width: 480px;
+          height: 320px;
+        }
+      }
+      
+      &[data-vibe="adventure"] .vibe-corner-photos {
+        .vibe-corner-photo--top-left {
+          width: 460px;
+          height: 307px;
+        }
+        .vibe-corner-photo--bottom-right {
+          width: 410px;
+          height: 273px;
+        }
+      }
+    }
+  }
+}
+
+// Mobile responsive for vibe check
+@media (max-width: 768px) {
+  .vibe-check-section {
+    .vibe-check-title {
+      .title-line {
+        height: clamp(3rem, 10vw, 6rem);
+        
+        .title-word {
+          font-size: clamp(3rem, 10vw, 6rem);
+        }
+      }
+      
+      .title-divider {
+        width: 150px;
       }
     }
     
-    h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      position: relative;
-      z-index: 2;
-      filter: none;
-      opacity: 1;
-    }
-    
-    img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-      position: relative;
-      z-index: 2;
-    }
-    
-    &:hover {
-      opacity: 1;
-      transform: translateY(-5px);
+    .vibe-items-list .vibe-item {
+      padding: 0 1rem;
+      
+      .paper-expand-container {
+        width: auto;
+        height: auto;
+        
+        .paper-expand .vibe-title-overlay {
+          font-size: clamp(1.5rem, 6vw, 2.5rem);
+          padding: 0.5rem 1rem;
+        }
+      }
     }
   }
 }
@@ -339,7 +818,7 @@ h1, h2, h3, h4, h5, h6 {
       }
       
       &:hover img {
-        transform: scale(1.05);
+        transform: scale(1.02) translateZ(0);
       }
     }
   }
@@ -382,7 +861,7 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background: $color-terracotta;
   z-index: 10000;
@@ -524,4 +1003,105 @@ h1, h2, h3, h4, h5, h6 {
       }
     }
   }
+}
+
+// Scroll Indicator
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+  
+  .scroll-arrows {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    
+    .arrow {
+      font-size: 1.5rem;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      animation: bounce 2s infinite;
+      
+      &:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+      
+      &:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+    }
+  }
+  
+  .scroll-text {
+    color: white;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    margin: 0;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  40% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(-5px);
+    opacity: 0.9;
+  }
+}
+
+// Gentle shimmer animation for sunshine effect
+@keyframes gentleShimmer {
+  0% {
+    filter: brightness(1) saturate(1);
+  }
+  100% {
+    filter: brightness(1.08) saturate(1.15);
+  }
+}
+
+// Gallery Performance Optimizations
+.gallery {
+  .gallery-grid {
+    .gallery-item {
+      // Hardware acceleration and performance optimizations
+      img {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        will-change: auto; // Let browser decide
+        
+        // Optimized hover effect using CSS only
+        transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+        
+        &:hover {
+          transform: translateZ(0) scale(1.01); // Minimal scale for subtle effect
+          opacity: 0.95; // Subtle opacity change instead of expensive box-shadow changes
+        }
+      }
+    }
+  }
+}
+
+// Performance optimizations for all images
+img {
+  // Enable hardware acceleration for all images
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  
+  // Optimize rendering
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
 }

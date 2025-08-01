@@ -12,53 +12,169 @@
 <body data-barba="wrapper">
     <div data-barba="container" data-barba-namespace="home">
         
-        <!-- Intro Book Animation Container -->
-        <div id="intro-book" data-controller="intro-book">
-            <div class="book-images">
-                <!-- Six placeholder images for the intro animation -->
-                <div class="book-image" data-src="content 2/photography/serenity/IMG_0594.JPG.jpg"></div>
-                <div class="book-image" data-src="content 2/photography/spirit/IMG_1833_Original.jpg"></div>
-                <div class="book-image" data-src="content 2/photography/texture/IMG_3692.JPG.jpg"></div>
-                <div class="book-image" data-src="content 2/marketing/lewkin/modeling/DSC01604.JPG"></div>
-                <div class="book-image" data-src="content 2/photography/commencement/P1096231.jpg"></div>
-                <div class="book-image" data-src="content 2/photography/community/IMG_4623.jpeg"></div>
-            </div>
-        </div>
-
-        <!-- Hero Bar -->
-        <header class="hero-bar" data-controller="hero-bar">
-            <div class="logo">
-                <h1>Christine Shin</h1>
-            </div>
-            <nav class="menu-trigger" data-controller="menu-trigger">
-                <button>Menu</button>
-            </nav>
-        </header>
-
         <!-- Main Content -->
         <main class="main-content" data-controller="scroll-animations">
             <section class="hero">
-                <h2 data-lcp>Creative Director & Visual Storyteller</h2>
-                <p>Photography • Film • Marketing • Journalism</p>
+                <!-- Intro Book Animation Container inside hero -->
+                <div id="intro-book" data-controller="intro-book">
+                    <div class="book-images">
+                        <!-- Six landscape images with consistent aspect ratios for turbine animation -->
+                        <div class="book-image" data-src="content 2/photography/texture/IMG_3692.JPG.jpg"></div>
+                        <div class="book-image" data-src="content 2/photography/serenity/IMG_0768.JPG.jpg"></div>
+                        <div class="book-image" data-src="content 2/photography/serenity/IMG_3259.JPG.jpg"></div>
+                        <div class="book-image" data-src="content 2/photography/texture/IMG_4997.JPG.jpg"></div>
+                        <div class="book-image" data-src="content 2/photography/serenity/IMG_1772.JPG.jpg"></div>
+                        <div class="book-image" data-src="content 2/photography/texture/IMG_5070.JPG.jpg"></div>
+                    </div>
+                </div>
+                
+                <!-- Hero Bar inside hero container -->
+                <header class="hero-bar" data-controller="hero-bar">
+                    <div class="logo">
+                        <h1>Christine Shin</h1>
+                    </div>
+                    <nav class="menu-trigger" data-controller="menu-trigger">
+                        <button>Menu</button>
+                    </nav>
+                </header>
+                
+                <div class="hero-backdrop"></div>
+                <div class="hero-content">
+                    <h2 data-lcp>Creative Director & Visual Storyteller</h2>
+                    <p>Photography • Film • Marketing • Journalism</p>
+                    
+                    <!-- Action Buttons -->
+                    <div class="hero-buttons">
+                        <a href="/work.html" class="hero-btn hero-btn--primary">View Projects</a>
+                        <a href="content 2/Christine Shin Resume 2025.docx.pdf" download="Christine_Shin_Resume_2025.pdf" class="hero-btn hero-btn--secondary">Download Resume</a>
+                    </div>
+                    
+                    <!-- Hero Scroll Indicator -->
+                    <div class="hero-scroll-indicator">
+                        <div class="hero-scroll-arrow">↓</div>
+                        <p class="hero-scroll-text">Scroll Down</p>
+                    </div>
+                </div>
+                <!-- Corner reveal photos -->
+                <div class="corner-photos" data-controller="corner-reveal">
+                    <div class="corner-photo corner-photo--top-left">
+                        <img src="content 2/photography/spirit/IMG_2258_Original.jpg" alt="Portrait">
+                    </div>
+                    <div class="corner-photo corner-photo--bottom-right">
+                        <img src="content 2/photography/community/P1061143.jpg" alt="Community">
+                    </div>
+                </div>
             </section>
 
-            <!-- Vibes Section -->
-            <section class="vibes" data-controller="vibes-panels">
-                <div class="vibe-panel" data-vibe="1" style="--vibe-color: #90867C">
-                    <h3>Serenity</h3>
-                    <img src="content 2/photography/serenity/IMG_0594.JPG.jpg" alt="Serenity">
+            <!-- Vibe Check Section -->
+            <section class="vibe-check-section" data-controller="vibe-check">
+                <!-- Animated Title -->
+                <div class="vibe-check-title">
+                    <div class="title-line">
+                        <h2 class="title-word title-word--vibe">VIBE</h2>
+                    </div>
+                    <div class="title-divider"></div>
+                    <div class="title-line">
+                        <h2 class="title-word title-word--check">CHECK</h2>
+                    </div>
+                    
+                    <!-- Scroll indicator -->
+                    <div class="scroll-indicator" data-controller="scroll-indicator">
+                        <div class="scroll-arrows">
+                            <div class="arrow">↓</div>
+                            <div class="arrow">↓</div>
+                            <div class="arrow">↓</div>
+                        </div>
+                        <p class="scroll-text">Scroll Down</p>
+                    </div>
                 </div>
-                <div class="vibe-panel" data-vibe="2" style="--vibe-color: #D5C7B6">
-                    <h3>Spirit</h3>
-                    <img src="content 2/photography/spirit/IMG_1833_Original.jpg" alt="Spirit">
+                
+                <!-- Vibe Items List -->
+                <div class="vibe-items-list">
+                    <div class="vibe-item" data-vibe="serenity" data-controller="vibe-corner-reveal">
+                        <div class="paper-expand-container">
+                            <a href="/serenity.html" class="paper-expand">
+                                <img src="content 2/photography/serenity/IMG_1332.JPG.jpg" alt="Serenity">
+                                <div class="vibe-title-overlay">Serenity</div>
+                            </a>
+                        </div>
+                        <!-- Corner reveal photos for serenity -->
+                        <div class="vibe-corner-photos">
+                            <div class="vibe-corner-photo vibe-corner-photo--top-left">
+                                <img src="content 2/photography/serenity/IMG_0654.JPG.jpg" alt="Serenity">
+                            </div>
+                            <div class="vibe-corner-photo vibe-corner-photo--bottom-right">
+                                <img src="content 2/photography/serenity/IMG_3178.JPG.jpg" alt="Serenity">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="vibe-item" data-vibe="spirit" data-controller="vibe-corner-reveal">
+                        <div class="paper-expand-container">
+                            <a href="/spirit.html" class="paper-expand">
+                                <img src="content 2/photography/spirit/IMG_2815.JPG.jpg" alt="Spirit">
+                                <div class="vibe-title-overlay">Spirit</div>
+                            </a>
+                        </div>
+                        <!-- Corner reveal photos for spirit -->
+                        <div class="vibe-corner-photos">
+                            <div class="vibe-corner-photo vibe-corner-photo--top-left">
+                                <img src="content 2/photography/spirit/IMG_2557.jpeg" alt="Spirit">
+                            </div>
+                            <div class="vibe-corner-photo vibe-corner-photo--bottom-right">
+                                <img src="content 2/photography/spirit/IMG_3420.jpeg" alt="Spirit">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="vibe-item" data-vibe="texture" data-controller="vibe-corner-reveal">
+                        <div class="paper-expand-container">
+                            <a href="/texture.html" class="paper-expand">
+                                <img src="content 2/photography/texture/P1018716.JPG.jpg" alt="Texture">
+                                <div class="vibe-title-overlay">Texture</div>
+                            </a>
+                        </div>
+                        <!-- Corner reveal photos for texture -->
+                        <div class="vibe-corner-photos">
+                            <div class="vibe-corner-photo vibe-corner-photo--top-left">
+                                <img src="content 2/photography/texture/IMG_3742_Original.jpg" alt="Texture">
+                            </div>
+                            <div class="vibe-corner-photo vibe-corner-photo--bottom-right">
+                                <img src="content 2/photography/texture/IMG_4778.JPG.jpg" alt="Texture">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="vibe-item" data-vibe="adventure" data-controller="vibe-corner-reveal">
+                        <div class="paper-expand-container">
+                            <a href="/adventure.html" class="paper-expand">
+                                <img src="content 2/photography/community/P1060996.jpg" alt="Adventure">
+                                <div class="vibe-title-overlay">Adventure</div>
+                            </a>
+                        </div>
+                        <!-- Corner reveal photos for adventure -->
+                        <div class="vibe-corner-photos">
+                            <div class="vibe-corner-photo vibe-corner-photo--top-left">
+                                <img src="content 2/photography/community/P1061003.jpg" alt="Adventure">
+                            </div>
+                            <div class="vibe-corner-photo vibe-corner-photo--bottom-right">
+                                <img src="content 2/photography/community/P1061076.jpg" alt="Adventure">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="vibe-panel" data-vibe="3" style="--vibe-color: #4E4B46">
-                    <h3>Texture</h3>
-                    <img src="content 2/photography/texture/IMG_3692.JPG.jpg" alt="Texture">
-                </div>
-                <div class="vibe-panel" data-vibe="4" style="--vibe-color: #9C432E">
-                    <h3>Community</h3>
-                    <img src="content 2/photography/community/IMG_4623.jpeg" alt="Community">
+            </section>
+            
+            <!-- Experience More Section -->
+            <section class="experience-more-section" style="padding: 4rem 2rem; text-align: center; background: white; transition: background-color 1.5s cubic-bezier(0.4, 0, 0.2, 1);">
+                <h3 class="experience-title" style="font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.5rem; color: #333; filter: blur(6px); opacity: 0; font-weight: 700; transform: translateY(30px); transition: all 0.8s ease;">Discover More Vibes</h3>
+                <p class="experience-description" style="font-size: 1.1rem; color: #666; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6; opacity: 0; transform: translateY(20px); transition: all 0.6s ease 0.3s;">
+                    Explore the complete collection of visual stories, each capturing a unique mood and moment in time.
+                </p>
+                <div class="experience-button-container" style="opacity: 0; transform: translateY(20px); transition: all 0.6s ease 0.5s;">
+                    <a href="/vibes.html" class="hero-btn hero-btn--secondary" style="display: inline-block; padding: 0.875rem 2rem; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 2px; letter-spacing: 0.5px; text-transform: uppercase; transition: all 0.3s ease; cursor: pointer; background-color: #fff !important; color: #000 !important; border: 2px solid #000 !important;" onmouseover="this.style.backgroundColor='#000'; this.style.color='#fff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.backgroundColor='#fff'; this.style.color='#000'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        Experience More
+                    </a>
                 </div>
             </section>
         </main>
@@ -78,5 +194,128 @@
     </div>
 
     <script type="module" src="/src/js/main.js"></script>
+    
+    <style>
+        /* Ensure hero-btn styles are loaded */
+        .hero-btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 2px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .hero-btn--secondary {
+            background-color: #fff;
+            color: #000;
+            border: 2px solid #000;
+        }
+        
+        .hero-btn--secondary:hover {
+            background-color: #000;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+    
+    <script>
+        // Smooth navigation transitions for home page
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Experience More section scroll animations and color cycling
+            const observerOptions = {
+                root: null,
+                rootMargin: '-10% 0px -10% 0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains('experience-title')) {
+                            entry.target.style.filter = 'blur(0)';
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        } else if (entry.target.classList.contains('experience-description')) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        } else if (entry.target.classList.contains('experience-button-container')) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            // Color cycling for Experience More section
+            const experienceMoreSection = document.querySelector('.experience-more-section');
+            const vibeColors = ['#B8E6E1', '#F5C2D6', '#F5D49C', '#F2B8B8']; // mint, pink, peach, coral
+            let colorIndex = 0;
+            let colorCycleInterval = null;
+            
+            const colorObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && entry.target === experienceMoreSection) {
+                        console.log('🌈 Starting color cycle for Experience More section');
+                        
+                        // Start cycling through colors
+                        colorCycleInterval = setInterval(() => {
+                            experienceMoreSection.style.background = vibeColors[colorIndex];
+                            console.log(`🎨 Experience More color: ${vibeColors[colorIndex]}`);
+                            colorIndex = (colorIndex + 1) % vibeColors.length;
+                        }, 2000); // Change color every 2 seconds
+                        
+                    } else if (!entry.isIntersecting && entry.target === experienceMoreSection) {
+                        // Stop cycling and reset when leaving view
+                        if (colorCycleInterval) {
+                            clearInterval(colorCycleInterval);
+                            colorCycleInterval = null;
+                            experienceMoreSection.style.background = 'white';
+                            console.log('🤍 Stopped Experience More color cycle');
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.3,
+                rootMargin: '0px'
+            });
+            
+            if (experienceMoreSection) {
+                colorObserver.observe(experienceMoreSection);
+            }
+            
+            // Observe experience more elements
+            const experienceTitle = document.querySelector('.experience-title');
+            const experienceDescription = document.querySelector('.experience-description');
+            const experienceButton = document.querySelector('.experience-button-container');
+            
+            if (experienceTitle) observer.observe(experienceTitle);
+            if (experienceDescription) observer.observe(experienceDescription);
+            if (experienceButton) observer.observe(experienceButton);
+            
+            // Smooth navigation transitions
+            const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href !== '#' && !href.includes('mailto:') && !href.includes('tel:')) {
+                        e.preventDefault();
+                        document.body.style.opacity = '0';
+                        document.body.style.transition = 'opacity 0.3s ease';
+                        setTimeout(() => {
+                            window.location.href = href;
+                        }, 300);
+                    }
+                });
+            });
+            
+        });
+    </script>
 </body>
 </html>

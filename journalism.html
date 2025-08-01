@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journalism - Christine Shin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/styles.scss">
+    <style>
+        /* Optimized journalism grid styling with animations */
+        .journalism-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            padding: 2rem 0;
+        }
+        
+        .journalism-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+        
+        .journalism-item.revealed {
+            opacity: 1;
+            transform: translateY(0) translateZ(0);
+        }
+        
+        .journalism-item:hover {
+            transform: translateY(-5px) translateZ(0);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .journalism-video-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .journalism-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+        
+        .journalism-play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        
+        .journalism-play-button:hover {
+            background: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .journalism-play-button::after {
+            content: '▶';
+            font-size: 1.5rem;
+            color: #333;
+            margin-left: 3px;
+        }
+        
+        .journalism-content {
+            padding: 2rem;
+        }
+        
+        .journalism-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: #333;
+            filter: blur(4px);
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.8s ease;
+        }
+        
+        .journalism-item.revealed .journalism-title {
+            filter: blur(0);
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .journalism-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.6s ease 0.2s;
+        }
+        
+        .journalism-item.revealed .journalism-description {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .journalism-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #999;
+        }
+        
+        .journalism-tag {
+            background: #E74C3C;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(5px);
+            transition: all 0.6s ease 0.4s;
+        }
+        
+        .journalism-item.revealed .journalism-tag {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Hero button styles - exact match to Download Resume button */
+        .hero-btn {
+            display: inline-block !important;
+            padding: 0.875rem 2rem !important;
+            font-size: 0.95rem !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+            border-radius: 2px !important;
+            letter-spacing: 0.5px !important;
+            text-transform: uppercase !important;
+            transition: all 0.3s ease !important;
+            cursor: pointer !important;
+            border: 2px solid #000 !important;
+        }
+        
+        .hero-btn--secondary {
+            background-color: #fff !important;
+            color: #000 !important;
+        }
+        
+        .hero-btn--secondary:hover {
+            background-color: #000 !important;
+            color: #fff !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        /* Page hero animations */
+        .page-hero h1 {
+            filter: blur(6px);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .page-hero h1.revealed {
+            filter: blur(0);
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .page-hero p {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease 0.3s;
+        }
+        
+        .page-hero p.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .journalism-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .journalism-video-container {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body data-barba="wrapper">
+    <div data-barba="container" data-barba-namespace="journalism">
+        
+        <!-- Hero Bar -->
+        <header class="hero-bar visible">
+            <div class="logo">
+                <h1><a href="/" style="color: inherit; text-decoration: none;">Christine Shin</a></h1>
+            </div>
+            <nav class="menu-trigger" data-controller="menu-trigger">
+                <button>Menu</button>
+            </nav>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="main-content" style="margin-top: 80px; padding: 2rem;">
+            
+            <!-- Page Header -->
+            <section class="page-hero" style="text-align: center; margin-bottom: 4rem; background: linear-gradient(135deg, #C0392B 0%, #E74C3C 50%, #EC7063 100%); padding: 4rem 2rem; border-radius: 8px; animation: gentleShimmer 4s ease-in-out infinite alternate;">
+                <h1 style="font-size: clamp(3rem, 8vw, 5rem); margin-bottom: 1rem; color: white; filter: none; opacity: 1; font-weight: 700;">Journalism</h1>
+                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: rgba(255, 255, 255, 0.9); line-height: 1.6;">
+                    Multimedia reporting, news packages, and editorial content for Northwestern Admissions and Philstar National Newspaper, reaching millions of readers globally.
+                </p>
+            </section>
+            
+            <!-- Journalism Grid -->
+            <section class="journalism-gallery">
+                <div class="journalism-grid">
+                    
+                    <!-- News Package 1 -->
+                    <div class="journalism-item">
+                        <div class="journalism-video-container">
+                            <img src="content 2/photography/spirit/IMG_1833_Original.jpg" alt="News Package 1" class="journalism-thumbnail">
+                            <div class="journalism-play-button" onclick="playJournalismVideo('content 3/journalism/News package 1 Shin.mp4')"></div>
+                        </div>
+                        <div class="journalism-content">
+                            <h3 class="journalism-title">News Package 1</h3>
+                            <p class="journalism-description">
+                                A comprehensive news package exploring current events with in-depth analysis, interviews, and multimedia storytelling techniques for broadcast journalism.
+                            </p>
+                            <div class="journalism-meta">
+                                <div class="journalism-tag">BROADCAST</div>
+                                <span>2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- News Package 2 -->
+                    <div class="journalism-item">
+                        <div class="journalism-video-container">
+                            <img src="content 2/photography/spirit/IMG_2258_Original.jpg" alt="News Package 2" class="journalism-thumbnail">
+                            <div class="journalism-play-button" onclick="playJournalismVideo('content/journalism/News Package 2 Shin.mp4')"></div>
+                        </div>
+                        <div class="journalism-content">
+                            <h3 class="journalism-title">News Package 2</h3>
+                            <p class="journalism-description">
+                                An investigative piece combining field reporting, data analysis, and compelling narrative structure to illuminate important social and community issues.
+                            </p>
+                            <div class="journalism-meta">
+                                <div class="journalism-tag">INVESTIGATIVE</div>
+                                <span>2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- News Package 3 -->
+                    <div class="journalism-item">
+                        <div class="journalism-video-container">
+                            <img src="content 2/photography/spirit/IMG_2815.JPG.jpg" alt="News Package 3" class="journalism-thumbnail">
+                            <div class="journalism-play-button" onclick="playJournalismVideo('content/journalism/News Package 3 Shin-1.mp4')"></div>
+                        </div>
+                        <div class="journalism-content">
+                            <h3 class="journalism-title">News Package 3</h3>
+                            <p class="journalism-description">
+                                A feature story showcasing human interest angles, community voices, and cultural perspectives through thoughtful interviewing and visual storytelling.
+                            </p>
+                            <div class="journalism-meta">
+                                <div class="journalism-tag">FEATURE</div>
+                                <span>2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Additional Journalism Work -->
+                <div style="background: white; border-radius: 12px; padding: 3rem; margin: 3rem 0; box-shadow: 0 20px 60px rgba(0,0,0,0.15);">
+                    <h2 style="font-size: 2rem; margin-bottom: 2rem; color: #333; text-align: center;">Editorial & Digital Content</h2>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                        
+                        <!-- Northwestern Admissions -->
+                        <div style="text-align: center; padding: 1.5rem;">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4E2A84 0%, #9B59B6 100%); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
+                                <span style="color: white; font-size: 1.5rem; font-weight: bold;">NU</span>
+                            </div>
+                            <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #333;">Northwestern Admissions</h3>
+                            <p style="color: #666; line-height: 1.6;">
+                                Creating authentic student stories and campus content that showcases university life and academic excellence for prospective students.
+                            </p>
+                        </div>
+                        
+                        <!-- Philstar National -->
+                        <div style="text-align: center; padding: 1.5rem;">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #E74C3C 0%, #C0392B 100%); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
+                                <span style="color: white; font-size: 1.5rem; font-weight: bold;">PS</span>
+                            </div>
+                            <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #333;">Philstar National</h3>
+                            <p style="color: #666; line-height: 1.6;">
+                                Contributing content that reached 15 million users, covering international news, cultural events, and Philippines-focused stories.
+                            </p>
+                        </div>
+                        
+                        <!-- North by Northwestern -->
+                        <div style="text-align: center; padding: 1.5rem;">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
+                                <span style="color: white; font-size: 1.5rem; font-weight: bold;">NBN</span>
+                            </div>
+                            <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #333;">North by Northwestern</h3>
+                            <p style="color: #666; line-height: 1.6;">
+                                Head of Ad Sales and editorial contributor, managing partnerships and creating content for Northwestern's premier student publication.
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Back Button -->
+            <section style="text-align: center; margin: 4rem 0;">
+                <a href="/work.html" class="hero-btn hero-btn--secondary" style="margin-right: 1rem;">
+                    ← Back to Work
+                </a>
+                <a href="/" class="hero-btn hero-btn--secondary">
+                    Home
+                </a>
+            </section>
+            
+        </main>
+
+        <!-- Menu Overlay -->
+        <div class="menu-overlay" data-controller="menu-overlay">
+            <button class="menu-close">&times;</button>
+            <nav class="menu-nav">
+                <ul>
+                    <li><a href="/" data-thumb="content 2/photography/serenity/IMG_0594.JPG.jpg">Home</a></li>
+                    <li><a href="/about.html" data-thumb="content 2/photography/spirit/IMG_1833_Original.jpg">About</a></li>
+                    <li><a href="/work.html" data-thumb="content 2/photography/texture/IMG_3692.JPG.jpg">Work</a></li>
+                    <li><a href="/contact.html" data-thumb="content 2/photography/community/IMG_4623.jpeg">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <script type="module" src="/src/js/main.js"></script>
+    
+    <script>
+        // Video playback function
+        function playJournalismVideo(videoSrc) {
+            // Create modal overlay
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                cursor: pointer;
+            `;
+            
+            // Create video element
+            const video = document.createElement('video');
+            video.src = videoSrc;
+            video.controls = true;
+            video.autoplay = true;
+            video.style.cssText = `
+                max-width: 90%;
+                max-height: 90%;
+                cursor: auto;
+            `;
+            
+            // Close modal when clicking outside video
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    document.body.removeChild(modal);
+                }
+            });
+            
+            // Prevent video clicks from closing modal
+            video.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+            
+            modal.appendChild(video);
+            document.body.appendChild(modal);
+        }
+        
+        // Journalism page animations
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Smooth page entrance animation
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 50);
+            
+            // Animation observer
+            const observerOptions = {
+                root: null,
+                rootMargin: '-10% 0px -10% 0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all journalism items
+            const journalismItems = document.querySelectorAll('.journalism-item');
+            journalismItems.forEach((item, index) => {
+                // Add staggered delay
+                setTimeout(() => {
+                    observer.observe(item);
+                }, index * 100);
+            });
+            
+            // Animate page hero on load
+            setTimeout(() => {
+                const heroTitle = document.querySelector('.page-hero h1');
+                const heroDescription = document.querySelector('.page-hero p');
+                
+                if (heroTitle) heroTitle.classList.add('revealed');
+                if (heroDescription) {
+                    setTimeout(() => heroDescription.classList.add('revealed'), 300);
+                }
+            }, 200);
+            
+            // Smooth navigation transitions
+            const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href !== '#' && !href.includes('mailto:') && !href.includes('tel:')) {
+                        e.preventDefault();
+                        document.body.classList.add('page-transitioning');
+                        setTimeout(() => {
+                            window.location.href = href;
+                        }, 300);
+                    }
+                });
+            });
+            
+        });
+    </script>
+</body>
+</html>

@@ -8,14 +8,269 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/styles/styles.scss">
+    <style>
+        /* Optimized hover effects - no more lag */
+        .hover-image {
+            transform: translateZ(0); /* Force hardware acceleration */
+            backface-visibility: hidden;
+        }
+        
+        .hover-image:hover {
+            transform: scale(1.02) translateZ(0);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25) !important;
+        }
+        
+        /* Seamless page transitions */
+        body {
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        
+        body.page-transitioning {
+            opacity: 0;
+        }
+        
+        /* Hero button styles - matching home page exactly */
+        .hero-btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 2px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .hero-btn--primary {
+            background-color: #000;
+            color: #fff;
+            border: 2px solid #000;
+        }
+        
+        .hero-btn--primary:hover {
+            background-color: #fff;
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Home page style animations */
+        .about-title.revealed {
+            filter: blur(0) !important;
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: all 0.8s ease;
+        }
+        
+        .about-subtitle.revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: all 0.6s ease 0.3s;
+        }
+        
+        .main-photo.revealed {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+            transition: all 1.0s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
+        }
+        
+        .about-text.revealed {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+            transition: all 1.0s cubic-bezier(0.23, 1, 0.32, 1) 0.4s;
+        }
+        
+        .about-heading.revealed {
+            filter: blur(0) !important;
+            opacity: 1 !important;
+            transition: all 0.8s ease;
+        }
+        
+        .about-paragraph.revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: all 0.6s ease;
+        }
+        
+        .about-paragraph:nth-of-type(1).revealed {
+            transition-delay: 0.1s;
+        }
+        
+        .about-paragraph:nth-of-type(2).revealed {
+            transition-delay: 0.2s;
+        }
+        
+        .about-paragraph:nth-of-type(3).revealed {
+            transition-delay: 0.3s;
+        }
+        
+        .about-cta.revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: all 0.6s ease 0.4s;
+        }
+        
+        .gallery-title.revealed {
+            filter: blur(0) !important;
+            opacity: 1 !important;
+            transition: all 0.8s ease;
+        }
+        
+        /* Vibe Check Style Title Animations */
+        .title-word--behind.revealed {
+            transform: translateY(0) !important;
+        }
+        
+        .title-word--lens.revealed {
+            transform: translateY(0) !important;
+        }
+        
+        .title-divider.revealed {
+            transform: scaleX(1) !important;
+        }
+        
+        /* Remove all borders and ensure black theme */
+        .gallery-image-container, 
+        .gallery-image-container img,
+        .single-image-gallery,
+        .behind-lens-section,
+        .behind-lens-section * {
+            border: none !important;
+            outline: none !important;
+        }
+        
+        /* Force full width for behind lens section */
+        .behind-lens-section {
+            width: 100vw !important;
+            margin-left: calc(-50vw + 50%) !important;
+            padding-left: calc(50vw - 50%) !important;
+            padding-right: calc(50vw - 50%) !important;
+            box-sizing: border-box !important;
+        }
+        
+        .behind-lens-section .gallery-content {
+            background: transparent !important;
+        }
+        
+        .behind-lens-section .single-image-gallery {
+            background: transparent !important;
+        }
+        
+        /* Scroll indicator animation */
+        .behind-lens-scroll.revealed {
+            opacity: 1 !important;
+        }
+        
+        /* Hide scroll indicator when scrolling past */
+        .behind-lens-scroll.hidden {
+            opacity: 0 !important;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Gallery Navigation Responsive */
+        @media (max-width: 1200px) {
+            .single-image-gallery {
+                max-width: 900px !important;
+            }
+            .gallery-image-container {
+                height: 600px !important;
+            }
+        }
+        
+        @media (max-width: 1000px) {
+            .gallery-nav--prev {
+                left: -80px !important;
+            }
+            .gallery-nav--next {
+                right: -80px !important;
+            }
+            .single-image-gallery {
+                max-width: 800px !important;
+            }
+            .gallery-image-container {
+                height: 550px !important;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .gallery-nav--prev {
+                left: 15px !important;
+            }
+            .gallery-nav--next {
+                right: 15px !important;
+            }
+            .gallery-nav {
+                width: 60px !important;
+                height: 60px !important;
+                font-size: 1.8rem !important;
+            }
+            .single-image-gallery {
+                max-width: 100% !important;
+            }
+            .gallery-image-container {
+                height: 400px !important;
+            }
+        }
+        
+        .corner-photo-style.revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .corner-photo-style:nth-child(1).revealed {
+            transition-delay: 0.1s;
+        }
+        
+        .corner-photo-style:nth-child(2).revealed {
+            transition-delay: 0.2s;
+        }
+        
+        .corner-photo-style:nth-child(3).revealed {
+            transition-delay: 0.3s;
+        }
+        
+        .corner-photo-style:nth-child(4).revealed {
+            transition-delay: 0.4s;
+        }
+        
+        .corner-photo-style:nth-child(5).revealed {
+            transition-delay: 0.5s;
+        }
+        
+        .corner-photo-style:nth-child(6).revealed {
+            transition-delay: 0.6s;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                text-align: center;
+            }
+            .about-text h3 {
+                font-size: 1.5rem !important;
+            }
+            .about-text p {
+                font-size: 1rem !important;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+                gap: 1.5rem !important;
+            }
+        }
+    </style>
 </head>
 <body data-barba="wrapper">
     <div data-barba="container" data-barba-namespace="about">
         
         <!-- Hero Bar -->
-        <header class="hero-bar" data-controller="hero-bar">
+        <header class="hero-bar visible">
             <div class="logo">
-                <h1><a href="/">Christine Shin</a></h1>
+                <h1><a href="/" style="color: inherit; text-decoration: none;">Christine Shin</a></h1>
             </div>
             <nav class="menu-trigger" data-controller="menu-trigger">
                 <button>Menu</button>
@@ -23,21 +278,104 @@
         </header>
 
         <!-- Main Content -->
-        <main class="main-content" data-controller="scroll-animations">
-            <section class="about-hero">
-                <h2>About Christine</h2>
-                <p>Creative director and visual storyteller with a passion for capturing authentic moments and crafting compelling narratives.</p>
+        <main class="main-content" style="margin-top: 80px; padding: 2rem;">
+            
+            <!-- Page Header -->
+            <section class="page-hero about-hero-animated" style="text-align: center; margin-bottom: 4rem; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #ffffff 100%); padding: 4rem 2rem; border-radius: 8px; animation: gentleShimmer 4s ease-in-out infinite alternate;">
+                <h1 class="about-title" style="font-size: clamp(4rem, 12vw, 8rem); margin-bottom: 1rem; color: #333; filter: blur(6px); opacity: 0; transform: translateY(30px); font-weight: 900;">Christine Shin</h1>
+                <p class="about-subtitle" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: rgba(51, 51, 51, 0.8); line-height: 1.6; opacity: 0; transform: translateY(20px);">
+                    Storyteller, strategist, and creative visionary bridging cultures through multimedia narratives and impactful campaigns.
+                </p>
             </section>
-
-            <section class="about-content">
-                <div class="about-text">
-                    <h3>Background</h3>
-                    <p>With expertise spanning photography, film, marketing, and journalism, Christine brings a multidisciplinary approach to visual storytelling.</p>
+            
+            <!-- About Content -->
+            <section class="about-content" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; margin: 4rem 0; align-items: center;">
+                
+                <!-- Photo on Left -->
+                <div class="about-image main-photo" style="opacity: 0; transform: translateX(-50px);">
+                    <img src="content 2/marketing/lewkin/modeling/P1030493.JPG" alt="Christine Shin" class="hover-image" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); transition: transform 0.2s ease, box-shadow 0.2s ease; will-change: transform;">
                 </div>
-                <div class="about-image">
-                    <img src="content/photography/spirit/IMG_2258_Original.jpg" alt="Christine Shin">
+                
+                <!-- Text on Right -->
+                <div class="about-text" style="opacity: 0; transform: translateX(50px);">
+                    <h3 class="about-heading" style="font-size: 2rem; margin-bottom: 1.5rem; color: #333; filter: blur(4px); opacity: 0; font-weight: 400;">A Global Perspective, Local Impact</h3>
+                    
+                    <p class="about-paragraph" style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.1rem; color: #555; opacity: 0; transform: translateY(20px);">
+                        Christine Shin is a Northwestern University journalism student whose work spans continents and causes. From managing partnerships with 100+ global influencers at Seoul-based fashion brand Lewkin to directing documentaries that raised $13,000 for underprivileged communities in the Philippines, she brings both strategic thinking and humanitarian heart to every project.
+                    </p>
+                    
+                    <p class="about-paragraph" style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.1rem; color: #555; opacity: 0; transform: translateY(20px);">
+                        Her multimedia expertise shines through roles at Northwestern Admissions, where she creates authentic student stories, and at Philstar National Newspaper, where her content reached 15 million users. As Publisher of nuAZN Magazine and Head of Ad Sales at North by Northwestern, she's proven her ability to build brands, secure partnerships, and drive meaningful engagement.
+                    </p>
+                    
+                    <p class="about-paragraph" style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.1rem; color: #555; opacity: 0; transform: translateY(20px);">
+                        With an International Baccalaureate background from Manila and current studies in Journalism and International Studies with an Integrated Marketing Communications Certificate, Christine bridges cultures through compelling visual narratives—whether capturing the spirit of adventure, the texture of everyday moments, or the serenity found in quiet contemplation.
+                    </p>
+                    
+                    <div class="about-cta" style="margin-top: 2rem; opacity: 0; transform: translateY(20px);">
+                        <a href="/contact.html" class="hero-btn hero-btn--primary">
+                            Let's Connect
+                        </a>
+                    </div>
                 </div>
+                
             </section>
+            
+            <!-- Behind the Lens Gallery -->
+            <section class="about-gallery behind-lens-section" style="margin: 0; min-height: 200vh; position: relative; background: white; transition: background-color 1.5s cubic-bezier(0.4, 0, 0.2, 1); width: 100vw; margin-left: calc(-50vw + 50%);">
+                
+                <!-- Vibe Check Style Title - Sticky -->
+                <div class="behind-lens-title" style="position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100;">
+                    
+                    <div class="title-line" style="overflow: hidden; height: clamp(4rem, 12vw, 8rem);">
+                        <h3 class="title-word title-word--behind" style="font-size: clamp(4rem, 12vw, 8rem); font-weight: 900; margin: 0; line-height: 1; color: transparent; transform: translateY(-100%); transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s ease;">BEHIND</h3>
+                    </div>
+                    
+                    <div class="title-divider" style="width: 200px; height: 2px; background: transparent; margin: 1rem 0; transform: scaleX(0); transition: transform 0.8s ease 0.5s, background 0.5s ease;"></div>
+                    
+                    <div class="title-line" style="overflow: hidden; height: clamp(4rem, 12vw, 8rem);">
+                        <h3 class="title-word title-word--lens" style="font-size: clamp(4rem, 12vw, 8rem); font-weight: 900; margin: 0; line-height: 1; color: transparent; transform: translateY(100%); transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s ease;">THE LENS</h3>
+                    </div>
+                    
+                    <!-- Scroll Indicator -->
+                    <div class="scroll-indicator behind-lens-scroll" style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; z-index: 100; opacity: 0; transition: opacity 0.6s ease 1s;">
+                        <div class="scroll-arrows" style="display: flex; flex-direction: row; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <div class="arrow" style="font-size: 1.5rem; color: white; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); animation: bounce 2s infinite;">↓</div>
+                            <div class="arrow" style="font-size: 1.5rem; color: white; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); animation: bounce 2s infinite; animation-delay: 0.3s;">↓</div>
+                            <div class="arrow" style="font-size: 1.5rem; color: white; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); animation: bounce 2s infinite; animation-delay: 0.6s;">↓</div>
+                        </div>
+                        <p class="scroll-text" style="color: white; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); margin: 0;">Explore Gallery</p>
+                    </div>
+                    
+                </div>
+                
+                <!-- Gallery Content Below Title -->
+                <div class="gallery-content" style="position: absolute; top: 100vh; left: 0; right: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 2rem;">
+                    
+                    <!-- Single Image Gallery with Navigation -->
+                    <div class="single-image-gallery" style="position: relative; max-width: 1000px; width: 100%;">
+                    
+                    <!-- Current Image -->
+                    <div class="gallery-image-container" style="position: relative; width: 100%; height: 650px; overflow: hidden; border-radius: 8px; box-shadow: 0 25px 80px rgba(0,0,0,0.4); border: none;">
+                        <img id="current-gallery-image" src="content 2/marketing/lewkin/modeling/P1030505.JPG" alt="Christine Shin" style="width: 100%; height: 100%; object-fit: cover; transition: opacity 0.5s ease; border: none;">
+                    </div>
+                    
+                    <!-- Navigation Arrows -->
+                    <button class="gallery-nav gallery-nav--prev" style="position: absolute; left: -100px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; width: 70px; height: 70px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.5);" onmouseover="this.style.background='rgba(0,0,0,1)'; this.style.transform='translateY(-50%) scale(1.1)'; this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.background='rgba(0,0,0,0.8)'; this.style.transform='translateY(-50%) scale(1)'; this.style.borderColor='rgba(255,255,255,0.3)'">‹</button>
+                    
+                    <button class="gallery-nav gallery-nav--next" style="position: absolute; right: -100px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; width: 70px; height: 70px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.5);" onmouseover="this.style.background='rgba(0,0,0,1)'; this.style.transform='translateY(-50%) scale(1.1)'; this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.background='rgba(0,0,0,0.8)'; this.style.transform='translateY(-50%) scale(1)'; this.style.borderColor='rgba(255,255,255,0.3)'">›</button>
+                    
+                    <!-- Image Counter -->
+                    <div class="image-counter" style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; color: white; font-weight: 500;">
+                        <span id="current-index">1</span> / <span id="total-images">9</span>
+                    </div>
+                    
+                    </div>
+                    
+                </div>
+                
+            </section>
+            
         </main>
 
         <!-- Menu Overlay -->
@@ -45,15 +383,237 @@
             <button class="menu-close">&times;</button>
             <nav class="menu-nav">
                 <ul>
-                    <li><a href="/" data-thumb="content/photography/serenity/IMG_0594.JPG.jpg">Home</a></li>
-                    <li><a href="/about.html" data-thumb="content/photography/spirit/IMG_1833_Original.jpg">About</a></li>
-                    <li><a href="/work.html" data-thumb="content/photography/texture/IMG_3692.JPG.jpg">Work</a></li>
-                    <li><a href="/contact.html" data-thumb="content/photography/community/IMG_4623.jpeg">Contact</a></li>
+                    <li><a href="/" data-thumb="content 2/photography/serenity/IMG_0594.JPG.jpg">Home</a></li>
+                    <li><a href="/about.html" data-thumb="content 2/photography/spirit/IMG_1833_Original.jpg">About</a></li>
+                    <li><a href="/work.html" data-thumb="content 2/photography/texture/IMG_3692.JPG.jpg">Work</a></li>
+                    <li><a href="/contact.html" data-thumb="content 2/photography/community/IMG_4623.jpeg">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </div>
 
     <script type="module" src="/src/js/main.js"></script>
+    
+    <script>
+        // About page scroll animations - similar to home page vibe
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Smooth page entrance animation
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 50);
+            
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '-10% 0px -10% 0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        
+                        // Special handling for Behind the Lens title animation
+                        if (entry.target.classList.contains('title-word--behind')) {
+                            setTimeout(() => {
+                                const lensElement = document.querySelector('.title-word--lens');
+                                const dividerElement = document.querySelector('.title-divider');
+                                if (lensElement) lensElement.classList.add('revealed');
+                                if (dividerElement) {
+                                    setTimeout(() => dividerElement.classList.add('revealed'), 200);
+                                }
+                            }, 500);
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            // Gallery images array
+            const galleryImages = [
+                'content 2/marketing/lewkin/modeling/P1030505.JPG',
+                'content 2/marketing/lewkin/modeling/P1030511.JPG', 
+                'content 2/marketing/lewkin/modeling/P1030538.JPG',
+                'content 2/marketing/lewkin/modeling/P1030583.JPG',
+                'content 2/marketing/lewkin/modeling/IMG_6629.JPG',
+                'content 2/marketing/lewkin/modeling/DSC01663.JPG',
+                'content 2/marketing/lewkin/modeling/DSC01661.JPG',
+                'content 2/marketing/lewkin/modeling/DSC01679.JPG',
+                'content 2/marketing/lewkin/modeling/DSC01604.JPG'
+            ];
+            
+            let currentImageIndex = 0;
+            
+            // Gallery navigation functions
+            function updateGalleryImage() {
+                const imageElement = document.getElementById('current-gallery-image');
+                const currentIndexElement = document.getElementById('current-index');
+                const totalImagesElement = document.getElementById('total-images');
+                
+                if (imageElement) {
+                    imageElement.style.opacity = '0';
+                    setTimeout(() => {
+                        imageElement.src = galleryImages[currentImageIndex];
+                        imageElement.style.opacity = '1';
+                    }, 250);
+                }
+                
+                if (currentIndexElement) {
+                    currentIndexElement.textContent = currentImageIndex + 1;
+                }
+                
+                if (totalImagesElement) {
+                    totalImagesElement.textContent = galleryImages.length;
+                }
+            }
+            
+            function nextImage() {
+                currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+                updateGalleryImage();
+            }
+            
+            function prevImage() {
+                currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+                updateGalleryImage();
+            }
+            
+            // Add event listeners for navigation
+            const nextBtn = document.querySelector('.gallery-nav--next');
+            const prevBtn = document.querySelector('.gallery-nav--prev');
+            
+            if (nextBtn) nextBtn.addEventListener('click', nextImage);
+            if (prevBtn) prevBtn.addEventListener('click', prevImage);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'ArrowLeft') prevImage();
+            });
+            
+            // Behind the Lens scroll-based animation (like vibe check)
+            function handleBehindLensAnimation() {
+                const section = document.querySelector('.behind-lens-section');
+                const scrollIndicator = document.querySelector('.behind-lens-scroll');
+                if (!section) return;
+                
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const scrollY = window.scrollY;
+                const viewportHeight = window.innerHeight;
+                
+                // Background color transition (white to black like vibe check) - triggers earlier
+                const sectionTriggerPoint = sectionTop - viewportHeight * 0.3; // Activate when section is 30% into view
+                if (scrollY >= sectionTriggerPoint && scrollY <= sectionTop + sectionHeight) {
+                    const progress = Math.max(0, Math.min(1, (scrollY - sectionTriggerPoint) / (viewportHeight * 0.2)));
+                    
+                    const behindElement = document.querySelector('.title-word--behind');
+                    const lensElement = document.querySelector('.title-word--lens');
+                    const dividerElement = document.querySelector('.title-divider');
+                    
+                    if (progress > 0.05) { // Reduced threshold for even earlier activation
+                        section.style.background = '#000';
+                        // Make text visible when background turns black
+                        if (behindElement) behindElement.style.color = 'white';
+                        if (lensElement) lensElement.style.color = 'white';
+                        if (dividerElement) dividerElement.style.background = 'white';
+                    } else {
+                        section.style.background = '#fff';
+                        // Keep text invisible on white background
+                        if (behindElement) behindElement.style.color = 'transparent';
+                        if (lensElement) lensElement.style.color = 'transparent';
+                        if (dividerElement) dividerElement.style.background = 'transparent';
+                    }
+                }
+                
+                // Trigger animation when section comes into view (like vibe check)
+                if (scrollY >= sectionTop - viewportHeight * 0.5) {
+                    const behindElement = document.querySelector('.title-word--behind');
+                    const lensElement = document.querySelector('.title-word--lens');
+                    const dividerElement = document.querySelector('.title-divider');
+                    
+                    if (behindElement && !behindElement.classList.contains('revealed')) {
+                        behindElement.classList.add('revealed');
+                        setTimeout(() => {
+                            if (lensElement) lensElement.classList.add('revealed');
+                            setTimeout(() => {
+                                if (dividerElement) dividerElement.classList.add('revealed');
+                                // Show scroll indicator after all title animations
+                                setTimeout(() => {
+                                    if (scrollIndicator) {
+                                        scrollIndicator.style.opacity = '1';
+                                    }
+                                }, 800);
+                            }, 300);
+                        }, 500);
+                    }
+                }
+                
+                // Hide scroll indicator when scrolling past the title area
+                if (scrollIndicator) {
+                    const titleBottom = sectionTop + viewportHeight;
+                    if (scrollY > titleBottom * 0.8) {
+                        scrollIndicator.classList.add('hidden');
+                    } else {
+                        scrollIndicator.classList.remove('hidden');
+                    }
+                }
+            }
+            
+            // Add scroll listener for behind lens animations
+            window.addEventListener('scroll', handleBehindLensAnimation);
+            
+            // Initialize on load
+            handleBehindLensAnimation();
+            
+            // Elements to animate
+            const elementsToAnimate = [
+                '.about-title',
+                '.about-subtitle', 
+                '.main-photo',
+                '.about-text',
+                '.about-heading',
+                '.about-paragraph',
+                '.about-cta',
+                '.title-word--behind',
+                '.title-word--lens',
+                '.title-divider'
+            ];
+            
+            elementsToAnimate.forEach(selector => {
+                const elements = document.querySelectorAll(selector);
+                elements.forEach(element => {
+                    observer.observe(element);
+                });
+            });
+            
+            // Trigger initial animations for above-fold content
+            setTimeout(() => {
+                const title = document.querySelector('.about-title');
+                const subtitle = document.querySelector('.about-subtitle');
+                if (title) title.classList.add('revealed');
+                if (subtitle) {
+                    setTimeout(() => subtitle.classList.add('revealed'), 300);
+                }
+            }, 100);
+            
+            // Smooth navigation transitions
+            const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href !== '#' && !href.includes('mailto:') && !href.includes('tel:')) {
+                        e.preventDefault();
+                        document.body.classList.add('page-transitioning');
+                        setTimeout(() => {
+                            window.location.href = href;
+                        }, 300);
+                    }
+                });
+            });
+            
+        });
+    </script>
 </body>
 </html>

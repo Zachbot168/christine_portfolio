@@ -3,19 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work - Christine Shin</title>
+    <title>All Work - Christine Shin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/styles/styles.scss">
+    <style>
+        /* Work grid styling with animations */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            padding: 2rem 0;
+        }
+        
+        .work-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            background: white;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+        
+        .work-card.revealed {
+            opacity: 1;
+            transform: translateY(0) translateZ(0);
+        }
+        
+        .work-card:hover {
+            transform: translateY(-5px) translateZ(0);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .work-card-image {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .work-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+        
+        .work-card-content {
+            padding: 2rem;
+        }
+        
+        .work-card-title {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: #333;
+            filter: blur(4px);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+        
+        .work-card.revealed .work-card-title {
+            filter: blur(0);
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .work-card-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.6s ease 0.2s;
+        }
+        
+        .work-card.revealed .work-card-description {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Hero button style - exact match to Download Resume button */
+        .hero-btn {
+            display: inline-block !important;
+            padding: 0.875rem 2rem !important;
+            font-size: 0.95rem !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+            border-radius: 2px !important;
+            letter-spacing: 0.5px !important;
+            text-transform: uppercase !important;
+            transition: all 0.3s ease !important;
+            cursor: pointer !important;
+            border: 2px solid #000 !important;
+            opacity: 0;
+            transform: translateY(15px);
+        }
+        
+        .work-card.revealed .hero-btn {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease 0.4s, background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .hero-btn--primary {
+            background-color: #000 !important;
+            color: #fff !important;
+        }
+        
+        .hero-btn--primary:hover {
+            background-color: #fff !important;
+            color: #000 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        .hero-btn--secondary {
+            background-color: #fff !important;
+            color: #000 !important;
+        }
+        
+        .hero-btn--secondary:hover {
+            background-color: #000 !important;
+            color: #fff !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        /* Page hero animations */
+        .page-hero h1 {
+            filter: blur(6px);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .page-hero h1.revealed {
+            filter: blur(0);
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .page-hero p {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease 0.3s;
+        }
+        
+        .page-hero p.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Smooth page transitions */
+        body {
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        
+        body.page-transitioning {
+            opacity: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .work-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
 </head>
 <body data-barba="wrapper">
     <div data-barba="container" data-barba-namespace="work">
         
         <!-- Hero Bar -->
-        <header class="hero-bar" data-controller="hero-bar">
+        <header class="hero-bar visible">
             <div class="logo">
-                <h1><a href="/">Christine Shin</a></h1>
+                <h1><a href="/" style="color: inherit; text-decoration: none;">Christine Shin</a></h1>
             </div>
             <nav class="menu-trigger" data-controller="menu-trigger">
                 <button>Menu</button>
@@ -23,41 +196,86 @@
         </header>
 
         <!-- Main Content -->
-        <main class="main-content" data-controller="scroll-animations">
-            <section class="work-hero">
-                <h2>Selected Work</h2>
-                <p>A curated collection of photography, film, marketing, and journalism projects.</p>
+        <main class="main-content" style="margin-top: 80px; padding: 2rem;">
+            
+            <!-- Page Header -->
+            <section class="page-hero" style="text-align: center; margin-bottom: 4rem; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #ffffff 100%); padding: 4rem 2rem; border-radius: 8px; animation: gentleShimmer 4s ease-in-out infinite alternate;">
+                <h1 style="font-size: clamp(3.5rem, 8vw, 5.5rem); margin-bottom: 1rem; color: #333; filter: none; opacity: 1; font-weight: 700;">All Work</h1>
+                <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; color: rgba(51, 51, 51, 0.8); line-height: 1.6;">
+                    A comprehensive collection of creative projects spanning photography, marketing campaigns, film production, and journalism across multiple platforms and mediums.
+                </p>
             </section>
-
-            <section class="work-grid">
-                <div class="work-category">
-                    <h3>Photography</h3>
-                    <div class="work-items">
-                        <div class="work-item">
-                            <img src="content/photography/commencement/P1096231.jpg" alt="Commencement">
-                            <h4>Commencement</h4>
+            
+            <!-- Work Grid -->
+            <section class="work-section">
+                <div class="work-grid">
+                    
+                    <!-- Photography -->
+                    <div class="work-card">
+                        <div class="work-card-image">
+                            <img src="content 2/photography/serenity/IMG_0594.JPG.jpg" alt="Photography">
                         </div>
-                        <div class="work-item">
-                            <img src="content/photography/serenity/IMG_0594.JPG.jpg" alt="Serenity">
-                            <h4>Serenity Series</h4>
+                        <div class="work-card-content">
+                            <h3 class="work-card-title">Photography</h3>
+                            <p class="work-card-description">
+                                Visual narratives capturing serenity, spirit, texture, adventure, and life's pivotal moments through contemplative and dynamic imagery.
+                            </p>
+                            <a href="/vibes.html" class="hero-btn hero-btn--primary">Explore Photography</a>
                         </div>
                     </div>
-                </div>
-
-                <div class="work-category">
-                    <h3>Marketing</h3>
-                    <div class="work-items">
-                        <div class="work-item">
-                            <img src="content/marketing/lewkin/modeling/DSC01604.JPG" alt="Lewkin">
-                            <h4>Lewkin Campaign</h4>
+                    
+                    <!-- Marketing -->
+                    <div class="work-card">
+                        <div class="work-card-image">
+                            <img src="content 2/marketing/nuazn/1.png" alt="Marketing">
                         </div>
-                        <div class="work-item">
-                            <img src="content/marketing/nuazn/1.png" alt="nuAZN">
-                            <h4>nuAZN Branding</h4>
+                        <div class="work-card-content">
+                            <h3 class="work-card-title">Marketing</h3>
+                            <p class="work-card-description">
+                                Strategic campaigns for fashion brands, restaurants, and publications including Lewkin, Yasotorn, nuAZN Magazine, and Musicade.
+                            </p>
+                            <a href="/marketing.html" class="hero-btn hero-btn--secondary">Explore Marketing</a>
                         </div>
                     </div>
+                    
+                    <!-- Film & Video -->
+                    <div class="work-card">
+                        <div class="work-card-image">
+                            <img src="content 2/film/1f2e69_dff21f81cf8f4c8795e5764a1f32c0ad~mv2.webp" alt="Film">
+                        </div>
+                        <div class="work-card-content">
+                            <h3 class="work-card-title">Film & Video</h3>
+                            <p class="work-card-description">
+                                Documentary filmmaking, promotional videos, and cinematic storytelling that raised funds and awareness for important causes.
+                            </p>
+                            <a href="/film.html" class="hero-btn hero-btn--primary">Explore Film</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Journalism -->
+                    <div class="work-card">
+                        <div class="work-card-image">
+                            <img src="content 2/photography/spirit/IMG_1833_Original.jpg" alt="Journalism">
+                        </div>
+                        <div class="work-card-content">
+                            <h3 class="work-card-title">Journalism</h3>
+                            <p class="work-card-description">
+                                News packages, multimedia reporting, and editorial content for Northwestern Admissions and Philstar National Newspaper.
+                            </p>
+                            <a href="/journalism.html" class="hero-btn hero-btn--secondary">Explore Journalism</a>
+                        </div>
+                    </div>
+                    
                 </div>
             </section>
+            
+            <!-- Back to Home -->
+            <section style="text-align: center; margin: 4rem 0;">
+                <a href="/" class="hero-btn hero-btn--secondary">
+                    ← Back to Home
+                </a>
+            </section>
+            
         </main>
 
         <!-- Menu Overlay -->
@@ -65,15 +283,78 @@
             <button class="menu-close">&times;</button>
             <nav class="menu-nav">
                 <ul>
-                    <li><a href="/" data-thumb="content/photography/serenity/IMG_0594.JPG.jpg">Home</a></li>
-                    <li><a href="/about.html" data-thumb="content/photography/spirit/IMG_1833_Original.jpg">About</a></li>
-                    <li><a href="/work.html" data-thumb="content/photography/texture/IMG_3692.JPG.jpg">Work</a></li>
-                    <li><a href="/contact.html" data-thumb="content/photography/community/IMG_4623.jpeg">Contact</a></li>
+                    <li><a href="/" data-thumb="content 2/photography/serenity/IMG_0594.JPG.jpg">Home</a></li>
+                    <li><a href="/about.html" data-thumb="content 2/photography/spirit/IMG_1833_Original.jpg">About</a></li>
+                    <li><a href="/work.html" data-thumb="content 2/photography/texture/IMG_3692.JPG.jpg">Work</a></li>
+                    <li><a href="/contact.html" data-thumb="content 2/photography/community/IMG_4623.jpeg">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </div>
 
     <script type="module" src="/src/js/main.js"></script>
+    
+    <script>
+        // Work page animations
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Smooth page entrance animation
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 50);
+            
+            // Animation observer
+            const observerOptions = {
+                root: null,
+                rootMargin: '-10% 0px -10% 0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all work cards
+            const workCards = document.querySelectorAll('.work-card');
+            workCards.forEach((card, index) => {
+                // Add staggered delay
+                setTimeout(() => {
+                    observer.observe(card);
+                }, index * 100);
+            });
+            
+            // Animate page hero on load
+            setTimeout(() => {
+                const heroTitle = document.querySelector('.page-hero h1');
+                const heroDescription = document.querySelector('.page-hero p');
+                
+                if (heroTitle) heroTitle.classList.add('revealed');
+                if (heroDescription) {
+                    setTimeout(() => heroDescription.classList.add('revealed'), 300);
+                }
+            }, 200);
+            
+            // Smooth navigation transitions
+            const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href !== '#' && !href.includes('mailto:') && !href.includes('tel:')) {
+                        e.preventDefault();
+                        document.body.classList.add('page-transitioning');
+                        setTimeout(() => {
+                            window.location.href = href;
+                        }, 300);
+                    }
+                });
+            });
+            
+        });
+    </script>
 </body>
 </html>

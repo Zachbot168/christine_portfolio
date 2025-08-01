@@ -56,8 +56,10 @@ function animateHeadings() {
   const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
   
   headings.forEach((heading) => {
-    // Skip headings that shouldn't be animated (like logo)
-    if (heading.closest('.hero-bar') || heading.closest('.menu-overlay')) return;
+    // Skip headings that shouldn't be animated (like logo, menu, or VIBE CHECK titles)
+    if (heading.closest('.hero-bar') || 
+        heading.closest('.menu-overlay') || 
+        heading.closest('.vibe-check-title')) return;
     
     ScrollTrigger.create({
       trigger: heading,
@@ -80,7 +82,59 @@ function animateHeadings() {
   });
 }
 
-// STEP 4: Letter stagger animations using SplitText
+// STEP 4: Hero buttons reveal animation
+function animateHeroButtons() {
+  const heroButtons = document.querySelector('.hero-buttons');
+  
+  if (heroButtons) {
+    ScrollTrigger.create({
+      trigger: heroButtons,
+      scroller: '[data-controller="scroll-animations"]',
+      start: 'top 90%',
+      end: 'bottom 10%',
+      onEnter: () => {
+        heroButtons.classList.add('revealed');
+      },
+      onLeave: () => {
+        heroButtons.classList.remove('revealed');
+      },
+      onEnterBack: () => {
+        heroButtons.classList.add('revealed');
+      },
+      onLeaveBack: () => {
+        heroButtons.classList.remove('revealed');
+      }
+    });
+  }
+}
+
+// STEP 4b: Hero scroll indicator reveal animation
+function animateHeroScrollIndicator() {
+  const heroScrollIndicator = document.querySelector('.hero-scroll-indicator');
+  
+  if (heroScrollIndicator) {
+    ScrollTrigger.create({
+      trigger: heroScrollIndicator,
+      scroller: '[data-controller="scroll-animations"]',
+      start: 'top 90%',
+      end: 'bottom 10%',
+      onEnter: () => {
+        heroScrollIndicator.classList.add('revealed');
+      },
+      onLeave: () => {
+        heroScrollIndicator.classList.remove('revealed');
+      },
+      onEnterBack: () => {
+        heroScrollIndicator.classList.add('revealed');
+      },
+      onLeaveBack: () => {
+        heroScrollIndicator.classList.remove('revealed');
+      }
+    });
+  }
+}
+
+// STEP 5: Letter stagger animations using SplitText
 function animateTextStagger() {
   const textElements = document.querySelectorAll('.hero p, .about-text p, .contact-info p');
   
@@ -156,7 +210,7 @@ function animateTextStagger() {
   });
 }
 
-// STEP 5: Vibe panels animation (opacity + colored background + image scale)
+// STEP 6: Vibe panels animation (opacity + colored background + image scale)
 function animateVibePanels() {
   const vibePanels = document.querySelectorAll('.vibe-panel');
   
@@ -212,7 +266,7 @@ function animateVibePanels() {
   });
 }
 
-// STEP 6: Work items fade-in animation
+// STEP 7: Work items fade-in animation
 function animateWorkItems() {
   const workItems = document.querySelectorAll('.work-item');
   
@@ -239,7 +293,7 @@ function animateWorkItems() {
   });
 }
 
-// STEP 7: Handle resize events
+// STEP 8: Handle resize events
 function handleResize() {
   let resizeTimer;
   
@@ -254,7 +308,7 @@ function handleResize() {
   });
 }
 
-// STEP 8: Cleanup function
+// STEP 9: Cleanup function
 function cleanup() {
   if (locoScroll) {
     locoScroll.destroy();
@@ -263,7 +317,7 @@ function cleanup() {
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 }
 
-// STEP 9: Main initialization function with reduced motion support
+// STEP 10: Main initialization function with reduced motion support
 export function initScrollAnimations() {
   // Check for reduced motion preference
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -295,6 +349,18 @@ export function initScrollAnimations() {
       element.classList.add('revealed');
     });
     
+    // Show hero buttons
+    const heroButtons = document.querySelector('.hero-buttons');
+    if (heroButtons) {
+      heroButtons.classList.add('revealed');
+    }
+    
+    // Show hero scroll indicator
+    const heroScrollIndicator = document.querySelector('.hero-scroll-indicator');
+    if (heroScrollIndicator) {
+      heroScrollIndicator.classList.add('revealed');
+    }
+    
     return;
   }
   
@@ -310,6 +376,8 @@ export function initScrollAnimations() {
   
   // Initialize all animations
   animateHeadings();
+  animateHeroButtons();
+  animateHeroScrollIndicator();
   animateTextStagger();
   animateVibePanels();
   animateWorkItems();

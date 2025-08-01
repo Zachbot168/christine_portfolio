@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Vibes - Christine Shin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/styles.scss">
+    <style>
+        /* Vibes grid styling */
+        .vibes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            padding: 2rem 0;
+        }
+        
+        .vibe-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+        }
+        
+        .vibe-card:hover {
+            transform: translateY(-3px) translateZ(0);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .vibe-card-image {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .vibe-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+        
+        .vibe-card-content {
+            padding: 2rem;
+        }
+        
+        .vibe-card-title {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: #333;
+            filter: none;
+            opacity: 1;
+        }
+        
+        .vibe-card-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .vibe-card-button {
+            display: inline-block !important;
+            padding: 0.875rem 2rem !important;
+            font-size: 0.95rem !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+            border-radius: 2px !important;
+            letter-spacing: 0.5px !important;
+            text-transform: uppercase !important;
+            transition: all 0.3s ease !important;
+            cursor: pointer !important;
+            border: 2px solid #000 !important;
+        }
+        
+        .vibe-card-button--primary {
+            background-color: #000 !important;
+            color: #fff !important;
+        }
+        
+        .vibe-card-button--primary:hover {
+            background-color: #fff !important;
+            color: #000 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        .vibe-card-button--secondary {
+            background-color: #fff !important;
+            color: #000 !important;
+        }
+        
+        .vibe-card-button--secondary:hover {
+            background-color: #000 !important;
+            color: #fff !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        /* Smooth page transitions */
+        body {
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        
+        body.page-transitioning {
+            opacity: 0;
+        }
+        
+        /* Hero button styles - exact match to Download Resume button */
+        .hero-btn {
+            display: inline-block !important;
+            padding: 0.875rem 2rem !important;
+            font-size: 0.95rem !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+            border-radius: 2px !important;
+            letter-spacing: 0.5px !important;
+            text-transform: uppercase !important;
+            transition: all 0.3s ease !important;
+            cursor: pointer !important;
+            border: 2px solid #000 !important;
+        }
+        
+        .hero-btn--secondary {
+            background-color: #fff !important;
+            color: #000 !important;
+        }
+        
+        .hero-btn--secondary:hover {
+            background-color: #000 !important;
+            color: #fff !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        @media (max-width: 768px) {
+            .vibes-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body data-barba="wrapper">
+    <div data-barba="container" data-barba-namespace="vibes">
+        
+        <!-- Hero Bar -->
+        <header class="hero-bar visible">
+            <div class="logo">
+                <h1><a href="/" style="color: inherit; text-decoration: none;">Christine Shin</a></h1>
+            </div>
+            <nav class="menu-trigger" data-controller="menu-trigger">
+                <button>Menu</button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content" style="margin-top: 80px; padding: 2rem;">
+            
+            <!-- Page Header -->
+            <section class="page-hero" style="text-align: center; margin-bottom: 4rem; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #ffffff 100%); padding: 4rem 2rem; border-radius: 8px; animation: gentleShimmer 4s ease-in-out infinite alternate;">
+                <h1 style="font-size: clamp(3.5rem, 8vw, 5.5rem); margin-bottom: 1rem; color: #333; filter: none; opacity: 1; font-weight: 700;">All Vibes</h1>
+                <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; color: rgba(51, 51, 51, 0.8); line-height: 1.6;">
+                    A complete collection of visual narratives, each capturing distinct moods, emotions, and moments that define the human experience.
+                </p>
+            </section>
+            
+            <!-- Vibes Grid -->
+            <section class="vibes-section">
+                <div class="vibes-grid">
+                    
+                    <!-- Serenity -->
+                    <div class="vibe-card">
+                        <div class="vibe-card-image">
+                            <img src="content 2/photography/serenity/IMG_0594.JPG.jpg" alt="Serenity">
+                        </div>
+                        <div class="vibe-card-content">
+                            <h3 class="vibe-card-title">Serenity</h3>
+                            <p class="vibe-card-description">
+                                A collection of tranquil moments that capture the peaceful essence of quiet contemplation and inner calm.
+                            </p>
+                            <a href="/serenity.html" class="vibe-card-button vibe-card-button--primary">Explore Serenity</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Spirit -->
+                    <div class="vibe-card">
+                        <div class="vibe-card-image">
+                            <img src="content 2/photography/spirit/IMG_1833_Original.jpg" alt="Spirit">
+                        </div>
+                        <div class="vibe-card-content">
+                            <h3 class="vibe-card-title">Spirit</h3>
+                            <p class="vibe-card-description">
+                                Capturing the essence of human energy and emotion through powerful portraits and dynamic moments.
+                            </p>
+                            <a href="/spirit.html" class="vibe-card-button vibe-card-button--secondary">Explore Spirit</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Texture -->
+                    <div class="vibe-card">
+                        <div class="vibe-card-image">
+                            <img src="content 2/photography/texture/IMG_3692.JPG.jpg" alt="Texture">
+                        </div>
+                        <div class="vibe-card-content">
+                            <h3 class="vibe-card-title">Texture</h3>
+                            <p class="vibe-card-description">
+                                An exploration of tactile surfaces and rich details that invite the viewer to feel as well as see.
+                            </p>
+                            <a href="/texture.html" class="vibe-card-button vibe-card-button--primary">Explore Texture</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Adventure -->
+                    <div class="vibe-card">
+                        <div class="vibe-card-image">
+                            <img src="content 2/photography/community/IMG_4623.jpeg" alt="Adventure">
+                        </div>
+                        <div class="vibe-card-content">
+                            <h3 class="vibe-card-title">Adventure</h3>
+                            <p class="vibe-card-description">
+                                Documenting the spirit of exploration and the bonds formed through shared experiences and community.
+                            </p>
+                            <a href="/adventure.html" class="vibe-card-button vibe-card-button--secondary">Explore Adventure</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Commencement -->
+                    <div class="vibe-card">
+                        <div class="vibe-card-image">
+                            <img src="content 2/photography/commencement/P1096231.jpg" alt="Commencement">
+                        </div>
+                        <div class="vibe-card-content">
+                            <h3 class="vibe-card-title">Commencement</h3>
+                            <p class="vibe-card-description">
+                                Celebrating new beginnings, achievements, and the pivotal moments that mark life's important transitions.
+                            </p>
+                            <a href="/commencement.html" class="vibe-card-button vibe-card-button--primary">Explore Commencement</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+            
+            <!-- Back to Home -->
+            <section style="text-align: center; margin: 4rem 0;">
+                <a href="/" class="hero-btn hero-btn--secondary">
+                    ← Back to Home
+                </a>
+            </section>
+            
+        </main>
+
+        <!-- Menu Overlay -->
+        <div class="menu-overlay" data-controller="menu-overlay">
+            <button class="menu-close">&times;</button>
+            <nav class="menu-nav">
+                <ul>
+                    <li><a href="/" data-thumb="content 2/photography/serenity/IMG_0594.JPG.jpg">Home</a></li>
+                    <li><a href="/about.html" data-thumb="content 2/photography/spirit/IMG_1833_Original.jpg">About</a></li>
+                    <li><a href="/work.html" data-thumb="content 2/photography/texture/IMG_3692.JPG.jpg">Work</a></li>
+                    <li><a href="/contact.html" data-thumb="content 2/photography/community/IMG_4623.jpeg">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <script type="module" src="/src/js/main.js"></script>
+    
+    <script>
+        // Smooth navigation transitions
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Smooth page entrance animation
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 50);
+            
+            // Smooth navigation transitions
+            const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href !== '#' && !href.includes('mailto:') && !href.includes('tel:')) {
+                        e.preventDefault();
+                        document.body.classList.add('page-transitioning');
+                        setTimeout(() => {
+                            window.location.href = href;
+                        }, 300);
+                    }
+                });
+            });
+            
+        });
+    </script>
+</body>
+</html>
