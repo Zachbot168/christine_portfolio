@@ -9,87 +9,218 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/styles/styles.scss">
     <style>
-        /* Work grid styling with animations */
-        .work-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            padding: 2rem 0;
+        /* All Work Carousel Styling - matching Behind the Lens format */
+        
+        /* Vibe Check Style Title Animations */
+        .title-word--all.revealed {
+            transform: translateY(0) !important;
         }
         
-        .work-card {
+        .title-word--work.revealed {
+            transform: translateY(0) !important;
+        }
+        
+        .title-divider.revealed {
+            transform: scaleX(1) !important;
+        }
+        
+        .work-subtitle.revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        
+        .work-scroll.revealed {
+            opacity: 1 !important;
+        }
+        
+        /* Hide scroll indicator when scrolling past */
+        .work-scroll.hidden {
+            opacity: 0 !important;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Bounce animation for scroll arrows */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+            40% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+            60% {
+                transform: translateY(-5px);
+                opacity: 0.9;
+            }
+        }
+        
+        /* All Work Section - Full viewport */
+        .all-work-section {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            min-height: 200vh;
             position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
             background: white;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            will-change: transform, opacity;
-            backface-visibility: hidden;
-            transform: translateZ(0);
+            transition: background-color 1.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .work-card.revealed {
-            opacity: 1;
-            transform: translateY(0) translateZ(0);
-        }
-        
-        .work-card:hover {
-            transform: translateY(-5px) translateZ(0);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-        
-        .work-card-image {
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
+        /* All Work Title - Fixed at top */
+        .all-work-title {
             position: relative;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            padding-top: 120px;
+            margin-top: 0;
         }
         
-        .work-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: translateZ(0);
-            backface-visibility: hidden;
+        .title-line {
+            overflow: visible;
+            height: auto;
+            margin: 0.5rem 0;
         }
         
-        .work-card-content {
+        .title-word {
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-weight: 900;
+            margin: 0;
+            line-height: 1;
+            color: black;
+            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .title-word--all {
+            transform: translateY(-100%);
+        }
+        
+        .title-word--work {
+            transform: translateY(100%);
+        }
+        
+        .title-divider {
+            width: 200px;
+            height: 2px;
+            background: black;
+            margin: 1rem 0;
+            transform: scaleX(0);
+            transition: transform 0.8s ease 0.5s;
+        }
+        
+        /* Gallery Content Below Title */
+        .gallery-content {
+            position: absolute;
+            top: 80vh;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             padding: 2rem;
         }
         
-        .work-card-title {
-            font-size: 1.8rem;
+        /* Single Work Gallery with Navigation */
+        .single-work-gallery {
+            position: relative;
+            max-width: 1000px;
+            width: 100%;
+        }
+        
+        /* Current Work Display */
+        .work-display-container {
+            position: relative;
+            width: 100%;
+            min-height: 650px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.4);
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        .work-display-image {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .work-display-title {
+            font-size: 2.5rem;
             font-weight: 400;
             margin-bottom: 1rem;
             color: #333;
-            filter: blur(4px);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
+            filter: none !important;
+            opacity: 1 !important;
         }
         
-        .work-card.revealed .work-card-title {
-            filter: blur(0);
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .work-card-description {
-            font-size: 1rem;
+        .work-display-description {
+            font-size: 1.1rem;
             color: #666;
             line-height: 1.6;
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            transform: translateY(15px);
-            transition: all 0.6s ease 0.2s;
+            margin-bottom: 2rem;
+            max-width: 600px;
         }
         
-        .work-card.revealed .work-card-description {
-            opacity: 1;
-            transform: translateY(0);
+        /* Navigation Arrows */
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.8);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        
+        .gallery-nav:hover {
+            background: rgba(0,0,0,1);
+            transform: translateY(-50%) scale(1.1);
+            border-color: rgba(255,255,255,0.5);
+        }
+        
+        .gallery-nav--prev {
+            left: -100px;
+        }
+        
+        .gallery-nav--next {
+            right: -100px;
+        }
+        
+        /* Work Counter */
+        .work-counter {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: white;
+            font-weight: 500;
         }
         
         /* Hero button style - exact match to Download Resume button */
@@ -105,14 +236,6 @@
             transition: all 0.3s ease !important;
             cursor: pointer !important;
             border: 2px solid #000 !important;
-            opacity: 0;
-            transform: translateY(15px);
-        }
-        
-        .work-card.revealed .hero-btn {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.6s ease 0.4s, background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
         }
         
         .hero-btn--primary {
@@ -139,31 +262,6 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
         }
         
-        /* Page hero animations */
-        .page-hero h1 {
-            filter: blur(6px);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-        
-        .page-hero h1.revealed {
-            filter: blur(0);
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .page-hero p {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease 0.3s;
-        }
-        
-        .page-hero p.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
         /* Smooth page transitions */
         body {
             opacity: 1;
@@ -174,10 +272,68 @@
             opacity: 0;
         }
         
+        /* Mobile Responsive */
+        @media (max-width: 1200px) {
+            .single-work-gallery {
+                max-width: 900px;
+            }
+            .work-display-container {
+                min-height: 600px;
+            }
+        }
+        
+        @media (max-width: 1000px) {
+            .gallery-nav--prev {
+                left: -80px;
+            }
+            .gallery-nav--next {
+                right: -80px;
+            }
+            .single-work-gallery {
+                max-width: 800px;
+            }
+            .work-display-container {
+                min-height: 550px;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .gallery-nav--prev {
+                left: 15px;
+            }
+            .gallery-nav--next {
+                right: 15px;
+            }
+            .gallery-nav {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+            .single-work-gallery {
+                max-width: 100%;
+            }
+            .work-display-container {
+                min-height: 500px;
+                padding: 2rem 1rem;
+            }
+            .work-display-image {
+                max-width: 300px;
+                height: 200px;
+            }
+            .work-display-title {
+                font-size: 2rem;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .work-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .title-line {
+                height: clamp(3rem, 10vw, 6rem);
+            }
+            .title-word {
+                font-size: clamp(3rem, 10vw, 6rem);
+            }
+            .title-divider {
+                width: 150px;
             }
         }
     </style>
@@ -198,75 +354,69 @@
         <!-- Main Content -->
         <main class="main-content" style="margin-top: 80px; padding: 2rem;">
             
-            <!-- Page Header -->
-            <section class="page-hero" style="text-align: center; margin-bottom: 4rem; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #ffffff 100%); padding: 4rem 2rem; border-radius: 8px; animation: gentleShimmer 4s ease-in-out infinite alternate;">
-                <h1 style="font-size: clamp(3.5rem, 8vw, 5.5rem); margin-bottom: 1rem; color: #333; filter: none; opacity: 1; font-weight: 700;">All Work</h1>
-                <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; color: rgba(51, 51, 51, 0.8); line-height: 1.6;">
-                    A comprehensive collection of creative projects spanning photography, marketing campaigns, film production, and journalism across multiple platforms and mediums.
-                </p>
-            </section>
-            
-            <!-- Work Grid -->
-            <section class="work-section">
-                <div class="work-grid">
+            <!-- All Work Gallery - Behind the Lens Format -->
+            <section class="all-work-section">
+                
+                <!-- Vibe Check Style Title - Sticky -->
+                <div class="all-work-title">
                     
-                    <!-- Photography -->
-                    <div class="work-card">
-                        <div class="work-card-image">
-                            <img src="content 2/photography/serenity/IMG_0594.JPG.jpg" alt="Photography">
-                        </div>
-                        <div class="work-card-content">
-                            <h3 class="work-card-title">Photography</h3>
-                            <p class="work-card-description">
-                                Visual narratives capturing serenity, spirit, texture, adventure, and life's pivotal moments through contemplative and dynamic imagery.
-                            </p>
-                            <a href="/vibes.html" class="hero-btn hero-btn--primary">Explore Photography</a>
-                        </div>
+                    <div class="title-line">
+                        <h3 class="title-word title-word--all">ALL</h3>
                     </div>
                     
-                    <!-- Marketing -->
-                    <div class="work-card">
-                        <div class="work-card-image">
-                            <img src="content 2/marketing/nuazn/1.png" alt="Marketing">
-                        </div>
-                        <div class="work-card-content">
-                            <h3 class="work-card-title">Marketing</h3>
-                            <p class="work-card-description">
-                                Strategic campaigns for fashion brands, restaurants, and publications including Lewkin, Yasotorn, nuAZN Magazine, and Musicade.
-                            </p>
-                            <a href="/marketing.html" class="hero-btn hero-btn--secondary">Explore Marketing</a>
-                        </div>
+                    <div class="title-divider"></div>
+                    
+                    <div class="title-line">
+                        <h3 class="title-word title-word--work">WORK</h3>
                     </div>
                     
-                    <!-- Film & Video -->
-                    <div class="work-card">
-                        <div class="work-card-image">
-                            <img src="content 2/film/1f2e69_dff21f81cf8f4c8795e5764a1f32c0ad~mv2.webp" alt="Film">
-                        </div>
-                        <div class="work-card-content">
-                            <h3 class="work-card-title">Film & Video</h3>
-                            <p class="work-card-description">
-                                Documentary filmmaking, promotional videos, and cinematic storytelling that raised funds and awareness for important causes.
-                            </p>
-                            <a href="/film.html" class="hero-btn hero-btn--primary">Explore Film</a>
-                        </div>
-                    </div>
+                    <!-- Subtitle -->
+                    <p class="work-subtitle" style="color: black; font-size: 1.2rem; max-width: 700px; margin: 2rem auto 0; text-align: center; line-height: 1.6; opacity: 0; transform: translateY(20px); transition: all 0.6s ease;">
+                        A comprehensive collection of creative projects spanning photography, marketing campaigns, film production, and journalism across multiple platforms and mediums.
+                    </p>
                     
-                    <!-- Journalism -->
-                    <div class="work-card">
-                        <div class="work-card-image">
-                            <img src="content 2/photography/spirit/IMG_1833_Original.jpg" alt="Journalism">
+                    
+                    <!-- Scroll Indicator - positioned right below subtitle -->
+                    <div class="scroll-indicator work-scroll" style="position: relative; margin: 2.5rem auto 0; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; text-align: center; z-index: 100; opacity: 0; transition: opacity 0.6s ease 1s;">
+                        <div class="scroll-arrows" style="display: flex; flex-direction: row; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <div class="arrow" style="font-size: 1.5rem; color: black; animation: bounce 2s infinite;">↓</div>
+                            <div class="arrow" style="font-size: 1.5rem; color: black; animation: bounce 2s infinite; animation-delay: 0.3s;">↓</div>
+                            <div class="arrow" style="font-size: 1.5rem; color: black; animation: bounce 2s infinite; animation-delay: 0.6s;">↓</div>
                         </div>
-                        <div class="work-card-content">
-                            <h3 class="work-card-title">Journalism</h3>
-                            <p class="work-card-description">
-                                News packages, multimedia reporting, and editorial content for Northwestern Admissions and Philstar National Newspaper.
-                            </p>
-                            <a href="/journalism.html" class="hero-btn hero-btn--secondary">Explore Journalism</a>
-                        </div>
+                        <p class="scroll-text" style="color: black; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 0;">Explore Work</p>
                     </div>
                     
                 </div>
+                
+                <!-- Gallery Content Below Title -->
+                <div class="gallery-content">
+                    
+                    <!-- Single Work Gallery with Navigation -->
+                    <div class="single-work-gallery">
+                    
+                    <!-- Current Work Display -->
+                    <div class="work-display-container">
+                        <img id="current-work-image" src="content 2/photography/serenity/IMG_0594.JPG.jpg" alt="Current Work" class="work-display-image">
+                        <h3 id="current-work-title" class="work-display-title">Photography</h3>
+                        <p id="current-work-description" class="work-display-description">
+                            Visual narratives capturing serenity, spirit, texture, adventure, and life's pivotal moments through contemplative and dynamic imagery.
+                        </p>
+                        <a id="current-work-link" href="/vibes.html" class="hero-btn hero-btn--primary">Explore Photography</a>
+                    </div>
+                    
+                    <!-- Navigation Arrows -->
+                    <button class="gallery-nav gallery-nav--prev">‹</button>
+                    <button class="gallery-nav gallery-nav--next">›</button>
+                    
+                    <!-- Work Counter -->
+                    <div class="work-counter">
+                        <span id="current-work-index">1</span> / <span id="total-works">4</span>
+                    </div>
+                    
+                    </div>
+                    
+                </div>
+                
             </section>
             
             <!-- Back to Home -->
@@ -295,7 +445,7 @@
     <script type="module" src="/src/js/main.js"></script>
     
     <script>
-        // Work page animations
+        // All Work page animations - Behind the Lens style
         document.addEventListener('DOMContentLoaded', function() {
             
             // Smooth page entrance animation
@@ -304,40 +454,170 @@
                 document.body.style.opacity = '1';
             }, 50);
             
-            // Animation observer
-            const observerOptions = {
-                root: null,
-                rootMargin: '-10% 0px -10% 0px',
-                threshold: 0.1
-            };
+            // Work items array - all 4 work categories
+            const workItems = [
+                {
+                    image: 'content 2/photography/serenity/IMG_0594.JPG.jpg',
+                    title: 'Photography',
+                    description: 'Visual narratives capturing serenity, spirit, texture, adventure, and life\'s pivotal moments through contemplative and dynamic imagery.',
+                    link: '/vibes.html',
+                    buttonText: 'Explore Photography',
+                    buttonClass: 'hero-btn--primary'
+                },
+                {
+                    image: 'content 2/marketing/nuazn/1.png',
+                    title: 'Marketing',
+                    description: 'Strategic campaigns for fashion brands, restaurants, and publications including Lewkin, Yasotorn, nuAZN Magazine, and Musicade.',
+                    link: '/marketing.html',
+                    buttonText: 'Explore Marketing',
+                    buttonClass: 'hero-btn--secondary'
+                },
+                {
+                    image: 'content 2/film/1f2e69_dff21f81cf8f4c8795e5764a1f32c0ad~mv2.webp',
+                    title: 'Film & Video',
+                    description: 'Documentary filmmaking, promotional videos, and cinematic storytelling that raised funds and awareness for important causes.',
+                    link: '/film.html',
+                    buttonText: 'Explore Film',
+                    buttonClass: 'hero-btn--primary'
+                },
+                {
+                    image: 'content 2/photography/spirit/IMG_1833_Original.jpg',
+                    title: 'Journalism',
+                    description: 'News packages, multimedia reporting, and editorial content for Northwestern Admissions and Philstar National Newspaper.',
+                    link: '/journalism.html',
+                    buttonText: 'Explore Journalism',
+                    buttonClass: 'hero-btn--secondary'
+                }
+            ];
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                    }
-                });
-            }, observerOptions);
+            let currentWorkIndex = 0;
             
-            // Observe all work cards
-            const workCards = document.querySelectorAll('.work-card');
-            workCards.forEach((card, index) => {
-                // Add staggered delay
-                setTimeout(() => {
-                    observer.observe(card);
-                }, index * 100);
+            // Work navigation functions
+            function updateWorkDisplay() {
+                const currentWork = workItems[currentWorkIndex];
+                const imageElement = document.getElementById('current-work-image');
+                const titleElement = document.getElementById('current-work-title');
+                const descriptionElement = document.getElementById('current-work-description');
+                const linkElement = document.getElementById('current-work-link');
+                const currentIndexElement = document.getElementById('current-work-index');
+                const totalWorksElement = document.getElementById('total-works');
+                
+                if (imageElement) {
+                    imageElement.style.opacity = '0';
+                    setTimeout(() => {
+                        imageElement.src = currentWork.image;
+                        imageElement.alt = currentWork.title;
+                        imageElement.style.opacity = '1';
+                    }, 250);
+                }
+                
+                if (titleElement) {
+                    titleElement.style.opacity = '0';
+                    setTimeout(() => {
+                        titleElement.textContent = currentWork.title;
+                        titleElement.style.opacity = '1';
+                    }, 250);
+                }
+                
+                if (descriptionElement) {
+                    descriptionElement.style.opacity = '0';
+                    setTimeout(() => {
+                        descriptionElement.textContent = currentWork.description;
+                        descriptionElement.style.opacity = '1';
+                    }, 250);
+                }
+                
+                if (linkElement) {
+                    linkElement.style.opacity = '0';
+                    setTimeout(() => {
+                        linkElement.href = currentWork.link;
+                        linkElement.textContent = currentWork.buttonText;
+                        linkElement.className = 'hero-btn ' + currentWork.buttonClass;
+                        linkElement.style.opacity = '1';
+                    }, 250);
+                }
+                
+                if (currentIndexElement) {
+                    currentIndexElement.textContent = currentWorkIndex + 1;
+                }
+                
+                if (totalWorksElement) {
+                    totalWorksElement.textContent = workItems.length;
+                }
+            }
+            
+            function nextWork() {
+                currentWorkIndex = (currentWorkIndex + 1) % workItems.length;
+                updateWorkDisplay();
+            }
+            
+            function prevWork() {
+                currentWorkIndex = (currentWorkIndex - 1 + workItems.length) % workItems.length;
+                updateWorkDisplay();
+            }
+            
+            // Add event listeners for navigation
+            const nextBtn = document.querySelector('.gallery-nav--next');
+            const prevBtn = document.querySelector('.gallery-nav--prev');
+            
+            if (nextBtn) nextBtn.addEventListener('click', nextWork);
+            if (prevBtn) prevBtn.addEventListener('click', prevWork);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') nextWork();
+                if (e.key === 'ArrowLeft') prevWork();
             });
             
-            // Animate page hero on load
+            // Title animations - play on page load (not scroll-based)
             setTimeout(() => {
-                const heroTitle = document.querySelector('.page-hero h1');
-                const heroDescription = document.querySelector('.page-hero p');
+                const allElement = document.querySelector('.title-word--all');
+                const workElement = document.querySelector('.title-word--work');
+                const dividerElement = document.querySelector('.title-divider');
+                const subtitleElement = document.querySelector('.work-subtitle');
                 
-                if (heroTitle) heroTitle.classList.add('revealed');
-                if (heroDescription) {
-                    setTimeout(() => heroDescription.classList.add('revealed'), 300);
+                if (allElement) {
+                    allElement.classList.add('revealed');
+                    setTimeout(() => {
+                        if (workElement) workElement.classList.add('revealed');
+                        setTimeout(() => {
+                            if (dividerElement) dividerElement.classList.add('revealed');
+                            // Show subtitle after title animation completes
+                            setTimeout(() => {
+                                if (subtitleElement) subtitleElement.classList.add('revealed');
+                                // Show scroll indicator after subtitle appears
+                                setTimeout(() => {
+                                    const scrollIndicator = document.querySelector('.work-scroll');
+                                    if (scrollIndicator) scrollIndicator.classList.add('revealed');
+                                }, 600);
+                            }, 800);
+                        }, 300);
+                    }, 500);
                 }
-            }, 200);
+            }, 500);
+            
+            // Initialize display
+            updateWorkDisplay();
+            
+            // Scroll-based scroll indicator visibility
+            function handleScrollIndicatorVisibility() {
+                const scrollIndicator = document.querySelector('.work-scroll');
+                const titleSection = document.querySelector('.all-work-title');
+                if (!scrollIndicator || !titleSection) return;
+                
+                const scrollY = window.scrollY;
+                const viewportHeight = window.innerHeight;
+                
+                // Hide scroll indicator when scrolling past 80% of viewport height
+                if (scrollY > viewportHeight * 0.8) {
+                    scrollIndicator.classList.add('hidden');
+                } else {
+                    scrollIndicator.classList.remove('hidden');
+                }
+            }
+            
+            // Add scroll listener for scroll indicator
+            window.addEventListener('scroll', handleScrollIndicatorVisibility);
             
             // Smooth navigation transitions
             const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');

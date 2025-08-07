@@ -6,8 +6,11 @@
     <title>Christine Shin - Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&family=Kalam:wght@300;400;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/styles/styles.scss">
+    <style>
+        /* Removed CSS brush animation - using JavaScript instead */
+    </style>
 </head>
 <body data-barba="wrapper">
     <div data-barba="container" data-barba-namespace="home">
@@ -177,6 +180,114 @@
                     </a>
                 </div>
             </section>
+            
+            <!-- Graduation Photography Section -->
+            <section class="graduation-section" style="min-height: 300vh; position: relative; background: white; transition: background-color 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); width: 100vw; margin-left: calc(-50vw + 50%);">
+                
+                <!-- Paintbrush Title - Sticky -->
+                <div class="graduation-title" style="position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100;">
+                    
+                    <!-- Paintbrush Text Animation -->
+                    <div class="paintbrush-container" style="position: relative; width: 100vw; margin-left: calc(-50vw + 50%); padding: 2rem 1rem; transform: scale(2); transform-origin: center center;">
+                        <svg viewBox="0 0 800 200" class="brush-animation" style="width: 100%; height: 200px; filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.2));">
+                            <defs>
+                                <!-- Brush stroke mask path -->
+                                <mask id="brushMask">
+                                    <path id="brushPath" stroke="white" stroke-width="80" fill="none" 
+                                          stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-dasharray="2800" stroke-dashoffset="2800"
+                                          d="M25,100 Q100,70 200,90 Q300,110 400,90 Q500,70 600,90 Q700,110 775,100"
+                                          style="transition: stroke-dashoffset 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);">
+                                    </path>
+                                </mask>
+                                
+                                <!-- Text gradient for depth -->
+                                <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#2c3e50"/>
+                                    <stop offset="50%" stop-color="#34495e"/>
+                                    <stop offset="100%" stop-color="#2c3e50"/>
+                                </linearGradient>
+                                
+                                <!-- Brush texture filter -->
+                                <filter id="brushTexture" x="0%" y="0%" width="100%" height="100%">
+                                    <feTurbulence baseFrequency="0.4" numOctaves="3" seed="2" stitchTiles="stitch"/>
+                                    <feColorMatrix type="saturate" values="0"/>
+                                    <feComponentTransfer>
+                                        <feFuncA type="discrete" tableValues="0 .3 .5 .7 1"/>
+                                    </feComponentTransfer>
+                                    <feComposite operator="multiply" in2="SourceGraphic"/>
+                                </filter>
+                            </defs>
+                            
+                            <!-- The text that gets revealed by the brush stroke -->
+                            <text x="400" y="100" dominant-baseline="middle" text-anchor="middle"
+                                  font-size="60" font-family="'Kalam', 'Caveat', cursive" 
+                                  font-weight="700"
+                                  fill="url(#textGradient)" 
+                                  mask="url(#brushMask)"
+                                  filter="url(#brushTexture)"
+                                  style="opacity: 0; transition: opacity 0.3s ease;">
+                                Graduation Photography
+                            </text>
+                        </svg>
+                    </div>
+                    
+                    <!-- Subtitle with Tape Animation -->
+                    <div class="graduation-subtitle-container" style="position: relative; max-width: 600px; margin: 2rem auto 0; text-align: center;">
+                        <!-- Tape piece -->
+                        <div class="subtitle-tape" style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%) rotate(-8deg); width: 80px; height: 25px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 8px rgba(0,0,0,0.15); opacity: 0; transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); z-index: 10;"></div>
+                        <!-- Subtitle text -->
+                        <p class="graduation-subtitle" style="color: #444; font-size: 1.3rem; line-height: 1.6; opacity: 0; transform: translateY(20px) scale(0.95); transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); font-family: 'Kalam', 'Caveat', cursive; font-weight: 400; background: rgba(255,255,255,0.85); padding: 1rem 1.5rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            Capturing your milestone moments with artistic flair and timeless elegance.
+                        </p>
+                    </div>
+                    
+                    <!-- Scroll Indicator -->
+                    <div class="graduation-scroll" style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; z-index: 100; opacity: 0; transition: opacity 0.6s ease 1s;">
+                        <div class="scroll-arrows" style="display: flex; flex-direction: row; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <div class="arrow" style="font-size: 1.5rem; color: #333; animation: bounce 2s infinite;">↓</div>
+                            <div class="arrow" style="font-size: 1.5rem; color: #333; animation: bounce 2s infinite; animation-delay: 0.3s;">↓</div>
+                            <div class="arrow" style="font-size: 1.5rem; color: #333; animation: bounce 2s infinite; animation-delay: 0.6s;">↓</div>
+                        </div>
+                        <p class="scroll-text" style="color: #333; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 0;">View Gallery</p>
+                    </div>
+                    
+                </div>
+                
+                <!-- Single Gallery Below Title -->
+                <div class="graduation-gallery-content" style="position: absolute; top: 100vh; left: 0; right: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 2rem;">
+                    
+                    <!-- Single Image Gallery with Navigation -->
+                    <div class="graduation-single-gallery" style="position: relative; max-width: 1000px; width: 100%;">
+                    
+                        <!-- Current Image -->
+                        <div class="graduation-image-container" style="position: relative; width: 100%; height: 650px; overflow: visible; border-radius: 8px; box-shadow: 0 25px 80px rgba(0,0,0,0.4); border: none;">
+                            <div class="graduation-photo-frame" style="position: relative; width: 100%; height: 100%; background: white; padding: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); border-radius: 2px;">
+                                <img id="current-graduation-image" src="content 2/photography/commencement/P1096231.jpg" alt="Graduation" style="width: 100%; height: 100%; object-fit: cover; border: none;">
+                                <div id="graduation-tapes-container"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Arrows -->
+                        <button class="graduation-nav graduation-nav--prev" style="position: absolute; left: -100px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; width: 70px; height: 70px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.5);" onmouseover="this.style.background='rgba(0,0,0,1)'; this.style.transform='translateY(-50%) scale(1.1)'; this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.background='rgba(0,0,0,0.8)'; this.style.transform='translateY(-50%) scale(1)'; this.style.borderColor='rgba(255,255,255,0.3)'">‹</button>
+                        
+                        <button class="graduation-nav graduation-nav--next" style="position: absolute; right: -100px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; width: 70px; height: 70px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.5);" onmouseover="this.style.background='rgba(0,0,0,1)'; this.style.transform='translateY(-50%) scale(1.1)'; this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.background='rgba(0,0,0,0.8)'; this.style.transform='translateY(-50%) scale(1)'; this.style.borderColor='rgba(255,255,255,0.3)'">›</button>
+                        
+                        <!-- Image Counter -->
+                        <div class="graduation-counter" style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; color: white; font-weight: 500;">
+                            <span id="graduation-current-index">1</span> / <span id="graduation-total-images">5</span>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+                <!-- Book Appointment Button - Bottom -->
+                <div class="graduation-cta" style="position: absolute; top: calc(100vh + 100vh - 2rem); left: 50%; transform: translateX(-50%); text-align: center; opacity: 0; transition: opacity 0.6s ease; z-index: 100;">
+                    <a href="/contact.html" class="hero-btn hero-btn--primary" style="display: inline-block; padding: 0.875rem 2rem; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 2px; letter-spacing: 0.5px; text-transform: uppercase; transition: all 0.3s ease; cursor: pointer; background-color: #000; color: #fff; border: 2px solid #000;" onmouseover="this.style.backgroundColor='#fff'; this.style.color='#000'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.backgroundColor='#000'; this.style.color='#fff'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">Book Appointment</a>
+                </div>
+                
+            </section>
         </main>
 
         <!-- Menu Overlay -->
@@ -299,9 +410,586 @@
             if (experienceDescription) observer.observe(experienceDescription);
             if (experienceButton) observer.observe(experienceButton);
             
-            // Smooth navigation transitions
-            const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
-            links.forEach(link => {
+            // Graduation Photography Section Logic
+            const graduationSection = document.querySelector('.graduation-section');
+            
+            // SVG Paintbrush animation - paper tearing effect triggered when scrolled into view
+            function initPaintbrushAnimation() {
+                const brushPath = document.getElementById('brushPath');
+                const textElement = document.querySelector('text[mask="url(#brushMask)"]');
+                
+                if (!brushPath || !textElement) return;
+                
+                // Make text visible first
+                textElement.style.opacity = '1';
+                
+                // Start with width 0 for paper tearing effect
+                brushPath.setAttribute('stroke-width', '0');
+                
+                // Start the brush stroke animation (left to right reveal)
+                setTimeout(() => {
+                    brushPath.style.strokeDashoffset = '0';
+                }, 500);
+                
+                // Paper tearing width animation - one-time trigger like vibe check
+                const widths = [60, 80, 100]; // For random variation after tearing
+                let widthInterval;
+                
+                // Choppy stop-motion style paper tearing animation
+                setTimeout(() => {
+                    const targetWidth = 80;
+                    const frames = [0, 20, 45, 70, 80]; // Fewer frames for choppier effect
+                    let currentFrame = 0;
+                    
+                    const animateChoppy = () => {
+                        if (currentFrame < frames.length) {
+                            brushPath.setAttribute('stroke-width', frames[currentFrame]);
+                            currentFrame++;
+                            
+                            // Use setTimeout instead of requestAnimationFrame for choppier effect
+                            setTimeout(animateChoppy, 100); // 100ms between frames for even faster stop motion
+                        } else {
+                            // Start random width switching after tearing animation completes
+                            setTimeout(() => {
+                                widthInterval = setInterval(() => {
+                                    const randomWidth = widths[Math.floor(Math.random() * widths.length)];
+                                    brushPath.setAttribute('stroke-width', randomWidth);
+                                }, 1000); // Every 1 second
+                            }, 300);
+                        }
+                    };
+                    
+                    animateChoppy();
+                }, 1000); // Start tearing 1 second after stroke animation begins
+            }
+            
+            // Track if paintbrush animation has been triggered
+            let paintbrushAnimated = false;
+            const graduationTitle = document.querySelector('.graduation-title');
+            
+            // Temporarily trigger animation immediately for testing
+            // Set up scroll-based graduation animations (like vibe check)
+            function initGraduationScrollAnimations() {
+                if (!graduationTitle) return;
+                
+                console.log('🖌️ Setting up scroll-based graduation animations');
+                
+                let hasAnimated = false;
+                
+                // Observer to trigger graduation animations when title comes into view
+                const graduationAnimationObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !hasAnimated) {
+                            console.log('🎓 Triggering graduation animations on scroll');
+                            hasAnimated = true;
+                            
+                            // Trigger the paintbrush animation
+                            initPaintbrushAnimation();
+                            
+                            // Show subtitle after paintbrush animation
+                            const subtitle = document.querySelector('.graduation-subtitle');
+                            const scrollIndicator = document.querySelector('.graduation-scroll');
+                            
+                            setTimeout(() => {
+                                // Show subtitle first
+                                if (subtitle) {
+                                    subtitle.style.opacity = '1';
+                                    subtitle.style.transform = 'translateY(0) scale(1)';
+                                    console.log('🖊️ Subtitle revealed first');
+                                }
+                                
+                                // Then animate tape on top of subtitle
+                                setTimeout(() => {
+                                    const subtitleTape = document.querySelector('.subtitle-tape');
+                                    if (subtitleTape) {
+                                        subtitleTape.style.opacity = '1';
+                                        subtitleTape.style.transform = 'translateX(-50%) rotate(-8deg) scale(1.1)';
+                                        console.log('🎞️ Tape placed on top');
+                                        
+                                        // Settle tape to normal size
+                                        setTimeout(() => {
+                                            subtitleTape.style.transform = 'translateX(-50%) rotate(-8deg) scale(1)';
+                                        }, 200);
+                                    }
+                                }, 400); // Delay tape after subtitle
+                                
+                                // Show scroll indicator after everything
+                                setTimeout(() => {
+                                    if (scrollIndicator) {
+                                        scrollIndicator.style.opacity = '1';
+                                        console.log('👇 Scroll indicator shown');
+                                    }
+                                }, 1200); // Show after subtitle + tape animations
+                            }, 1000); // Delay after paintbrush
+                            
+                            // Disconnect observer after animation
+                            graduationAnimationObserver.disconnect();
+                        }
+                    });
+                }, {
+                    threshold: 0.2,
+                    rootMargin: '0px 0px -10% 0px'
+                });
+                
+                graduationAnimationObserver.observe(graduationTitle);
+            }
+            
+            // Initialize scroll-based animations
+            initGraduationScrollAnimations();
+            
+            // Graduation gallery images array
+            const graduationImages = [
+                {
+                    src: 'content 2/photography/commencement/P1096231.jpg',
+                    tapes: [
+                        { top: -10, left: 20, width: 60, height: 25, rotation: -15 },
+                        { top: -8, right: 15, width: 50, height: 20, rotation: 25 },
+                        { bottom: -12, left: 25, width: 55, height: 22, rotation: -20 }
+                    ]
+                },
+                {
+                    src: 'content 2/photography/commencement/P1129002.JPG',
+                    tapes: [
+                        { top: -8, right: 15, width: 50, height: 20, rotation: 20 },
+                        { top: -10, left: 30, width: 45, height: 18, rotation: -25 },
+                        { bottom: -10, right: 20, width: 60, height: 25, rotation: 15 }
+                    ]
+                },
+                {
+                    src: 'content 2/photography/commencement/P1140423.JPG',
+                    tapes: [
+                        { top: -12, left: '50%', width: 70, height: 30, rotation: -8, transform: 'translateX(-50%)' },
+                        { top: -5, left: 10, width: 40, height: 18, rotation: 30 },
+                        { bottom: -8, right: 10, width: 50, height: 22, rotation: -15 }
+                    ]
+                },
+                {
+                    src: 'content 2/photography/commencement/P1185180.jpg',
+                    tapes: [
+                        { top: -15, right: 25, width: 55, height: 25, rotation: 12 },
+                        { top: -12, left: 20, width: 65, height: 28, rotation: -18 },
+                        { bottom: -10, left: '40%', width: 50, height: 20, rotation: 22, transform: 'translateX(-50%)' }
+                    ]
+                },
+                {
+                    src: 'content 2/photography/commencement/P1196127.jpg',
+                    tapes: [
+                        { top: -10, left: 30, width: 65, height: 28, rotation: -10 },
+                        { top: -8, right: 18, width: 45, height: 20, rotation: 28 },
+                        { bottom: -12, right: 40, width: 60, height: 25, rotation: 15 },
+                        { bottom: -15, left: 35, width: 40, height: 18, rotation: -25 }
+                    ]
+                }
+            ];
+            
+            let graduationCurrentIndex = 0;
+            
+            // Function to create tape elements
+            function createTapeElement(tape, index) {
+                const tapeEl = document.createElement('div');
+                tapeEl.className = `graduation-tape tape-${index}`;
+                tapeEl.style.cssText = `
+                    position: absolute;
+                    width: ${tape.width}px;
+                    height: ${tape.height}px;
+                    background: rgba(255,255,255,0.9);
+                    border: 1px solid #ddd;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                    z-index: 10;
+                    transform: rotate(${tape.rotation}deg) ${tape.transform || ''};
+                `;
+                
+                // Set position
+                if (tape.top !== undefined) tapeEl.style.top = tape.top + 'px';
+                if (tape.bottom !== undefined) tapeEl.style.bottom = tape.bottom + 'px';
+                if (tape.left !== undefined) {
+                    tapeEl.style.left = typeof tape.left === 'string' ? tape.left : tape.left + 'px';
+                }
+                if (tape.right !== undefined) tapeEl.style.right = tape.right + 'px';
+                
+                return tapeEl;
+            }
+            
+            // Graduation gallery navigation functions with slide animation
+            function updateGraduationImage() {
+                console.log('🎓 Updating graduation image to index:', graduationCurrentIndex);
+                
+                const imageElement = document.getElementById('current-graduation-image');
+                const tapesContainer = document.getElementById('graduation-tapes-container');
+                const currentIndexElement = document.getElementById('graduation-current-index');
+                const totalImagesElement = document.getElementById('graduation-total-images');
+                
+                if (imageElement && tapesContainer) {
+                    // Disable pointer events during animation
+                    const container = document.querySelector('.graduation-single-gallery');
+                    if (container) container.style.pointerEvents = 'none';
+                    
+                    // Phase 1: All tapes peel off simultaneously
+                    const currentTapes = tapesContainer.querySelectorAll('.graduation-tape');
+                    currentTapes.forEach((tape, index) => {
+                        tape.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                        tape.style.transform = tape.style.transform + ' scale(0.8) translateY(-25px) rotateX(60deg)';
+                        tape.style.opacity = '0.2';
+                        tape.style.filter = 'blur(2px)';
+                    });
+                    
+                    setTimeout(() => {
+                        // Phase 2: Photo slides down off screen
+                        imageElement.style.transition = 'all 0.7s cubic-bezier(0.55, 0.085, 0.68, 0.53)';
+                        imageElement.style.transform = 'translateY(100%) scale(0.9)';
+                        imageElement.style.opacity = '0.3';
+                        
+                        // Tapes disappear completely
+                        currentTapes.forEach(tape => {
+                            tape.style.transition = 'all 0.4s ease-out';
+                            tape.style.opacity = '0';
+                            tape.style.transform = tape.style.transform + ' translateY(-50px)';
+                        });
+                        
+                        setTimeout(() => {
+                            // Phase 3: Setup new content (while invisible)
+                            const currentImage = graduationImages[graduationCurrentIndex];
+                            
+                            // Clear old tapes
+                            tapesContainer.innerHTML = '';
+                            
+                            // Create new tapes
+                            currentImage.tapes.forEach((tape, index) => {
+                                const tapeEl = createTapeElement(tape, index);
+                                // Start tapes invisible and positioned for animation
+                                tapeEl.style.opacity = '0';
+                                tapeEl.style.transform = `rotate(${tape.rotation}deg) ${tape.transform || ''} scale(1.2) translateY(-40px) rotateX(-45deg)`;
+                                tapesContainer.appendChild(tapeEl);
+                            });
+                            
+                            // Setup new photo above screen
+                            imageElement.src = currentImage.src;
+                            imageElement.style.transition = '';
+                            imageElement.style.transform = 'translateY(-100%) scale(0.9)';
+                            imageElement.style.opacity = '0.3';
+                            
+                            setTimeout(() => {
+                                // Phase 4: New photo slides down from top
+                                imageElement.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+                                imageElement.style.transform = 'translateY(0) scale(1)';
+                                imageElement.style.opacity = '1';
+                                
+                                setTimeout(() => {
+                                    // Phase 5: Tapes get placed one by one
+                                    const newTapes = tapesContainer.querySelectorAll('.graduation-tape');
+                                    newTapes.forEach((tape, index) => {
+                                        setTimeout(() => {
+                                            tape.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                                            const originalTransform = tape.getAttribute('data-original-transform') || 
+                                                tape.style.transform.split(' scale(')[0]; // Get base transform
+                                            tape.style.transform = originalTransform + ' scale(1.05)';
+                                            tape.style.opacity = '0.9';
+                                            
+                                            setTimeout(() => {
+                                                // Final settle
+                                                tape.style.transition = 'all 0.3s ease-out';
+                                                tape.style.transform = originalTransform;
+                                                tape.style.opacity = '1';
+                                            }, 400);
+                                        }, index * 150); // Stagger tape placement
+                                    });
+                                    
+                                    // Re-enable interactions after all animations
+                                    setTimeout(() => {
+                                        if (container) container.style.pointerEvents = 'auto';
+                                    }, newTapes.length * 150 + 700);
+                                    
+                                }, 400); // Wait for photo to settle
+                            }, 100);
+                            
+                        }, 500); // Wait for slide down
+                    }, 300); // Wait for tape peel
+                }
+                
+                if (currentIndexElement) {
+                    currentIndexElement.textContent = graduationCurrentIndex + 1;
+                }
+                
+                if (totalImagesElement) {
+                    totalImagesElement.textContent = graduationImages.length;
+                }
+            }
+            
+            function nextGraduationImage() {
+                graduationCurrentIndex = (graduationCurrentIndex + 1) % graduationImages.length;
+                updateGraduationImage();
+            }
+            
+            function prevGraduationImage() {
+                graduationCurrentIndex = (graduationCurrentIndex - 1 + graduationImages.length) % graduationImages.length;
+                updateGraduationImage();
+            }
+            
+            // Add event listeners for graduation gallery navigation
+            const graduationNextBtn = document.querySelector('.graduation-nav--next');
+            const graduationPrevBtn = document.querySelector('.graduation-nav--prev');
+            
+            console.log('🎓 Gallery nav buttons:', { nextBtn: !!graduationNextBtn, prevBtn: !!graduationPrevBtn });
+            
+            if (graduationNextBtn) {
+                graduationNextBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('🎓 Next button clicked');
+                    nextGraduationImage();
+                });
+            } else {
+                console.error('❌ Next button not found');
+            }
+            
+            if (graduationPrevBtn) {
+                graduationPrevBtn.addEventListener('click', function(e) {
+                    e.preventDefault(); 
+                    console.log('🎓 Prev button clicked');
+                    prevGraduationImage();
+                });
+            } else {
+                console.error('❌ Prev button not found');
+            }
+            
+            // Keyboard navigation for graduation gallery
+            document.addEventListener('keydown', function(e) {
+                // Only handle arrow keys when graduation gallery is visible
+                const galleryContent = document.querySelector('.graduation-gallery-content');
+                if (galleryContent) {
+                    const rect = galleryContent.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                    
+                    if (isVisible) {
+                        if (e.key === 'ArrowRight') {
+                            e.preventDefault();
+                            nextGraduationImage();
+                        }
+                        if (e.key === 'ArrowLeft') {
+                            e.preventDefault();
+                            prevGraduationImage();
+                        }
+                    }
+                }
+            });
+            
+            // Graduation section gradient transition (exactly like vibe check pattern)
+            function initGraduationGradientTransition() {
+                const graduationSection = document.querySelector('.graduation-section');
+                const graduationTitle = document.querySelector('.graduation-title');
+                
+                if (!graduationSection || !graduationTitle) {
+                    console.log('❌ Graduation elements not found for gradient');
+                    return;
+                }
+                
+                console.log('🎓 Setting up graduation gradient observer (like vibe check)');
+                
+                // Single solid color (like vibe check uses single black color)  
+                const graduationColor = '#F0E6FF'; // Light lavender
+                
+                // Observer for title area -> color (exactly like vibe check titleColorObserver)
+                const graduationColorObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            console.log('🎓 Setting background to color');
+                            graduationSection.style.backgroundColor = graduationColor;
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '-10% 0px -10% 0px'
+                });
+                
+                graduationColorObserver.observe(graduationTitle);
+                
+                // Observer to reset to white when leaving section (exactly like vibe check exitObserver)  
+                const graduationExitObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) {
+                            const rect = graduationSection.getBoundingClientRect();
+                            if (rect.bottom < 0) {
+                                console.log('🎓 Resetting graduation background to white');
+                                graduationSection.style.backgroundColor = 'white';
+                            }
+                        }
+                    });
+                }, {
+                    threshold: 0,
+                    rootMargin: '0px'
+                });
+                
+                graduationExitObserver.observe(graduationSection);
+            }
+            
+            // Book appointment button scroll animation
+            function handleGraduationButtonAnimation() {
+                const graduationCta = document.querySelector('.graduation-cta');
+                if (!graduationCta) return;
+                
+                const scrollY = window.scrollY;
+                const viewportHeight = window.innerHeight;
+                const ctaTop = graduationCta.offsetTop;
+                
+                if (scrollY >= ctaTop - viewportHeight * 0.9 && !graduationCta.classList.contains('revealed')) {
+                    console.log('🎓 Revealing book appointment button');
+                    graduationCta.style.opacity = '1';
+                    graduationCta.classList.add('revealed');
+                }
+            }
+            
+            // Initialize graduation gradient transition
+            initGraduationGradientTransition();
+            
+            // Add scroll listener for button animation
+            window.addEventListener('scroll', handleGraduationButtonAnimation);
+            
+            // Initialize graduation gallery with first image tapes
+            function initializeGraduationGallery() {
+                const tapesContainer = document.getElementById('graduation-tapes-container');
+                const firstImage = graduationImages[0];
+                
+                if (tapesContainer && firstImage) {
+                    // Create initial tapes for first image
+                    firstImage.tapes.forEach((tape, index) => {
+                        const tapeEl = createTapeElement(tape, index);
+                        tapesContainer.appendChild(tapeEl);
+                    });
+                }
+            }
+            
+            // Initialize graduation gallery and animations
+            initializeGraduationGallery();
+            
+            // Vibe item expand animation
+            const vibeLinks = document.querySelectorAll('.paper-expand');
+            console.log('🎬 Found vibe links:', vibeLinks.length);
+            
+            vibeLinks.forEach((link, index) => {
+                console.log(`🎬 Setting up animation for vibe ${index}:`, link);
+                
+                link.addEventListener('click', function(e) {
+                    console.log('🎬 Vibe link clicked!', this);
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const href = this.getAttribute('href');
+                    const img = this.querySelector('img');
+                    const titleOverlay = this.querySelector('.vibe-title-overlay');
+                    
+                    console.log('🎬 Animation details:', { href, img, titleOverlay, hasImg: !!img });
+                    
+                    if (!img || !href) {
+                        console.error('🎬 Missing image or href, falling back to normal navigation');
+                        window.location.href = href;
+                        return;
+                    }
+                    
+                    // Get exact position and size of original container
+                    const containerRect = this.getBoundingClientRect();
+                    console.log('🎬 Container rect:', containerRect);
+                    
+                    // Create fullscreen overlay
+                    const overlay = document.createElement('div');
+                    overlay.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100vw;
+                        height: 100vh;
+                        background: #000;
+                        z-index: 9998;
+                        opacity: 0;
+                        transition: opacity 0.5s ease;
+                        pointer-events: none;
+                    `;
+                    
+                    // Create container for image and text
+                    const clonedContainer = document.createElement('div');
+                    clonedContainer.style.cssText = `
+                        position: fixed;
+                        top: ${containerRect.top}px;
+                        left: ${containerRect.left}px;
+                        width: ${containerRect.width}px;
+                        height: ${containerRect.height}px;
+                        z-index: 9999;
+                        border-radius: 8px;
+                        overflow: hidden;
+                        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                        pointer-events: none;
+                    `;
+                    
+                    // Clone and add the image
+                    const clonedImg = img.cloneNode(true);
+                    clonedImg.style.cssText = `
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        display: block;
+                    `;
+                    
+                    // Clone and add the title overlay if it exists
+                    if (titleOverlay) {
+                        const clonedTitle = titleOverlay.cloneNode(true);
+                        clonedTitle.style.cssText = `
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            font-family: inherit;
+                            font-size: clamp(2.5rem, 5vw, 4rem);
+                            font-weight: 900;
+                            color: white;
+                            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+                            pointer-events: none;
+                            z-index: 3;
+                        `;
+                        clonedContainer.appendChild(clonedTitle);
+                    }
+                    
+                    clonedContainer.appendChild(clonedImg);
+                    
+                    // Add elements to page
+                    document.body.appendChild(overlay);
+                    document.body.appendChild(clonedContainer);
+                    
+                    console.log('🎬 Starting fast animation...');
+                    
+                    // Phase 1: Fast expand to fullscreen
+                    requestAnimationFrame(() => {
+                        overlay.style.opacity = '1';
+                        
+                        // Expand container (with image and text) to fullscreen quickly
+                        clonedContainer.style.top = '0px';
+                        clonedContainer.style.left = '0px';
+                        clonedContainer.style.width = '100vw';
+                        clonedContainer.style.height = '100vh';
+                        clonedContainer.style.borderRadius = '0px';
+                    });
+                    
+                    // Phase 2: After expand, fade out and zoom out slightly
+                    setTimeout(() => {
+                        console.log('🎬 Starting fade out...');
+                        clonedContainer.style.transition = 'all 0.4s ease-out';
+                        clonedContainer.style.opacity = '0';
+                        clonedContainer.style.transform = 'scale(1.1)';
+                        overlay.style.transition = 'opacity 0.4s ease-out';
+                        overlay.style.opacity = '0';
+                    }, 650);
+                    
+                    // Phase 3: Navigate after fade completes
+                    setTimeout(() => {
+                        console.log('🎬 Navigating to:', href);
+                        window.location.href = href;
+                    }, 1100);
+                });
+            });
+            
+            // Smooth navigation transitions for other links
+            const otherLinks = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
+            otherLinks.forEach(link => {
+                // Skip vibe links as they have their own animation
+                if (link.classList.contains('paper-expand')) return;
+                
                 link.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
                     if (href && href !== '#' && !href.includes('mailto:') && !href.includes('tel:')) {

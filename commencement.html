@@ -66,7 +66,7 @@
         <main class="main-content" style="margin-top: 80px; padding: 2rem;">
             
             <!-- Page Header -->
-            <section class="page-hero" style="text-align: center; margin-bottom: 4rem; background: linear-gradient(135deg, #E8D5B7 0%, #F0E68C 50%, #F5F5DC 100%); padding: 4rem 2rem; border-radius: 8px; animation: gentleShimmer 4s ease-in-out infinite alternate;">
+            <section class="page-hero commencement-section" style="text-align: center; margin-bottom: 4rem; background: linear-gradient(135deg, #E8D5B7 0%, #F0E68C 50%, #F5F5DC 100%); padding: 4rem 2rem; border-radius: 8px; animation: gentleShimmer 4s ease-in-out infinite alternate; transition: background 0.8s ease;">
                 <h1 style="font-size: clamp(3rem, 8vw, 5rem); margin-bottom: 1rem; color: white; filter: none; opacity: 1;">Commencement</h1>
                 <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: rgba(255, 255, 255, 0.9); line-height: 1.6;">
                     Celebrating new beginnings, achievements, and the pivotal moments that mark life's important transitions. These images capture the joy, pride, and hope that define graduation ceremonies and milestone celebrations.
@@ -172,6 +172,76 @@
                     }
                 });
             });
+            
+            // Gradient change logic inspired by vibe check sections
+            const commencementSection = document.querySelector('.commencement-section');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            if (commencementSection && galleryItems.length > 0) {
+                console.log('🎓 Initializing commencement gradient changes');
+                
+                // Define different gradients for scroll progression
+                const gradients = [
+                    'linear-gradient(135deg, #E8D5B7 0%, #F0E68C 50%, #F5F5DC 100%)', // Original gold
+                    'linear-gradient(135deg, #F5C2D6 0%, #FFB6C1 50%, #FFC0CB 100%)', // Pink
+                    'linear-gradient(135deg, #B8E6E1 0%, #98FB98 50%, #90EE90 100%)', // Mint
+                    'linear-gradient(135deg, #F5D49C 0%, #FFE4B5 50%, #FFEFD5 100%)', // Peach
+                    'linear-gradient(135deg, #F2B8B8 0%, #FFA07A 50%, #FFB07A 100%)'  // Coral
+                ];
+                
+                // Observer for title area -> original gradient
+                const titleObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            console.log('🎓 Setting background to original gradient');
+                            commencementSection.style.background = gradients[0];
+                        }
+                    });
+                }, {
+                    threshold: 0.3,
+                    rootMargin: '0px'
+                });
+                
+                titleObserver.observe(commencementSection);
+                
+                // Observer for each gallery item -> specific gradient
+                galleryItems.forEach((item, index) => {
+                    const gradientIndex = (index % (gradients.length - 1)) + 1; // Skip first gradient, cycle through others
+                    const gradient = gradients[gradientIndex];
+                    
+                    const colorObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                console.log(`🎓 Setting background to gradient ${gradientIndex}`);
+                                commencementSection.style.background = gradient;
+                            }
+                        });
+                    }, {
+                        threshold: 0.5,
+                        rootMargin: '0px 0px -20% 0px'
+                    });
+                    
+                    colorObserver.observe(item);
+                });
+                
+                // Observer to reset to original gradient when leaving section
+                const exitObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) {
+                            const rect = commencementSection.getBoundingClientRect();
+                            if (rect.bottom < 0) {
+                                console.log('🎓 Resetting to original gradient');
+                                commencementSection.style.background = gradients[0];
+                            }
+                        }
+                    });
+                }, {
+                    threshold: 0,
+                    rootMargin: '0px'
+                });
+                
+                exitObserver.observe(commencementSection);
+            }
             
         });
     </script>
