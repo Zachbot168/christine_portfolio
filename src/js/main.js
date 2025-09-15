@@ -20,6 +20,7 @@ function initControllers() {
 
     switch (controllerName) {
       case 'intro-book':
+        console.log('🎮 Initializing intro-book controller');
         initIntroBook();
         break;
       case 'scroll-animations':

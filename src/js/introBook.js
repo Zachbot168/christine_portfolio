@@ -22,10 +22,13 @@ let animationContainer, isAnimating = false;
 let turbineGroup; // Group to hold all pages for turbine rotation
 
 export function initIntroBook() {
+  console.log('📖 Initializing intro book animation...');
+
   // STEP 1: Check for reduced motion preference
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  
+
   if (prefersReducedMotion.matches) {
+    console.log('📖 Reduced motion detected, skipping animation');
     // Skip animation for users who prefer reduced motion
     emitIntroComplete();
     hideIntroContainer();
@@ -33,7 +36,12 @@ export function initIntroBook() {
   }
 
   animationContainer = document.querySelector('[data-controller="intro-book"]');
-  if (!animationContainer) return;
+  console.log('📖 Found animation container:', !!animationContainer);
+
+  if (!animationContainer) {
+    console.warn('📖 No intro-book container found!');
+    return;
+  }
 
   // STEP 2: Initialize Three.js scene
   initThreeScene();
@@ -93,6 +101,8 @@ function initThreeScene() {
 // STEP 3: Load images and create 3D page meshes with proper texture loading
 function loadImagesAndCreatePages() {
   const bookElements = document.querySelectorAll('.book-image');
+  console.log('📖 Found book elements:', bookElements.length);
+
   const textureLoader = new THREE.TextureLoader();
   
   // Create fan group to hold all pages at origin
