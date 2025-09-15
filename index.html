@@ -352,7 +352,22 @@
             }
 
             .corner-photos {
-                display: none; /* Hide on mobile to avoid clutter */
+                display: block; /* Show on mobile but smaller */
+            }
+
+            .corner-photos .corner-photo {
+                width: 200px !important;
+                height: 133px !important;
+            }
+
+            .corner-photos .corner-photo--top-left {
+                top: 120px !important;
+                left: 0 !important;
+            }
+
+            .corner-photos .corner-photo--bottom-right {
+                bottom: 20px !important;
+                right: 0 !important;
             }
 
             .hero-btn {
