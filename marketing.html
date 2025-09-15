@@ -121,6 +121,70 @@
             transform: translateY(0);
         }
         
+        /* Marketing photo frame hover performance fixes */
+        .marketing-photo-frame {
+            position: relative;
+            background: white;
+            padding: 15px 15px 40px 15px;
+            margin: 30px 0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            border-radius: 2px;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: transform;
+            overflow: visible;
+        }
+        
+        .marketing-photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 2px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+            opacity: 0;
+            transition: opacity 0.15s ease;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .marketing-photo-frame:hover {
+            transform: translateY(-10px) scale(1.02) translateZ(0);
+            transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .marketing-photo-frame:hover::before {
+            opacity: 1;
+        }
+        
+        .marketing-photo-frame img {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            display: block;
+            border: none;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+        
+        .marketing-photo-caption {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: white;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
         @media (max-width: 768px) {
             .gallery-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
@@ -143,97 +207,151 @@
         </header>
         
         <!-- Main Content -->
-        <main class="main-content" style="margin-top: 80px; padding: 2rem;">
-            
-            <!-- Page Header -->
-            <section class="page-hero" style="text-align: center; margin-bottom: 4rem; background: linear-gradient(135deg, #E8D5B7 0%, #F0E68C 50%, #F5F5DC 100%); padding: 4rem 2rem; border-radius: 8px; animation: gentleShimmer 4s ease-in-out infinite alternate;">
-                <h1 style="font-size: clamp(3rem, 8vw, 5rem); margin-bottom: 1rem; color: #333; filter: none; opacity: 1; font-weight: 700;">Marketing</h1>
-                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: rgba(51, 51, 51, 0.8); line-height: 1.6;">
-                    Strategic campaigns, brand partnerships, and creative direction for fashion brands, restaurants, publications, and entertainment platforms across global markets.
-                </p>
-            </section>
-            
-            <!-- Marketing Campaigns Grid -->
-            <section class="gallery">
-                <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; grid-auto-rows: auto;">
+        <main class="main-content" data-controller="scroll-animations">
+            <div id="top"></div>
+            <!-- Marketing Section - Matching Photography Format -->
+            <section class="marketing-section" style="min-height: 250vh; position: relative; background: white; transition: background-color 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); width: 100vw; margin-left: calc(-50vw + 50%);">
+                
+                <!-- Paintbrush Title - Sticky -->
+                <div class="marketing-title" style="position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100;">
                     
-                    <!-- Lewkin Fashion Campaign -->
-                    <div class="gallery-item">
-                        <img src="content 2/marketing/lewkin/modeling/DSC01604.JPG" alt="Lewkin Fashion Campaign" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.2)'">
-                        <div style="padding: 1rem 0; text-align: center;">
-                            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #333;">Lewkin Fashion Campaign</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Seoul-based fashion brand partnership management</p>
-                        </div>
+                    <!-- Paintbrush Text Animation -->
+                    <div class="paintbrush-container" style="position: relative; width: 100vw; margin-left: calc(-50vw + 50%); padding: 2rem 1rem; transform: scale(2); transform-origin: center center;">
+                        <svg viewBox="0 0 800 200" class="brush-animation" style="width: 100%; height: 200px; filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.2));">
+                            <defs>
+                                <!-- Brush stroke mask path -->
+                                <mask id="marketingBrushMask">
+                                    <path id="marketingBrushPath" stroke="white" stroke-width="80" fill="none" 
+                                          stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-dasharray="2800" stroke-dashoffset="2800"
+                                          d="M25,100 Q100,70 200,90 Q300,110 400,90 Q500,70 600,90 Q700,110 775,100"
+                                          style="transition: stroke-dashoffset 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);">
+                                    </path>
+                                </mask>
+                                
+                                <!-- Text gradient for depth -->
+                                <linearGradient id="marketingTextGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#8B4513"/>
+                                    <stop offset="50%" stop-color="#A0522D"/>
+                                    <stop offset="100%" stop-color="#8B4513"/>
+                                </linearGradient>
+                                
+                                <!-- Brush texture filter -->
+                                <filter id="marketingBrushTexture" x="0%" y="0%" width="100%" height="100%">
+                                    <feTurbulence baseFrequency="0.4" numOctaves="3" seed="2" stitchTiles="stitch"/>
+                                    <feColorMatrix type="saturate" values="0"/>
+                                    <feComponentTransfer>
+                                        <feFuncA type="discrete" tableValues="0 .3 .5 .7 1"/>
+                                    </feComponentTransfer>
+                                    <feComposite operator="multiply" in2="SourceGraphic"/>
+                                </filter>
+                            </defs>
+                            
+                            <!-- The text that gets revealed by the brush stroke -->
+                            <text x="400" y="100" dominant-baseline="middle" text-anchor="middle"
+                                  font-size="60" font-family="'Kalam', 'Caveat', cursive" 
+                                  font-weight="700"
+                                  fill="url(#marketingTextGradient)" 
+                                  mask="url(#marketingBrushMask)"
+                                  filter="url(#marketingBrushTexture)"
+                                  style="opacity: 0; transition: opacity 0.3s ease;">
+                                Marketing
+                            </text>
+                        </svg>
                     </div>
                     
-                    <!-- nuAZN Magazine -->
-                    <div class="gallery-item">
-                        <img src="content 2/marketing/nuazn/1.png" alt="nuAZN Magazine" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.2)'">
-                        <div style="padding: 1rem 0; text-align: center;">
-                            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #333;">nuAZN Magazine</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Publisher and brand development</p>
-                        </div>
+                    <!-- Subtitle with Tape Animation -->
+                    <div class="marketing-subtitle-container" style="position: relative; max-width: 600px; margin: 2rem auto 0; text-align: center;">
+                        <!-- Tape piece -->
+                        <div class="subtitle-tape" style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%) rotate(-8deg); width: 80px; height: 25px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 8px rgba(0,0,0,0.15); opacity: 0; transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); z-index: 10;"></div>
+                        <!-- Subtitle text -->
+                        <p class="marketing-subtitle" style="color: #444; font-size: 1.3rem; line-height: 1.6; opacity: 0; transform: translateY(20px) scale(0.95); transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); font-family: 'Kalam', 'Caveat', cursive; font-weight: 400; background: rgba(255,255,255,0.85); padding: 1rem 1.5rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            Strategic campaigns, brand partnerships, and creative direction for fashion brands, restaurants, publications, and entertainment platforms across global markets.
+                        </p>
                     </div>
                     
-                    <!-- nuAZN Campaign 2 -->
-                    <div class="gallery-item">
-                        <img src="content 2/marketing/nuazn/Screen Shot 2025-05-22 at 1.36.08 AM.png" alt="nuAZN Campaign" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.2)'">
-                        <div style="padding: 1rem 0; text-align: center;">
-                            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #333;">nuAZN Digital Campaign</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Social media and digital marketing strategy</p>
+                    <!-- Scroll Indicator -->
+                    <div class="marketing-scroll" style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; z-index: 100; opacity: 0; transition: opacity 0.6s ease 1s;">
+                        <div class="scroll-arrows" style="display: flex; flex-direction: row; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <div class="arrow" style="font-size: 1.5rem; color: #333; animation: bounce 2s infinite;">↓</div>
+                            <div class="arrow" style="font-size: 1.5rem; color: #333; animation: bounce 2s infinite; animation-delay: 0.3s;">↓</div>
+                            <div class="arrow" style="font-size: 1.5rem; color: #333; animation: bounce 2s infinite; animation-delay: 0.6s;">↓</div>
                         </div>
-                    </div>
-                    
-                    <!-- nuAZN Stories -->
-                    <div class="gallery-item">
-                        <img src="content 2/marketing/nuazn/nuAZN countdown stories.png" alt="nuAZN Stories" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.2)'">
-                        <div style="padding: 1rem 0; text-align: center;">
-                            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #333;">nuAZN Stories Campaign</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Instagram stories and countdown marketing</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Yasotorn Campaign -->
-                    <div class="gallery-item">
-                        <img src="content 2/marketing/mark/yasotorn/Yasotorn Curry Infographic.png" alt="Yasotorn Campaign" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.2)'">
-                        <div style="padding: 1rem 0; text-align: center;">
-                            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #333;">Yasotorn Restaurant</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Thai restaurant branding and infographic design</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Case Competition -->
-                    <div class="gallery-item">
-                        <img src="content 2/marketing/mark/case comp/IMG_3347.jpg" alt="Case Competition" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.2)'">
-                        <div style="padding: 1rem 0; text-align: center;">
-                            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #333;">Marketing Case Competition</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Strategic marketing case study presentation</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Musicade Campaign -->
-                    <div class="gallery-item">
-                        <img src="content 2/marketing/musicade/Team 2 - Project 2 Promote 2 ig post.pdf" alt="Musicade Campaign" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.2)'">
-                        <div style="padding: 1rem 0; text-align: center;">
-                            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #333;">Musicade Platform</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Music platform social media campaign</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Additional nuAZN Content -->
-                    <div class="gallery-item">
-                        <img src="content 2/marketing/nuazn/Screen Shot 2025-05-22 at 1.37.22 AM.png" alt="nuAZN Content" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.2)'">
-                        <div style="padding: 1rem 0; text-align: center;">
-                            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #333;">nuAZN Content Strategy</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Editorial and content marketing direction</p>
-                        </div>
+                        <p class="scroll-text" style="color: #333; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 0;">Explore Campaigns</p>
                     </div>
                     
                 </div>
+                
+                <!-- Marketing Gallery Content Below Title -->
+                <div class="marketing-gallery-content" style="position: absolute; top: 100vh; left: 0; right: 0; display: flex; justify-content: center; align-items: flex-start; min-height: 140vh; padding: 4rem 1rem 12rem 1rem;">
+                    
+                    <!-- Marketing Grid -->
+                    <div class="marketing-photo-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; padding: 2rem 2rem 6rem 2rem; max-width: 1200px; margin: 0 auto;">
+                        
+                        <!-- Lewkin Fashion Campaign -->
+                        <div class="marketing-photo-frame" style="position: relative; background: white; padding: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); border-radius: 2px; opacity: 0; transform: translateY(50px) scale(0.9); transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); will-change: transform;">
+                            <img src="content 2/marketing/lewkin/modeling/DSC01604.JPG" alt="Lewkin Fashion Campaign" style="width: 100%; height: 300px; object-fit: contain; display: block; border: none;">
+                            <div class="marketing-photo-caption" style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; color: white; font-weight: 500; white-space: nowrap;">Lewkin Fashion Campaign</div>
+                            <!-- Tape decorations -->
+                            <div class="marketing-tape" style="position: absolute; top: -8px; right: 15px; width: 50px; height: 20px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; transform: rotate(20deg);"></div>
+                        </div>
+                        
+                        <!-- nuAZN Magazine -->
+                        <div class="marketing-photo-frame" style="position: relative; background: white; padding: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); border-radius: 2px; opacity: 0; transform: translateY(50px) scale(0.9); transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); will-change: transform;">
+                            <img src="content 2/marketing/nuazn/1.png" alt="nuAZN Magazine" style="width: 100%; height: 300px; object-fit: contain; display: block; border: none;">
+                            <div class="marketing-photo-caption" style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; color: white; font-weight: 500; white-space: nowrap;">nuAZN Magazine</div>
+                            <!-- Tape decorations -->
+                            <div class="marketing-tape" style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-8deg); width: 70px; height: 30px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10;"></div>
+                        </div>
+                        
+                        <!-- nuAZN Digital Campaign -->
+                        <div class="marketing-photo-frame" style="position: relative; background: white; padding: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); border-radius: 2px; opacity: 0; transform: translateY(50px) scale(0.9); transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); will-change: transform;">
+                            <img src="content 2/marketing/nuazn/Screen Shot 2025-05-22 at 1.36.08 AM.png" alt="nuAZN Campaign" style="width: 100%; height: 300px; object-fit: contain; display: block; border: none;">
+                            <div class="marketing-photo-caption" style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; color: white; font-weight: 500; white-space: nowrap;">nuAZN Digital Campaign</div>
+                            <!-- Tape decorations -->
+                            <div class="marketing-tape" style="position: absolute; top: -15px; right: 25px; width: 55px; height: 25px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; transform: rotate(12deg);"></div>
+                        </div>
+                        
+                        <!-- nuAZN Stories Campaign -->
+                        <div class="marketing-photo-frame" style="position: relative; background: white; padding: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); border-radius: 2px; opacity: 0; transform: translateY(50px) scale(0.9); transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); will-change: transform;">
+                            <img src="content 2/marketing/nuazn/nuAZN countdown stories.png" alt="nuAZN Stories" style="width: 100%; height: 300px; object-fit: contain; display: block; border: none;">
+                            <div class="marketing-photo-caption" style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; color: white; font-weight: 500; white-space: nowrap;">nuAZN Stories Campaign</div>
+                            <!-- Tape decorations -->
+                            <div class="marketing-tape" style="position: absolute; top: -10px; left: 30px; width: 65px; height: 28px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; transform: rotate(-10deg);"></div>
+                        </div>
+                        
+                        <!-- Yasotorn Restaurant -->
+                        <div class="marketing-photo-frame" style="position: relative; background: white; padding: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); border-radius: 2px; opacity: 0; transform: translateY(50px) scale(0.9); transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); will-change: transform;">
+                            <img src="content 2/marketing/mark/yasotorn/Yasotorn Curry Infographic.png" alt="Yasotorn Campaign" style="width: 100%; height: 300px; object-fit: contain; display: block; border: none;">
+                            <div class="marketing-photo-caption" style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; color: white; font-weight: 500; white-space: nowrap;">Yasotorn Restaurant</div>
+                            <!-- Tape decorations -->
+                            <div class="marketing-tape" style="position: absolute; bottom: -12px; right: 40px; width: 60px; height: 25px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; transform: rotate(15deg);"></div>
+                        </div>
+                        
+                        <!-- Marketing Case Competition -->
+                        <div class="marketing-photo-frame" style="position: relative; background: white; padding: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); border-radius: 2px; opacity: 0; transform: translateY(50px) scale(0.9); transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); will-change: transform;">
+                            <img src="content 2/marketing/mark/case comp/IMG_3347.jpg" alt="Case Competition" style="width: 100%; height: 300px; object-fit: contain; display: block; border: none;">
+                            <div class="marketing-photo-caption" style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; color: white; font-weight: 500; white-space: nowrap;">Case Competition</div>
+                            <!-- Tape decorations -->
+                            <div class="marketing-tape" style="position: absolute; top: -8px; left: 15px; width: 50px; height: 20px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; transform: rotate(-20deg);"></div>
+                        </div>
+                        
+                        <!-- Musicade Platform -->
+                        <div class="marketing-photo-frame" style="position: relative; background: white; padding: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); border-radius: 2px; opacity: 0; transform: translateY(50px) scale(0.9); transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); will-change: transform;">
+                            <img src="content 2/marketing/nuazn/Screen Shot 2025-05-22 at 1.37.22 AM.png" alt="Musicade Campaign" style="width: 100%; height: 300px; object-fit: contain; display: block; border: none;">
+                            <div class="marketing-photo-caption" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; color: white; font-weight: 500; white-space: nowrap;">Musicade Platform</div>
+                            <!-- Tape decorations -->
+                            <div class="marketing-tape" style="position: absolute; top: 5px; right: 25px; width: 55px; height: 25px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; transform: rotate(18deg);"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
             </section>
             
             <!-- Back Button -->
-            <section style="text-align: center; margin: 4rem 0;">
+            <section style="text-align: center; margin: 1rem 0 4rem 0;">
                 <a href="/work.html" class="hero-btn hero-btn--secondary" style="margin-right: 1rem;">
                     ← Back to Work
                 </a>
@@ -261,65 +379,268 @@
     <script type="module" src="/src/js/main.js"></script>
     
     <script>
-        // Marketing page animations
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            // Smooth page entrance animation
-            document.body.style.opacity = '0';
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 50);
-            
-            // Animation observer
-            const observerOptions = {
-                root: null,
-                rootMargin: '-10% 0px -10% 0px',
-                threshold: 0.1
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe all gallery items
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            galleryItems.forEach((item, index) => {
-                // Add staggered delay
-                setTimeout(() => {
-                    observer.observe(item);
-                }, index * 50);
-            });
-            
-            // Animate page hero on load
-            setTimeout(() => {
-                const heroTitle = document.querySelector('.page-hero h1');
-                const heroDescription = document.querySelector('.page-hero p');
-                
-                if (heroTitle) heroTitle.classList.add('revealed');
-                if (heroDescription) {
-                    setTimeout(() => heroDescription.classList.add('revealed'), 300);
+        // Page initialization and scroll handling
+        function initializePage() {
+            // Force scroll to top if coming from another page
+            if (window.location.hash === '#top' || document.referrer.includes('work.html')) {
+                window.scrollTo(0, 0);
+                // Remove hash to keep URL clean
+                if (window.location.hash) {
+                    history.replaceState(null, null, window.location.pathname);
                 }
-            }, 200);
+            }
             
-            // Smooth navigation transitions
-            const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
-            links.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href && href !== '#' && !href.includes('mailto:') && !href.includes('tel:')) {
-                        e.preventDefault();
-                        document.body.classList.add('page-transitioning');
-                        setTimeout(() => {
-                            window.location.href = href;
-                        }, 300);
-                    }
+            // Reset any existing animation states
+            resetAnimationStates();
+            
+            // Ensure CSS is loaded before starting animations
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', startAnimations);
+            } else {
+                startAnimations();
+            }
+        }
+        
+        // Reset animation states to initial conditions
+        function resetAnimationStates() {
+            // Reset paintbrush animation
+            const brushPath = document.getElementById('marketingBrushPath');
+            const textElement = document.querySelector('text[mask="url(#marketingBrushMask)"]');
+            if (brushPath && textElement) {
+                brushPath.setAttribute('stroke-dashoffset', '2800');
+                brushPath.setAttribute('stroke-width', '0');
+                textElement.style.opacity = '0';
+            }
+            
+            // Reset subtitle and scroll indicator
+            const subtitle = document.querySelector('.marketing-subtitle');
+            const subtitleTape = document.querySelector('.subtitle-tape');
+            const scrollIndicator = document.querySelector('.marketing-scroll');
+            
+            if (subtitle) {
+                subtitle.style.opacity = '0';
+                subtitle.style.transform = 'translateY(20px) scale(0.95)';
+            }
+            if (subtitleTape) {
+                subtitleTape.style.opacity = '0';
+                subtitleTape.style.transform = 'translateX(-50%) rotate(-8deg)';
+            }
+            if (scrollIndicator) {
+                scrollIndicator.style.opacity = '0';
+            }
+        }
+        
+        // Start animations function
+        function startAnimations() {
+            
+            // SVG Paintbrush animation
+            function initMarketingPaintbrushAnimation() {
+                const brushPath = document.getElementById('marketingBrushPath');
+                const textElement = document.querySelector('text[mask="url(#marketingBrushMask)"]');
+                
+                if (!brushPath || !textElement) return;
+                
+                // Make text visible first
+                textElement.style.opacity = '1';
+                
+                // Start with width 0 for paper tearing effect
+                brushPath.setAttribute('stroke-width', '0');
+                
+                // Start the brush stroke animation (left to right reveal)
+                setTimeout(() => {
+                    brushPath.style.strokeDashoffset = '0';
+                }, 500);
+                
+                // Paper tearing width animation
+                const widths = [60, 80, 100];
+                let widthInterval;
+                
+                // Choppy stop-motion style paper tearing animation
+                setTimeout(() => {
+                    const targetWidth = 80;
+                    const frames = [0, 20, 45, 70, 80];
+                    let currentFrame = 0;
+                    
+                    const animateChoppy = () => {
+                        if (currentFrame < frames.length) {
+                            brushPath.setAttribute('stroke-width', frames[currentFrame]);
+                            currentFrame++;
+                            setTimeout(animateChoppy, 100);
+                        } else {
+                            // Start random width switching after tearing animation completes
+                            setTimeout(() => {
+                                widthInterval = setInterval(() => {
+                                    const randomWidth = widths[Math.floor(Math.random() * widths.length)];
+                                    brushPath.setAttribute('stroke-width', randomWidth);
+                                }, 1000);
+                            }, 300);
+                        }
+                    };
+                    
+                    animateChoppy();
+                }, 1000);
+            }
+            
+            // Set up scroll-based marketing animations
+            function initMarketingScrollAnimations() {
+                const marketingTitle = document.querySelector('.marketing-title');
+                if (!marketingTitle) return;
+                
+                let hasAnimated = false;
+                
+                // Observer to trigger marketing animations when title comes into view
+                const marketingAnimationObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !hasAnimated) {
+                            hasAnimated = true;
+                            
+                            // Trigger the paintbrush animation
+                            initMarketingPaintbrushAnimation();
+                            
+                            // Show subtitle after paintbrush animation
+                            const subtitle = document.querySelector('.marketing-subtitle');
+                            const scrollIndicator = document.querySelector('.marketing-scroll');
+                            
+                            setTimeout(() => {
+                                // Show subtitle first
+                                if (subtitle) {
+                                    subtitle.style.opacity = '1';
+                                    subtitle.style.transform = 'translateY(0) scale(1)';
+                                }
+                                
+                                // Then animate tape on top of subtitle
+                                setTimeout(() => {
+                                    const subtitleTape = document.querySelector('.subtitle-tape');
+                                    if (subtitleTape) {
+                                        subtitleTape.style.opacity = '1';
+                                        subtitleTape.style.transform = 'translateX(-50%) rotate(-8deg) scale(1.1)';
+                                        
+                                        // Settle tape to normal size
+                                        setTimeout(() => {
+                                            subtitleTape.style.transform = 'translateX(-50%) rotate(-8deg) scale(1)';
+                                        }, 200);
+                                    }
+                                }, 400);
+                                
+                                // Show scroll indicator after everything
+                                setTimeout(() => {
+                                    if (scrollIndicator) {
+                                        scrollIndicator.style.opacity = '1';
+                                    }
+                                }, 1200);
+                            }, 1000);
+                            
+                            // Disconnect observer after animation
+                            marketingAnimationObserver.disconnect();
+                        }
+                    });
+                }, {
+                    threshold: 0.2,
+                    rootMargin: '0px 0px -10% 0px'
                 });
-            });
+                
+                marketingAnimationObserver.observe(marketingTitle);
+            }
             
+            // Initialize scroll-based animations
+            initMarketingScrollAnimations();
+            
+            // Photo gallery scroll-based reveals
+            function initPhotoGalleryAnimations() {
+                const photoFrames = document.querySelectorAll('.marketing-photo-frame');
+                
+                const photoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting) {
+                            // Staggered reveal with delay
+                            setTimeout(() => {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0) scale(1)';
+                            }, index * 200);
+                            
+                            photoObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -5% 0px'
+                });
+                
+                photoFrames.forEach(frame => {
+                    photoObserver.observe(frame);
+                });
+            }
+            
+            // Initialize photo gallery animations
+            initPhotoGalleryAnimations();
+            
+            // Background color transition
+            function initMarketingGradientTransition() {
+                const marketingSection = document.querySelector('.marketing-section');
+                const marketingTitle = document.querySelector('.marketing-title');
+                
+                if (!marketingSection || !marketingTitle) return;
+                
+                const marketingColor = '#F5F5DC'; // Light warm marketing background
+                
+                // Observer for title area -> color
+                const marketingColorObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            marketingSection.style.backgroundColor = marketingColor;
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '-10% 0px -10% 0px'
+                });
+                
+                marketingColorObserver.observe(marketingTitle);
+                
+                // Observer to reset to white when leaving section
+                const marketingExitObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) {
+                            const rect = marketingSection.getBoundingClientRect();
+                            if (rect.bottom < 0) {
+                                marketingSection.style.backgroundColor = 'white';
+                            }
+                        }
+                    });
+                }, {
+                    threshold: 0,
+                    rootMargin: '0px'
+                });
+                
+                marketingExitObserver.observe(marketingSection);
+            }
+            
+            // Initialize background transition
+            initMarketingGradientTransition();
+        }
+        
+        // Initialize the page when script loads
+        initializePage();
+        
+        // Also handle browser back/forward navigation
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                // Page was loaded from cache, reset everything
+                initializePage();
+            }
+        });
+        
+        // Handle visibility changes (tab switching)
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden && window.location.pathname.includes('marketing')) {
+                // Page became visible, ensure animations are working
+                setTimeout(() => {
+                    if (window.scrollY < 100) {
+                        resetAnimationStates();
+                        startAnimations();
+                    }
+                }, 100);
+            }
         });
     </script>
 </body>

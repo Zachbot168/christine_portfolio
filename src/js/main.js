@@ -6,6 +6,8 @@ import { initPageTransitions } from './pageTransitions.js';
 import { initVibeCheck } from './vibeCheck.js';
 import { initCornerReveal } from './cornerReveal.js';
 import { initVibeCornerReveal } from './vibeCornerReveal.js';
+import { initVibePageManager, getVibePageManager } from './vibePageManager.js';
+import { initBrowserBackFix } from './browserBackFix.js';
 
 // STEP 1: Initialize all controllers based on data-controller attributes
 function initControllers() {
@@ -44,6 +46,12 @@ function initControllers() {
 document.addEventListener('DOMContentLoaded', () => {
   initControllers();
   initPageTransitions();
+  
+  // Initialize vibe page manager for gallery back navigation
+  initVibePageManager();
+  
+  // Initialize browser back fix for animation issues
+  initBrowserBackFix();
   
   // Listen for intro completion to show hero bar
   document.addEventListener('intro:done', () => {

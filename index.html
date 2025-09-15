@@ -22,12 +22,12 @@
                 <div id="intro-book" data-controller="intro-book">
                     <div class="book-images">
                         <!-- Six landscape images with consistent aspect ratios for turbine animation -->
-                        <div class="book-image" data-src="content 2/photography/texture/IMG_3692.JPG.jpg"></div>
-                        <div class="book-image" data-src="content 2/photography/serenity/IMG_0768.JPG.jpg"></div>
-                        <div class="book-image" data-src="content 2/photography/serenity/IMG_3259.JPG.jpg"></div>
-                        <div class="book-image" data-src="content 2/photography/texture/IMG_4997.JPG.jpg"></div>
+                        <div class="book-image" data-src="content 2/photography/texture/IMG_3742_Original.jpg"></div>
+                        <div class="book-image" data-src="content 2/photography/serenity/IMG_4859.jpg"></div>
+                        <div class="book-image" data-src="content 2/photography/spirit/IMG_9253_Original.jpg"></div>
+                        <div class="book-image" data-src="content 2/photography/commencement/P1151320.JPG"></div>
                         <div class="book-image" data-src="content 2/photography/serenity/IMG_1772.JPG.jpg"></div>
-                        <div class="book-image" data-src="content 2/photography/texture/IMG_5070.JPG.jpg"></div>
+                        <div class="book-image" data-src="content 2/photography/commencement/P1185310.jpg"></div>
                     </div>
                 </div>
                 
@@ -61,7 +61,7 @@
                 <!-- Corner reveal photos -->
                 <div class="corner-photos" data-controller="corner-reveal">
                     <div class="corner-photo corner-photo--top-left">
-                        <img src="content 2/photography/spirit/IMG_2258_Original.jpg" alt="Portrait">
+                        <img src="content 2/photography/spirit/IMG_2557.jpeg" alt="Portrait">
                     </div>
                     <div class="corner-photo corner-photo--bottom-right">
                         <img src="content 2/photography/community/P1061143.jpg" alt="Community">
@@ -122,7 +122,7 @@
                         <!-- Corner reveal photos for spirit -->
                         <div class="vibe-corner-photos">
                             <div class="vibe-corner-photo vibe-corner-photo--top-left">
-                                <img src="content 2/photography/spirit/IMG_2557.jpeg" alt="Spirit">
+                                <img src="content 2/photography/spirit/IMG_2258_Original.jpg" alt="Spirit">
                             </div>
                             <div class="vibe-corner-photo vibe-corner-photo--bottom-right">
                                 <img src="content 2/photography/spirit/IMG_3420.jpeg" alt="Spirit">
@@ -935,7 +935,7 @@
                             top: 50%;
                             left: 50%;
                             transform: translate(-50%, -50%);
-                            font-family: inherit;
+                            font-family: 'Playfair Display', serif;
                             font-size: clamp(2.5rem, 5vw, 4rem);
                             font-weight: 900;
                             color: white;
@@ -954,33 +954,38 @@
                     
                     console.log('🎬 Starting fast animation...');
                     
-                    // Phase 1: Fast expand to fullscreen
+                    // Phase 1: Moderate zoom in (not fullscreen)
                     requestAnimationFrame(() => {
-                        overlay.style.opacity = '1';
+                        overlay.style.opacity = '0.8';
                         
-                        // Expand container (with image and text) to fullscreen quickly
-                        clonedContainer.style.top = '0px';
-                        clonedContainer.style.left = '0px';
-                        clonedContainer.style.width = '100vw';
-                        clonedContainer.style.height = '100vh';
-                        clonedContainer.style.borderRadius = '0px';
+                        // Zoom container moderately (1.5x scale instead of fullscreen)
+                        const centerX = window.innerWidth / 2;
+                        const centerY = window.innerHeight / 2;
+                        const newWidth = containerRect.width * 1.5;
+                        const newHeight = containerRect.height * 1.5;
+                        
+                        clonedContainer.style.top = `${centerY - newHeight / 2}px`;
+                        clonedContainer.style.left = `${centerX - newWidth / 2}px`;
+                        clonedContainer.style.width = `${newWidth}px`;
+                        clonedContainer.style.height = `${newHeight}px`;
+                        clonedContainer.style.borderRadius = '12px';
                     });
                     
-                    // Phase 2: After expand, fade out and zoom out slightly
+                    // Phase 2: Exit downward
                     setTimeout(() => {
-                        console.log('🎬 Starting fade out...');
-                        clonedContainer.style.transition = 'all 0.4s ease-out';
+                        console.log('🎬 Starting downward exit...');
+                        clonedContainer.style.transition = 'all 0.6s cubic-bezier(0.55, 0.085, 0.68, 0.53)';
+                        clonedContainer.style.transform = 'translateY(100vh) scale(0.8)';
                         clonedContainer.style.opacity = '0';
-                        clonedContainer.style.transform = 'scale(1.1)';
-                        overlay.style.transition = 'opacity 0.4s ease-out';
+                        overlay.style.transition = 'opacity 0.6s ease-out';
                         overlay.style.opacity = '0';
-                    }, 650);
+                    }, 500);
                     
-                    // Phase 3: Navigate after fade completes
+                    // Phase 3: Navigate after exit completes
                     setTimeout(() => {
                         console.log('🎬 Navigating to:', href);
                         window.location.href = href;
-                    }, 1100);
+                    }, 1200);
                 });
             });
             

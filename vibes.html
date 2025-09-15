@@ -9,111 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/styles/styles.scss">
     <style>
-        /* Vibes grid styling */
-        .vibes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            padding: 2rem 0;
-        }
-        
-        .vibe-card {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: white;
-        }
-        
-        .vibe-card:hover {
-            transform: translateY(-3px) translateZ(0);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        
-        .vibe-card-image {
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .vibe-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: translateZ(0);
-            backface-visibility: hidden;
-        }
-        
-        .vibe-card-content {
-            padding: 2rem;
-        }
-        
-        .vibe-card-title {
-            font-size: 1.8rem;
-            font-weight: 400;
-            margin-bottom: 1rem;
-            color: #333;
-            filter: none;
-            opacity: 1;
-        }
-        
-        .vibe-card-description {
-            font-size: 1rem;
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-        
-        .vibe-card-button {
-            display: inline-block !important;
-            padding: 0.875rem 2rem !important;
-            font-size: 0.95rem !important;
-            font-weight: 500 !important;
-            text-decoration: none !important;
-            border-radius: 2px !important;
-            letter-spacing: 0.5px !important;
-            text-transform: uppercase !important;
-            transition: all 0.3s ease !important;
-            cursor: pointer !important;
-            border: 2px solid #000 !important;
-        }
-        
-        .vibe-card-button--primary {
-            background-color: #000 !important;
-            color: #fff !important;
-        }
-        
-        .vibe-card-button--primary:hover {
-            background-color: #fff !important;
-            color: #000 !important;
-            transform: translateY(-2px) !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-        }
-        
-        .vibe-card-button--secondary {
-            background-color: #fff !important;
-            color: #000 !important;
-        }
-        
-        .vibe-card-button--secondary:hover {
-            background-color: #000 !important;
-            color: #fff !important;
-            transform: translateY(-2px) !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-        }
-        
-        /* Smooth page transitions */
-        body {
-            opacity: 1;
-            transition: opacity 0.3s ease;
-        }
-        
-        body.page-transitioning {
-            opacity: 0;
-        }
-        
         /* Hero button styles - exact match to Download Resume button */
         .hero-btn {
             display: inline-block !important;
@@ -129,6 +24,18 @@
             border: 2px solid #000 !important;
         }
         
+        .hero-btn--primary {
+            background-color: #000 !important;
+            color: #fff !important;
+        }
+        
+        .hero-btn--primary:hover {
+            background-color: #fff !important;
+            color: #000 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+        
         .hero-btn--secondary {
             background-color: #fff !important;
             color: #000 !important;
@@ -140,12 +47,115 @@
             transform: translateY(-2px) !important;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
         }
-
-        @media (max-width: 768px) {
-            .vibes-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+        
+        /* Bounce animation for scroll arrows */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+                opacity: 0.7;
             }
+            40% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+            60% {
+                transform: translateY(-5px);
+                opacity: 0.9;
+            }
+        }
+        
+        /* Vibes photo gallery styling */
+        .vibes-photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .vibe-photo-frame {
+            position: relative;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            border-radius: 2px;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: transform;
+        }
+        
+        .vibe-photo-frame.immediate {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition: none;
+        }
+        
+        .vibe-photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 2px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+            opacity: 0;
+            transition: opacity 0.15s ease;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .vibe-photo-frame.revealed {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            will-change: auto;
+        }
+        
+        .vibe-photo-frame:hover {
+            transform: translateY(-10px) scale(1.02) translateZ(0);
+            transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .vibe-photo-frame:hover::before {
+            opacity: 1;
+        }
+        
+        .vibe-photo {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            border: none;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+        
+        .vibe-photo-caption {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: white;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .vibe-photo-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .vibe-photo-link:hover .vibe-photo-caption {
+            background: rgba(0,0,0,1);
+            border-color: rgba(255,255,255,0.5);
         }
     </style>
 </head>
@@ -161,100 +171,153 @@
                 <button>Menu</button>
             </nav>
         </header>
-
+        
         <!-- Main Content -->
-        <main class="main-content" style="margin-top: 80px; padding: 2rem;">
-            
-            <!-- Page Header -->
-            <section class="page-hero" style="text-align: center; margin-bottom: 4rem; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #ffffff 100%); padding: 4rem 2rem; border-radius: 8px; animation: gentleShimmer 4s ease-in-out infinite alternate;">
-                <h1 style="font-size: clamp(3.5rem, 8vw, 5.5rem); margin-bottom: 1rem; color: #333; filter: none; opacity: 1; font-weight: 700;">All Vibes</h1>
-                <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; color: rgba(51, 51, 51, 0.8); line-height: 1.6;">
-                    A complete collection of visual narratives, each capturing distinct moods, emotions, and moments that define the human experience.
-                </p>
-            </section>
-            
-            <!-- Vibes Grid -->
-            <section class="vibes-section">
-                <div class="vibes-grid">
+        <main class="main-content" data-controller="scroll-animations">
+            <div id="top"></div>
+            <!-- All Vibes Photography Section - Matching Graduation Format -->
+            <section class="vibes-section" style="min-height: 250vh; position: relative; background: white; transition: background-color 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); width: 100vw; margin-left: calc(-50vw + 50%);">
+                
+                <!-- Paintbrush Title - Sticky -->
+                <div class="vibes-title" style="position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100;">
                     
-                    <!-- Serenity -->
-                    <div class="vibe-card">
-                        <div class="vibe-card-image">
-                            <img src="content 2/photography/serenity/IMG_0594.JPG.jpg" alt="Serenity">
-                        </div>
-                        <div class="vibe-card-content">
-                            <h3 class="vibe-card-title">Serenity</h3>
-                            <p class="vibe-card-description">
-                                A collection of tranquil moments that capture the peaceful essence of quiet contemplation and inner calm.
-                            </p>
-                            <a href="/serenity.html" class="vibe-card-button vibe-card-button--primary">Explore Serenity</a>
-                        </div>
+                    <!-- Paintbrush Text Animation -->
+                    <div class="paintbrush-container" style="position: relative; width: 100vw; margin-left: calc(-50vw + 50%); padding: 2rem 1rem; transform: scale(2); transform-origin: center center;">
+                        <svg viewBox="0 0 800 200" class="brush-animation" style="width: 100%; height: 200px; filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.2));">
+                            <defs>
+                                <!-- Brush stroke mask path -->
+                                <mask id="vibesBrushMask">
+                                    <path id="vibesBrushPath" stroke="white" stroke-width="80" fill="none" 
+                                          stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-dasharray="2800" stroke-dashoffset="2800"
+                                          d="M25,100 Q100,70 200,90 Q300,110 400,90 Q500,70 600,90 Q700,110 775,100"
+                                          style="transition: stroke-dashoffset 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);">
+                                    </path>
+                                </mask>
+                                
+                                <!-- Text gradient for depth -->
+                                <linearGradient id="vibesTextGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#2c3e50"/>
+                                    <stop offset="50%" stop-color="#34495e"/>
+                                    <stop offset="100%" stop-color="#2c3e50"/>
+                                </linearGradient>
+                                
+                                <!-- Brush texture filter -->
+                                <filter id="vibesBrushTexture" x="0%" y="0%" width="100%" height="100%">
+                                    <feTurbulence baseFrequency="0.4" numOctaves="3" seed="2" stitchTiles="stitch"/>
+                                    <feColorMatrix type="saturate" values="0"/>
+                                    <feComponentTransfer>
+                                        <feFuncA type="discrete" tableValues="0 .3 .5 .7 1"/>
+                                    </feComponentTransfer>
+                                    <feComposite operator="multiply" in2="SourceGraphic"/>
+                                </filter>
+                            </defs>
+                            
+                            <!-- The text that gets revealed by the brush stroke -->
+                            <text x="400" y="100" dominant-baseline="middle" text-anchor="middle"
+                                  font-size="60" font-family="'Kalam', 'Caveat', cursive" 
+                                  font-weight="700"
+                                  fill="url(#vibesTextGradient)" 
+                                  mask="url(#vibesBrushMask)"
+                                  filter="url(#vibesBrushTexture)"
+                                  style="opacity: 0; transition: opacity 0.3s ease;">
+                                All Vibes
+                            </text>
+                        </svg>
                     </div>
                     
-                    <!-- Spirit -->
-                    <div class="vibe-card">
-                        <div class="vibe-card-image">
-                            <img src="content 2/photography/spirit/IMG_1833_Original.jpg" alt="Spirit">
-                        </div>
-                        <div class="vibe-card-content">
-                            <h3 class="vibe-card-title">Spirit</h3>
-                            <p class="vibe-card-description">
-                                Capturing the essence of human energy and emotion through powerful portraits and dynamic moments.
-                            </p>
-                            <a href="/spirit.html" class="vibe-card-button vibe-card-button--secondary">Explore Spirit</a>
-                        </div>
+                    <!-- Subtitle with Tape Animation -->
+                    <div class="vibes-subtitle-container" style="position: relative; max-width: 600px; margin: 2rem auto 0; text-align: center;">
+                        <!-- Tape piece -->
+                        <div class="subtitle-tape" style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%) rotate(-8deg); width: 80px; height: 25px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 8px rgba(0,0,0,0.15); opacity: 0; transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); z-index: 10;"></div>
+                        <!-- Subtitle text -->
+                        <p class="vibes-subtitle" style="color: #444; font-size: 1.3rem; line-height: 1.6; opacity: 0; transform: translateY(20px) scale(0.95); transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); font-family: 'Kalam', 'Caveat', cursive; font-weight: 400; background: rgba(255,255,255,0.85); padding: 1rem 1.5rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            A complete collection of visual narratives, each capturing distinct moods, emotions, and moments that define the human experience.
+                        </p>
                     </div>
                     
-                    <!-- Texture -->
-                    <div class="vibe-card">
-                        <div class="vibe-card-image">
-                            <img src="content 2/photography/texture/IMG_3692.JPG.jpg" alt="Texture">
+                    <!-- Scroll Indicator -->
+                    <div class="vibes-scroll" style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; z-index: 100; opacity: 0; transition: opacity 0.6s ease 1s;">
+                        <div class="scroll-arrows" style="display: flex; flex-direction: row; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <div class="arrow" style="font-size: 1.5rem; color: #333; animation: bounce 2s infinite;">↓</div>
+                            <div class="arrow" style="font-size: 1.5rem; color: #333; animation: bounce 2s infinite; animation-delay: 0.3s;">↓</div>
+                            <div class="arrow" style="font-size: 1.5rem; color: #333; animation: bounce 2s infinite; animation-delay: 0.6s;">↓</div>
                         </div>
-                        <div class="vibe-card-content">
-                            <h3 class="vibe-card-title">Texture</h3>
-                            <p class="vibe-card-description">
-                                An exploration of tactile surfaces and rich details that invite the viewer to feel as well as see.
-                            </p>
-                            <a href="/texture.html" class="vibe-card-button vibe-card-button--primary">Explore Texture</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Adventure -->
-                    <div class="vibe-card">
-                        <div class="vibe-card-image">
-                            <img src="content 2/photography/community/IMG_4623.jpeg" alt="Adventure">
-                        </div>
-                        <div class="vibe-card-content">
-                            <h3 class="vibe-card-title">Adventure</h3>
-                            <p class="vibe-card-description">
-                                Documenting the spirit of exploration and the bonds formed through shared experiences and community.
-                            </p>
-                            <a href="/adventure.html" class="vibe-card-button vibe-card-button--secondary">Explore Adventure</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Commencement -->
-                    <div class="vibe-card">
-                        <div class="vibe-card-image">
-                            <img src="content 2/photography/commencement/P1096231.jpg" alt="Commencement">
-                        </div>
-                        <div class="vibe-card-content">
-                            <h3 class="vibe-card-title">Commencement</h3>
-                            <p class="vibe-card-description">
-                                Celebrating new beginnings, achievements, and the pivotal moments that mark life's important transitions.
-                            </p>
-                            <a href="/commencement.html" class="vibe-card-button vibe-card-button--primary">Explore Commencement</a>
-                        </div>
+                        <p class="scroll-text" style="color: #333; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 0;">Explore Gallery</p>
                     </div>
                     
                 </div>
+                
+                <!-- Photo Gallery Below Title -->
+                <div class="vibes-gallery-content" style="position: absolute; top: 100vh; left: 0; right: 0; display: flex; justify-content: center; align-items: flex-start; min-height: 120vh; padding: 4rem 1rem;">
+                    
+                    <!-- Photo Grid with Tape Decorations -->
+                    <div class="vibes-photo-grid">
+                        
+                        <!-- Serenity Photo -->
+                        <div class="vibe-photo-frame" data-vibe="serenity">
+                            <a href="/serenity.html" class="vibe-photo-link" onclick="scrollToTopOnNavigate(event, '/serenity.html')">
+                                <img src="content 2/photography/serenity/IMG_0768.JPG.jpg" alt="Serenity" class="vibe-photo">
+                                <div class="vibe-photo-caption">Serenity</div>
+                                <!-- Tape decorations -->
+                                <div class="vibe-tape" style="position: absolute; top: -8px; right: 15px; width: 50px; height: 20px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; transform: rotate(20deg);"></div>
+                                <div class="vibe-tape" style="position: absolute; bottom: -10px; left: 20px; width: 60px; height: 25px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; transform: rotate(-15deg);"></div>
+                            </a>
+                        </div>
+                        
+                        <!-- Spirit Photo -->
+                        <div class="vibe-photo-frame" data-vibe="spirit">
+                            <a href="/spirit.html" class="vibe-photo-link" onclick="scrollToTopOnNavigate(event, '/spirit.html')">
+                                <img src="content 2/photography/spirit/IMG_5373.jpg" alt="Spirit" class="vibe-photo">
+                                <div class="vibe-photo-caption">Spirit</div>
+                                <!-- Tape decorations -->
+                                <div class="vibe-tape" style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-8deg); width: 70px; height: 30px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10;"></div>
+                                <div class="vibe-tape" style="position: absolute; bottom: -8px; right: 10px; width: 50px; height: 22px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; transform: rotate(25deg);"></div>
+                            </a>
+                        </div>
+                        
+                        <!-- Texture Photo -->
+                        <div class="vibe-photo-frame" data-vibe="texture">
+                            <a href="/texture.html" class="vibe-photo-link" onclick="scrollToTopOnNavigate(event, '/texture.html')">
+                                <img src="content 2/photography/texture/IMG_3692.JPG.jpg" alt="Texture" class="vibe-photo">
+                                <div class="vibe-photo-caption">Texture</div>
+                                <!-- Tape decorations -->
+                                <div class="vibe-tape" style="position: absolute; top: -15px; right: 25px; width: 55px; height: 25px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; transform: rotate(12deg);"></div>
+                                <div class="vibe-tape" style="position: absolute; bottom: -10px; left: 40%; transform: translateX(-50%) rotate(22deg); width: 50px; height: 20px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10;"></div>
+                            </a>
+                        </div>
+                        
+                        <!-- Adventure Photo -->
+                        <div class="vibe-photo-frame" data-vibe="adventure">
+                            <a href="/adventure.html" class="vibe-photo-link" onclick="scrollToTopOnNavigate(event, '/adventure.html')">
+                                <img src="content 2/photography/community/IMG_4623.jpeg" alt="Adventure" class="vibe-photo">
+                                <div class="vibe-photo-caption">Adventure</div>
+                                <!-- Tape decorations -->
+                                <div class="vibe-tape" style="position: absolute; top: -10px; left: 30px; width: 65px; height: 28px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; transform: rotate(-10deg);"></div>
+                                <div class="vibe-tape" style="position: absolute; bottom: -12px; right: 40px; width: 60px; height: 25px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; transform: rotate(15deg);"></div>
+                            </a>
+                        </div>
+                        
+                        <!-- Commencement Photo -->
+                        <div class="vibe-photo-frame" data-vibe="commencement">
+                            <a href="/commencement.html" class="vibe-photo-link" onclick="scrollToTopOnNavigate(event, '/commencement.html')">
+                                <img src="content 2/photography/commencement/P1096231.jpg" alt="Commencement" class="vibe-photo">
+                                <div class="vibe-photo-caption">Commencement</div>
+                                <!-- Tape decorations -->
+                                <div class="vibe-tape" style="position: absolute; top: -8px; left: 15px; width: 50px; height: 20px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; transform: rotate(-20deg);"></div>
+                                <div class="vibe-tape" style="position: absolute; bottom: -15px; right: 25px; width: 55px; height: 25px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; transform: rotate(18deg);"></div>
+                            </a>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
             </section>
             
-            <!-- Back to Home -->
+            <!-- Back to Home Button -->
             <section style="text-align: center; margin: 4rem 0;">
-                <a href="/" class="hero-btn hero-btn--secondary">
-                    ← Back to Home
-                </a>
+                <a href="/" class="hero-btn hero-btn--secondary">← Back to Home</a>
             </section>
             
         </main>
@@ -276,31 +339,392 @@
     <script type="module" src="/src/js/main.js"></script>
     
     <script>
-        // Smooth navigation transitions
-        document.addEventListener('DOMContentLoaded', function() {
+        // Page initialization and scroll handling
+        function initializePage() {
+            // Check if coming from gallery pages (back navigation)
+            const isBackNavigation = window.location.hash === '#top' || 
+                                     document.referrer.includes('serenity.html') ||
+                                     document.referrer.includes('spirit.html') ||
+                                     document.referrer.includes('texture.html') ||
+                                     document.referrer.includes('adventure.html') ||
+                                     document.referrer.includes('commencement.html');
             
-            // Smooth page entrance animation
-            document.body.style.opacity = '0';
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 50);
+            // Force scroll to top if coming from another page
+            if (window.location.hash === '#top' || document.referrer.includes('.html')) {
+                window.scrollTo(0, 0);
+                // Remove hash to keep URL clean
+                if (window.location.hash) {
+                    history.replaceState(null, null, window.location.pathname);
+                }
+            }
             
-            // Smooth navigation transitions
-            const links = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
-            links.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href && href !== '#' && !href.includes('mailto:') && !href.includes('tel:')) {
-                        e.preventDefault();
-                        document.body.classList.add('page-transitioning');
-                        setTimeout(() => {
-                            window.location.href = href;
-                        }, 300);
+            // Handle different initialization based on navigation type
+            if (isBackNavigation) {
+                // Coming from gallery - show photos immediately, skip title animation
+                showPhotosImmediately();
+                // Still show paintbrush animation but faster
+                setTimeout(() => {
+                    initVibesPaintbrushAnimation();
+                    showSubtitleAndScrollIndicator();
+                }, 500);
+            } else {
+                // Fresh page load - full animation sequence
+                resetAnimationStates();
+            }
+            
+            // Ensure CSS is loaded before starting animations
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => startAnimations(isBackNavigation));
+            } else {
+                startAnimations(isBackNavigation);
+            }
+        }
+        
+        // Show photos immediately for back navigation
+        function showPhotosImmediately() {
+            const photoFrames = document.querySelectorAll('.vibe-photo-frame');
+            photoFrames.forEach(frame => {
+                frame.classList.add('immediate');
+            });
+        }
+        
+        // Show subtitle and scroll indicator quickly
+        function showSubtitleAndScrollIndicator() {
+            const subtitle = document.querySelector('.vibes-subtitle');
+            const subtitleTape = document.querySelector('.subtitle-tape');
+            const scrollIndicator = document.querySelector('.vibes-scroll');
+            
+            if (subtitle) {
+                subtitle.style.opacity = '1';
+                subtitle.style.transform = 'translateY(0) scale(1)';
+            }
+            if (subtitleTape) {
+                subtitleTape.style.opacity = '1';
+                subtitleTape.style.transform = 'translateX(-50%) rotate(-8deg)';
+            }
+            if (scrollIndicator) {
+                scrollIndicator.style.opacity = '1';
+            }
+        }
+        
+        // Reset animation states to initial conditions
+        function resetAnimationStates() {
+            // Reset paintbrush animation
+            const brushPath = document.getElementById('vibesBrushPath');
+            const textElement = document.querySelector('text[mask="url(#vibesBrushMask)"]');
+            if (brushPath && textElement) {
+                brushPath.setAttribute('stroke-dashoffset', '2800');
+                brushPath.setAttribute('stroke-width', '0');
+                textElement.style.opacity = '0';
+            }
+            
+            // Reset subtitle and scroll indicator
+            const subtitle = document.querySelector('.vibes-subtitle');
+            const subtitleTape = document.querySelector('.subtitle-tape');
+            const scrollIndicator = document.querySelector('.vibes-scroll');
+            
+            if (subtitle) {
+                subtitle.style.opacity = '0';
+                subtitle.style.transform = 'translateY(20px) scale(0.95)';
+            }
+            if (subtitleTape) {
+                subtitleTape.style.opacity = '0';
+                subtitleTape.style.transform = 'translateX(-50%) rotate(-8deg)';
+            }
+            if (scrollIndicator) {
+                scrollIndicator.style.opacity = '0';
+            }
+            
+            // Reset photo frames to initial hidden state
+            const photoFrames = document.querySelectorAll('.vibe-photo-frame');
+            photoFrames.forEach(frame => {
+                frame.classList.remove('revealed', 'immediate');
+                // They'll be hidden by default CSS
+            });
+        }
+        
+        // Start animations function
+        function startAnimations(isBackNavigation = false) {
+            
+            // SVG Paintbrush animation - paper tearing effect triggered when scrolled into view
+            function initVibesPaintbrushAnimation() {
+                const brushPath = document.getElementById('vibesBrushPath');
+                const textElement = document.querySelector('text[mask="url(#vibesBrushMask)"]');
+                
+                if (!brushPath || !textElement) return;
+                
+                // Make text visible first
+                textElement.style.opacity = '1';
+                
+                // Start with width 0 for paper tearing effect
+                brushPath.setAttribute('stroke-width', '0');
+                
+                // Start the brush stroke animation (left to right reveal)
+                setTimeout(() => {
+                    brushPath.style.strokeDashoffset = '0';
+                }, 500);
+                
+                // Paper tearing width animation
+                const widths = [60, 80, 100];
+                let widthInterval;
+                
+                // Choppy stop-motion style paper tearing animation
+                setTimeout(() => {
+                    const targetWidth = 80;
+                    const frames = [0, 20, 45, 70, 80];
+                    let currentFrame = 0;
+                    
+                    const animateChoppy = () => {
+                        if (currentFrame < frames.length) {
+                            brushPath.setAttribute('stroke-width', frames[currentFrame]);
+                            currentFrame++;
+                            setTimeout(animateChoppy, 100);
+                        } else {
+                            // Start random width switching after tearing animation completes
+                            setTimeout(() => {
+                                widthInterval = setInterval(() => {
+                                    const randomWidth = widths[Math.floor(Math.random() * widths.length)];
+                                    brushPath.setAttribute('stroke-width', randomWidth);
+                                }, 1000);
+                            }, 300);
+                        }
+                    };
+                    
+                    animateChoppy();
+                }, 1000);
+            }
+            
+            // Set up scroll-based vibes animations
+            function initVibesScrollAnimations() {
+                const vibesTitle = document.querySelector('.vibes-title');
+                if (!vibesTitle) return;
+                
+                let hasAnimated = false;
+                
+                // Observer to trigger vibes animations when title comes into view
+                const vibesAnimationObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !hasAnimated) {
+                            hasAnimated = true;
+                            
+                            // Trigger the paintbrush animation
+                            initVibesPaintbrushAnimation();
+                            
+                            // Show subtitle after paintbrush animation
+                            const subtitle = document.querySelector('.vibes-subtitle');
+                            const scrollIndicator = document.querySelector('.vibes-scroll');
+                            
+                            setTimeout(() => {
+                                // Show subtitle first
+                                if (subtitle) {
+                                    subtitle.style.opacity = '1';
+                                    subtitle.style.transform = 'translateY(0) scale(1)';
+                                }
+                                
+                                // Then animate tape on top of subtitle
+                                setTimeout(() => {
+                                    const subtitleTape = document.querySelector('.subtitle-tape');
+                                    if (subtitleTape) {
+                                        subtitleTape.style.opacity = '1';
+                                        subtitleTape.style.transform = 'translateX(-50%) rotate(-8deg) scale(1.1)';
+                                        
+                                        // Settle tape to normal size
+                                        setTimeout(() => {
+                                            subtitleTape.style.transform = 'translateX(-50%) rotate(-8deg) scale(1)';
+                                        }, 200);
+                                    }
+                                }, 400);
+                                
+                                // Show scroll indicator after everything
+                                setTimeout(() => {
+                                    if (scrollIndicator) {
+                                        scrollIndicator.style.opacity = '1';
+                                    }
+                                }, 1200);
+                            }, 1000);
+                            
+                            // Disconnect observer after animation
+                            vibesAnimationObserver.disconnect();
+                        }
+                    });
+                }, {
+                    threshold: 0.2,
+                    rootMargin: '0px 0px -10% 0px'
+                });
+                
+                vibesAnimationObserver.observe(vibesTitle);
+            }
+            
+            // Initialize scroll-based animations
+            initVibesScrollAnimations();
+            
+            // Photo gallery scroll-based reveals
+            function initPhotoGalleryAnimations() {
+                const photoFrames = document.querySelectorAll('.vibe-photo-frame');
+                
+                // Skip intersection observer if photos are already shown immediately for back navigation
+                if (isBackNavigation) {
+                    // Photos already visible with .immediate class, no additional animation needed
+                    return;
+                }
+                
+                // First check if we're near the gallery section - if so, show immediately
+                const galleryContent = document.querySelector('.vibes-gallery-content');
+                if (galleryContent) {
+                    const rect = galleryContent.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                    
+                    if (isVisible || window.scrollY > window.innerHeight) {
+                        // Gallery is visible, show photos immediately with staggered timing
+                        photoFrames.forEach((frame, index) => {
+                            setTimeout(() => {
+                                frame.classList.remove('hidden');
+                                frame.classList.add('revealed');
+                            }, index * 100);
+                        });
+                        return;
+                    }
+                }
+                
+                // Otherwise use intersection observer
+                const photoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting) {
+                            // Staggered reveal with delay based on index
+                            setTimeout(() => {
+                                entry.target.classList.remove('hidden');
+                                entry.target.classList.add('revealed');
+                            }, index * 200);
+                            
+                            photoObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -5% 0px'
+                });
+                
+                photoFrames.forEach(frame => {
+                    if (!frame.classList.contains('revealed')) {
+                        photoObserver.observe(frame);
                     }
                 });
-            });
+            }
             
+            // Initialize photo gallery animations
+            initPhotoGalleryAnimations();
+            
+            // Fallback to ensure photos are visible after a short delay (only for non-back navigation)
+            if (!isBackNavigation) {
+                setTimeout(() => {
+                    const photoFrames = document.querySelectorAll('.vibe-photo-frame');
+                    photoFrames.forEach((frame, index) => {
+                        if (!frame.classList.contains('revealed') && !frame.classList.contains('immediate')) {
+                            setTimeout(() => {
+                                frame.classList.remove('hidden');
+                                frame.classList.add('revealed');
+                            }, index * 100);
+                        }
+                    });
+                }, 1000);
+            }
+            
+            // Background color transition
+            function initVibesGradientTransition() {
+                const vibesSection = document.querySelector('.vibes-section');
+                const vibesTitle = document.querySelector('.vibes-title');
+                
+                if (!vibesSection || !vibesTitle) return;
+                
+                const vibesColor = '#F5F5F0'; // Light warm background
+                
+                // Observer for title area -> color
+                const vibesColorObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            vibesSection.style.backgroundColor = vibesColor;
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '-10% 0px -10% 0px'
+                });
+                
+                vibesColorObserver.observe(vibesTitle);
+                
+                // Observer to reset to white when leaving section
+                const vibesExitObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) {
+                            const rect = vibesSection.getBoundingClientRect();
+                            if (rect.bottom < 0) {
+                                vibesSection.style.backgroundColor = 'white';
+                            }
+                        }
+                    });
+                }, {
+                    threshold: 0,
+                    rootMargin: '0px'
+                });
+                
+                vibesExitObserver.observe(vibesSection);
+            }
+            
+            // Initialize background transition
+            initVibesGradientTransition();
+        }
+        
+        // Initialize the page when script loads
+        initializePage();
+        
+        // Also handle browser back/forward navigation
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                // Page was loaded from cache, reset everything
+                initializePage();
+            }
         });
+        
+        // Handle visibility changes (tab switching)
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden && window.location.pathname.includes('vibes')) {
+                // Page became visible, ensure animations are working
+                setTimeout(() => {
+                    if (window.scrollY < 100) {
+                        const isBackNavigation = document.referrer.includes('serenity.html') ||
+                                                 document.referrer.includes('spirit.html') ||
+                                                 document.referrer.includes('texture.html') ||
+                                                 document.referrer.includes('adventure.html') ||
+                                                 document.referrer.includes('commencement.html');
+                        
+                        if (isBackNavigation) {
+                            showPhotosImmediately();
+                            initVibesPaintbrushAnimation();
+                            showSubtitleAndScrollIndicator();
+                        } else {
+                            resetAnimationStates();
+                            startAnimations(false);
+                        }
+                    }
+                }, 100);
+            }
+        });
+        
+        // Navigation function to ensure scroll to top
+        function scrollToTopOnNavigate(event, url) {
+            event.preventDefault();
+            
+            // Save the current scroll position
+            sessionStorage.setItem('previousScrollPosition', window.scrollY);
+            
+            // Navigate to the URL with scroll to top
+            window.location.href = url + '#top';
+            
+            // Alternative approach - use a slight delay to ensure scroll reset
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 10);
+        }
     </script>
 </body>
 </html>

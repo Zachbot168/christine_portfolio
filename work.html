@@ -120,7 +120,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 2rem;
+            padding: 4rem 2rem;
         }
         
         /* Single Work Gallery with Navigation */
@@ -128,50 +128,317 @@
             position: relative;
             max-width: 1000px;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
         }
         
         /* Current Work Display */
         .work-display-container {
             position: relative;
-            width: 100%;
-            min-height: 650px;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.4);
-            background: white;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            padding: 3rem;
             text-align: center;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: translateZ(0);
+            will-change: transform, opacity;
+            opacity: 1;
         }
         
-        .work-display-image {
-            width: 100%;
-            max-width: 400px;
-            height: 300px;
-            object-fit: cover;
+        .work-display-container.transitioning {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95) translateZ(0);
+        }
+        
+        /* Digital Camera Container for Photography */
+        .work-display-container.photography {
+            width: auto;
+            max-width: 900px;
+            padding-bottom: 20px; /* Space for camera elements */
+        }
+        
+        .work-display-container.photography .device-frame {
+            background: linear-gradient(145deg, #2c2c2c, #1a1a1a);
+            border-radius: 15px;
+            padding: 40px 120px 60px 40px;
+            box-shadow: 
+                0 0 0 3px #444,
+                0 25px 80px rgba(0,0,0,0.4);
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Camera lens */
+        .work-display-container.photography .device-frame::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #000 30%, #333 50%, #111 70%);
+            border-radius: 50%;
+            border: 4px solid #555;
+            box-shadow: 
+                inset 0 0 20px rgba(0,0,0,0.8),
+                0 4px 15px rgba(0,0,0,0.5);
+        }
+        
+        /* Camera viewfinder */
+        .work-display-container.photography .device-frame::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 25px;
+            height: 15px;
+            background: linear-gradient(145deg, #444, #222);
+            border-radius: 3px;
+            border: 1px solid #666;
+        }
+        
+        .work-display-container.photography .work-display-image {
+            max-width: 700px;
+            max-height: 500px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
             border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: translateZ(0);
+            display: block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        /* Camera flash */
+        .work-display-container.photography .camera-flash {
+            position: absolute;
+            top: 15px;
+            right: 60px;
+            width: 15px;
+            height: 10px;
+            background: linear-gradient(145deg, #fff, #f0f0f0);
+            border-radius: 2px;
+            border: 1px solid #ddd;
+        }
+        
+        /* Camera grip texture */
+        .work-display-container.photography .camera-grip {
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+            width: 90px;
+            height: 30px;
+            background: repeating-linear-gradient(
+                90deg,
+                #333 0px,
+                #333 2px,
+                #2a2a2a 2px,
+                #2a2a2a 4px
+            );
+            border-radius: 4px;
+        }
+        
+        /* Poster Container for Marketing */
+        .work-display-container.marketing {
+            width: auto;
+            max-width: 800px;
+            padding-bottom: 20px; /* Space for poster aesthetics */
+        }
+        
+        .work-display-container.marketing .device-frame {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 
+                0 25px 80px rgba(0,0,0,0.4),
+                inset 0 0 0 4px #e8d5b7;
+            display: inline-block;
+        }
+        
+        .work-display-container.marketing .device-frame::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            right: 25px;
+            width: 90px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transform: rotate(12deg);
+            z-index: 10;
+        }
+        
+        .work-display-container.marketing .device-frame::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 30px;
+            width: 70px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transform: rotate(-8deg);
+            z-index: 10;
+        }
+        
+        .work-display-container.marketing .work-display-image {
+            max-width: 600px;
+            max-height: 600px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: translateZ(0);
+            display: block;
+        }
+        
+        /* TV Container for Film */
+        .work-display-container.film {
+            width: auto;
+            max-width: 1000px;
+            padding-bottom: 100px; /* Space for TV stand */
+        }
+        
+        .work-display-container.film .device-frame {
+            background: linear-gradient(145deg, #1a1a1a, #2c2c2c);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 
+                0 25px 80px rgba(0,0,0,0.4),
+                inset 0 0 30px rgba(0,0,0,0.3);
+            border: 12px solid #333;
+            display: inline-block;
+        }
+        
+        .work-display-container.film .device-frame::before {
+            content: '';
+            position: absolute;
+            bottom: -70px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 60px;
+            background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        
+        .work-display-container.film .device-frame::after {
+            content: '';
+            position: absolute;
+            bottom: -90px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 350px;
+            height: 20px;
+            background: linear-gradient(145deg, #000, #0a0a0a);
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+        }
+        
+        .work-display-container.film .work-display-image {
+            max-width: 800px;
+            max-height: 450px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: translateZ(0);
+            display: block;
+        }
+        
+        /* Book Container for Journalism */
+        .work-display-container.journalism {
+            width: auto;
+            max-width: 700px;
+            padding-bottom: 20px; /* Space for book spine elements */
+        }
+        
+        .work-display-container.journalism .device-frame {
+            background: linear-gradient(145deg, #8b0000, #a52a2a);
+            border-radius: 12px;
+            padding: 25px;
+            position: relative;
+            box-shadow: 
+                15px 0 30px rgba(0,0,0,0.3),
+                0 25px 80px rgba(0,0,0,0.4);
+            border-left: 16px solid #654321;
+            display: inline-block;
+        }
+        
+        .work-display-container.journalism .device-frame::before {
+            content: '';
+            position: absolute;
+            left: -16px;
+            top: 0;
+            bottom: 0;
+            width: 8px;
+            background: linear-gradient(to bottom, 
+                #d4af37 0%,
+                #b8860b 25%,
+                #d4af37 50%,
+                #b8860b 75%,
+                #d4af37 100%
+            );
+        }
+        
+        .work-display-container.journalism .device-frame::after {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 100px;
+            background: linear-gradient(145deg, #2f1b14, #654321);
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .work-display-container.journalism .work-display-image {
+            max-width: 500px;
+            max-height: 550px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: translateZ(0);
+            display: block;
+        }
+        
+        /* Content below containers */
+        .work-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 0.05rem;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .work-content.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .work-display-title {
             font-size: 2.5rem;
             font-weight: 400;
-            margin-bottom: 1rem;
+            margin: 0;
             color: #333;
-            filter: none !important;
-            opacity: 1 !important;
+            text-align: center;
         }
         
         .work-display-description {
-            font-size: 1.1rem;
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            max-width: 600px;
+            display: none; /* Hide descriptions as requested */
         }
         
         /* Navigation Arrows */
@@ -273,30 +540,6 @@
         }
         
         /* Mobile Responsive */
-        @media (max-width: 1200px) {
-            .single-work-gallery {
-                max-width: 900px;
-            }
-            .work-display-container {
-                min-height: 600px;
-            }
-        }
-        
-        @media (max-width: 1000px) {
-            .gallery-nav--prev {
-                left: -80px;
-            }
-            .gallery-nav--next {
-                right: -80px;
-            }
-            .single-work-gallery {
-                max-width: 800px;
-            }
-            .work-display-container {
-                min-height: 550px;
-            }
-        }
-        
         @media (max-width: 900px) {
             .gallery-nav--prev {
                 left: 15px;
@@ -309,17 +552,144 @@
                 height: 60px;
                 font-size: 1.8rem;
             }
+            
+            /* Tighter spacing on mobile */
+            .work-content {
+                gap: 0.8rem;
+                margin-top: 0.02rem;
+            }
+            
             .single-work-gallery {
-                max-width: 100%;
+                gap: 1.5rem;
             }
-            .work-display-container {
-                min-height: 500px;
-                padding: 2rem 1rem;
+            
+            /* Scale down containers for mobile */
+            .work-display-container.photography {
+                max-width: 600px;
+                padding-bottom: 15px;
             }
-            .work-display-image {
-                max-width: 300px;
-                height: 200px;
+            
+            .work-display-container.photography .device-frame {
+                padding: 30px 90px 45px 30px;
+                border-radius: 12px;
             }
+            
+            .work-display-container.photography .work-display-image {
+                max-width: 500px;
+                max-height: 350px;
+                border-radius: 6px;
+            }
+            
+            .work-display-container.photography .device-frame::before {
+                top: 25px;
+                right: 25px;
+                width: 60px;
+                height: 60px;
+                border: 3px solid #555;
+            }
+            
+            .work-display-container.photography .device-frame::after {
+                top: 12px;
+                right: 12px;
+                width: 20px;
+                height: 12px;
+            }
+            
+            .work-display-container.photography .camera-flash {
+                top: 12px;
+                right: 45px;
+                width: 12px;
+                height: 8px;
+            }
+            
+            .work-display-container.photography .camera-grip {
+                right: 12px;
+                bottom: 12px;
+                width: 70px;
+                height: 25px;
+            }
+            
+            .work-display-container.marketing {
+                max-width: 500px;
+                padding-bottom: 15px;
+            }
+            
+            .work-display-container.marketing .device-frame {
+                padding: 20px;
+            }
+            
+            .work-display-container.marketing .work-display-image {
+                max-width: 400px;
+                max-height: 450px;
+            }
+            
+            .work-display-container.marketing .device-frame::before {
+                top: -8px;
+                right: 15px;
+                width: 60px;
+                height: 20px;
+            }
+            
+            .work-display-container.marketing .device-frame::after {
+                top: -6px;
+                left: 20px;
+                width: 50px;
+                height: 18px;
+            }
+            
+            .work-display-container.film {
+                max-width: 700px;
+                padding-bottom: 80px;
+            }
+            
+            .work-display-container.film .device-frame {
+                padding: 30px;
+                border: 8px solid #333;
+            }
+            
+            .work-display-container.film .work-display-image {
+                max-width: 600px;
+                max-height: 350px;
+            }
+            
+            .work-display-container.film .device-frame::before {
+                bottom: -50px;
+                width: 150px;
+                height: 40px;
+            }
+            
+            .work-display-container.film .device-frame::after {
+                bottom: -65px;
+                width: 250px;
+                height: 15px;
+            }
+            
+            .work-display-container.journalism {
+                max-width: 500px;
+                padding-bottom: 15px;
+            }
+            
+            .work-display-container.journalism .device-frame {
+                padding: 20px;
+                border-left: 12px solid #654321;
+            }
+            
+            .work-display-container.journalism .work-display-image {
+                max-width: 400px;
+                max-height: 450px;
+            }
+            
+            .work-display-container.journalism .device-frame::before {
+                left: -12px;
+                width: 6px;
+            }
+            
+            .work-display-container.journalism .device-frame::after {
+                left: -24px;
+                width: 12px;
+                height: 70px;
+            }
+            
             .work-display-title {
                 font-size: 2rem;
             }
@@ -334,6 +704,96 @@
             }
             .title-divider {
                 width: 150px;
+            }
+            
+            /* Even tighter on small screens */
+            .work-content {
+                gap: 0.7rem;
+                margin-top: 0rem;
+            }
+            
+            .single-work-gallery {
+                gap: 1.2rem;
+            }
+            
+            /* Further scale down for very small screens */
+            .work-display-container.photography {
+                max-width: 400px;
+            }
+            
+            .work-display-container.photography .device-frame {
+                padding: 25px 70px 35px 25px;
+                border-radius: 10px;
+            }
+            
+            .work-display-container.photography .work-display-image {
+                max-width: 300px;
+                max-height: 250px;
+            }
+            
+            .work-display-container.photography .device-frame::before {
+                top: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .work-display-container.photography .device-frame::after {
+                top: 10px;
+                right: 10px;
+                width: 18px;
+                height: 10px;
+            }
+            
+            .work-display-container.photography .camera-flash {
+                top: 10px;
+                right: 35px;
+                width: 10px;
+                height: 6px;
+            }
+            
+            .work-display-container.photography .camera-grip {
+                right: 10px;
+                bottom: 10px;
+                width: 60px;
+                height: 20px;
+            }
+            
+            .work-display-container.marketing {
+                max-width: 350px;
+            }
+            
+            .work-display-container.marketing .work-display-image {
+                max-width: 280px;
+                max-height: 350px;
+            }
+            
+            .work-display-container.film {
+                max-width: 500px;
+                padding-bottom: 60px;
+            }
+            
+            .work-display-container.film .device-frame {
+                padding: 25px;
+                border: 6px solid #333;
+            }
+            
+            .work-display-container.film .work-display-image {
+                max-width: 400px;
+                max-height: 250px;
+            }
+            
+            .work-display-container.journalism {
+                max-width: 350px;
+            }
+            
+            .work-display-container.journalism .work-display-image {
+                max-width: 280px;
+                max-height: 350px;
+            }
+            
+            .work-display-title {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -395,13 +855,19 @@
                     <div class="single-work-gallery">
                     
                     <!-- Current Work Display -->
-                    <div class="work-display-container">
-                        <img id="current-work-image" src="content 2/photography/serenity/IMG_0594.JPG.jpg" alt="Current Work" class="work-display-image">
-                        <h3 id="current-work-title" class="work-display-title">Photography</h3>
-                        <p id="current-work-description" class="work-display-description">
-                            Visual narratives capturing serenity, spirit, texture, adventure, and life's pivotal moments through contemplative and dynamic imagery.
-                        </p>
-                        <a id="current-work-link" href="/vibes.html" class="hero-btn hero-btn--primary">Explore Photography</a>
+                    <div class="work-display-container photography">
+                        <div class="device-frame">
+                            <img id="current-work-image" src="content 2/photography/serenity/IMG_1772.JPG.jpg" alt="Current Work" class="work-display-image">
+                            <div class="camera-flash"></div>
+                            <div class="camera-grip"></div>
+                        </div>
+                        <div class="work-content visible">
+                            <h3 id="current-work-title" class="work-display-title">Photography</h3>
+                            <p id="current-work-description" class="work-display-description">
+                                Visual narratives capturing serenity, spirit, texture, adventure, and life's pivotal moments through contemplative and dynamic imagery.
+                            </p>
+                            <a id="current-work-link" href="/vibes.html" class="hero-btn hero-btn--primary">Explore Photography</a>
+                        </div>
                     </div>
                     
                     <!-- Navigation Arrows -->
@@ -457,7 +923,7 @@
             // Work items array - all 4 work categories
             const workItems = [
                 {
-                    image: 'content 2/photography/serenity/IMG_0594.JPG.jpg',
+                    image: 'content 2/photography/serenity/IMG_1772.JPG.jpg',
                     title: 'Photography',
                     description: 'Visual narratives capturing serenity, spirit, texture, adventure, and life\'s pivotal moments through contemplative and dynamic imagery.',
                     link: '/vibes.html',
@@ -465,7 +931,7 @@
                     buttonClass: 'hero-btn--primary'
                 },
                 {
-                    image: 'content 2/marketing/nuazn/1.png',
+                    image: 'content 2/marketing/nuazn/Screen Shot 2025-05-22 at 1.36.08 AM.png',
                     title: 'Marketing',
                     description: 'Strategic campaigns for fashion brands, restaurants, and publications including Lewkin, Yasotorn, nuAZN Magazine, and Musicade.',
                     link: '/marketing.html',
@@ -481,7 +947,7 @@
                     buttonClass: 'hero-btn--primary'
                 },
                 {
-                    image: 'content 2/photography/spirit/IMG_1833_Original.jpg',
+                    image: 'content 2/marketing/nuazn/Screen Shot 2025-05-22 at 1.36.40 AM.png',
                     title: 'Journalism',
                     description: 'News packages, multimedia reporting, and editorial content for Northwestern Admissions and Philstar National Newspaper.',
                     link: '/journalism.html',
@@ -501,49 +967,85 @@
                 const linkElement = document.getElementById('current-work-link');
                 const currentIndexElement = document.getElementById('current-work-index');
                 const totalWorksElement = document.getElementById('total-works');
+                const containerElement = document.querySelector('.work-display-container');
+                const workContentElement = document.querySelector('.work-content');
                 
+                // Add transitioning class for smooth container morphing
+                if (containerElement) {
+                    containerElement.classList.add('transitioning');
+                }
+                
+                // Hide content with staggered animation
+                if (workContentElement) {
+                    workContentElement.classList.remove('visible');
+                }
+                
+                // Fade out and scale image
                 if (imageElement) {
                     imageElement.style.opacity = '0';
-                    setTimeout(() => {
+                    imageElement.style.transform = 'scale(0.9) translateY(10px)';
+                }
+                
+                // Update container class after initial transition starts
+                setTimeout(() => {
+                    if (containerElement) {
+                        containerElement.classList.remove('photography', 'marketing', 'film', 'journalism');
+                        
+                        let workType = currentWork.title.toLowerCase();
+                        if (workType.includes('film')) {
+                            workType = 'film';
+                        } else {
+                            workType = workType.replace(/[^a-z]/g, '');
+                        }
+                        containerElement.classList.add(workType);
+                    }
+                }, 100);
+                
+                // Update content after container transform
+                setTimeout(() => {
+                    if (imageElement) {
                         imageElement.src = currentWork.image;
                         imageElement.alt = currentWork.title;
-                        imageElement.style.opacity = '1';
-                    }, 250);
-                }
-                
-                if (titleElement) {
-                    titleElement.style.opacity = '0';
-                    setTimeout(() => {
+                        
+                        // Smooth image entrance
+                        setTimeout(() => {
+                            imageElement.style.opacity = '1';
+                            imageElement.style.transform = 'scale(1) translateY(0)';
+                        }, 50);
+                    }
+                    
+                    if (titleElement) {
                         titleElement.textContent = currentWork.title;
-                        titleElement.style.opacity = '1';
-                    }, 250);
-                }
-                
-                if (descriptionElement) {
-                    descriptionElement.style.opacity = '0';
-                    setTimeout(() => {
+                    }
+                    
+                    if (descriptionElement) {
                         descriptionElement.textContent = currentWork.description;
-                        descriptionElement.style.opacity = '1';
-                    }, 250);
-                }
-                
-                if (linkElement) {
-                    linkElement.style.opacity = '0';
-                    setTimeout(() => {
+                    }
+                    
+                    if (linkElement) {
                         linkElement.href = currentWork.link;
                         linkElement.textContent = currentWork.buttonText;
                         linkElement.className = 'hero-btn ' + currentWork.buttonClass;
-                        linkElement.style.opacity = '1';
-                    }, 250);
-                }
-                
-                if (currentIndexElement) {
-                    currentIndexElement.textContent = currentWorkIndex + 1;
-                }
-                
-                if (totalWorksElement) {
-                    totalWorksElement.textContent = workItems.length;
-                }
+                    }
+                    
+                    if (currentIndexElement) {
+                        currentIndexElement.textContent = currentWorkIndex + 1;
+                    }
+                    
+                    if (totalWorksElement) {
+                        totalWorksElement.textContent = workItems.length;
+                    }
+                    
+                    // Remove transitioning class and show content
+                    setTimeout(() => {
+                        if (containerElement) {
+                            containerElement.classList.remove('transitioning');
+                        }
+                        if (workContentElement) {
+                            workContentElement.classList.add('visible');
+                        }
+                    }, 200);
+                }, 300);
             }
             
             function nextWork() {
