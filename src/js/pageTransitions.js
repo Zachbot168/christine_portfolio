@@ -107,24 +107,36 @@ function createTransition() {
     afterEnter(data) {
       const { next } = data;
       const nextNamespace = next.container.dataset.barbaNamespace;
-      
+
       // Reset menu overlay state
       resetMenu();
-      
+
+      // Force refresh ScrollTrigger before reinitializing
+      if (window.ScrollTrigger) {
+        window.ScrollTrigger.refresh();
+      }
+
       // Reinitialize all controllers (including Locomotive Scroll)
       initControllers();
-      
+
+      // Force another ScrollTrigger refresh after controllers are initialized
+      setTimeout(() => {
+        if (window.ScrollTrigger) {
+          window.ScrollTrigger.refresh();
+        }
+      }, 100);
+
       // Restore scroll position for returning to a page
       if (scrollPositions.has(nextNamespace)) {
         restoreScrollPosition(nextNamespace);
       }
-      
+
       // Update document title if available
       const titleElement = next.html.querySelector('title');
       if (titleElement) {
         document.title = titleElement.textContent;
       }
-      
+
       // Dispatch custom event for other systems
       document.dispatchEvent(new CustomEvent('barba:afterEnter', {
         detail: { namespace: nextNamespace }
@@ -134,19 +146,36 @@ function createTransition() {
     // STEP 4E: Before leave - cleanup current page systems
     beforeLeave(data) {
       const { current } = data;
-      
+
       // Cleanup ScrollTrigger instances to prevent conflicts
       if (window.ScrollTrigger) {
         window.ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       }
-      
+
       // Cleanup Locomotive Scroll instance
       const scrollContainer = current.container.querySelector('[data-controller="scroll-animations"]');
       if (scrollContainer && scrollContainer.locomotive) {
         scrollContainer.locomotive.destroy();
         scrollContainer.locomotive = null;
       }
-      
+
+      // Cleanup any GSAP timelines that might be running
+      if (window.gsap) {
+        window.gsap.killTweensOf('*');
+      }
+
+      // Reset animation states for fresh start
+      const vibeCheckElements = current.container.querySelectorAll('.title-word--vibe, .title-word--check, .title-divider');
+      vibeCheckElements.forEach(el => {
+        el.classList.remove('revealed');
+      });
+
+      // Reset any intersection observers
+      if (current.container.vibeCheckObserver) {
+        current.container.vibeCheckObserver.disconnect();
+        current.container.vibeCheckObserver = null;
+      }
+
       // Dispatch cleanup event
       document.dispatchEvent(new CustomEvent('barba:beforeLeave', {
         detail: { namespace: current.container.dataset.barbaNamespace }
@@ -243,6 +272,7 @@ function setupPrefetching() {
   let prefetchTimeout;
   
   document.addEventListener('mouseenter', (event) => {
+    if (!event.target || typeof event.target.closest !== 'function') return;
     const link = event.target.closest('a[href]');
     if (link && link.hostname === window.location.hostname) {
       prefetchTimeout = setTimeout(() => {
@@ -252,6 +282,7 @@ function setupPrefetching() {
   }, true);
   
   document.addEventListener('mouseleave', (event) => {
+    if (!event.target || typeof event.target.closest !== 'function') return;
     const link = event.target.closest('a[href]');
     if (link) {
       clearTimeout(prefetchTimeout);

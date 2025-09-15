@@ -796,6 +796,34 @@
                 font-size: 1.8rem;
             }
         }
+
+        /* Additional mobile responsive enhancements */
+        @media (max-width: 480px) {
+            .work-display-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                padding: 1rem !important;
+            }
+
+            .work-display-container {
+                max-width: 100% !important;
+                text-align: center;
+            }
+
+            .work-display-image {
+                max-width: 100% !important;
+                height: auto !important;
+            }
+
+            .work-display-title {
+                font-size: 1.5rem !important;
+            }
+
+            .work-display-description {
+                font-size: 0.9rem !important;
+                padding: 0 1rem !important;
+            }
+        }
     </style>
 </head>
 <body data-barba="wrapper">
@@ -812,7 +840,7 @@
         </header>
 
         <!-- Main Content -->
-        <main class="main-content" style="margin-top: 80px; padding: 2rem;">
+        <main class="main-content" data-controller="scroll-animations" style="margin-top: 80px; padding: 2rem;">
             
             <!-- All Work Gallery - Behind the Lens Format -->
             <section class="all-work-section">

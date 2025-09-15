@@ -157,6 +157,65 @@
             background: rgba(0,0,0,1);
             border-color: rgba(255,255,255,0.5);
         }
+
+        /* Mobile responsive design */
+        @media (max-width: 768px) {
+            .vibe-photos {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem !important;
+                padding: 1rem !important;
+            }
+
+            .vibe-photo {
+                height: 200px !important;
+            }
+
+            .vibe-photo-caption {
+                font-size: 0.8rem !important;
+                padding: 0.5rem !important;
+            }
+
+            .hero-btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+                margin: 0.5rem;
+                display: inline-block;
+            }
+
+            .paintbrush-container {
+                transform: scale(0.7) !important;
+                margin: 2rem 0;
+            }
+
+            .brush-animation text {
+                font-size: 45px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .vibe-photos {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+
+            .vibe-photo {
+                height: 250px !important;
+            }
+
+            .paintbrush-container {
+                transform: scale(0.5) !important;
+            }
+
+            .brush-animation text {
+                font-size: 35px !important;
+            }
+
+            .hero-btn {
+                display: block;
+                margin: 1rem auto;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body data-barba="wrapper">
@@ -315,9 +374,10 @@
                 
             </section>
             
-            <!-- Back to Home Button -->
+            <!-- Back Buttons -->
             <section style="text-align: center; margin: 4rem 0;">
-                <a href="/" class="hero-btn hero-btn--secondary">← Back to Home</a>
+                <a href="/work.html" class="hero-btn hero-btn--secondary" style="margin-right: 1rem;">← Back to Work</a>
+                <a href="/" class="hero-btn hero-btn--secondary">Home</a>
             </section>
             
         </main>

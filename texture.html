@@ -63,6 +63,44 @@
                 opacity: 0.9;
             }
         }
+
+        /* Mobile responsive design */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem !important;
+                padding: 1rem !important;
+            }
+
+            .gallery-item img {
+                height: 200px !important;
+                object-fit: cover !important;
+            }
+
+            .hero-btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+                margin: 0.5rem;
+                display: inline-block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+
+            .gallery-item img {
+                height: 250px !important;
+            }
+
+            .hero-btn {
+                display: block;
+                margin: 1rem auto;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body data-barba="wrapper">

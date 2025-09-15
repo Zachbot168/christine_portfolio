@@ -8,6 +8,7 @@ import { initCornerReveal } from './cornerReveal.js';
 import { initVibeCornerReveal } from './vibeCornerReveal.js';
 import { initVibePageManager, getVibePageManager } from './vibePageManager.js';
 import { initBrowserBackFix } from './browserBackFix.js';
+import { initJournalismPaintbrush } from './journalismPaintbrush.js';
 
 // STEP 1: Initialize all controllers based on data-controller attributes
 function initControllers() {
@@ -15,7 +16,8 @@ function initControllers() {
   
   controllers.forEach(element => {
     const controllerName = element.dataset.controller;
-    
+    console.log(`🎮 Found controller: ${controllerName}`, element);
+
     switch (controllerName) {
       case 'intro-book':
         initIntroBook();
@@ -35,6 +37,9 @@ function initControllers() {
         break;
       case 'vibe-corner-reveal':
         initVibeCornerReveal();
+        break;
+      case 'journalism-paintbrush':
+        initJournalismPaintbrush();
         break;
       default:
         console.warn(`Unknown controller: ${controllerName}`);

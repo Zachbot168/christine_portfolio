@@ -333,6 +333,66 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
+
+        /* Mobile responsive design */
+        @media (max-width: 768px) {
+            .intro-book {
+                transform: scale(0.8);
+                margin: 2rem 0;
+            }
+
+            .vibe-check-title {
+                transform: scale(0.8);
+                margin: 3rem 0;
+            }
+
+            .paintbrush-container {
+                transform: scale(0.7) !important;
+                margin: 2rem 0;
+            }
+
+            .corner-photos {
+                display: none; /* Hide on mobile to avoid clutter */
+            }
+
+            .hero-btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+                margin: 0.5rem;
+                display: block;
+                text-align: center;
+            }
+
+            /* Make paintbrush SVG responsive */
+            .brush-animation {
+                width: 100%;
+                height: auto;
+                max-width: 350px;
+            }
+
+            /* Adjust font sizes for mobile */
+            .brush-animation text {
+                font-size: 45px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .intro-book {
+                transform: scale(0.6);
+            }
+
+            .vibe-check-title {
+                transform: scale(0.6);
+            }
+
+            .paintbrush-container {
+                transform: scale(0.5) !important;
+            }
+
+            .brush-animation text {
+                font-size: 35px !important;
+            }
+        }
     </style>
     
     <script>

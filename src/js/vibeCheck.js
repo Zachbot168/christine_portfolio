@@ -42,23 +42,21 @@ export function initVibeCheck() {
   }
   console.log('🎭 Setting up VIBE CHECK animation observer');
   
-  // Track if animation has been triggered
-  let hasAnimated = false;
-  
-  // Set up observer to trigger animation once
+  // Reset animation state on each init (no longer track hasAnimated)
+  // This allows animations to replay when navigating back to the page
+
+  // Set up observer to trigger animation
   const textObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         console.log('🔍 VIBE CHECK intersection:', {
           isIntersecting: entry.isIntersecting,
-          hasAnimated: hasAnimated,
           intersectionRatio: entry.intersectionRatio,
           target: entry.target.className
         });
-        
-        if (entry.isIntersecting && !hasAnimated) {
+
+        if (entry.isIntersecting) {
           console.log('🎭 TRIGGERING VIBE CHECK ANIMATION!');
           console.log('🎭 VIBE slides DOWN from above, CHECK slides UP from below');
-          hasAnimated = true;
           
           // Animate in sequence
           if (titleVibe) {
@@ -77,9 +75,8 @@ export function initVibeCheck() {
               titleCheck.classList.add('revealed');
             }
           }, 600);
-          
-          // Disconnect observer after animation
-          textObserver.disconnect();
+
+          // Keep observer active to allow re-triggering when scrolling away and back
         }
       });
     }, {
