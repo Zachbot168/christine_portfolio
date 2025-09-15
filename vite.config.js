@@ -18,7 +18,16 @@ export default defineConfig({
         main: 'index.html',
         about: 'about.html',
         work: 'work.html',
-        contact: 'contact.html'
+        contact: 'contact.html',
+        vibes: 'vibes.html',
+        journalism: 'journalism.html',
+        marketing: 'marketing.html',
+        texture: 'texture.html',
+        serenity: 'serenity.html',
+        spirit: 'spirit.html',
+        adventure: 'adventure.html',
+        commencement: 'commencement.html',
+        film: 'film.html'
       },
       output: {
         manualChunks: {
