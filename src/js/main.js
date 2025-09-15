@@ -33,6 +33,7 @@ function initControllers() {
         initVibeCheck();
         break;
       case 'corner-reveal':
+        console.log('🎮 Initializing corner-reveal controller');
         initCornerReveal();
         break;
       case 'vibe-corner-reveal':

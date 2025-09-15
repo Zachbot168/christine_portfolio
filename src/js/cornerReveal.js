@@ -1,10 +1,22 @@
 // cornerReveal.js - Corner photo reveal animations on scroll
 
 export function initCornerReveal() {
+  console.log('🖼️ Initializing corner reveal...');
   const cornerPhotos = document.querySelectorAll('.corner-photo');
   const heroSection = document.querySelector('.hero');
-  
-  if (!cornerPhotos.length || !heroSection) return;
+
+  console.log('🖼️ Found corner photos:', cornerPhotos.length);
+  console.log('🖼️ Found hero section:', !!heroSection);
+
+  if (!cornerPhotos.length) {
+    console.warn('🖼️ No corner photos found!');
+    return;
+  }
+
+  if (!heroSection) {
+    console.warn('🖼️ No hero section found!');
+    return;
+  }
 
   // Intersection Observer for hero section
   const observer = new IntersectionObserver((entries) => {
