@@ -34,7 +34,7 @@
                 <!-- Hero Bar inside hero container -->
                 <header class="hero-bar" data-controller="hero-bar">
                     <div class="logo">
-                        <h1>Christine Shin</h1>
+                        <h1>CS</h1>
                     </div>
                     <nav class="menu-trigger" data-controller="menu-trigger">
                         <button>Menu</button>
@@ -43,14 +43,9 @@
                 
                 <div class="hero-backdrop"></div>
                 <div class="hero-content">
-                    <h2 data-lcp>Creative Director & Visual Storyteller</h2>
-                    <p>Photography • Film • Marketing • Journalism</p>
+                    <h1 class="hero-name" data-lcp>Christine Shin</h1>
+                    <h2 class="hero-tagline">Creative Director & Visual Storyteller</h2>
                     
-                    <!-- Action Buttons -->
-                    <div class="hero-buttons">
-                        <a href="/work.html" class="hero-btn hero-btn--primary">View Projects</a>
-                        <a href="content 2/Christine Shin Resume 2025.docx.pdf" download="Christine_Shin_Resume_2025.pdf" class="hero-btn hero-btn--secondary">Download Resume</a>
-                    </div>
                     
                     <!-- Hero Scroll Indicator -->
                     <div class="hero-scroll-indicator">
@@ -170,7 +165,7 @@
             
             <!-- Experience More Section -->
             <section class="experience-more-section" style="padding: 4rem 2rem; text-align: center; background: white; transition: background-color 1.5s cubic-bezier(0.4, 0, 0.2, 1);">
-                <h3 class="experience-title" style="font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.5rem; color: #333; filter: blur(6px); opacity: 0; font-weight: 700; transform: translateY(30px); transition: all 0.8s ease;">Discover More Vibes</h3>
+                <h3 class="experience-title" style="font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.5rem; color: #333; filter: blur(6px); opacity: 0; font-weight: 700; transform: translateY(30px); transition: all 0.8s ease;">Explore All Photos</h3>
                 <p class="experience-description" style="font-size: 1.1rem; color: #666; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6; opacity: 0; transform: translateY(20px); transition: all 0.6s ease 0.3s;">
                     Explore the complete collection of visual stories, each capturing a unique mood and moment in time.
                 </p>
@@ -227,7 +222,7 @@
                                   mask="url(#brushMask)"
                                   filter="url(#brushTexture)"
                                   style="opacity: 0; transition: opacity 0.3s ease;">
-                                Graduation Photography
+                                Commencement
                             </text>
                         </svg>
                     </div>
@@ -286,7 +281,152 @@
                 <div class="graduation-cta" style="position: absolute; top: calc(100vh + 100vh - 2rem); left: 50%; transform: translateX(-50%); text-align: center; opacity: 0; transition: opacity 0.6s ease; z-index: 100;">
                     <a href="/contact.html" class="hero-btn hero-btn--primary" style="display: inline-block; padding: 0.875rem 2rem; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 2px; letter-spacing: 0.5px; text-transform: uppercase; transition: all 0.3s ease; cursor: pointer; background-color: #000; color: #fff; border: 2px solid #000;" onmouseover="this.style.backgroundColor='#fff'; this.style.color='#000'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.backgroundColor='#000'; this.style.color='#fff'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">Book Appointment</a>
                 </div>
-                
+
+            </section>
+
+            <!-- About Me Section -->
+            <section id="about" class="about-section" style="min-height: 100vh; position: relative; background: white; padding: 4rem 2rem;">
+                <div class="about-title" style="position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100;">
+                    <h2 style="font-size: clamp(4rem, 12vw, 8rem); font-weight: 900; margin: 0; line-height: 1; color: #333;">BEHIND THE LENS</h2>
+                    <div class="about-gallery" style="position: absolute; top: 100vh; left: 0; right: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 2rem;">
+                        <div class="about-image-gallery" style="position: relative; max-width: 1000px; width: 100%;">
+                            <div class="about-image-container" style="position: relative; width: 100%; height: 650px; overflow: hidden; border-radius: 8px; box-shadow: 0 25px 80px rgba(0,0,0,0.4);">
+                                <img id="current-about-image" src="content 2/marketing/lewkin/modeling/P1030505.JPG" alt="Christine Shin" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Marketing Section -->
+            <section id="marketing" class="marketing-section" style="min-height: 100vh; background: #f5f5f5; padding: 4rem 2rem;">
+                <div class="marketing-header" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; color: #333; margin-bottom: 2rem;">MARKETING</h2>
+                </div>
+
+                <!-- Marketing Categories -->
+                <div class="marketing-categories" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+
+                    <!-- Lewkin Category -->
+                    <div class="marketing-category" onclick="showLewkinCampaigns()" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1); cursor: pointer; transition: all 0.3s ease;">
+                        <h3 style="font-size: 2rem; font-weight: 700; color: #333; margin-bottom: 1rem;">Lewkin</h3>
+                        <p style="color: #666; margin-bottom: 1rem;">Fashion campaigns and styling</p>
+                        <div class="category-preview" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+                            <img src="content 2/marketing/lewkin/modeling/DSC01604.JPG" style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px;">
+                            <img src="content 2/marketing/lewkin/modeling/P1030505.JPG" style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px;">
+                        </div>
+                    </div>
+
+                    <!-- NuAZN Category -->
+                    <div class="marketing-category" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+                        <h3 style="font-size: 2rem; font-weight: 700; color: #333; margin-bottom: 1rem;">NuAZN</h3>
+                        <p style="color: #666; margin-bottom: 1rem;">Community engagement</p>
+                        <div class="category-preview" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+                            <img src="content 2/marketing/nuazn/nuAZN countdown stories.png" style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px;">
+                        </div>
+                    </div>
+
+                    <!-- Yasotorn Category -->
+                    <div class="marketing-category" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+                        <h3 style="font-size: 2rem; font-weight: 700; color: #333; margin-bottom: 1rem;">Yasotorn</h3>
+                        <p style="color: #666; margin-bottom: 1rem;">Restaurant marketing</p>
+                        <div class="category-preview" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+                            <img src="content 2/marketing/yasotorn/Yasotorn Curry Infographic.png" style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px;">
+                        </div>
+                    </div>
+
+                    <!-- Musicade Category -->
+                    <div class="marketing-category" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+                        <h3 style="font-size: 2rem; font-weight: 700; color: #333; margin-bottom: 1rem;">Musicade</h3>
+                        <p style="color: #666; margin-bottom: 1rem;">Music marketing</p>
+                        <div class="category-preview" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+                            <img src="content 2/marketing/mark/case comp/IMG_3347.jpg" style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lewkin Campaigns Modal -->
+                <div id="lewkin-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 1000; padding: 2rem;">
+                    <div style="background: white; border-radius: 12px; max-width: 1200px; margin: 2rem auto; padding: 2rem; max-height: 90vh; overflow-y: auto;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                            <h3 style="font-size: 2.5rem; font-weight: 700; color: #333;">Campaigns Started</h3>
+                            <button onclick="closeLewkinModal()" style="background: none; border: none; font-size: 2rem; cursor: pointer;">&times;</button>
+                        </div>
+
+                        <!-- Men Campaign -->
+                        <div style="margin-bottom: 3rem;">
+                            <h4 style="font-size: 1.8rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Men Campaign</h4>
+                            <div class="tiktok-carousel" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                                <iframe src="https://www.tiktok.com/embed/7527797853482257694" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7525906494152379654" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7532892379389512991" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7525694877447851278" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7528510064286502200" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7532754910165634322" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7525575273731886350" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+
+                        <!-- Styled by Her Campaign -->
+                        <div>
+                            <h4 style="font-size: 1.8rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Styled by Her Campaign</h4>
+                            <div class="tiktok-carousel" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                                <iframe src="https://www.tiktok.com/embed/7533362264158604575" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7533383043118042381" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7534578940241841416" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7534748939094936887" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7533307279177878840" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7537734792830307615" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7535996430557760798" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7543436540274412813" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Film & Video Section -->
+            <section id="film" class="film-section" style="min-height: 100vh; background: white; padding: 4rem 2rem;">
+                <div class="film-header" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; color: #333; margin-bottom: 2rem;">FILM & VIDEO</h2>
+                </div>
+                <div class="film-videos" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/9XzXWcR4sj4" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/1_5BMryYqWQ" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/Foe8yRV7ROY" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
+                </div>
+            </section>
+
+            <!-- Journalism Section -->
+            <section id="journalism" class="journalism-section" style="min-height: 100vh; background: #f5f5f5; padding: 4rem 2rem;">
+                <div class="journalism-header" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; color: #333; margin-bottom: 2rem;">JOURNALISM</h2>
+                </div>
+                <div class="journalism-articles" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+                    <div class="article-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+                        <h3 style="font-size: 1.5rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Featured Articles</h3>
+                        <p style="color: #666; line-height: 1.6;">Compelling stories that capture the essence of human experience through investigative journalism and creative storytelling.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="contact-section" style="min-height: 100vh; background: white; padding: 4rem 2rem;">
+                <div class="contact-header" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; color: #333; margin-bottom: 2rem;">CONTACT ME</h2>
+                </div>
+                <div class="contact-content" style="max-width: 600px; margin: 0 auto; text-align: center;">
+                    <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem; line-height: 1.6;">Ready to collaborate? Let's create something amazing together.</p>
+                    <div class="contact-info" style="margin-bottom: 3rem;">
+                        <p style="font-size: 1.1rem; color: #333; margin-bottom: 1rem;">
+                            <strong>Email:</strong> <a href="mailto:christineshin2028@u.northwestern.edu" style="color: #000; text-decoration: none;">christineshin2028@u.northwestern.edu</a>
+                        </p>
+                        <p style="font-size: 1.1rem; color: #333;">
+                            <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/christineshin1" style="color: #000; text-decoration: none;">linkedin.com/in/christineshin1</a>
+                        </p>
+                    </div>
+                    <a href="content 2/Christine Shin Resume 2025.docx.pdf" download="Christine_Shin_Resume_2025.pdf" class="hero-btn hero-btn--primary" style="display: inline-block; padding: 1rem 2rem; font-size: 1rem; font-weight: 500; text-decoration: none; border-radius: 2px; letter-spacing: 0.5px; text-transform: uppercase; background-color: #000; color: #fff; border: 2px solid #000; transition: all 0.3s ease;">Download Resume</a>
+                </div>
             </section>
         </main>
 
@@ -295,18 +435,66 @@
             <button class="menu-close">&times;</button>
             <nav class="menu-nav">
                 <ul>
-                    <li><a href="/" data-thumb="content 2/photography/serenity/IMG_0594.JPG.jpg">Home</a></li>
-                    <li><a href="/about.html" data-thumb="content 2/photography/spirit/IMG_1833_Original.jpg">About</a></li>
-                    <li><a href="/work.html" data-thumb="content 2/photography/texture/IMG_3692.JPG.jpg">Work</a></li>
-                    <li><a href="/contact.html" data-thumb="content 2/photography/community/IMG_4623.jpeg">Contact</a></li>
+                    <li><a href="#about" data-thumb="content 2/photography/spirit/IMG_1833_Original.jpg">About Me</a></li>
+                    <li><a href="#photography" data-thumb="content 2/photography/serenity/IMG_0594.JPG.jpg">Photography</a></li>
+                    <li><a href="#marketing" data-thumb="content 2/marketing/lewkin/modeling/DSC01604.JPG">Marketing</a></li>
+                    <li><a href="#film" data-thumb="content 2/photography/texture/IMG_3692.JPG.jpg">Film & Video</a></li>
+                    <li><a href="#journalism" data-thumb="content 2/photography/texture/IMG_3692.JPG.jpg">Journalism</a></li>
+                    <li><a href="#contact" data-thumb="content 2/photography/community/IMG_4623.jpeg">Contact Me</a></li>
                 </ul>
             </nav>
         </div>
     </div>
 
     <script type="module" src="/src/js/main.js"></script>
+    <script>
+        // Lewkin modal functions
+        function showLewkinCampaigns() {
+            document.getElementById('lewkin-modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLewkinModal() {
+            document.getElementById('lewkin-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('lewkin-modal');
+            if (e.target === modal) {
+                closeLewkinModal();
+            }
+        });
+
+        // Make functions global
+        window.showLewkinCampaigns = showLewkinCampaigns;
+        window.closeLewkinModal = closeLewkinModal;
+    </script>
     
     <style>
+        /* Hero name styling */
+        .hero-name {
+            font-size: clamp(4rem, 12vw, 10rem) !important;
+            font-weight: 900 !important;
+            margin: 0 0 1rem 0 !important;
+            line-height: 0.9 !important;
+            color: #000 !important;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.2rem, 3vw, 2rem) !important;
+            font-weight: 400 !important;
+            margin: 0 !important;
+            color: #666 !important;
+        }
+
+        /* Marketing category hover effects */
+        .marketing-category:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.15) !important;
+        }
+
         /* Ensure hero-btn styles are loaded */
         .hero-btn {
             display: inline-block;
