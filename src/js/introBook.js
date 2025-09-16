@@ -16,6 +16,7 @@
 
 import * as THREE from 'three';
 import { gsap } from 'gsap';
+import { introBookImages } from './introBookImages.js';
 
 let scene, camera, renderer, pages = [];
 let animationContainer, isAnimating = false;
@@ -100,20 +101,18 @@ function initThreeScene() {
 
 // STEP 3: Load images and create 3D page meshes with proper texture loading
 function loadImagesAndCreatePages() {
-  const bookElements = document.querySelectorAll('.book-image');
-  console.log('📖 Found book elements:', bookElements.length);
+  console.log('📖 Using imported images:', introBookImages.length);
 
   const textureLoader = new THREE.TextureLoader();
-  
+
   // Create fan group to hold all pages at origin
   turbineGroup = new THREE.Group();
   turbineGroup.position.set(0, 0, 0);
   scene.add(turbineGroup);
-  
-  // Create promises for all texture loads
-  const texturePromises = Array.from(bookElements).map((element, index) => {
+
+  // Create promises for all texture loads using imported images
+  const texturePromises = introBookImages.map((imageSrc, index) => {
     return new Promise((resolve, reject) => {
-      const imageSrc = element.dataset.src;
       console.log(`📖 Loading image ${index + 1}:`, imageSrc);
 
       // First load the image to get natural dimensions
