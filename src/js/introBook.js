@@ -114,21 +114,30 @@ function loadImagesAndCreatePages() {
   const texturePromises = Array.from(bookElements).map((element, index) => {
     return new Promise((resolve, reject) => {
       const imageSrc = element.dataset.src;
-      
+      console.log(`📖 Loading image ${index + 1}:`, imageSrc);
+
       // First load the image to get natural dimensions
       const img = new Image();
       img.onload = () => {
+        console.log(`📖 ✅ Image ${index + 1} loaded:`, imageSrc);
         // Now load the texture with known dimensions
         textureLoader.load(
           imageSrc,
           (texture) => {
+            console.log(`📖 ✅ Texture ${index + 1} loaded:`, imageSrc);
             resolve({ texture, img, index });
           },
           undefined,
-          reject
+          (error) => {
+            console.error(`📖 ❌ Texture load failed for ${imageSrc}:`, error);
+            reject(error);
+          }
         );
       };
-      img.onerror = reject;
+      img.onerror = (error) => {
+        console.error(`📖 ❌ Image load failed for ${imageSrc}:`, error);
+        reject(error);
+      };
       img.src = imageSrc;
     });
   });
@@ -136,13 +145,14 @@ function loadImagesAndCreatePages() {
   // Wait for all textures to load before creating any planes
   Promise.all(texturePromises)
     .then((results) => {
+      console.log('📖 ✅ All textures loaded successfully, creating fan...');
       // All textures loaded, create fan with proper aspect ratios
       createFan(results);
       animationContainer.classList.add('loaded');
       startTurbineAnimation();
     })
     .catch((error) => {
-      console.error('Failed to load textures:', error);
+      console.error('📖 ❌ Failed to load textures, using fallback:', error);
       // Create fallback fan
       createFallbackFan(bookElements.length);
       animationContainer.classList.add('loaded');
@@ -157,6 +167,7 @@ function loadImagesAndCreatePages() {
 
 // STEP 4: Create turbine fan with blades radiating from center
 function createFan(textureResults) {
+  console.log('📖 Creating fan with', textureResults.length, 'textures');
   const HEIGHT = 1.2;
   
   // Define intense, saturated colors for each image
@@ -409,7 +420,11 @@ function createFallbackFan(count) {
 
 // STEP 5: FULL-SPREAD FAN animation controller
 function startTurbineAnimation() {
-  if (isAnimating) return;
+  console.log('📖 Starting turbine animation...');
+  if (isAnimating) {
+    console.log('📖 Animation already running, skipping...');
+    return;
+  }
   isAnimating = true;
   
   // Start the animation sequence
