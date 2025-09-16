@@ -18,8 +18,24 @@
         <!-- Main Content -->
         <main class="main-content" data-controller="scroll-animations">
             <section class="hero">
-                <!-- Intro Book Animation Container inside hero -->
-                <div id="intro-book" data-controller="intro-book">
+                <!-- Hero Bar inside hero container -->
+                <header class="hero-bar" data-controller="hero-bar">
+                    <div class="logo">
+                        <h1>CS</h1>
+                    </div>
+                    <nav class="menu-trigger" data-controller="menu-trigger">
+                        <button>Menu</button>
+                    </nav>
+                </header>
+
+                <div class="hero-backdrop"></div>
+                <div class="hero-content">
+                    <h1 class="hero-name" data-lcp>Christine Shin</h1>
+                    <h2 class="hero-tagline">Creative Director & Visual Storyteller</h2>
+                </div>
+
+                <!-- Intro Book Animation Container moved below hero name -->
+                <div id="intro-book" data-controller="intro-book" style="margin-top: 2rem;">
                     <div class="book-images">
                         <!-- Six landscape images with consistent aspect ratios for turbine animation -->
                         <div class="book-image"></div>
@@ -30,28 +46,11 @@
                         <div class="book-image"></div>
                     </div>
                 </div>
-                
-                <!-- Hero Bar inside hero container -->
-                <header class="hero-bar" data-controller="hero-bar">
-                    <div class="logo">
-                        <h1>CS</h1>
-                    </div>
-                    <nav class="menu-trigger" data-controller="menu-trigger">
-                        <button>Menu</button>
-                    </nav>
-                </header>
-                
-                <div class="hero-backdrop"></div>
-                <div class="hero-content">
-                    <h1 class="hero-name" data-lcp>Christine Shin</h1>
-                    <h2 class="hero-tagline">Creative Director & Visual Storyteller</h2>
-                    
-                    
-                    <!-- Hero Scroll Indicator -->
-                    <div class="hero-scroll-indicator">
-                        <div class="hero-scroll-arrow">↓</div>
-                        <p class="hero-scroll-text">Scroll Down</p>
-                    </div>
+
+                <!-- Hero Scroll Indicator -->
+                <div class="hero-scroll-indicator">
+                    <div class="hero-scroll-arrow">↓</div>
+                    <p class="hero-scroll-text">Scroll Down</p>
                 </div>
                 <!-- Corner reveal photos -->
                 <div class="corner-photos" data-controller="corner-reveal">
@@ -61,6 +60,50 @@
                     <div class="corner-photo corner-photo--bottom-right">
                         <img src="content 2/photography/community/P1061143.jpg" alt="Community">
                     </div>
+                </div>
+            </section>
+
+            <!-- About Me Section -->
+            <section class="about-me-section" style="padding: 4rem 2rem; background: white;">
+                <!-- Page Header -->
+                <div class="about-hero-animated" style="text-align: center; margin-bottom: 4rem; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #ffffff 100%); padding: 4rem 2rem; border-radius: 8px;">
+                    <h1 class="about-title" style="font-size: clamp(4rem, 12vw, 8rem); margin-bottom: 1rem; color: #333; filter: blur(6px); opacity: 0; transform: translateY(30px); font-weight: 900;">Christine Shin</h1>
+                    <p class="about-subtitle" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: rgba(51, 51, 51, 0.8); line-height: 1.6; opacity: 0; transform: translateY(20px);">
+                        Storyteller, strategist, and creative visionary bridging cultures through multimedia narratives and impactful campaigns.
+                    </p>
+                </div>
+
+                <!-- About Content -->
+                <div class="about-content" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; margin: 4rem 0; align-items: center; max-width: 1200px; margin-left: auto; margin-right: auto;">
+
+                    <!-- Photo on Left -->
+                    <div class="about-image main-photo" style="opacity: 0; transform: translateX(-50px);">
+                        <img src="content 2/marketing/lewkin/modeling/P1030493.JPG" alt="Christine Shin" class="hover-image" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); transition: transform 0.2s ease, box-shadow 0.2s ease; will-change: transform;">
+                    </div>
+
+                    <!-- Text on Right -->
+                    <div class="about-text" style="opacity: 0; transform: translateX(50px);">
+                        <h3 class="about-heading" style="font-size: 2rem; margin-bottom: 1.5rem; color: #333; filter: blur(4px); opacity: 0; font-weight: 400;">A Global Perspective, Local Impact</h3>
+
+                        <p class="about-paragraph" style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.1rem; color: #555; opacity: 0; transform: translateY(20px);">
+                            Christine Shin is a Northwestern University journalism student whose work spans continents and causes. From managing partnerships with 100+ global influencers at Seoul-based fashion brand Lewkin to directing documentaries that raised $13,000 for underprivileged communities in the Philippines, she brings both strategic thinking and humanitarian heart to every project.
+                        </p>
+
+                        <p class="about-paragraph" style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.1rem; color: #555; opacity: 0; transform: translateY(20px);">
+                            Her multimedia expertise shines through roles at Northwestern Admissions, where she creates authentic student stories, and at Philstar National Newspaper, where her content reached 15 million users. As Publisher of nuAZN Magazine and Head of Ad Sales at North by Northwestern, she's proven her ability to build brands, secure partnerships, and drive meaningful engagement.
+                        </p>
+
+                        <p class="about-paragraph" style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.1rem; color: #555; opacity: 0; transform: translateY(20px);">
+                            With an International Baccalaureate background from Manila and current studies in Journalism and International Studies with an Integrated Marketing Communications Certificate, Christine bridges cultures through compelling visual narratives—whether capturing the spirit of adventure, the texture of everyday moments, or the serenity found in quiet contemplation.
+                        </p>
+
+                        <div class="about-cta" style="margin-top: 2rem; opacity: 0; transform: translateY(20px);">
+                            <a href="#contact" class="hero-btn hero-btn--primary">
+                                Let's Connect
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
@@ -87,79 +130,50 @@
                     </div>
                 </div>
                 
-                <!-- Vibe Items List -->
-                <div class="vibe-items-list">
-                    <div class="vibe-item" data-vibe="serenity" data-controller="vibe-corner-reveal">
-                        <div class="paper-expand-container">
-                            <a href="/serenity.html" class="paper-expand">
-                                <img src="content 2/photography/serenity/IMG_1332.JPG.jpg" alt="Serenity">
-                                <div class="vibe-title-overlay">Serenity</div>
-                            </a>
-                        </div>
-                        <!-- Corner reveal photos for serenity -->
-                        <div class="vibe-corner-photos">
-                            <div class="vibe-corner-photo vibe-corner-photo--top-left">
-                                <img src="content 2/photography/serenity/IMG_0654.JPG.jpg" alt="Serenity">
-                            </div>
-                            <div class="vibe-corner-photo vibe-corner-photo--bottom-right">
-                                <img src="content 2/photography/serenity/IMG_3178.JPG.jpg" alt="Serenity">
-                            </div>
+                <!-- Photography Collages Grid -->
+                <div class="photography-collages" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto; padding: 2rem;">
+
+                    <!-- Serenity Collage -->
+                    <div class="collage-section" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 60px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 40px rgba(0,0,0,0.1)'">
+                        <h3 style="font-size: 1.8rem; font-weight: 600; color: #333; margin-bottom: 1.5rem; text-align: center;">Serenity</h3>
+                        <div class="collage-grid" style="display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; gap: 0.5rem; height: 300px; border-radius: 8px; overflow: hidden;">
+                            <img src="content 2/photography/serenity/IMG_1332.JPG.jpg" style="width: 100%; height: 100%; object-fit: cover; grid-row: span 2;">
+                            <img src="content 2/photography/serenity/IMG_0654.JPG.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="content 2/photography/serenity/IMG_3178.JPG.jpg" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                     </div>
-                    
-                    <div class="vibe-item" data-vibe="spirit" data-controller="vibe-corner-reveal">
-                        <div class="paper-expand-container">
-                            <a href="/spirit.html" class="paper-expand">
-                                <img src="content 2/photography/spirit/IMG_2815.JPG.jpg" alt="Spirit">
-                                <div class="vibe-title-overlay">Spirit</div>
-                            </a>
-                        </div>
-                        <!-- Corner reveal photos for spirit -->
-                        <div class="vibe-corner-photos">
-                            <div class="vibe-corner-photo vibe-corner-photo--top-left">
-                                <img src="content 2/photography/spirit/IMG_2258_Original.jpg" alt="Spirit">
-                            </div>
-                            <div class="vibe-corner-photo vibe-corner-photo--bottom-right">
-                                <img src="content 2/photography/spirit/IMG_3420.jpeg" alt="Spirit">
-                            </div>
+
+                    <!-- Spirit Collage -->
+                    <div class="collage-section" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 60px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 40px rgba(0,0,0,0.1)'">
+                        <h3 style="font-size: 1.8rem; font-weight: 600; color: #333; margin-bottom: 1.5rem; text-align: center;">Spirit</h3>
+                        <div class="collage-grid" style="display: grid; grid-template-columns: 1fr 2fr; grid-template-rows: 1fr 1fr; gap: 0.5rem; height: 300px; border-radius: 8px; overflow: hidden;">
+                            <img src="content 2/photography/spirit/IMG_2258_Original.jpg" style="width: 100%; height: 100%; object-fit: cover; grid-row: span 2;">
+                            <img src="content 2/photography/spirit/IMG_2815.JPG.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="content 2/photography/spirit/IMG_3420.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                     </div>
-                    
-                    <div class="vibe-item" data-vibe="texture" data-controller="vibe-corner-reveal">
-                        <div class="paper-expand-container">
-                            <a href="/texture.html" class="paper-expand">
-                                <img src="content 2/photography/texture/P1018716.JPG.jpg" alt="Texture">
-                                <div class="vibe-title-overlay">Texture</div>
-                            </a>
-                        </div>
-                        <!-- Corner reveal photos for texture -->
-                        <div class="vibe-corner-photos">
-                            <div class="vibe-corner-photo vibe-corner-photo--top-left">
-                                <img src="content 2/photography/texture/IMG_3742_Original.jpg" alt="Texture">
-                            </div>
-                            <div class="vibe-corner-photo vibe-corner-photo--bottom-right">
-                                <img src="content 2/photography/texture/IMG_4778.JPG.jpg" alt="Texture">
-                            </div>
+
+                    <!-- Texture Collage -->
+                    <div class="collage-section" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 60px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 40px rgba(0,0,0,0.1)'">
+                        <h3 style="font-size: 1.8rem; font-weight: 600; color: #333; margin-bottom: 1.5rem; text-align: center;">Texture</h3>
+                        <div class="collage-grid" style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 0.5rem; height: 300px; border-radius: 8px; overflow: hidden;">
+                            <img src="content 2/photography/texture/P1018716.JPG.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="content 2/photography/texture/IMG_3742_Original.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="content 2/photography/texture/IMG_4778.JPG.jpg" style="width: 100%; height: 100%; object-fit: cover; grid-column: span 2;">
                         </div>
                     </div>
-                    
-                    <div class="vibe-item" data-vibe="adventure" data-controller="vibe-corner-reveal">
-                        <div class="paper-expand-container">
-                            <a href="/adventure.html" class="paper-expand">
-                                <img src="content 2/photography/community/P1060996.jpg" alt="Adventure">
-                                <div class="vibe-title-overlay">Adventure</div>
-                            </a>
-                        </div>
-                        <!-- Corner reveal photos for adventure -->
-                        <div class="vibe-corner-photos">
-                            <div class="vibe-corner-photo vibe-corner-photo--top-left">
-                                <img src="content 2/photography/community/P1061003.jpg" alt="Adventure">
-                            </div>
-                            <div class="vibe-corner-photo vibe-corner-photo--bottom-right">
-                                <img src="content 2/photography/community/P1061076.jpg" alt="Adventure">
-                            </div>
+
+                    <!-- Adventure Collage -->
+                    <div class="collage-section" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 60px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 40px rgba(0,0,0,0.1)'">
+                        <h3 style="font-size: 1.8rem; font-weight: 600; color: #333; margin-bottom: 1.5rem; text-align: center;">Adventure</h3>
+                        <div class="collage-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 0.5rem; height: 300px; border-radius: 8px; overflow: hidden;">
+                            <img src="content 2/photography/community/P1060996.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="content 2/photography/community/P1061003.jpg" style="width: 100%; height: 100%; object-fit: cover; grid-row: span 2;">
+                            <img src="content 2/photography/community/P1061076.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="content 2/photography/community/P1061143.jpg" style="width: 100%; height: 100%; object-fit: cover; grid-column: span 2;">
                         </div>
                     </div>
+
                 </div>
             </section>
             
@@ -282,20 +296,6 @@
                     <a href="/contact.html" class="hero-btn hero-btn--primary" style="display: inline-block; padding: 0.875rem 2rem; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 2px; letter-spacing: 0.5px; text-transform: uppercase; transition: all 0.3s ease; cursor: pointer; background-color: #000; color: #fff; border: 2px solid #000;" onmouseover="this.style.backgroundColor='#fff'; this.style.color='#000'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.backgroundColor='#000'; this.style.color='#fff'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">Book Appointment</a>
                 </div>
 
-            </section>
-
-            <!-- About Me Section -->
-            <section id="about" class="about-section" style="min-height: 100vh; position: relative; background: white; padding: 4rem 2rem;">
-                <div class="about-title" style="position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100;">
-                    <h2 style="font-size: clamp(4rem, 12vw, 8rem); font-weight: 900; margin: 0; line-height: 1; color: #333;">BEHIND THE LENS</h2>
-                    <div class="about-gallery" style="position: absolute; top: 100vh; left: 0; right: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 2rem;">
-                        <div class="about-image-gallery" style="position: relative; max-width: 1000px; width: 100%;">
-                            <div class="about-image-container" style="position: relative; width: 100%; height: 650px; overflow: hidden; border-radius: 8px; box-shadow: 0 25px 80px rgba(0,0,0,0.4);">
-                                <img id="current-about-image" src="content 2/marketing/lewkin/modeling/P1030505.JPG" alt="Christine Shin" style="width: 100%; height: 100%; object-fit: cover;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </section>
 
             <!-- Marketing Section -->
@@ -596,6 +596,97 @@
                 font-size: 35px !important;
             }
         }
+
+        /* About section animations */
+        .about-title.revealed {
+            filter: blur(0) !important;
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: all 0.8s ease;
+        }
+
+        .about-subtitle.revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: all 0.6s ease 0.3s;
+        }
+
+        .main-photo.revealed {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+            transition: all 1.0s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
+        }
+
+        .about-text.revealed {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+            transition: all 1.0s cubic-bezier(0.23, 1, 0.32, 1) 0.4s;
+        }
+
+        .about-heading.revealed {
+            filter: blur(0) !important;
+            opacity: 1 !important;
+            transition: all 0.8s ease;
+        }
+
+        .about-paragraph.revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: all 0.6s ease;
+        }
+
+        .about-paragraph:nth-of-type(1).revealed {
+            transition-delay: 0.1s;
+        }
+
+        .about-paragraph:nth-of-type(2).revealed {
+            transition-delay: 0.2s;
+        }
+
+        .about-paragraph:nth-of-type(3).revealed {
+            transition-delay: 0.3s;
+        }
+
+        .about-cta.revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: all 0.6s ease 0.4s;
+        }
+
+        .hover-image {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        .hover-image:hover {
+            transform: scale(1.02) translateZ(0);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25) !important;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                text-align: center;
+            }
+            .about-text h3 {
+                font-size: 1.5rem !important;
+            }
+            .about-text p {
+                font-size: 1rem !important;
+            }
+
+            /* Photography collages responsive */
+            .photography-collages {
+                grid-template-columns: 1fr !important;
+                padding: 1rem !important;
+                gap: 2rem !important;
+            }
+
+            .collage-grid {
+                height: 250px !important;
+            }
+        }
     </style>
     
     <script>
@@ -672,6 +763,24 @@
             if (experienceTitle) observer.observe(experienceTitle);
             if (experienceDescription) observer.observe(experienceDescription);
             if (experienceButton) observer.observe(experienceButton);
+
+            // About section elements
+            const aboutElements = [
+                '.about-title',
+                '.about-subtitle',
+                '.main-photo',
+                '.about-text',
+                '.about-heading',
+                '.about-paragraph',
+                '.about-cta'
+            ];
+
+            aboutElements.forEach(selector => {
+                const elements = document.querySelectorAll(selector);
+                elements.forEach(element => {
+                    observer.observe(element);
+                });
+            });
             
             // Graduation Photography Section Logic
             const graduationSection = document.querySelector('.graduation-section');
