@@ -6,241 +6,379 @@
     <title>Christine Shin - Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:wght@400;700&family=Kalam:wght@300;400;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&family=Kalam:wght@300;400;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/styles/styles.scss">
+    <style>
+        /* Removed CSS brush animation - using JavaScript instead */
+    </style>
 </head>
 <body data-barba="wrapper">
     <div data-barba="container" data-barba-namespace="home">
-
+        
         <!-- Main Content -->
-        <main class="main-content">
-
-            <!-- Hero Section with Intro Book Animation -->
-            <section class="hero-section" style="height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; background: #f8f8f8;">
-
-                <!-- Navigation Bar -->
-                <header class="hero-bar" style="position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 100;">
+        <main class="main-content" data-controller="scroll-animations">
+            <section class="hero">
+                <!-- Intro Book Animation Container inside hero -->
+                <div id="intro-book" data-controller="intro-book">
+                    <div class="book-images">
+                        <!-- Six landscape images with consistent aspect ratios for turbine animation -->
+                        <div class="book-image"></div>
+                        <div class="book-image"></div>
+                        <div class="book-image"></div>
+                        <div class="book-image"></div>
+                        <div class="book-image"></div>
+                        <div class="book-image"></div>
+                    </div>
+                </div>
+                
+                <!-- Hero Bar inside hero container -->
+                <header class="hero-bar" data-controller="hero-bar">
                     <div class="logo">
-                        <h1 style="font-size: 1.5rem; font-weight: 700; margin: 0;">CS</h1>
+                        <h1>CS</h1>
                     </div>
                     <nav class="menu-trigger" data-controller="menu-trigger">
-                        <button style="background: none; border: none; font-size: 1rem; cursor: pointer;">Menu</button>
+                        <button>Menu</button>
                     </nav>
                 </header>
-
-                <!-- Intro Book Animation -->
-                <div id="intro-book" data-controller="intro-book" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
-                    <div class="book-images">
-                        <div class="book-image"></div>
-                        <div class="book-image"></div>
-                        <div class="book-image"></div>
-                        <div class="book-image"></div>
-                        <div class="book-image"></div>
-                        <div class="book-image"></div>
+                
+                <div class="hero-backdrop"></div>
+                <div class="hero-content">
+                    <h1 class="hero-name" data-lcp>Christine Shin</h1>
+                    <h2 class="hero-tagline">Creative Director & Visual Storyteller</h2>
+                    
+                    
+                    <!-- Hero Scroll Indicator -->
+                    <div class="hero-scroll-indicator">
+                        <div class="hero-scroll-arrow">↓</div>
+                        <p class="hero-scroll-text">Scroll Down</p>
                     </div>
                 </div>
-
-                <!-- Hero Content -->
-                <div class="hero-content" style="text-align: center; z-index: 10; position: relative;">
-                    <h1 class="hero-name" style="font-size: clamp(4rem, 12vw, 10rem); font-weight: 900; margin: 0 0 1rem 0; line-height: 0.9; color: #000;">Christine Shin</h1>
-                    <h2 class="hero-tagline" style="font-size: clamp(1.2rem, 3vw, 2rem); font-weight: 400; margin: 0; color: #666;">Creative Director & Visual Storyteller</h2>
-
-                    <!-- Scroll Indicator -->
-                    <div class="hero-scroll-indicator" style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center;">
-                        <div class="hero-scroll-arrow" style="font-size: 1.5rem; color: #333; animation: bounce 2s infinite;">↓</div>
-                        <p class="hero-scroll-text" style="color: #333; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 0.5rem 0 0 0;">Scroll Down</p>
+                <!-- Corner reveal photos -->
+                <div class="corner-photos" data-controller="corner-reveal">
+                    <div class="corner-photo corner-photo--top-left">
+                        <img src="content 2/photography/spirit/IMG_2557.jpeg" alt="Portrait">
                     </div>
-                </div>
-            </section>
-
-            <!-- About Me Section -->
-            <section id="about" class="about-section" style="min-height: 100vh; padding: 6rem 2rem; background: white; display: flex; align-items: center; justify-content: center;">
-                <div class="about-container" style="max-width: 1200px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
-                    <div class="about-text">
-                        <h2 style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; color: #333; margin-bottom: 2rem; line-height: 1;">BEHIND THE LENS</h2>
-                        <p style="font-size: 1.2rem; color: #666; line-height: 1.6; margin-bottom: 2rem;">
-                            I'm a creative director and visual storyteller passionate about capturing authentic moments and creating compelling narratives through photography, film, and strategic marketing.
-                        </p>
-                        <p style="font-size: 1.1rem; color: #666; line-height: 1.6;">
-                            From graduation ceremonies to fashion campaigns, I bring a unique perspective that blends journalistic integrity with artistic vision.
-                        </p>
-                    </div>
-                    <div class="about-image">
-                        <img src="content 2/marketing/lewkin/modeling/P1030505.JPG" alt="Christine Shin" style="width: 100%; height: 600px; object-fit: cover; border-radius: 12px; box-shadow: 0 25px 80px rgba(0,0,0,0.15);">
+                    <div class="corner-photo corner-photo--bottom-right">
+                        <img src="content 2/photography/community/P1061143.jpg" alt="Community">
                     </div>
                 </div>
             </section>
 
             <!-- My Photography Section -->
-            <section id="photography" class="photography-section" style="min-height: 100vh; padding: 6rem 2rem; background: #f8f8f8;">
-                <div class="photography-container" style="max-width: 1400px; margin: 0 auto;">
-                    <h2 style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; color: #333; text-align: center; margin-bottom: 4rem; line-height: 1;">MY PHOTOGRAPHY</h2>
-
-                    <!-- Photography Categories Grid -->
-                    <div class="photography-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
-
-                        <!-- Texture -->
-                        <div class="photo-category" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-                            <div class="category-images" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; padding: 1rem;">
-                                <img src="content 2/photography/texture/IMG_3742_Original.jpg" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
-                                <img src="content 2/photography/texture/IMG_3692.JPG.jpg" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
-                            </div>
-                            <div style="padding: 0 1rem 1rem 1rem;">
-                                <h3 style="font-size: 1.5rem; font-weight: 700; color: #333; margin-bottom: 0.5rem;">Texture</h3>
-                                <p style="color: #666; font-size: 0.9rem;">Exploring surfaces and details</p>
-                            </div>
+            <section class="vibe-check-section" data-controller="vibe-check">
+                <!-- Animated Title -->
+                <div class="vibe-check-title">
+                    <div class="title-line">
+                        <h2 class="title-word title-word--vibe">MY</h2>
+                    </div>
+                    <div class="title-divider"></div>
+                    <div class="title-line">
+                        <h2 class="title-word title-word--check">PHOTOGRAPHY</h2>
+                    </div>
+                    
+                    <!-- Scroll indicator -->
+                    <div class="scroll-indicator" data-controller="scroll-indicator">
+                        <div class="scroll-arrows">
+                            <div class="arrow">↓</div>
+                            <div class="arrow">↓</div>
+                            <div class="arrow">↓</div>
                         </div>
-
-                        <!-- Serenity -->
-                        <div class="photo-category" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-                            <div class="category-images" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; padding: 1rem;">
-                                <img src="content 2/photography/serenity/IMG_0594.JPG.jpg" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
-                                <img src="content 2/photography/serenity/IMG_1772.JPG.jpg" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
-                            </div>
-                            <div style="padding: 0 1rem 1rem 1rem;">
-                                <h3 style="font-size: 1.5rem; font-weight: 700; color: #333; margin-bottom: 0.5rem;">Serenity</h3>
-                                <p style="color: #666; font-size: 0.9rem;">Peaceful moments and landscapes</p>
-                            </div>
+                        <p class="scroll-text">Scroll Down</p>
+                    </div>
+                </div>
+                
+                <!-- Vibe Items List -->
+                <div class="vibe-items-list">
+                    <div class="vibe-item" data-vibe="serenity" data-controller="vibe-corner-reveal">
+                        <div class="paper-expand-container">
+                            <a href="/serenity.html" class="paper-expand">
+                                <img src="content 2/photography/serenity/IMG_1332.JPG.jpg" alt="Serenity">
+                                <div class="vibe-title-overlay">Serenity</div>
+                            </a>
                         </div>
-
-                        <!-- Spirit -->
-                        <div class="photo-category" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-                            <div class="category-images" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; padding: 1rem;">
-                                <img src="content 2/photography/spirit/IMG_1833_Original.jpg" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
-                                <img src="content 2/photography/spirit/IMG_2557.jpeg" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
+                        <!-- Corner reveal photos for serenity -->
+                        <div class="vibe-corner-photos">
+                            <div class="vibe-corner-photo vibe-corner-photo--top-left">
+                                <img src="content 2/photography/serenity/IMG_0654.JPG.jpg" alt="Serenity">
                             </div>
-                            <div style="padding: 0 1rem 1rem 1rem;">
-                                <h3 style="font-size: 1.5rem; font-weight: 700; color: #333; margin-bottom: 0.5rem;">Spirit</h3>
-                                <p style="color: #666; font-size: 0.9rem;">Emotional and artistic portraits</p>
-                            </div>
-                        </div>
-
-                        <!-- Adventure -->
-                        <div class="photo-category" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-                            <div class="category-images" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; padding: 1rem;">
-                                <img src="content 2/photography/community/P1061003.jpg" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
-                                <img src="content 2/photography/community/P1061076.jpg" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
-                            </div>
-                            <div style="padding: 0 1rem 1rem 1rem;">
-                                <h3 style="font-size: 1.5rem; font-weight: 700; color: #333; margin-bottom: 0.5rem;">Adventure</h3>
-                                <p style="color: #666; font-size: 0.9rem;">Outdoor and travel photography</p>
-                            </div>
-                        </div>
-
-                        <!-- Commencement -->
-                        <div class="photo-category" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-                            <div class="category-images" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; padding: 1rem;">
-                                <img src="content 2/photography/commencement/P1096231.jpg" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
-                                <img src="content 2/photography/commencement/P1151320.JPG" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
-                            </div>
-                            <div style="padding: 0 1rem 1rem 1rem;">
-                                <h3 style="font-size: 1.5rem; font-weight: 700; color: #333; margin-bottom: 0.5rem;">Commencement</h3>
-                                <p style="color: #666; font-size: 0.9rem;">Graduation and milestone moments</p>
-                            </div>
-                        </div>
-
-                        <!-- Community -->
-                        <div class="photo-category" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-                            <div class="category-images" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; padding: 1rem;">
-                                <img src="content 2/photography/community/IMG_4623.jpeg" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
-                                <img src="content 2/photography/community/P1061143.jpg" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
-                            </div>
-                            <div style="padding: 0 1rem 1rem 1rem;">
-                                <h3 style="font-size: 1.5rem; font-weight: 700; color: #333; margin-bottom: 0.5rem;">Community</h3>
-                                <p style="color: #666; font-size: 0.9rem;">Events and gatherings</p>
+                            <div class="vibe-corner-photo vibe-corner-photo--bottom-right">
+                                <img src="content 2/photography/serenity/IMG_3178.JPG.jpg" alt="Serenity">
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="vibe-item" data-vibe="spirit" data-controller="vibe-corner-reveal">
+                        <div class="paper-expand-container">
+                            <a href="/spirit.html" class="paper-expand">
+                                <img src="content 2/photography/spirit/IMG_2815.JPG.jpg" alt="Spirit">
+                                <div class="vibe-title-overlay">Spirit</div>
+                            </a>
+                        </div>
+                        <!-- Corner reveal photos for spirit -->
+                        <div class="vibe-corner-photos">
+                            <div class="vibe-corner-photo vibe-corner-photo--top-left">
+                                <img src="content 2/photography/spirit/IMG_2258_Original.jpg" alt="Spirit">
+                            </div>
+                            <div class="vibe-corner-photo vibe-corner-photo--bottom-right">
+                                <img src="content 2/photography/spirit/IMG_3420.jpeg" alt="Spirit">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="vibe-item" data-vibe="texture" data-controller="vibe-corner-reveal">
+                        <div class="paper-expand-container">
+                            <a href="/texture.html" class="paper-expand">
+                                <img src="content 2/photography/texture/P1018716.JPG.jpg" alt="Texture">
+                                <div class="vibe-title-overlay">Texture</div>
+                            </a>
+                        </div>
+                        <!-- Corner reveal photos for texture -->
+                        <div class="vibe-corner-photos">
+                            <div class="vibe-corner-photo vibe-corner-photo--top-left">
+                                <img src="content 2/photography/texture/IMG_3742_Original.jpg" alt="Texture">
+                            </div>
+                            <div class="vibe-corner-photo vibe-corner-photo--bottom-right">
+                                <img src="content 2/photography/texture/IMG_4778.JPG.jpg" alt="Texture">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="vibe-item" data-vibe="adventure" data-controller="vibe-corner-reveal">
+                        <div class="paper-expand-container">
+                            <a href="/adventure.html" class="paper-expand">
+                                <img src="content 2/photography/community/P1060996.jpg" alt="Adventure">
+                                <div class="vibe-title-overlay">Adventure</div>
+                            </a>
+                        </div>
+                        <!-- Corner reveal photos for adventure -->
+                        <div class="vibe-corner-photos">
+                            <div class="vibe-corner-photo vibe-corner-photo--top-left">
+                                <img src="content 2/photography/community/P1061003.jpg" alt="Adventure">
+                            </div>
+                            <div class="vibe-corner-photo vibe-corner-photo--bottom-right">
+                                <img src="content 2/photography/community/P1061076.jpg" alt="Adventure">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Experience More Section -->
+            <section class="experience-more-section" style="padding: 4rem 2rem; text-align: center; background: white; transition: background-color 1.5s cubic-bezier(0.4, 0, 0.2, 1);">
+                <h3 class="experience-title" style="font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.5rem; color: #333; filter: blur(6px); opacity: 0; font-weight: 700; transform: translateY(30px); transition: all 0.8s ease;">Explore All Photos</h3>
+                <p class="experience-description" style="font-size: 1.1rem; color: #666; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6; opacity: 0; transform: translateY(20px); transition: all 0.6s ease 0.3s;">
+                    Explore the complete collection of visual stories, each capturing a unique mood and moment in time.
+                </p>
+                <div class="experience-button-container" style="opacity: 0; transform: translateY(20px); transition: all 0.6s ease 0.5s;">
+                    <a href="/vibes.html" class="hero-btn hero-btn--secondary" style="display: inline-block; padding: 0.875rem 2rem; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 2px; letter-spacing: 0.5px; text-transform: uppercase; transition: all 0.3s ease; cursor: pointer; background-color: #fff !important; color: #000 !important; border: 2px solid #000 !important;" onmouseover="this.style.backgroundColor='#000'; this.style.color='#fff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.backgroundColor='#fff'; this.style.color='#000'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        Experience More
+                    </a>
+                </div>
+            </section>
+            
+            <!-- Graduation Photography Section -->
+            <section class="graduation-section" style="min-height: 300vh; position: relative; background: white; transition: background-color 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); width: 100vw; margin-left: calc(-50vw + 50%);">
+                
+                <!-- Paintbrush Title - Sticky -->
+                <div class="graduation-title" style="position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100;">
+                    
+                    <!-- Paintbrush Text Animation -->
+                    <div class="paintbrush-container" style="position: relative; width: 100vw; margin-left: calc(-50vw + 50%); padding: 2rem 1rem; transform: scale(2); transform-origin: center center;">
+                        <svg viewBox="0 0 800 200" class="brush-animation" style="width: 100%; height: 200px; filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.2));">
+                            <defs>
+                                <!-- Brush stroke mask path -->
+                                <mask id="brushMask">
+                                    <path id="brushPath" stroke="white" stroke-width="80" fill="none" 
+                                          stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-dasharray="2800" stroke-dashoffset="2800"
+                                          d="M25,100 Q100,70 200,90 Q300,110 400,90 Q500,70 600,90 Q700,110 775,100"
+                                          style="transition: stroke-dashoffset 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);">
+                                    </path>
+                                </mask>
+                                
+                                <!-- Text gradient for depth -->
+                                <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#2c3e50"/>
+                                    <stop offset="50%" stop-color="#34495e"/>
+                                    <stop offset="100%" stop-color="#2c3e50"/>
+                                </linearGradient>
+                                
+                                <!-- Brush texture filter -->
+                                <filter id="brushTexture" x="0%" y="0%" width="100%" height="100%">
+                                    <feTurbulence baseFrequency="0.4" numOctaves="3" seed="2" stitchTiles="stitch"/>
+                                    <feColorMatrix type="saturate" values="0"/>
+                                    <feComponentTransfer>
+                                        <feFuncA type="discrete" tableValues="0 .3 .5 .7 1"/>
+                                    </feComponentTransfer>
+                                    <feComposite operator="multiply" in2="SourceGraphic"/>
+                                </filter>
+                            </defs>
+                            
+                            <!-- The text that gets revealed by the brush stroke -->
+                            <text x="400" y="100" dominant-baseline="middle" text-anchor="middle"
+                                  font-size="60" font-family="'Kalam', 'Caveat', cursive" 
+                                  font-weight="700"
+                                  fill="url(#textGradient)" 
+                                  mask="url(#brushMask)"
+                                  filter="url(#brushTexture)"
+                                  style="opacity: 0; transition: opacity 0.3s ease;">
+                                Commencement
+                            </text>
+                        </svg>
+                    </div>
+                    
+                    <!-- Subtitle with Tape Animation -->
+                    <div class="graduation-subtitle-container" style="position: relative; max-width: 600px; margin: 2rem auto 0; text-align: center;">
+                        <!-- Tape piece -->
+                        <div class="subtitle-tape" style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%) rotate(-8deg); width: 80px; height: 25px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; box-shadow: 0 2px 8px rgba(0,0,0,0.15); opacity: 0; transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); z-index: 10;"></div>
+                        <!-- Subtitle text -->
+                        <p class="graduation-subtitle" style="color: #444; font-size: 1.3rem; line-height: 1.6; opacity: 0; transform: translateY(20px) scale(0.95); transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); font-family: 'Kalam', 'Caveat', cursive; font-weight: 400; background: rgba(255,255,255,0.85); padding: 1rem 1.5rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            Capturing your milestone moments with artistic flair and timeless elegance.
+                        </p>
+                    </div>
+                    
+                    <!-- Scroll Indicator -->
+                    <div class="graduation-scroll" style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; z-index: 100; opacity: 0; transition: opacity 0.6s ease 1s;">
+                        <div class="scroll-arrows" style="display: flex; flex-direction: row; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <div class="arrow" style="font-size: 1.5rem; color: #333; animation: bounce 2s infinite;">↓</div>
+                            <div class="arrow" style="font-size: 1.5rem; color: #333; animation: bounce 2s infinite; animation-delay: 0.3s;">↓</div>
+                            <div class="arrow" style="font-size: 1.5rem; color: #333; animation: bounce 2s infinite; animation-delay: 0.6s;">↓</div>
+                        </div>
+                        <p class="scroll-text" style="color: #333; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 0;">View Gallery</p>
+                    </div>
+                    
+                </div>
+                
+                <!-- Single Gallery Below Title -->
+                <div class="graduation-gallery-content" style="position: absolute; top: 100vh; left: 0; right: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 2rem;">
+                    
+                    <!-- Single Image Gallery with Navigation -->
+                    <div class="graduation-single-gallery" style="position: relative; max-width: 1000px; width: 100%;">
+                    
+                        <!-- Current Image -->
+                        <div class="graduation-image-container" style="position: relative; width: 100%; height: 650px; overflow: visible; border-radius: 8px; box-shadow: 0 25px 80px rgba(0,0,0,0.4); border: none;">
+                            <div class="graduation-photo-frame" style="position: relative; width: 100%; height: 100%; background: white; padding: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); border-radius: 2px;">
+                                <img id="current-graduation-image" src="content 2/photography/commencement/P1096231.jpg" alt="Graduation" style="width: 100%; height: 100%; object-fit: cover; border: none;">
+                                <div id="graduation-tapes-container"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Arrows -->
+                        <button class="graduation-nav graduation-nav--prev" style="position: absolute; left: -100px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; width: 70px; height: 70px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.5);" onmouseover="this.style.background='rgba(0,0,0,1)'; this.style.transform='translateY(-50%) scale(1.1)'; this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.background='rgba(0,0,0,0.8)'; this.style.transform='translateY(-50%) scale(1)'; this.style.borderColor='rgba(255,255,255,0.3)'">‹</button>
+                        
+                        <button class="graduation-nav graduation-nav--next" style="position: absolute; right: -100px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; width: 70px; height: 70px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.5);" onmouseover="this.style.background='rgba(0,0,0,1)'; this.style.transform='translateY(-50%) scale(1.1)'; this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.background='rgba(0,0,0,0.8)'; this.style.transform='translateY(-50%) scale(1)'; this.style.borderColor='rgba(255,255,255,0.3)'">›</button>
+                        
+                        <!-- Image Counter -->
+                        <div class="graduation-counter" style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; color: white; font-weight: 500;">
+                            <span id="graduation-current-index">1</span> / <span id="graduation-total-images">5</span>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+                <!-- Book Appointment Button - Bottom -->
+                <div class="graduation-cta" style="position: absolute; top: calc(100vh + 100vh - 2rem); left: 50%; transform: translateX(-50%); text-align: center; opacity: 0; transition: opacity 0.6s ease; z-index: 100;">
+                    <a href="/contact.html" class="hero-btn hero-btn--primary" style="display: inline-block; padding: 0.875rem 2rem; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 2px; letter-spacing: 0.5px; text-transform: uppercase; transition: all 0.3s ease; cursor: pointer; background-color: #000; color: #fff; border: 2px solid #000;" onmouseover="this.style.backgroundColor='#fff'; this.style.color='#000'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.backgroundColor='#000'; this.style.color='#fff'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">Book Appointment</a>
+                </div>
 
-                    <!-- Explore All Photos Button -->
-                    <div style="text-align: center; margin-top: 4rem;">
-                        <a href="/vibes.html" style="display: inline-block; padding: 1rem 2rem; font-size: 1rem; font-weight: 500; text-decoration: none; border-radius: 2px; letter-spacing: 0.5px; text-transform: uppercase; background-color: #000; color: #fff; border: 2px solid #000; transition: all 0.3s ease;">Explore All Photos</a>
+            </section>
+
+            <!-- About Me Section -->
+            <section id="about" class="about-section" style="min-height: 100vh; position: relative; background: white; padding: 4rem 2rem;">
+                <div class="about-title" style="position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100;">
+                    <h2 style="font-size: clamp(4rem, 12vw, 8rem); font-weight: 900; margin: 0; line-height: 1; color: #333;">BEHIND THE LENS</h2>
+                    <div class="about-gallery" style="position: absolute; top: 100vh; left: 0; right: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 2rem;">
+                        <div class="about-image-gallery" style="position: relative; max-width: 1000px; width: 100%;">
+                            <div class="about-image-container" style="position: relative; width: 100%; height: 650px; overflow: hidden; border-radius: 8px; box-shadow: 0 25px 80px rgba(0,0,0,0.4);">
+                                <img id="current-about-image" src="content 2/marketing/lewkin/modeling/P1030505.JPG" alt="Christine Shin" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- Marketing Section -->
-            <section id="marketing" class="marketing-section" style="min-height: 100vh; padding: 6rem 2rem; background: white;">
-                <div class="marketing-container" style="max-width: 1200px; margin: 0 auto;">
-                    <h2 style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; color: #333; text-align: center; margin-bottom: 4rem; line-height: 1;">MARKETING</h2>
+            <section id="marketing" class="marketing-section" style="min-height: 100vh; background: #f5f5f5; padding: 4rem 2rem;">
+                <div class="marketing-header" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; color: #333; margin-bottom: 2rem;">MARKETING</h2>
+                </div>
 
-                    <!-- Marketing Categories -->
-                    <div class="marketing-categories" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                <!-- Marketing Categories -->
+                <div class="marketing-categories" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
 
-                        <!-- Lewkin Category -->
-                        <div class="marketing-category" onclick="showLewkinCampaigns()" style="background: #f8f8f8; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1); cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent;">
-                            <h3 style="font-size: 2rem; font-weight: 700; color: #333; margin-bottom: 1rem;">Lewkin</h3>
-                            <p style="color: #666; margin-bottom: 1.5rem; font-size: 1rem;">Fashion campaigns and styling</p>
-                            <div class="category-preview" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
-                                <img src="content 2/marketing/lewkin/modeling/DSC01604.JPG" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;">
-                                <img src="content 2/marketing/lewkin/modeling/P1030505.JPG" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;">
-                            </div>
-                            <p style="color: #999; font-size: 0.9rem; margin-top: 1rem; text-align: center;">Click to view campaigns</p>
+                    <!-- Lewkin Category -->
+                    <div class="marketing-category" onclick="showLewkinCampaigns()" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1); cursor: pointer; transition: all 0.3s ease;">
+                        <h3 style="font-size: 2rem; font-weight: 700; color: #333; margin-bottom: 1rem;">Lewkin</h3>
+                        <p style="color: #666; margin-bottom: 1rem;">Fashion campaigns and styling</p>
+                        <div class="category-preview" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+                            <img src="content 2/marketing/lewkin/modeling/DSC01604.JPG" style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px;">
+                            <img src="content 2/marketing/lewkin/modeling/P1030505.JPG" style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px;">
                         </div>
+                    </div>
 
-                        <!-- NuAZN Category -->
-                        <div class="marketing-category" style="background: #f8f8f8; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1); transition: all 0.3s ease;">
-                            <h3 style="font-size: 2rem; font-weight: 700; color: #333; margin-bottom: 1rem;">NuAZN</h3>
-                            <p style="color: #666; margin-bottom: 1.5rem; font-size: 1rem;">Community engagement</p>
-                            <div class="category-preview">
-                                <img src="content 2/marketing/nuazn/nuAZN countdown stories.png" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;">
-                            </div>
+                    <!-- NuAZN Category -->
+                    <div class="marketing-category" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+                        <h3 style="font-size: 2rem; font-weight: 700; color: #333; margin-bottom: 1rem;">NuAZN</h3>
+                        <p style="color: #666; margin-bottom: 1rem;">Community engagement</p>
+                        <div class="category-preview" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+                            <img src="content 2/marketing/nuazn/nuAZN countdown stories.png" style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px;">
                         </div>
+                    </div>
 
-                        <!-- Yasotorn Category -->
-                        <div class="marketing-category" style="background: #f8f8f8; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1); transition: all 0.3s ease;">
-                            <h3 style="font-size: 2rem; font-weight: 700; color: #333; margin-bottom: 1rem;">Yasotorn</h3>
-                            <p style="color: #666; margin-bottom: 1.5rem; font-size: 1rem;">Restaurant marketing</p>
-                            <div class="category-preview">
-                                <img src="content 2/marketing/yasotorn/Yasotorn Curry Infographic.png" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;">
-                            </div>
+                    <!-- Yasotorn Category -->
+                    <div class="marketing-category" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+                        <h3 style="font-size: 2rem; font-weight: 700; color: #333; margin-bottom: 1rem;">Yasotorn</h3>
+                        <p style="color: #666; margin-bottom: 1rem;">Restaurant marketing</p>
+                        <div class="category-preview" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+                            <img src="content 2/marketing/yasotorn/Yasotorn Curry Infographic.png" style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px;">
                         </div>
+                    </div>
 
-                        <!-- Musicade Category -->
-                        <div class="marketing-category" style="background: #f8f8f8; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1); transition: all 0.3s ease;">
-                            <h3 style="font-size: 2rem; font-weight: 700; color: #333; margin-bottom: 1rem;">Musicade</h3>
-                            <p style="color: #666; margin-bottom: 1.5rem; font-size: 1rem;">Music marketing</p>
-                            <div class="category-preview">
-                                <img src="content 2/marketing/mark/case comp/IMG_3347.jpg" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;">
-                            </div>
+                    <!-- Musicade Category -->
+                    <div class="marketing-category" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+                        <h3 style="font-size: 2rem; font-weight: 700; color: #333; margin-bottom: 1rem;">Musicade</h3>
+                        <p style="color: #666; margin-bottom: 1rem;">Music marketing</p>
+                        <div class="category-preview" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+                            <img src="content 2/marketing/mark/case comp/IMG_3347.jpg" style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px;">
                         </div>
                     </div>
                 </div>
 
                 <!-- Lewkin Campaigns Modal -->
-                <div id="lewkin-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 1000; padding: 2rem; overflow-y: auto;">
-                    <div style="background: white; border-radius: 12px; max-width: 1400px; margin: 2rem auto; padding: 2rem; max-height: 90vh; overflow-y: auto;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
-                            <h3 style="font-size: 2.5rem; font-weight: 700; color: #333; margin: 0;">Campaigns Started</h3>
-                            <button onclick="closeLewkinModal()" style="background: none; border: none; font-size: 2rem; cursor: pointer; color: #666; padding: 0.5rem;">&times;</button>
+                <div id="lewkin-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 1000; padding: 2rem;">
+                    <div style="background: white; border-radius: 12px; max-width: 1200px; margin: 2rem auto; padding: 2rem; max-height: 90vh; overflow-y: auto;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                            <h3 style="font-size: 2.5rem; font-weight: 700; color: #333;">Campaigns Started</h3>
+                            <button onclick="closeLewkinModal()" style="background: none; border: none; font-size: 2rem; cursor: pointer;">&times;</button>
                         </div>
 
                         <!-- Men Campaign -->
-                        <div style="margin-bottom: 4rem;">
-                            <h4 style="font-size: 2rem; font-weight: 600; color: #333; margin-bottom: 2rem;">Men Campaign</h4>
-                            <div class="tiktok-carousel" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
-                                <iframe src="https://www.tiktok.com/embed/7527797853482257694" width="100%" height="500" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
-                                <iframe src="https://www.tiktok.com/embed/7525906494152379654" width="100%" height="500" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
-                                <iframe src="https://www.tiktok.com/embed/7532892379389512991" width="100%" height="500" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
-                                <iframe src="https://www.tiktok.com/embed/7525694877447851278" width="100%" height="500" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
-                                <iframe src="https://www.tiktok.com/embed/7528510064286502200" width="100%" height="500" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
-                                <iframe src="https://www.tiktok.com/embed/7532754910165634322" width="100%" height="500" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
-                                <iframe src="https://www.tiktok.com/embed/7525575273731886350" width="100%" height="500" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
+                        <div style="margin-bottom: 3rem;">
+                            <h4 style="font-size: 1.8rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Men Campaign</h4>
+                            <div class="tiktok-carousel" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                                <iframe src="https://www.tiktok.com/embed/7527797853482257694" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7525906494152379654" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7532892379389512991" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7525694877447851278" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7528510064286502200" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7532754910165634322" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7525575273731886350" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
                             </div>
                         </div>
 
                         <!-- Styled by Her Campaign -->
                         <div>
-                            <h4 style="font-size: 2rem; font-weight: 600; color: #333; margin-bottom: 2rem;">Styled by Her Campaign</h4>
-                            <div class="tiktok-carousel" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
-                                <iframe src="https://www.tiktok.com/embed/7533362264158604575" width="100%" height="500" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
-                                <iframe src="https://www.tiktok.com/embed/7533383043118042381" width="100%" height="500" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
-                                <iframe src="https://www.tiktok.com/embed/7534578940241841416" width="100%" height="500" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
-                                <iframe src="https://www.tiktok.com/embed/7534748939094936887" width="100%" height="500" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
-                                <iframe src="https://www.tiktok.com/embed/7533307279177878840" width="100%" height="500" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
-                                <iframe src="https://www.tiktok.com/embed/7537734792830307615" width="100%" height="500" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
-                                <iframe src="https://www.tiktok.com/embed/7535996430557760798" width="100%" height="500" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
-                                <iframe src="https://www.tiktok.com/embed/7543436540274412813" width="100%" height="500" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
+                            <h4 style="font-size: 1.8rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Styled by Her Campaign</h4>
+                            <div class="tiktok-carousel" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                                <iframe src="https://www.tiktok.com/embed/7533362264158604575" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7533383043118042381" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7534578940241841416" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7534748939094936887" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7533307279177878840" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7537734792830307615" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7535996430557760798" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="https://www.tiktok.com/embed/7543436540274412813" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
@@ -248,76 +386,61 @@
             </section>
 
             <!-- Film & Video Section -->
-            <section id="film" class="film-section" style="min-height: 100vh; padding: 6rem 2rem; background: #f8f8f8;">
-                <div class="film-container" style="max-width: 1200px; margin: 0 auto;">
-                    <h2 style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; color: #333; text-align: center; margin-bottom: 4rem; line-height: 1;">FILM & VIDEO</h2>
-                    <div class="film-videos" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem;">
-                        <div style="position: relative; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/9XzXWcR4sj4" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0;"></iframe>
-                        </div>
-                        <div style="position: relative; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/1_5BMryYqWQ" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0;"></iframe>
-                        </div>
-                        <div style="position: relative; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Foe8yRV7ROY" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0;"></iframe>
-                        </div>
-                    </div>
+            <section id="film" class="film-section" style="min-height: 100vh; background: white; padding: 4rem 2rem;">
+                <div class="film-header" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; color: #333; margin-bottom: 2rem;">FILM & VIDEO</h2>
+                </div>
+                <div class="film-videos" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/9XzXWcR4sj4" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/1_5BMryYqWQ" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/Foe8yRV7ROY" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
                 </div>
             </section>
 
             <!-- Journalism Section -->
-            <section id="journalism" class="journalism-section" style="min-height: 100vh; padding: 6rem 2rem; background: white;">
-                <div class="journalism-container" style="max-width: 1000px; margin: 0 auto; text-align: center;">
-                    <h2 style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; color: #333; margin-bottom: 4rem; line-height: 1;">JOURNALISM</h2>
-                    <div class="journalism-content" style="background: #f8f8f8; border-radius: 12px; padding: 4rem 2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-                        <h3 style="font-size: 2rem; font-weight: 600; color: #333; margin-bottom: 2rem;">Featured Articles</h3>
-                        <p style="font-size: 1.2rem; color: #666; line-height: 1.6; margin-bottom: 2rem;">
-                            Compelling stories that capture the essence of human experience through investigative journalism and creative storytelling.
-                        </p>
-                        <p style="font-size: 1.1rem; color: #666; line-height: 1.6;">
-                            From in-depth interviews to breaking news coverage, I bring a unique perspective that combines journalistic integrity with visual storytelling expertise.
-                        </p>
+            <section id="journalism" class="journalism-section" style="min-height: 100vh; background: #f5f5f5; padding: 4rem 2rem;">
+                <div class="journalism-header" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; color: #333; margin-bottom: 2rem;">JOURNALISM</h2>
+                </div>
+                <div class="journalism-articles" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+                    <div class="article-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+                        <h3 style="font-size: 1.5rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Featured Articles</h3>
+                        <p style="color: #666; line-height: 1.6;">Compelling stories that capture the essence of human experience through investigative journalism and creative storytelling.</p>
                     </div>
                 </div>
             </section>
 
             <!-- Contact Section -->
-            <section id="contact" class="contact-section" style="min-height: 100vh; padding: 6rem 2rem; background: #f8f8f8; display: flex; align-items: center; justify-content: center;">
-                <div class="contact-container" style="max-width: 800px; margin: 0 auto; text-align: center;">
-                    <h2 style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; color: #333; margin-bottom: 3rem; line-height: 1;">CONTACT ME</h2>
-                    <p style="font-size: 1.3rem; color: #666; margin-bottom: 3rem; line-height: 1.6;">Ready to collaborate? Let's create something amazing together.</p>
-
-                    <div class="contact-info" style="background: white; border-radius: 12px; padding: 3rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1); margin-bottom: 3rem;">
-                        <div style="margin-bottom: 2rem;">
-                            <p style="font-size: 1.2rem; color: #333; margin-bottom: 1rem;">
-                                <strong>Email:</strong>
-                                <a href="mailto:christineshin2028@u.northwestern.edu" style="color: #000; text-decoration: none; border-bottom: 2px solid #000; padding-bottom: 2px;">christineshin2028@u.northwestern.edu</a>
-                            </p>
-                        </div>
-                        <div style="margin-bottom: 2rem;">
-                            <p style="font-size: 1.2rem; color: #333;">
-                                <strong>LinkedIn:</strong>
-                                <a href="https://linkedin.com/in/christineshin1" target="_blank" style="color: #000; text-decoration: none; border-bottom: 2px solid #000; padding-bottom: 2px;">linkedin.com/in/christineshin1</a>
-                            </p>
-                        </div>
+            <section id="contact" class="contact-section" style="min-height: 100vh; background: white; padding: 4rem 2rem;">
+                <div class="contact-header" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; color: #333; margin-bottom: 2rem;">CONTACT ME</h2>
+                </div>
+                <div class="contact-content" style="max-width: 600px; margin: 0 auto; text-align: center;">
+                    <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem; line-height: 1.6;">Ready to collaborate? Let's create something amazing together.</p>
+                    <div class="contact-info" style="margin-bottom: 3rem;">
+                        <p style="font-size: 1.1rem; color: #333; margin-bottom: 1rem;">
+                            <strong>Email:</strong> <a href="mailto:christineshin2028@u.northwestern.edu" style="color: #000; text-decoration: none;">christineshin2028@u.northwestern.edu</a>
+                        </p>
+                        <p style="font-size: 1.1rem; color: #333;">
+                            <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/christineshin1" style="color: #000; text-decoration: none;">linkedin.com/in/christineshin1</a>
+                        </p>
                     </div>
-
-                    <a href="content 2/Christine Shin Resume 2025.docx.pdf" download="Christine_Shin_Resume_2025.pdf" style="display: inline-block; padding: 1.25rem 2.5rem; font-size: 1.1rem; font-weight: 600; text-decoration: none; border-radius: 6px; letter-spacing: 0.5px; text-transform: uppercase; background-color: #000; color: #fff; border: 3px solid #000; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">Download Resume</a>
+                    <a href="content 2/Christine Shin Resume 2025.docx.pdf" download="Christine_Shin_Resume_2025.pdf" class="hero-btn hero-btn--primary" style="display: inline-block; padding: 1rem 2rem; font-size: 1rem; font-weight: 500; text-decoration: none; border-radius: 2px; letter-spacing: 0.5px; text-transform: uppercase; background-color: #000; color: #fff; border: 2px solid #000; transition: all 0.3s ease;">Download Resume</a>
                 </div>
             </section>
         </main>
 
         <!-- Menu Overlay -->
-        <div class="menu-overlay" data-controller="menu-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.95); z-index: 1000; display: none; backdrop-filter: blur(10px);">
-            <button class="menu-close" style="position: absolute; top: 2rem; right: 2rem; background: none; border: none; color: white; font-size: 2rem; cursor: pointer;">&times;</button>
-            <nav class="menu-nav" style="display: flex; align-items: center; justify-content: center; height: 100vh;">
-                <ul style="list-style: none; padding: 0; margin: 0; text-align: center;">
-                    <li style="margin: 1.5rem 0;"><a href="#about" style="color: white; text-decoration: none; font-size: 2rem; font-weight: 600; transition: color 0.3s ease;">About Me</a></li>
-                    <li style="margin: 1.5rem 0;"><a href="#photography" style="color: white; text-decoration: none; font-size: 2rem; font-weight: 600; transition: color 0.3s ease;">Photography</a></li>
-                    <li style="margin: 1.5rem 0;"><a href="#marketing" style="color: white; text-decoration: none; font-size: 2rem; font-weight: 600; transition: color 0.3s ease;">Marketing</a></li>
-                    <li style="margin: 1.5rem 0;"><a href="#film" style="color: white; text-decoration: none; font-size: 2rem; font-weight: 600; transition: color 0.3s ease;">Film & Video</a></li>
-                    <li style="margin: 1.5rem 0;"><a href="#journalism" style="color: white; text-decoration: none; font-size: 2rem; font-weight: 600; transition: color 0.3s ease;">Journalism</a></li>
-                    <li style="margin: 1.5rem 0;"><a href="#contact" style="color: white; text-decoration: none; font-size: 2rem; font-weight: 600; transition: color 0.3s ease;">Contact Me</a></li>
+        <div class="menu-overlay" data-controller="menu-overlay">
+            <button class="menu-close">&times;</button>
+            <nav class="menu-nav">
+                <ul>
+                    <li><a href="#about" data-thumb="content 2/photography/spirit/IMG_1833_Original.jpg">About Me</a></li>
+                    <li><a href="#photography" data-thumb="content 2/photography/serenity/IMG_0594.JPG.jpg">Photography</a></li>
+                    <li><a href="#marketing" data-thumb="content 2/marketing/lewkin/modeling/DSC01604.JPG">Marketing</a></li>
+                    <li><a href="#film" data-thumb="content 2/photography/texture/IMG_3692.JPG.jpg">Film & Video</a></li>
+                    <li><a href="#journalism" data-thumb="content 2/photography/texture/IMG_3692.JPG.jpg">Journalism</a></li>
+                    <li><a href="#contact" data-thumb="content 2/photography/community/IMG_4623.jpeg">Contact Me</a></li>
                 </ul>
             </nav>
         </div>
@@ -336,124 +459,819 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Menu functions
-        function showMenu() {
-            document.querySelector('.menu-overlay').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function hideMenu() {
-            document.querySelector('.menu-overlay').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            // Menu toggle
-            const menuTrigger = document.querySelector('.menu-trigger button');
-            const menuClose = document.querySelector('.menu-close');
-            const menuLinks = document.querySelectorAll('.menu-nav a');
-
-            if (menuTrigger) {
-                menuTrigger.addEventListener('click', showMenu);
+        // Close modal when clicking outside
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('lewkin-modal');
+            if (e.target === modal) {
+                closeLewkinModal();
             }
-
-            if (menuClose) {
-                menuClose.addEventListener('click', hideMenu);
-            }
-
-            // Close menu when clicking nav links
-            menuLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    hideMenu();
-                    // Smooth scroll to section
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
-
-            // Close modal when clicking outside
-            document.addEventListener('click', function(e) {
-                const modal = document.getElementById('lewkin-modal');
-                if (e.target === modal) {
-                    closeLewkinModal();
-                }
-            });
-
-            // Marketing category hover effects
-            const marketingCategories = document.querySelectorAll('.marketing-category');
-            marketingCategories.forEach(category => {
-                category.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-8px)';
-                    this.style.boxShadow = '0 15px 45px rgba(0,0,0,0.15)';
-                    this.style.borderColor = '#333';
-                });
-
-                category.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                    this.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)';
-                    this.style.borderColor = 'transparent';
-                });
-            });
         });
 
         // Make functions global
         window.showLewkinCampaigns = showLewkinCampaigns;
         window.closeLewkinModal = closeLewkinModal;
     </script>
-
+    
     <style>
-        /* Bounce animation */
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
+        /* Hero name styling */
+        .hero-name {
+            font-size: clamp(4rem, 12vw, 10rem) !important;
+            font-weight: 900 !important;
+            margin: 0 0 1rem 0 !important;
+            line-height: 0.9 !important;
+            color: #000 !important;
         }
 
-        /* Responsive adjustments */
+        .hero-tagline {
+            font-size: clamp(1.2rem, 3vw, 2rem) !important;
+            font-weight: 400 !important;
+            margin: 0 !important;
+            color: #666 !important;
+        }
+
+        /* Marketing category hover effects */
+        .marketing-category:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.15) !important;
+        }
+
+        /* Ensure hero-btn styles are loaded */
+        .hero-btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 2px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .hero-btn--secondary {
+            background-color: #fff;
+            color: #000;
+            border: 2px solid #000;
+        }
+        
+        .hero-btn--secondary:hover {
+            background-color: #000;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Mobile responsive design */
         @media (max-width: 768px) {
-            .about-container {
-                grid-template-columns: 1fr !important;
-                gap: 2rem !important;
+            .intro-book {
+                transform: scale(0.8);
+                margin: 2rem 0;
             }
 
-            .photography-grid {
-                grid-template-columns: 1fr !important;
+            .vibe-check-title {
+                transform: scale(0.8);
+                margin: 3rem 0;
             }
 
-            .marketing-categories {
-                grid-template-columns: 1fr !important;
+            .paintbrush-container {
+                transform: scale(0.7) !important;
+                margin: 2rem 0;
             }
 
-            .film-videos {
-                grid-template-columns: 1fr !important;
+            .corner-photos {
+                display: block; /* Show on mobile but smaller */
+            }
+
+            .corner-photos .corner-photo {
+                width: 200px !important;
+                height: 133px !important;
+            }
+
+            .corner-photos .corner-photo--top-left {
+                top: 120px !important;
+                left: 0 !important;
+            }
+
+            .corner-photos .corner-photo--bottom-right {
+                bottom: 20px !important;
+                right: 0 !important;
+            }
+
+            .hero-btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+                margin: 0.5rem;
+                display: block;
+                text-align: center;
+            }
+
+            /* Make paintbrush SVG responsive */
+            .brush-animation {
+                width: 100%;
+                height: auto;
+                max-width: 350px;
+            }
+
+            /* Adjust font sizes for mobile */
+            .brush-animation text {
+                font-size: 45px !important;
             }
         }
 
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
+        @media (max-width: 480px) {
+            .intro-book {
+                transform: scale(0.6);
+            }
 
-        /* Basic reset */
-        * {
-            box-sizing: border-box;
-        }
+            .vibe-check-title {
+                transform: scale(0.6);
+            }
 
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
+            .paintbrush-container {
+                transform: scale(0.5) !important;
+            }
+
+            .brush-animation text {
+                font-size: 35px !important;
+            }
         }
     </style>
+    
+    <script>
+        // Smooth navigation transitions for home page
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Experience More section scroll animations and color cycling
+            const observerOptions = {
+                root: null,
+                rootMargin: '-10% 0px -10% 0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains('experience-title')) {
+                            entry.target.style.filter = 'blur(0)';
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        } else if (entry.target.classList.contains('experience-description')) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        } else if (entry.target.classList.contains('experience-button-container')) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            // Color cycling for Experience More section
+            const experienceMoreSection = document.querySelector('.experience-more-section');
+            const vibeColors = ['#B8E6E1', '#F5C2D6', '#F5D49C', '#F2B8B8']; // mint, pink, peach, coral
+            let colorIndex = 0;
+            let colorCycleInterval = null;
+            
+            const colorObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && entry.target === experienceMoreSection) {
+                        console.log('🌈 Starting color cycle for Experience More section');
+                        
+                        // Start cycling through colors
+                        colorCycleInterval = setInterval(() => {
+                            experienceMoreSection.style.background = vibeColors[colorIndex];
+                            console.log(`🎨 Experience More color: ${vibeColors[colorIndex]}`);
+                            colorIndex = (colorIndex + 1) % vibeColors.length;
+                        }, 2000); // Change color every 2 seconds
+                        
+                    } else if (!entry.isIntersecting && entry.target === experienceMoreSection) {
+                        // Stop cycling and reset when leaving view
+                        if (colorCycleInterval) {
+                            clearInterval(colorCycleInterval);
+                            colorCycleInterval = null;
+                            experienceMoreSection.style.background = 'white';
+                            console.log('🤍 Stopped Experience More color cycle');
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.3,
+                rootMargin: '0px'
+            });
+            
+            if (experienceMoreSection) {
+                colorObserver.observe(experienceMoreSection);
+            }
+            
+            // Observe experience more elements
+            const experienceTitle = document.querySelector('.experience-title');
+            const experienceDescription = document.querySelector('.experience-description');
+            const experienceButton = document.querySelector('.experience-button-container');
+            
+            if (experienceTitle) observer.observe(experienceTitle);
+            if (experienceDescription) observer.observe(experienceDescription);
+            if (experienceButton) observer.observe(experienceButton);
+            
+            // Graduation Photography Section Logic
+            const graduationSection = document.querySelector('.graduation-section');
+            
+            // SVG Paintbrush animation - paper tearing effect triggered when scrolled into view
+            function initPaintbrushAnimation() {
+                const brushPath = document.getElementById('brushPath');
+                const textElement = document.querySelector('text[mask="url(#brushMask)"]');
+                
+                if (!brushPath || !textElement) return;
+                
+                // Make text visible first
+                textElement.style.opacity = '1';
+                
+                // Start with width 0 for paper tearing effect
+                brushPath.setAttribute('stroke-width', '0');
+                
+                // Start the brush stroke animation (left to right reveal)
+                setTimeout(() => {
+                    brushPath.style.strokeDashoffset = '0';
+                }, 500);
+                
+                // Paper tearing width animation - one-time trigger like vibe check
+                const widths = [60, 80, 100]; // For random variation after tearing
+                let widthInterval;
+                
+                // Choppy stop-motion style paper tearing animation
+                setTimeout(() => {
+                    const targetWidth = 80;
+                    const frames = [0, 20, 45, 70, 80]; // Fewer frames for choppier effect
+                    let currentFrame = 0;
+                    
+                    const animateChoppy = () => {
+                        if (currentFrame < frames.length) {
+                            brushPath.setAttribute('stroke-width', frames[currentFrame]);
+                            currentFrame++;
+                            
+                            // Use setTimeout instead of requestAnimationFrame for choppier effect
+                            setTimeout(animateChoppy, 100); // 100ms between frames for even faster stop motion
+                        } else {
+                            // Start random width switching after tearing animation completes
+                            setTimeout(() => {
+                                widthInterval = setInterval(() => {
+                                    const randomWidth = widths[Math.floor(Math.random() * widths.length)];
+                                    brushPath.setAttribute('stroke-width', randomWidth);
+                                }, 1000); // Every 1 second
+                            }, 300);
+                        }
+                    };
+                    
+                    animateChoppy();
+                }, 1000); // Start tearing 1 second after stroke animation begins
+            }
+            
+            // Track if paintbrush animation has been triggered
+            let paintbrushAnimated = false;
+            const graduationTitle = document.querySelector('.graduation-title');
+            
+            // Temporarily trigger animation immediately for testing
+            // Set up scroll-based graduation animations (like vibe check)
+            function initGraduationScrollAnimations() {
+                if (!graduationTitle) return;
+                
+                console.log('🖌️ Setting up scroll-based graduation animations');
+                
+                let hasAnimated = false;
+                
+                // Observer to trigger graduation animations when title comes into view
+                const graduationAnimationObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !hasAnimated) {
+                            console.log('🎓 Triggering graduation animations on scroll');
+                            hasAnimated = true;
+                            
+                            // Trigger the paintbrush animation
+                            initPaintbrushAnimation();
+                            
+                            // Show subtitle after paintbrush animation
+                            const subtitle = document.querySelector('.graduation-subtitle');
+                            const scrollIndicator = document.querySelector('.graduation-scroll');
+                            
+                            setTimeout(() => {
+                                // Show subtitle first
+                                if (subtitle) {
+                                    subtitle.style.opacity = '1';
+                                    subtitle.style.transform = 'translateY(0) scale(1)';
+                                    console.log('🖊️ Subtitle revealed first');
+                                }
+                                
+                                // Then animate tape on top of subtitle
+                                setTimeout(() => {
+                                    const subtitleTape = document.querySelector('.subtitle-tape');
+                                    if (subtitleTape) {
+                                        subtitleTape.style.opacity = '1';
+                                        subtitleTape.style.transform = 'translateX(-50%) rotate(-8deg) scale(1.1)';
+                                        console.log('🎞️ Tape placed on top');
+                                        
+                                        // Settle tape to normal size
+                                        setTimeout(() => {
+                                            subtitleTape.style.transform = 'translateX(-50%) rotate(-8deg) scale(1)';
+                                        }, 200);
+                                    }
+                                }, 400); // Delay tape after subtitle
+                                
+                                // Show scroll indicator after everything
+                                setTimeout(() => {
+                                    if (scrollIndicator) {
+                                        scrollIndicator.style.opacity = '1';
+                                        console.log('👇 Scroll indicator shown');
+                                    }
+                                }, 1200); // Show after subtitle + tape animations
+                            }, 1000); // Delay after paintbrush
+                            
+                            // Disconnect observer after animation
+                            graduationAnimationObserver.disconnect();
+                        }
+                    });
+                }, {
+                    threshold: 0.2,
+                    rootMargin: '0px 0px -10% 0px'
+                });
+                
+                graduationAnimationObserver.observe(graduationTitle);
+            }
+            
+            // Initialize scroll-based animations
+            initGraduationScrollAnimations();
+            
+            // Graduation gallery images array
+            const graduationImages = [
+                {
+                    src: 'content 2/photography/commencement/P1096231.jpg',
+                    tapes: [
+                        { top: -10, left: 20, width: 60, height: 25, rotation: -15 },
+                        { top: -8, right: 15, width: 50, height: 20, rotation: 25 },
+                        { bottom: -12, left: 25, width: 55, height: 22, rotation: -20 }
+                    ]
+                },
+                {
+                    src: 'content 2/photography/commencement/P1129002.JPG',
+                    tapes: [
+                        { top: -8, right: 15, width: 50, height: 20, rotation: 20 },
+                        { top: -10, left: 30, width: 45, height: 18, rotation: -25 },
+                        { bottom: -10, right: 20, width: 60, height: 25, rotation: 15 }
+                    ]
+                },
+                {
+                    src: 'content 2/photography/commencement/P1140423.JPG',
+                    tapes: [
+                        { top: -12, left: '50%', width: 70, height: 30, rotation: -8, transform: 'translateX(-50%)' },
+                        { top: -5, left: 10, width: 40, height: 18, rotation: 30 },
+                        { bottom: -8, right: 10, width: 50, height: 22, rotation: -15 }
+                    ]
+                },
+                {
+                    src: 'content 2/photography/commencement/P1185180.jpg',
+                    tapes: [
+                        { top: -15, right: 25, width: 55, height: 25, rotation: 12 },
+                        { top: -12, left: 20, width: 65, height: 28, rotation: -18 },
+                        { bottom: -10, left: '40%', width: 50, height: 20, rotation: 22, transform: 'translateX(-50%)' }
+                    ]
+                },
+                {
+                    src: 'content 2/photography/commencement/P1196127.jpg',
+                    tapes: [
+                        { top: -10, left: 30, width: 65, height: 28, rotation: -10 },
+                        { top: -8, right: 18, width: 45, height: 20, rotation: 28 },
+                        { bottom: -12, right: 40, width: 60, height: 25, rotation: 15 },
+                        { bottom: -15, left: 35, width: 40, height: 18, rotation: -25 }
+                    ]
+                }
+            ];
+            
+            let graduationCurrentIndex = 0;
+            
+            // Function to create tape elements
+            function createTapeElement(tape, index) {
+                const tapeEl = document.createElement('div');
+                tapeEl.className = `graduation-tape tape-${index}`;
+                tapeEl.style.cssText = `
+                    position: absolute;
+                    width: ${tape.width}px;
+                    height: ${tape.height}px;
+                    background: rgba(255,255,255,0.9);
+                    border: 1px solid #ddd;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                    z-index: 10;
+                    transform: rotate(${tape.rotation}deg) ${tape.transform || ''};
+                `;
+                
+                // Set position
+                if (tape.top !== undefined) tapeEl.style.top = tape.top + 'px';
+                if (tape.bottom !== undefined) tapeEl.style.bottom = tape.bottom + 'px';
+                if (tape.left !== undefined) {
+                    tapeEl.style.left = typeof tape.left === 'string' ? tape.left : tape.left + 'px';
+                }
+                if (tape.right !== undefined) tapeEl.style.right = tape.right + 'px';
+                
+                return tapeEl;
+            }
+            
+            // Graduation gallery navigation functions with slide animation
+            function updateGraduationImage() {
+                console.log('🎓 Updating graduation image to index:', graduationCurrentIndex);
+                
+                const imageElement = document.getElementById('current-graduation-image');
+                const tapesContainer = document.getElementById('graduation-tapes-container');
+                const currentIndexElement = document.getElementById('graduation-current-index');
+                const totalImagesElement = document.getElementById('graduation-total-images');
+                
+                if (imageElement && tapesContainer) {
+                    // Disable pointer events during animation
+                    const container = document.querySelector('.graduation-single-gallery');
+                    if (container) container.style.pointerEvents = 'none';
+                    
+                    // Phase 1: All tapes peel off simultaneously
+                    const currentTapes = tapesContainer.querySelectorAll('.graduation-tape');
+                    currentTapes.forEach((tape, index) => {
+                        tape.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                        tape.style.transform = tape.style.transform + ' scale(0.8) translateY(-25px) rotateX(60deg)';
+                        tape.style.opacity = '0.2';
+                        tape.style.filter = 'blur(2px)';
+                    });
+                    
+                    setTimeout(() => {
+                        // Phase 2: Photo slides down off screen
+                        imageElement.style.transition = 'all 0.7s cubic-bezier(0.55, 0.085, 0.68, 0.53)';
+                        imageElement.style.transform = 'translateY(100%) scale(0.9)';
+                        imageElement.style.opacity = '0.3';
+                        
+                        // Tapes disappear completely
+                        currentTapes.forEach(tape => {
+                            tape.style.transition = 'all 0.4s ease-out';
+                            tape.style.opacity = '0';
+                            tape.style.transform = tape.style.transform + ' translateY(-50px)';
+                        });
+                        
+                        setTimeout(() => {
+                            // Phase 3: Setup new content (while invisible)
+                            const currentImage = graduationImages[graduationCurrentIndex];
+                            
+                            // Clear old tapes
+                            tapesContainer.innerHTML = '';
+                            
+                            // Create new tapes
+                            currentImage.tapes.forEach((tape, index) => {
+                                const tapeEl = createTapeElement(tape, index);
+                                // Start tapes invisible and positioned for animation
+                                tapeEl.style.opacity = '0';
+                                tapeEl.style.transform = `rotate(${tape.rotation}deg) ${tape.transform || ''} scale(1.2) translateY(-40px) rotateX(-45deg)`;
+                                tapesContainer.appendChild(tapeEl);
+                            });
+                            
+                            // Setup new photo above screen
+                            imageElement.src = currentImage.src;
+                            imageElement.style.transition = '';
+                            imageElement.style.transform = 'translateY(-100%) scale(0.9)';
+                            imageElement.style.opacity = '0.3';
+                            
+                            setTimeout(() => {
+                                // Phase 4: New photo slides down from top
+                                imageElement.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+                                imageElement.style.transform = 'translateY(0) scale(1)';
+                                imageElement.style.opacity = '1';
+                                
+                                setTimeout(() => {
+                                    // Phase 5: Tapes get placed one by one
+                                    const newTapes = tapesContainer.querySelectorAll('.graduation-tape');
+                                    newTapes.forEach((tape, index) => {
+                                        setTimeout(() => {
+                                            tape.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                                            const originalTransform = tape.getAttribute('data-original-transform') || 
+                                                tape.style.transform.split(' scale(')[0]; // Get base transform
+                                            tape.style.transform = originalTransform + ' scale(1.05)';
+                                            tape.style.opacity = '0.9';
+                                            
+                                            setTimeout(() => {
+                                                // Final settle
+                                                tape.style.transition = 'all 0.3s ease-out';
+                                                tape.style.transform = originalTransform;
+                                                tape.style.opacity = '1';
+                                            }, 400);
+                                        }, index * 150); // Stagger tape placement
+                                    });
+                                    
+                                    // Re-enable interactions after all animations
+                                    setTimeout(() => {
+                                        if (container) container.style.pointerEvents = 'auto';
+                                    }, newTapes.length * 150 + 700);
+                                    
+                                }, 400); // Wait for photo to settle
+                            }, 100);
+                            
+                        }, 500); // Wait for slide down
+                    }, 300); // Wait for tape peel
+                }
+                
+                if (currentIndexElement) {
+                    currentIndexElement.textContent = graduationCurrentIndex + 1;
+                }
+                
+                if (totalImagesElement) {
+                    totalImagesElement.textContent = graduationImages.length;
+                }
+            }
+            
+            function nextGraduationImage() {
+                graduationCurrentIndex = (graduationCurrentIndex + 1) % graduationImages.length;
+                updateGraduationImage();
+            }
+            
+            function prevGraduationImage() {
+                graduationCurrentIndex = (graduationCurrentIndex - 1 + graduationImages.length) % graduationImages.length;
+                updateGraduationImage();
+            }
+            
+            // Add event listeners for graduation gallery navigation
+            const graduationNextBtn = document.querySelector('.graduation-nav--next');
+            const graduationPrevBtn = document.querySelector('.graduation-nav--prev');
+            
+            console.log('🎓 Gallery nav buttons:', { nextBtn: !!graduationNextBtn, prevBtn: !!graduationPrevBtn });
+            
+            if (graduationNextBtn) {
+                graduationNextBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('🎓 Next button clicked');
+                    nextGraduationImage();
+                });
+            } else {
+                console.error('❌ Next button not found');
+            }
+            
+            if (graduationPrevBtn) {
+                graduationPrevBtn.addEventListener('click', function(e) {
+                    e.preventDefault(); 
+                    console.log('🎓 Prev button clicked');
+                    prevGraduationImage();
+                });
+            } else {
+                console.error('❌ Prev button not found');
+            }
+            
+            // Keyboard navigation for graduation gallery
+            document.addEventListener('keydown', function(e) {
+                // Only handle arrow keys when graduation gallery is visible
+                const galleryContent = document.querySelector('.graduation-gallery-content');
+                if (galleryContent) {
+                    const rect = galleryContent.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                    
+                    if (isVisible) {
+                        if (e.key === 'ArrowRight') {
+                            e.preventDefault();
+                            nextGraduationImage();
+                        }
+                        if (e.key === 'ArrowLeft') {
+                            e.preventDefault();
+                            prevGraduationImage();
+                        }
+                    }
+                }
+            });
+            
+            // Graduation section gradient transition (exactly like vibe check pattern)
+            function initGraduationGradientTransition() {
+                const graduationSection = document.querySelector('.graduation-section');
+                const graduationTitle = document.querySelector('.graduation-title');
+                
+                if (!graduationSection || !graduationTitle) {
+                    console.log('❌ Graduation elements not found for gradient');
+                    return;
+                }
+                
+                console.log('🎓 Setting up graduation gradient observer (like vibe check)');
+                
+                // Single solid color (like vibe check uses single black color)  
+                const graduationColor = '#F0E6FF'; // Light lavender
+                
+                // Observer for title area -> color (exactly like vibe check titleColorObserver)
+                const graduationColorObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            console.log('🎓 Setting background to color');
+                            graduationSection.style.backgroundColor = graduationColor;
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '-10% 0px -10% 0px'
+                });
+                
+                graduationColorObserver.observe(graduationTitle);
+                
+                // Observer to reset to white when leaving section (exactly like vibe check exitObserver)  
+                const graduationExitObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) {
+                            const rect = graduationSection.getBoundingClientRect();
+                            if (rect.bottom < 0) {
+                                console.log('🎓 Resetting graduation background to white');
+                                graduationSection.style.backgroundColor = 'white';
+                            }
+                        }
+                    });
+                }, {
+                    threshold: 0,
+                    rootMargin: '0px'
+                });
+                
+                graduationExitObserver.observe(graduationSection);
+            }
+            
+            // Book appointment button scroll animation
+            function handleGraduationButtonAnimation() {
+                const graduationCta = document.querySelector('.graduation-cta');
+                if (!graduationCta) return;
+                
+                const scrollY = window.scrollY;
+                const viewportHeight = window.innerHeight;
+                const ctaTop = graduationCta.offsetTop;
+                
+                if (scrollY >= ctaTop - viewportHeight * 0.9 && !graduationCta.classList.contains('revealed')) {
+                    console.log('🎓 Revealing book appointment button');
+                    graduationCta.style.opacity = '1';
+                    graduationCta.classList.add('revealed');
+                }
+            }
+            
+            // Initialize graduation gradient transition
+            initGraduationGradientTransition();
+            
+            // Add scroll listener for button animation
+            window.addEventListener('scroll', handleGraduationButtonAnimation);
+            
+            // Initialize graduation gallery with first image tapes
+            function initializeGraduationGallery() {
+                const tapesContainer = document.getElementById('graduation-tapes-container');
+                const firstImage = graduationImages[0];
+                
+                if (tapesContainer && firstImage) {
+                    // Create initial tapes for first image
+                    firstImage.tapes.forEach((tape, index) => {
+                        const tapeEl = createTapeElement(tape, index);
+                        tapesContainer.appendChild(tapeEl);
+                    });
+                }
+            }
+            
+            // Initialize graduation gallery and animations
+            initializeGraduationGallery();
+            
+            // Vibe item expand animation
+            const vibeLinks = document.querySelectorAll('.paper-expand');
+            console.log('🎬 Found vibe links:', vibeLinks.length);
+            
+            vibeLinks.forEach((link, index) => {
+                console.log(`🎬 Setting up animation for vibe ${index}:`, link);
+                
+                link.addEventListener('click', function(e) {
+                    console.log('🎬 Vibe link clicked!', this);
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const href = this.getAttribute('href');
+                    const img = this.querySelector('img');
+                    const titleOverlay = this.querySelector('.vibe-title-overlay');
+                    
+                    console.log('🎬 Animation details:', { href, img, titleOverlay, hasImg: !!img });
+                    
+                    if (!img || !href) {
+                        console.error('🎬 Missing image or href, falling back to normal navigation');
+                        window.location.href = href;
+                        return;
+                    }
+                    
+                    // Get exact position and size of original container
+                    const containerRect = this.getBoundingClientRect();
+                    console.log('🎬 Container rect:', containerRect);
+                    
+                    // Create fullscreen overlay
+                    const overlay = document.createElement('div');
+                    overlay.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100vw;
+                        height: 100vh;
+                        background: #000;
+                        z-index: 9998;
+                        opacity: 0;
+                        transition: opacity 0.5s ease;
+                        pointer-events: none;
+                    `;
+                    
+                    // Create container for image and text
+                    const clonedContainer = document.createElement('div');
+                    clonedContainer.style.cssText = `
+                        position: fixed;
+                        top: ${containerRect.top}px;
+                        left: ${containerRect.left}px;
+                        width: ${containerRect.width}px;
+                        height: ${containerRect.height}px;
+                        z-index: 9999;
+                        border-radius: 8px;
+                        overflow: hidden;
+                        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                        pointer-events: none;
+                    `;
+                    
+                    // Clone and add the image
+                    const clonedImg = img.cloneNode(true);
+                    clonedImg.style.cssText = `
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        display: block;
+                    `;
+                    
+                    // Clone and add the title overlay if it exists
+                    if (titleOverlay) {
+                        const clonedTitle = titleOverlay.cloneNode(true);
+                        clonedTitle.style.cssText = `
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            font-family: 'Playfair Display', serif;
+                            font-size: clamp(2.5rem, 5vw, 4rem);
+                            font-weight: 900;
+                            color: white;
+                            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+                            pointer-events: none;
+                            z-index: 3;
+                        `;
+                        clonedContainer.appendChild(clonedTitle);
+                    }
+                    
+                    clonedContainer.appendChild(clonedImg);
+                    
+                    // Add elements to page
+                    document.body.appendChild(overlay);
+                    document.body.appendChild(clonedContainer);
+                    
+                    console.log('🎬 Starting fast animation...');
+                    
+                    // Phase 1: Moderate zoom in (not fullscreen)
+                    requestAnimationFrame(() => {
+                        overlay.style.opacity = '0.8';
+                        
+                        // Zoom container moderately (1.5x scale instead of fullscreen)
+                        const centerX = window.innerWidth / 2;
+                        const centerY = window.innerHeight / 2;
+                        const newWidth = containerRect.width * 1.5;
+                        const newHeight = containerRect.height * 1.5;
+                        
+                        clonedContainer.style.top = `${centerY - newHeight / 2}px`;
+                        clonedContainer.style.left = `${centerX - newWidth / 2}px`;
+                        clonedContainer.style.width = `${newWidth}px`;
+                        clonedContainer.style.height = `${newHeight}px`;
+                        clonedContainer.style.borderRadius = '12px';
+                    });
+                    
+                    // Phase 2: Exit downward
+                    setTimeout(() => {
+                        console.log('🎬 Starting downward exit...');
+                        clonedContainer.style.transition = 'all 0.6s cubic-bezier(0.55, 0.085, 0.68, 0.53)';
+                        clonedContainer.style.transform = 'translateY(100vh) scale(0.8)';
+                        clonedContainer.style.opacity = '0';
+                        overlay.style.transition = 'opacity 0.6s ease-out';
+                        overlay.style.opacity = '0';
+                    }, 500);
+                    
+                    // Phase 3: Navigate after exit completes
+                    setTimeout(() => {
+                        console.log('🎬 Navigating to:', href);
+                        window.location.href = href;
+                    }, 1200);
+                });
+            });
+            
+            // Smooth navigation transitions for other links
+            const otherLinks = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"]');
+            otherLinks.forEach(link => {
+                // Skip vibe links as they have their own animation
+                if (link.classList.contains('paper-expand')) return;
+                
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href !== '#' && !href.includes('mailto:') && !href.includes('tel:')) {
+                        e.preventDefault();
+                        document.body.style.opacity = '0';
+                        document.body.style.transition = 'opacity 0.3s ease';
+                        setTimeout(() => {
+                            window.location.href = href;
+                        }, 300);
+                    }
+                });
+            });
+            
+        });
+    </script>
 </body>
 </html>
