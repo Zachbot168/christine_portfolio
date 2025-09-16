@@ -32,26 +32,14 @@
                 <div class="hero-content">
                     <h1 class="hero-name" data-lcp>Christine Shin</h1>
                     <h2 class="hero-tagline">Creative Director & Visual Storyteller</h2>
-                </div>
 
-                <!-- Intro Book Animation Container moved below hero name -->
-                <div id="intro-book" data-controller="intro-book" style="margin-top: 2rem;">
-                    <div class="book-images">
-                        <!-- Six landscape images with consistent aspect ratios for turbine animation -->
-                        <div class="book-image"></div>
-                        <div class="book-image"></div>
-                        <div class="book-image"></div>
-                        <div class="book-image"></div>
-                        <div class="book-image"></div>
-                        <div class="book-image"></div>
+                    <!-- Hero Scroll Indicator -->
+                    <div class="hero-scroll-indicator">
+                        <div class="hero-scroll-arrow">↓</div>
+                        <p class="hero-scroll-text">Scroll Down</p>
                     </div>
                 </div>
 
-                <!-- Hero Scroll Indicator -->
-                <div class="hero-scroll-indicator">
-                    <div class="hero-scroll-arrow">↓</div>
-                    <p class="hero-scroll-text">Scroll Down</p>
-                </div>
                 <!-- Corner reveal photos -->
                 <div class="corner-photos" data-controller="corner-reveal">
                     <div class="corner-photo corner-photo--top-left">
@@ -63,18 +51,33 @@
                 </div>
             </section>
 
-            <!-- About Me Section -->
-            <section class="about-me-section" style="padding: 4rem 2rem; background: white;">
+            <!-- Rotating Book Section -->
+            <section class="intro-book-section" style="padding: 4rem 2rem; background: white; text-align: center;">
+                <div id="intro-book" data-controller="intro-book">
+                    <div class="book-images">
+                        <!-- Six landscape images with consistent aspect ratios for turbine animation -->
+                        <div class="book-image"></div>
+                        <div class="book-image"></div>
+                        <div class="book-image"></div>
+                        <div class="book-image"></div>
+                        <div class="book-image"></div>
+                        <div class="book-image"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Me Section - Complete page from about.html -->
+            <section class="about-me-full-section" style="padding: 2rem;">
                 <!-- Page Header -->
-                <div class="about-hero-animated" style="text-align: center; margin-bottom: 4rem; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #ffffff 100%); padding: 4rem 2rem; border-radius: 8px;">
+                <section class="page-hero about-hero-animated" style="text-align: center; margin-bottom: 4rem; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #ffffff 100%); padding: 4rem 2rem; border-radius: 8px; animation: gentleShimmer 4s ease-in-out infinite alternate;">
                     <h1 class="about-title" style="font-size: clamp(4rem, 12vw, 8rem); margin-bottom: 1rem; color: #333; filter: blur(6px); opacity: 0; transform: translateY(30px); font-weight: 900;">Christine Shin</h1>
                     <p class="about-subtitle" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: rgba(51, 51, 51, 0.8); line-height: 1.6; opacity: 0; transform: translateY(20px);">
                         Storyteller, strategist, and creative visionary bridging cultures through multimedia narratives and impactful campaigns.
                     </p>
-                </div>
+                </section>
 
                 <!-- About Content -->
-                <div class="about-content" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; margin: 4rem 0; align-items: center; max-width: 1200px; margin-left: auto; margin-right: auto;">
+                <section class="about-content" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; margin: 4rem 0; align-items: center;">
 
                     <!-- Photo on Left -->
                     <div class="about-image main-photo" style="opacity: 0; transform: translateX(-50px);">
@@ -104,7 +107,62 @@
                         </div>
                     </div>
 
-                </div>
+                </section>
+
+                <!-- Behind the Lens Gallery -->
+                <section class="about-gallery behind-lens-section" style="margin: 0; min-height: 200vh; position: relative; background: white; transition: background-color 1.5s cubic-bezier(0.4, 0, 0.2, 1); width: 100vw; margin-left: calc(-50vw + 50%);">
+
+                    <!-- Vibe Check Style Title - Sticky -->
+                    <div class="behind-lens-title" style="position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100;">
+
+                        <div class="title-line" style="overflow: hidden; height: clamp(4rem, 12vw, 8rem);">
+                            <h3 class="title-word title-word--behind" style="font-size: clamp(4rem, 12vw, 8rem); font-weight: 900; margin: 0; line-height: 1; color: transparent; transform: translateY(-100%); transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s ease;">BEHIND</h3>
+                        </div>
+
+                        <div class="title-divider" style="width: 200px; height: 2px; background: transparent; margin: 1rem 0; transform: scaleX(0); transition: transform 0.8s ease 0.5s, background 0.5s ease;"></div>
+
+                        <div class="title-line" style="overflow: hidden; height: clamp(4rem, 12vw, 8rem);">
+                            <h3 class="title-word title-word--lens" style="font-size: clamp(4rem, 12vw, 8rem); font-weight: 900; margin: 0; line-height: 1; color: transparent; transform: translateY(100%); transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s ease;">THE LENS</h3>
+                        </div>
+
+                        <!-- Scroll Indicator -->
+                        <div class="scroll-indicator behind-lens-scroll" style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; z-index: 100; opacity: 0; transition: opacity 0.6s ease 1s;">
+                            <div class="scroll-arrows" style="display: flex; flex-direction: row; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                <div class="arrow" style="font-size: 1.5rem; color: white; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); animation: bounce 2s infinite;">↓</div>
+                                <div class="arrow" style="font-size: 1.5rem; color: white; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); animation: bounce 2s infinite; animation-delay: 0.3s;">↓</div>
+                                <div class="arrow" style="font-size: 1.5rem; color: white; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); animation: bounce 2s infinite; animation-delay: 0.6s;">↓</div>
+                            </div>
+                            <p class="scroll-text" style="color: white; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); margin: 0;">Explore Gallery</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Gallery Content Below Title -->
+                    <div class="gallery-content" style="position: absolute; top: 100vh; left: 0; right: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 2rem;">
+
+                        <!-- Single Image Gallery with Navigation -->
+                        <div class="single-image-gallery" style="position: relative; max-width: 1000px; width: 100%;">
+
+                        <!-- Current Image -->
+                        <div class="gallery-image-container" style="position: relative; width: 100%; height: 650px; overflow: hidden; border-radius: 8px; box-shadow: 0 25px 80px rgba(0,0,0,0.4); border: none;">
+                            <img id="current-gallery-image" src="content 2/marketing/lewkin/modeling/P1030505.JPG" alt="Christine Shin" style="width: 100%; height: 100%; object-fit: cover; transition: opacity 0.5s ease; border: none;">
+                        </div>
+
+                        <!-- Navigation Arrows -->
+                        <button class="gallery-nav gallery-nav--prev" style="position: absolute; left: -100px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; width: 70px; height: 70px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.5);" onmouseover="this.style.background='rgba(0,0,0,1)'; this.style.transform='translateY(-50%) scale(1.1)'; this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.background='rgba(0,0,0,0.8)'; this.style.transform='translateY(-50%) scale(1)'; this.style.borderColor='rgba(255,255,255,0.3)'">‹</button>
+
+                        <button class="gallery-nav gallery-nav--next" style="position: absolute; right: -100px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; width: 70px; height: 70px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.5);" onmouseover="this.style.background='rgba(0,0,0,1)'; this.style.transform='translateY(-50%) scale(1.1)'; this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.background='rgba(0,0,0,0.8)'; this.style.transform='translateY(-50%) scale(1)'; this.style.borderColor='rgba(255,255,255,0.3)'">›</button>
+
+                        <!-- Image Counter -->
+                        <div class="image-counter" style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; color: white; font-weight: 500;">
+                            <span id="current-index">1</span> / <span id="total-images">9</span>
+                        </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
             </section>
 
             <!-- My Photography Section -->
@@ -130,50 +188,79 @@
                     </div>
                 </div>
                 
-                <!-- Photography Collages Grid -->
-                <div class="photography-collages" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto; padding: 2rem;">
-
-                    <!-- Serenity Collage -->
-                    <div class="collage-section" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 60px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 40px rgba(0,0,0,0.1)'">
-                        <h3 style="font-size: 1.8rem; font-weight: 600; color: #333; margin-bottom: 1.5rem; text-align: center;">Serenity</h3>
-                        <div class="collage-grid" style="display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; gap: 0.5rem; height: 300px; border-radius: 8px; overflow: hidden;">
-                            <img src="content 2/photography/serenity/IMG_1332.JPG.jpg" style="width: 100%; height: 100%; object-fit: cover; grid-row: span 2;">
-                            <img src="content 2/photography/serenity/IMG_0654.JPG.jpg" style="width: 100%; height: 100%; object-fit: cover;">
-                            <img src="content 2/photography/serenity/IMG_3178.JPG.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                <!-- Vibe Items List -->
+                <div class="vibe-items-list">
+                    <div class="vibe-item" data-vibe="serenity" data-controller="vibe-corner-reveal">
+                        <div class="paper-expand-container">
+                            <a href="/serenity.html" class="paper-expand">
+                                <img src="content 2/photography/serenity/IMG_1332.JPG.jpg" alt="Serenity">
+                                <div class="vibe-title-overlay">Serenity</div>
+                            </a>
+                        </div>
+                        <!-- Corner reveal photos for serenity -->
+                        <div class="vibe-corner-photos">
+                            <div class="vibe-corner-photo vibe-corner-photo--top-left">
+                                <img src="content 2/photography/serenity/IMG_0654.JPG.jpg" alt="Serenity">
+                            </div>
+                            <div class="vibe-corner-photo vibe-corner-photo--bottom-right">
+                                <img src="content 2/photography/serenity/IMG_3178.JPG.jpg" alt="Serenity">
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Spirit Collage -->
-                    <div class="collage-section" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 60px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 40px rgba(0,0,0,0.1)'">
-                        <h3 style="font-size: 1.8rem; font-weight: 600; color: #333; margin-bottom: 1.5rem; text-align: center;">Spirit</h3>
-                        <div class="collage-grid" style="display: grid; grid-template-columns: 1fr 2fr; grid-template-rows: 1fr 1fr; gap: 0.5rem; height: 300px; border-radius: 8px; overflow: hidden;">
-                            <img src="content 2/photography/spirit/IMG_2258_Original.jpg" style="width: 100%; height: 100%; object-fit: cover; grid-row: span 2;">
-                            <img src="content 2/photography/spirit/IMG_2815.JPG.jpg" style="width: 100%; height: 100%; object-fit: cover;">
-                            <img src="content 2/photography/spirit/IMG_3420.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="vibe-item" data-vibe="spirit" data-controller="vibe-corner-reveal">
+                        <div class="paper-expand-container">
+                            <a href="/spirit.html" class="paper-expand">
+                                <img src="content 2/photography/spirit/IMG_2815.JPG.jpg" alt="Spirit">
+                                <div class="vibe-title-overlay">Spirit</div>
+                            </a>
+                        </div>
+                        <!-- Corner reveal photos for spirit -->
+                        <div class="vibe-corner-photos">
+                            <div class="vibe-corner-photo vibe-corner-photo--top-left">
+                                <img src="content 2/photography/spirit/IMG_2258_Original.jpg" alt="Spirit">
+                            </div>
+                            <div class="vibe-corner-photo vibe-corner-photo--bottom-right">
+                                <img src="content 2/photography/spirit/IMG_3420.jpeg" alt="Spirit">
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Texture Collage -->
-                    <div class="collage-section" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 60px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 40px rgba(0,0,0,0.1)'">
-                        <h3 style="font-size: 1.8rem; font-weight: 600; color: #333; margin-bottom: 1.5rem; text-align: center;">Texture</h3>
-                        <div class="collage-grid" style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 0.5rem; height: 300px; border-radius: 8px; overflow: hidden;">
-                            <img src="content 2/photography/texture/P1018716.JPG.jpg" style="width: 100%; height: 100%; object-fit: cover;">
-                            <img src="content 2/photography/texture/IMG_3742_Original.jpg" style="width: 100%; height: 100%; object-fit: cover;">
-                            <img src="content 2/photography/texture/IMG_4778.JPG.jpg" style="width: 100%; height: 100%; object-fit: cover; grid-column: span 2;">
+                    <div class="vibe-item" data-vibe="texture" data-controller="vibe-corner-reveal">
+                        <div class="paper-expand-container">
+                            <a href="/texture.html" class="paper-expand">
+                                <img src="content 2/photography/texture/P1018716.JPG.jpg" alt="Texture">
+                                <div class="vibe-title-overlay">Texture</div>
+                            </a>
+                        </div>
+                        <!-- Corner reveal photos for texture -->
+                        <div class="vibe-corner-photos">
+                            <div class="vibe-corner-photo vibe-corner-photo--top-left">
+                                <img src="content 2/photography/texture/IMG_3742_Original.jpg" alt="Texture">
+                            </div>
+                            <div class="vibe-corner-photo vibe-corner-photo--bottom-right">
+                                <img src="content 2/photography/texture/IMG_4778.JPG.jpg" alt="Texture">
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Adventure Collage -->
-                    <div class="collage-section" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 60px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 40px rgba(0,0,0,0.1)'">
-                        <h3 style="font-size: 1.8rem; font-weight: 600; color: #333; margin-bottom: 1.5rem; text-align: center;">Adventure</h3>
-                        <div class="collage-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 0.5rem; height: 300px; border-radius: 8px; overflow: hidden;">
-                            <img src="content 2/photography/community/P1060996.jpg" style="width: 100%; height: 100%; object-fit: cover;">
-                            <img src="content 2/photography/community/P1061003.jpg" style="width: 100%; height: 100%; object-fit: cover; grid-row: span 2;">
-                            <img src="content 2/photography/community/P1061076.jpg" style="width: 100%; height: 100%; object-fit: cover;">
-                            <img src="content 2/photography/community/P1061143.jpg" style="width: 100%; height: 100%; object-fit: cover; grid-column: span 2;">
+                    <div class="vibe-item" data-vibe="adventure" data-controller="vibe-corner-reveal">
+                        <div class="paper-expand-container">
+                            <a href="/adventure.html" class="paper-expand">
+                                <img src="content 2/photography/community/P1060996.jpg" alt="Adventure">
+                                <div class="vibe-title-overlay">Adventure</div>
+                            </a>
+                        </div>
+                        <!-- Corner reveal photos for adventure -->
+                        <div class="vibe-corner-photos">
+                            <div class="vibe-corner-photo vibe-corner-photo--top-left">
+                                <img src="content 2/photography/community/P1061003.jpg" alt="Adventure">
+                            </div>
+                            <div class="vibe-corner-photo vibe-corner-photo--bottom-right">
+                                <img src="content 2/photography/community/P1061076.jpg" alt="Adventure">
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </section>
             
@@ -676,16 +763,28 @@
                 font-size: 1rem !important;
             }
 
-            /* Photography collages responsive */
-            .photography-collages {
-                grid-template-columns: 1fr !important;
-                padding: 1rem !important;
-                gap: 2rem !important;
-            }
+        }
 
-            .collage-grid {
-                height: 250px !important;
-            }
+        /* Behind the Lens animations */
+        .title-word--behind.revealed {
+            transform: translateY(0) !important;
+        }
+
+        .title-word--lens.revealed {
+            transform: translateY(0) !important;
+        }
+
+        .title-divider.revealed {
+            transform: scaleX(1) !important;
+        }
+
+        .behind-lens-scroll.revealed {
+            opacity: 1 !important;
+        }
+
+        .behind-lens-scroll.hidden {
+            opacity: 0 !important;
+            transition: opacity 0.3s ease;
         }
     </style>
     
@@ -781,6 +880,132 @@
                     observer.observe(element);
                 });
             });
+
+            // About section gallery navigation
+            const aboutGalleryImages = [
+                'content 2/marketing/lewkin/modeling/P1030505.JPG',
+                'content 2/marketing/lewkin/modeling/P1030511.JPG',
+                'content 2/marketing/lewkin/modeling/P1030538.JPG',
+                'content 2/marketing/lewkin/modeling/P1030583.JPG',
+                'content 2/marketing/lewkin/modeling/IMG_6629.JPG',
+                'content 2/marketing/lewkin/modeling/DSC01663.JPG',
+                'content 2/marketing/lewkin/modeling/DSC01661.JPG',
+                'content 2/marketing/lewkin/modeling/DSC01679.JPG',
+                'content 2/marketing/lewkin/modeling/DSC01604.JPG'
+            ];
+
+            let aboutCurrentImageIndex = 0;
+
+            function updateAboutGalleryImage() {
+                const imageElement = document.getElementById('current-gallery-image');
+                const currentIndexElement = document.getElementById('current-index');
+                const totalImagesElement = document.getElementById('total-images');
+
+                if (imageElement) {
+                    imageElement.style.opacity = '0';
+                    setTimeout(() => {
+                        imageElement.src = aboutGalleryImages[aboutCurrentImageIndex];
+                        imageElement.style.opacity = '1';
+                    }, 250);
+                }
+
+                if (currentIndexElement) {
+                    currentIndexElement.textContent = aboutCurrentImageIndex + 1;
+                }
+
+                if (totalImagesElement) {
+                    totalImagesElement.textContent = aboutGalleryImages.length;
+                }
+            }
+
+            function nextAboutImage() {
+                aboutCurrentImageIndex = (aboutCurrentImageIndex + 1) % aboutGalleryImages.length;
+                updateAboutGalleryImage();
+            }
+
+            function prevAboutImage() {
+                aboutCurrentImageIndex = (aboutCurrentImageIndex - 1 + aboutGalleryImages.length) % aboutGalleryImages.length;
+                updateAboutGalleryImage();
+            }
+
+            // Add event listeners for about gallery navigation
+            const aboutNextBtn = document.querySelector('.gallery-nav--next');
+            const aboutPrevBtn = document.querySelector('.gallery-nav--prev');
+
+            if (aboutNextBtn) aboutNextBtn.addEventListener('click', nextAboutImage);
+            if (aboutPrevBtn) aboutPrevBtn.addEventListener('click', prevAboutImage);
+
+            // About section Behind the Lens animation
+            function handleBehindLensAnimation() {
+                const section = document.querySelector('.behind-lens-section');
+                const scrollIndicator = document.querySelector('.behind-lens-scroll');
+                if (!section) return;
+
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const scrollY = window.scrollY;
+                const viewportHeight = window.innerHeight;
+
+                // Background color transition (white to black like vibe check) - triggers earlier
+                const sectionTriggerPoint = sectionTop - viewportHeight * 0.3; // Activate when section is 30% into view
+                if (scrollY >= sectionTriggerPoint && scrollY <= sectionTop + sectionHeight) {
+                    const progress = Math.max(0, Math.min(1, (scrollY - sectionTriggerPoint) / (viewportHeight * 0.2)));
+
+                    const behindElement = document.querySelector('.title-word--behind');
+                    const lensElement = document.querySelector('.title-word--lens');
+                    const dividerElement = document.querySelector('.title-divider');
+
+                    if (progress > 0.05) { // Reduced threshold for even earlier activation
+                        section.style.background = '#000';
+                        // Make text visible when background turns black
+                        if (behindElement) behindElement.style.color = 'white';
+                        if (lensElement) lensElement.style.color = 'white';
+                        if (dividerElement) dividerElement.style.background = 'white';
+                    } else {
+                        section.style.background = '#fff';
+                        // Keep text invisible on white background
+                        if (behindElement) behindElement.style.color = 'transparent';
+                        if (lensElement) lensElement.style.color = 'transparent';
+                        if (dividerElement) dividerElement.style.background = 'transparent';
+                    }
+                }
+
+                // Trigger animation when section comes into view (like vibe check)
+                if (scrollY >= sectionTop - viewportHeight * 0.5) {
+                    const behindElement = document.querySelector('.title-word--behind');
+                    const lensElement = document.querySelector('.title-word--lens');
+                    const dividerElement = document.querySelector('.title-divider');
+
+                    if (behindElement && !behindElement.classList.contains('revealed')) {
+                        behindElement.classList.add('revealed');
+                        setTimeout(() => {
+                            if (lensElement) lensElement.classList.add('revealed');
+                            setTimeout(() => {
+                                if (dividerElement) dividerElement.classList.add('revealed');
+                                // Show scroll indicator after all title animations
+                                setTimeout(() => {
+                                    if (scrollIndicator) {
+                                        scrollIndicator.style.opacity = '1';
+                                    }
+                                }, 800);
+                            }, 300);
+                        }, 500);
+                    }
+                }
+
+                // Hide scroll indicator when scrolling past the title area
+                if (scrollIndicator) {
+                    const titleBottom = sectionTop + viewportHeight;
+                    if (scrollY > titleBottom * 0.8) {
+                        scrollIndicator.classList.add('hidden');
+                    } else {
+                        scrollIndicator.classList.remove('hidden');
+                    }
+                }
+            }
+
+            // Add scroll listener for behind lens animations
+            window.addEventListener('scroll', handleBehindLensAnimation);
             
             // Graduation Photography Section Logic
             const graduationSection = document.querySelector('.graduation-section');
