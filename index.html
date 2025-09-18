@@ -145,19 +145,6 @@
 
             <!-- My Photography Section -->
             <section class="vibe-check-section" data-controller="vibe-check">
-                <!-- Intro Book Animation Container -->
-                <div id="intro-book" data-controller="intro-book">
-                    <div class="book-images">
-                        <!-- Six landscape images with consistent aspect ratios for turbine animation -->
-                        <div class="book-image" data-src="content 2/photography/texture/IMG_3742_Original.jpg"></div>
-                        <div class="book-image" data-src="content 2/photography/serenity/IMG_4859.jpg"></div>
-                        <div class="book-image" data-src="content 2/photography/spirit/IMG_9253_Original.jpg"></div>
-                        <div class="book-image" data-src="content 2/photography/commencement/P1151320.JPG"></div>
-                        <div class="book-image" data-src="content 2/photography/serenity/IMG_1772.JPG.jpg"></div>
-                        <div class="book-image" data-src="content 2/photography/commencement/P1185310.jpg"></div>
-                    </div>
-                </div>
-
                 <!-- Animated Title -->
                 <div class="vibe-check-title">
                     <div class="title-line">
@@ -166,6 +153,19 @@
                     <div class="title-divider"></div>
                     <div class="title-line">
                         <h2 class="title-word title-word--check">PHOTOGRAPHY</h2>
+                    </div>
+
+                    <!-- Intro Book Animation Container - positioned over the title -->
+                    <div id="intro-book" data-controller="intro-book" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10;">
+                        <div class="book-images">
+                            <!-- Six landscape images with consistent aspect ratios for turbine animation -->
+                            <div class="book-image" data-src="content 2/photography/texture/IMG_3742_Original.jpg"></div>
+                            <div class="book-image" data-src="content 2/photography/serenity/IMG_4859.jpg"></div>
+                            <div class="book-image" data-src="content 2/photography/spirit/IMG_9253_Original.jpg"></div>
+                            <div class="book-image" data-src="content 2/photography/commencement/P1151320.JPG"></div>
+                            <div class="book-image" data-src="content 2/photography/serenity/IMG_1772.JPG.jpg"></div>
+                            <div class="book-image" data-src="content 2/photography/commencement/P1185310.jpg"></div>
+                        </div>
                     </div>
 
                     <!-- Scroll indicator -->
