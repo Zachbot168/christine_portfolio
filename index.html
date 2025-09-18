@@ -52,8 +52,8 @@
             </section>
 
             <!-- Rotating Book Section -->
-            <section class="intro-book-section" style="padding: 4rem 2rem; background: white; text-align: center;">
-                <div id="intro-book" data-controller="intro-book">
+            <section class="intro-book-section" style="padding: 2rem; background: white; display: flex; justify-content: center; align-items: center; min-height: 60vh;">
+                <div id="intro-book" data-controller="intro-book" style="max-width: 500px; width: 100%;">
                     <div class="book-images">
                         <!-- Six landscape images with consistent aspect ratios for turbine animation -->
                         <div class="book-image" data-src="content 2/photography/texture/IMG_3742_Original.jpg"></div>
@@ -863,7 +863,10 @@
                 '.about-text',
                 '.about-heading',
                 '.about-paragraph',
-                '.about-cta'
+                '.about-cta',
+                '.title-word--behind',
+                '.title-word--lens',
+                '.title-divider'
             ];
 
             aboutElements.forEach(selector => {
@@ -998,6 +1001,9 @@
 
             // Add scroll listener for behind lens animations
             window.addEventListener('scroll', handleBehindLensAnimation);
+
+            // Initialize on load
+            handleBehindLensAnimation();
             
             // Graduation Photography Section Logic
             const graduationSection = document.querySelector('.graduation-section');
