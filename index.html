@@ -894,32 +894,39 @@
                 const imageElement = document.getElementById('current-gallery-image');
                 const currentIndexElement = document.getElementById('current-index');
                 const totalImagesElement = document.getElementById('total-images');
+                const images = window.aboutGalleryImages || aboutGalleryImages;
 
-                if (imageElement) {
+                if (imageElement && images) {
                     imageElement.style.opacity = '0';
                     setTimeout(() => {
-                        imageElement.src = aboutGalleryImages[aboutCurrentImageIndex];
+                        imageElement.src = images[aboutCurrentImageIndex];
                         imageElement.style.opacity = '1';
                     }, 250);
                 }
 
-                if (currentIndexElement) {
+                if (currentIndexElement && images) {
                     currentIndexElement.textContent = aboutCurrentImageIndex + 1;
                 }
 
-                if (totalImagesElement) {
-                    totalImagesElement.textContent = aboutGalleryImages.length;
+                if (totalImagesElement && images) {
+                    totalImagesElement.textContent = images.length;
                 }
             }
 
             function nextAboutImage() {
-                aboutCurrentImageIndex = (aboutCurrentImageIndex + 1) % aboutGalleryImages.length;
-                updateAboutGalleryImage();
+                const images = window.aboutGalleryImages || aboutGalleryImages;
+                if (images) {
+                    aboutCurrentImageIndex = (aboutCurrentImageIndex + 1) % images.length;
+                    updateAboutGalleryImage();
+                }
             }
 
             function prevAboutImage() {
-                aboutCurrentImageIndex = (aboutCurrentImageIndex - 1 + aboutGalleryImages.length) % aboutGalleryImages.length;
-                updateAboutGalleryImage();
+                const images = window.aboutGalleryImages || aboutGalleryImages;
+                if (images) {
+                    aboutCurrentImageIndex = (aboutCurrentImageIndex - 1 + images.length) % images.length;
+                    updateAboutGalleryImage();
+                }
             }
 
             // Add event listeners for about gallery navigation
@@ -1003,6 +1010,17 @@
 
             // Initialize on load
             handleBehindLensAnimation();
+
+            // Load all image assets
+            import('/src/js/imageAssets.js').then(({ loadImages, imageAssets }) => {
+                loadImages();
+
+                // Update about gallery array
+                window.aboutGalleryImages = imageAssets.about.gallery;
+
+                // Update commencement gallery array
+                window.graduationImages = imageAssets.commencement.gallery;
+            });
             
             // Graduation Photography Section Logic
             const graduationSection = document.querySelector('.graduation-section');
