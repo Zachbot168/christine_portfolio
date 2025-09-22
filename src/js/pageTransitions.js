@@ -164,11 +164,14 @@ function createTransition() {
         window.gsap.killTweensOf('*');
       }
 
-      // Reset animation states for fresh start
-      const vibeCheckElements = current.container.querySelectorAll('.title-word--vibe, .title-word--check, .title-divider');
-      vibeCheckElements.forEach(el => {
-        el.classList.remove('revealed');
-      });
+      // Reset animation states for fresh start - only for vibe check section
+      const vibeCheckSection = current.container.querySelector('.vibe-check-section');
+      if (vibeCheckSection) {
+        const vibeCheckElements = vibeCheckSection.querySelectorAll('.title-word--vibe, .title-word--check, .title-divider');
+        vibeCheckElements.forEach(el => {
+          el.classList.remove('revealed');
+        });
+      }
 
       // Reset any intersection observers
       if (current.container.vibeCheckObserver) {

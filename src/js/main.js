@@ -60,13 +60,36 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize browser back fix for animation issues
   initBrowserBackFix();
   
-  // Listen for intro completion to show hero bar
+  // Listen for intro completion to show hero bar and reveal hero text
   document.addEventListener('intro:done', () => {
     const heroBar = document.querySelector('.hero-bar');
     if (heroBar) {
       setTimeout(() => {
         heroBar.classList.add('visible');
       }, 500); // Small delay for smooth transition
+    }
+    
+    // Reveal hero text elements
+    const heroTagline = document.querySelector('.hero-tagline');
+    const heroName = document.querySelector('.hero-name');
+    const heroScrollIndicator = document.querySelector('.hero-scroll-indicator');
+    
+    if (heroTagline) {
+      setTimeout(() => {
+        heroTagline.classList.add('revealed');
+      }, 800);
+    }
+    
+    if (heroName) {
+      setTimeout(() => {
+        heroName.classList.add('revealed');
+      }, 600);
+    }
+    
+    if (heroScrollIndicator) {
+      setTimeout(() => {
+        heroScrollIndicator.classList.add('revealed');
+      }, 1200);
     }
   });
 });

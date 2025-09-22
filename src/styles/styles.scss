@@ -7,6 +7,15 @@
   box-sizing: border-box;
 }
 
+// Fix text wrapping globally - prevent mid-word breaks but allow overflow wrap
+p, h1, h2, h3, h4, h5, h6, span, div {
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
 html {
   overflow-x: hidden;
 }
