@@ -69,7 +69,7 @@
 
                     <!-- Photo on Left -->
                     <div class="about-image main-photo">
-                        <img src="content 2/marketing/lewkin/modeling/P1030493.JPG" alt="Christine Shin" class="hover-image" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); transition: transform 0.2s ease, box-shadow 0.2s ease; will-change: transform;">
+                        <img id="about-cycling-image" src="content%202/marketing/lewkin/modeling/P1030493.JPG" alt="Christine Shin" class="hover-image" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); transition: opacity 0.5s ease, transform 0.2s ease, box-shadow 0.2s ease; will-change: transform;">
                     </div>
 
                     <!-- Text on Right -->
@@ -98,60 +98,6 @@
                 </div>
             </section>
 
-            <!-- Behind the Lens Gallery -->
-                <section class="about-gallery behind-lens-section" style="margin: 0; min-height: 200vh; position: relative; background: white; transition: background-color 1.5s cubic-bezier(0.4, 0, 0.2, 1); width: 100vw; margin-left: calc(-50vw + 50%);">
-
-                    <!-- Vibe Check Style Title - Sticky -->
-                    <div class="behind-lens-title" style="position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100;">
-
-                        <div class="title-line" style="overflow: hidden; height: clamp(4rem, 12vw, 8rem);">
-                            <h3 class="title-word title-word--behind" style="font-size: clamp(4rem, 12vw, 8rem); font-weight: 900; margin: 0; line-height: 1;">BEHIND</h3>
-                        </div>
-
-                        <div class="title-divider" style="width: 200px; height: 2px; margin: 1rem 0;"></div>
-
-                        <div class="title-line" style="overflow: hidden; height: clamp(4rem, 12vw, 8rem);">
-                            <h3 class="title-word title-word--lens" style="font-size: clamp(4rem, 12vw, 8rem); font-weight: 900; margin: 0; line-height: 1;">THE LENS</h3>
-                        </div>
-
-                        <!-- Scroll Indicator -->
-                        <div class="scroll-indicator behind-lens-scroll" style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; z-index: 100;">
-                            <div class="scroll-arrows" style="display: flex; flex-direction: row; gap: 0.5rem; margin-bottom: 0.5rem;">
-                                <div class="arrow" style="font-size: 1.5rem; color: white; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); animation: bounce 2s infinite;">↓</div>
-                                <div class="arrow" style="font-size: 1.5rem; color: white; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); animation: bounce 2s infinite; animation-delay: 0.3s;">↓</div>
-                                <div class="arrow" style="font-size: 1.5rem; color: white; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); animation: bounce 2s infinite; animation-delay: 0.6s;">↓</div>
-                            </div>
-                            <p class="scroll-text" style="color: white; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); margin: 0;">Explore Gallery</p>
-                        </div>
-
-                    </div>
-
-                    <!-- Gallery Content Below Title -->
-                    <div class="gallery-content" style="position: absolute; top: 100vh; left: 0; right: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 2rem;">
-
-                        <!-- Single Image Gallery with Navigation -->
-                        <div class="single-image-gallery" style="position: relative; max-width: 1000px; width: 100%;">
-
-                        <!-- Current Image -->
-                        <div class="gallery-image-container" style="position: relative; width: 100%; height: 650px; overflow: hidden; border-radius: 8px; box-shadow: 0 25px 80px rgba(0,0,0,0.4); border: none;">
-                            <img id="current-gallery-image" src="content 2/marketing/lewkin/modeling/P1030505.JPG" alt="Christine Shin" style="width: 100%; height: 100%; object-fit: cover; transition: opacity 0.5s ease; border: none;">
-                        </div>
-
-                        <!-- Navigation Arrows -->
-                        <button class="gallery-nav gallery-nav--prev" style="position: absolute; left: -100px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; width: 70px; height: 70px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.5);" onmouseover="this.style.background='rgba(0,0,0,1)'; this.style.transform='translateY(-50%) scale(1.1)'; this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.background='rgba(0,0,0,0.8)'; this.style.transform='translateY(-50%) scale(1)'; this.style.borderColor='rgba(255,255,255,0.3)'">‹</button>
-
-                        <button class="gallery-nav gallery-nav--next" style="position: absolute; right: -100px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; width: 70px; height: 70px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.5);" onmouseover="this.style.background='rgba(0,0,0,1)'; this.style.transform='translateY(-50%) scale(1.1)'; this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.background='rgba(0,0,0,0.8)'; this.style.transform='translateY(-50%) scale(1)'; this.style.borderColor='rgba(255,255,255,0.3)'">›</button>
-
-                        <!-- Image Counter -->
-                        <div class="image-counter" style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; color: white; font-weight: 500;">
-                            <span id="current-index">1</span> / <span id="total-images">9</span>
-                        </div>
-
-                        </div>
-
-                    </div>
-
-                </section>
 
             <!-- My Photography Section -->
             <section class="vibe-check-section" data-controller="vibe-check">
@@ -265,19 +211,6 @@
                 </div>
             </section>
             
-            <!-- Experience More Section -->
-            <section class="experience-more-section" style="padding: 4rem 2rem; text-align: center; background: white; transition: background-color 1.5s cubic-bezier(0.4, 0, 0.2, 1);">
-                <h3 class="experience-title" style="font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.5rem; color: #333; filter: blur(6px); opacity: 0; font-weight: 700; transform: translateY(30px); transition: all 0.8s ease;">Explore All Photos</h3>
-                <p class="experience-description" style="font-size: 1.1rem; color: #666; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6; opacity: 0; transform: translateY(20px); transition: all 0.6s ease 0.3s;">
-                    Explore the complete collection of visual stories, each capturing a unique mood and moment in time.
-                </p>
-                <div class="experience-button-container" style="opacity: 0; transform: translateY(20px); transition: all 0.6s ease 0.5s;">
-                    <a href="/vibes.html" class="hero-btn hero-btn--secondary" style="display: inline-block; padding: 0.875rem 2rem; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 2px; letter-spacing: 0.5px; text-transform: uppercase; transition: all 0.3s ease; cursor: pointer; background-color: #fff !important; color: #000 !important; border: 2px solid #000 !important;" onmouseover="this.style.backgroundColor='#000'; this.style.color='#fff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.backgroundColor='#fff'; this.style.color='#000'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                        Experience More
-                    </a>
-                </div>
-            </section>
-            
             <!-- Graduation Photography Section -->
             <section class="graduation-section" style="min-height: 300vh; position: relative; background: white; transition: background-color 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); width: 100vw; margin-left: calc(-50vw + 50%);">
                 
@@ -379,9 +312,12 @@
                     
                 </div>
                 
-                <!-- Book Appointment Button - Bottom -->
+                <!-- Book Appointment and View More Photos Buttons - Bottom -->
                 <div class="graduation-cta" style="position: absolute; top: calc(100vh + 100vh - 2rem); left: 50%; transform: translateX(-50%); text-align: center; opacity: 0; transition: opacity 0.6s ease; z-index: 100;">
-                    <a href="/contact.html" class="hero-btn hero-btn--primary" style="display: inline-block; padding: 0.875rem 2rem; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 2px; letter-spacing: 0.5px; text-transform: uppercase; transition: all 0.3s ease; cursor: pointer; background-color: #000; color: #fff; border: 2px solid #000;" onmouseover="this.style.backgroundColor='#fff'; this.style.color='#000'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.backgroundColor='#000'; this.style.color='#fff'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">Book Appointment</a>
+                    <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: center; flex-wrap: wrap;">
+                        <a href="/contact.html" class="hero-btn hero-btn--primary" style="display: inline-block; padding: 0.875rem 2rem; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 2px; letter-spacing: 0.5px; text-transform: uppercase; transition: all 0.3s ease; cursor: pointer; background-color: #000; color: #fff; border: 2px solid #000;" onmouseover="this.style.backgroundColor='#fff'; this.style.color='#000'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.backgroundColor='#000'; this.style.color='#fff'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">Book Appointment</a>
+                        <a href="/commencement.html" class="hero-btn hero-btn--secondary" style="display: inline-block; padding: 0.875rem 2rem; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 2px; letter-spacing: 0.5px; text-transform: uppercase; transition: all 0.3s ease; cursor: pointer; background-color: #fff; color: #000; border: 2px solid #000;" onmouseover="this.style.backgroundColor='#000'; this.style.color='#fff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.backgroundColor='#fff'; this.style.color='#000'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">View More Photos</a>
+                    </div>
                 </div>
 
             </section>
@@ -608,60 +544,26 @@
             transform: translateY(0) !important;
         }
 
-        /* About section animations */
-        .main-photo {
+        /* About section - simple one-time reveal */
+        .about-me-section .main-photo,
+        .about-me-section .about-text,
+        .about-me-section .about-heading,
+        .about-me-section .about-paragraph,
+        .about-me-section .about-cta {
             opacity: 0;
-            transform: translateX(-50px);
-            transition: all 1.0s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .main-photo.revealed {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .about-text {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: all 1.0s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .about-text.revealed {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .about-heading {
-            filter: blur(4px);
-            opacity: 0;
+            transform: translateY(20px);
             transition: all 0.8s ease;
         }
 
-        .about-heading.revealed {
-            filter: blur(0);
-            opacity: 1;
-        }
-
-        .about-paragraph {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-
-        .about-paragraph.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .about-cta {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-
-        .about-cta.revealed {
-            opacity: 1;
-            transform: translateY(0);
+        /* Once revealed, everything appears together permanently */
+        .about-me-section.about-section-revealed .main-photo,
+        .about-me-section.about-section-revealed .about-text,
+        .about-me-section.about-section-revealed .about-heading,
+        .about-me-section.about-section-revealed .about-paragraph,
+        .about-me-section.about-section-revealed .about-cta {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: all 0.8s ease !important;
         }
 
         /* Fix text wrapping - prevent mid-word breaks but handle overflow */
@@ -830,47 +732,6 @@
             transition: all 0.6s ease 0.3s;
         }
 
-        .main-photo.revealed {
-            opacity: 1 !important;
-            transform: translateX(0) !important;
-            transition: all 1.0s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
-        }
-
-        .about-text.revealed {
-            opacity: 1 !important;
-            transform: translateX(0) !important;
-            transition: all 1.0s cubic-bezier(0.23, 1, 0.32, 1) 0.4s;
-        }
-
-        .about-heading.revealed {
-            filter: blur(0) !important;
-            opacity: 1 !important;
-            transition: all 0.8s ease;
-        }
-
-        .about-paragraph.revealed {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-            transition: all 0.6s ease;
-        }
-
-        .about-paragraph:nth-of-type(1).revealed {
-            transition-delay: 0.1s;
-        }
-
-        .about-paragraph:nth-of-type(2).revealed {
-            transition-delay: 0.2s;
-        }
-
-        .about-paragraph:nth-of-type(3).revealed {
-            transition-delay: 0.3s;
-        }
-
-        .about-cta.revealed {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-            transition: all 0.6s ease 0.4s;
-        }
 
         .hover-image {
             transform: translateZ(0);
@@ -897,27 +758,6 @@
 
         }
 
-        /* Behind the Lens animations */
-        .title-word--behind.revealed {
-            transform: translateY(0) !important;
-        }
-
-        .title-word--lens.revealed {
-            transform: translateY(0) !important;
-        }
-
-        .title-divider.revealed {
-            transform: scaleX(1) !important;
-        }
-
-        .behind-lens-scroll.revealed {
-            opacity: 1 !important;
-        }
-
-        .behind-lens-scroll.hidden {
-            opacity: 0 !important;
-            transition: opacity 0.3s ease;
-        }
         
         /* Override initial hidden states and ensure smooth animations */
         .about-me-section {
@@ -944,11 +784,6 @@
         .title-divider.revealed {
             transform: scaleX(1) !important;
             transition: transform 0.8s ease 0.5s;
-        }
-        
-        .behind-lens-scroll.revealed {
-            opacity: 1 !important;
-            transition: opacity 0.6s ease 1s;
         }
         
         /* Make sure hero buttons are visible */
@@ -1007,80 +842,10 @@
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.5s !important;
         }
         
-        /* Simple all-at-once animation for about section */
-        .main-photo {
-            animation: fadeIn 1s ease-out forwards !important;
-        }
         
-        .about-text {
-            animation: fadeIn 1s ease-out forwards !important;
+            filter: none !important;
         }
-        
-        .about-heading {
-            animation: fadeIn 1s ease-out forwards !important;
-        }
-        
-        .about-paragraph {
-            animation: fadeIn 1s ease-out forwards !important;
-        }
-        
-        .about-cta {
-            animation: fadeIn 1s ease-out forwards !important;
-        }
-        
-        /* Behind the Lens scroll-triggered animations - initial hidden state */
-        .title-word--behind {
-            opacity: 0 !important;
-            transform: translateY(-100%) !important;
-            color: #333 !important;
-        }
-        
-        /* BEHIND THE LENS - SMOOTH ANIMATIONS */
-        .behind-lens-title .title-word--behind {
-            opacity: 0 !important;
-            transform: translateY(-30px) !important;
-            color: #333 !important;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        }
-        
-        .behind-lens-title .title-word--behind.revealed {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-            color: #333 !important;
-        }
-        
-        .behind-lens-title .title-word--lens {
-            opacity: 0 !important;
-            transform: translateY(30px) !important;
-            color: #333 !important;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        }
-        
-        .behind-lens-title .title-word--lens.revealed {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-            color: #333 !important;
-        }
-        
-        .behind-lens-title .title-divider {
-            background: #333 !important;
-            transform: scaleX(0) !important;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        }
-        
-        .behind-lens-title .title-divider.revealed {
-            transform: scaleX(1) !important;
-        }
-        
-        .behind-lens-scroll {
-            opacity: 0 !important;
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        }
-        
-        .behind-lens-scroll.revealed {
-            opacity: 1 !important;
-        }
-        
+
         /* Animation keyframes */
         @keyframes smoothFadeIn {
             0% { 
@@ -1143,205 +908,76 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        if (entry.target.classList.contains('experience-title')) {
-                            entry.target.style.filter = 'blur(0)';
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                        } else if (entry.target.classList.contains('experience-description')) {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                        } else if (entry.target.classList.contains('experience-button-container')) {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                        } else if (entry.target.classList.contains('about-me-section')) {
-                            // When about section comes into view, reveal all elements at once
-                            const aboutPhoto = document.querySelector('.main-photo');
-                            const aboutText = document.querySelector('.about-text');
-                            const aboutHeading = document.querySelector('.about-heading');
-                            const aboutParagraphs = document.querySelectorAll('.about-paragraph');
-                            const aboutCta = document.querySelector('.about-cta');
+                        if (entry.target.classList.contains('about-me-section')) {
+                            // Only reveal once - permanent reveal
+                            if (!entry.target.classList.contains('about-section-revealed')) {
+                                entry.target.classList.add('about-section-revealed');
+                                console.log('🎯 About section revealed permanently - all content shown immediately');
 
-                            // Reveal all elements immediately
-                            if (aboutPhoto) aboutPhoto.classList.add('revealed');
-                            if (aboutText) aboutText.classList.add('revealed');
-                            if (aboutHeading) aboutHeading.classList.add('revealed');
-                            aboutParagraphs.forEach(p => p.classList.add('revealed'));
-                            if (aboutCta) aboutCta.classList.add('revealed');
+                                // Disconnect this observer so it never triggers again
+                                observer.unobserve(entry.target);
+                            }
                         }
                     }
                 });
             }, observerOptions);
             
-            // Color cycling for Experience More section
-            const experienceMoreSection = document.querySelector('.experience-more-section');
-            const vibeColors = ['#B8E6E1', '#F5C2D6', '#F5D49C', '#F2B8B8']; // mint, pink, peach, coral
-            let colorIndex = 0;
-            let colorCycleInterval = null;
-            
-            const colorObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && entry.target === experienceMoreSection) {
-                        console.log('🌈 Starting color cycle for Experience More section');
-                        
-                        // Start cycling through colors
-                        colorCycleInterval = setInterval(() => {
-                            experienceMoreSection.style.background = vibeColors[colorIndex];
-                            console.log(`🎨 Experience More color: ${vibeColors[colorIndex]}`);
-                            colorIndex = (colorIndex + 1) % vibeColors.length;
-                        }, 2000); // Change color every 2 seconds
-                        
-                    } else if (!entry.isIntersecting && entry.target === experienceMoreSection) {
-                        // Stop cycling and reset when leaving view
-                        if (colorCycleInterval) {
-                            clearInterval(colorCycleInterval);
-                            colorCycleInterval = null;
-                            experienceMoreSection.style.background = 'white';
-                            console.log('🤍 Stopped Experience More color cycle');
-                        }
-                    }
-                });
-            }, {
-                threshold: 0.3,
-                rootMargin: '0px'
-            });
-            
-            if (experienceMoreSection) {
-                colorObserver.observe(experienceMoreSection);
-            }
-            
-            // Observe experience more elements
-            const experienceTitle = document.querySelector('.experience-title');
-            const experienceDescription = document.querySelector('.experience-description');
-            const experienceButton = document.querySelector('.experience-button-container');
-            
-            if (experienceTitle) observer.observe(experienceTitle);
-            if (experienceDescription) observer.observe(experienceDescription);
-            if (experienceButton) observer.observe(experienceButton);
 
-            // About section elements - observe just the main container and behind the lens elements
+            // About section elements - observe the main container
             const aboutSection = document.querySelector('.about-me-section');
             if (aboutSection) {
                 observer.observe(aboutSection);
             }
 
-            // Behind the Lens - SMOOTH animation that plays ONCE
-            let behindLensAnimated = false;
-            
-            const behindLensObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !behindLensAnimated) {
-                        behindLensAnimated = true;
-                        console.log('🎬 Behind Lens - triggering smooth animation ONCE');
-                        
-                        const behindElement = document.querySelector('.title-word--behind');
-                        const lensElement = document.querySelector('.title-word--lens');
-                        const dividerElement = document.querySelector('.title-divider');
-                        const scrollElement = document.querySelector('.behind-lens-scroll');
-                        
-                        // Trigger BOTH elements simultaneously for smooth animation
-                        if (behindElement && lensElement) {
-                            behindElement.classList.add('revealed');
-                            lensElement.classList.add('revealed');
-                        }
-                        
-                        // Trigger divider and scroll indicator with slight delay
-                        setTimeout(() => {
-                            if (dividerElement) dividerElement.classList.add('revealed');
-                        }, 300);
-                        
-                        setTimeout(() => {
-                            if (scrollElement) scrollElement.classList.add('revealed');
-                        }, 600);
-                        
-                        // DISCONNECT observer so animation never plays again
-                        behindLensObserver.disconnect();
-                        console.log('✅ Behind Lens animation complete - observer disconnected');
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px 80% 0px'
-            });
-            
-            const behindLensTitle = document.querySelector('.behind-lens-title');
-            if (behindLensTitle) {
-                behindLensObserver.observe(behindLensTitle);
+            // About Me Image Cycling - Lewkin Modeling Photos (Netlify-safe paths)
+            const lewkinModelingImages = [
+                'content%202/marketing/lewkin/modeling/P1030493.JPG',
+                'content%202/marketing/lewkin/modeling/P1030505.JPG',
+                'content%202/marketing/lewkin/modeling/P1030511.JPG',
+                'content%202/marketing/lewkin/modeling/P1030538.JPG',
+                'content%202/marketing/lewkin/modeling/P1030583.JPG',
+                'content%202/marketing/lewkin/modeling/DSC01604.JPG',
+                'content%202/marketing/lewkin/modeling/DSC01661.JPG',
+                'content%202/marketing/lewkin/modeling/DSC01663.JPG',
+                'content%202/marketing/lewkin/modeling/DSC01679.JPG',
+                'content%202/marketing/lewkin/modeling/IMG_6629.JPG'
+            ];
+
+            let currentImageIndex = 0;
+            const aboutImage = document.getElementById('about-cycling-image');
+
+            function cycleAboutImage() {
+                if (aboutImage && lewkinModelingImages.length > 0) {
+                    // Fade out
+                    aboutImage.style.opacity = '0';
+
+                    setTimeout(() => {
+                        // Change image
+                        currentImageIndex = (currentImageIndex + 1) % lewkinModelingImages.length;
+                        aboutImage.src = lewkinModelingImages[currentImageIndex];
+
+                        // Fade in
+                        aboutImage.style.opacity = '1';
+
+                        console.log(`🖼️ About image cycled to: ${lewkinModelingImages[currentImageIndex]}`);
+                    }, 250); // Half of transition time
+                }
             }
 
-            // Separate observer for Behind the Lens background color transition
-            const behindLensSection = document.querySelector('.behind-lens-section');
-            if (behindLensSection) {
-                const backgroundObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        const behindElement = document.querySelector('.title-word--behind');
-                        const lensElement = document.querySelector('.title-word--lens');
-                        const dividerElement = document.querySelector('.title-divider');
-                        
-                        if (entry.isIntersecting) {
-                            // When section is in view, turn background black
-                            behindLensSection.style.background = '#000';
-                            // Make revealed text white on black background
-                            if (behindElement && behindElement.classList.contains('revealed')) {
-                                behindElement.style.color = 'white';
-                            }
-                            if (lensElement && lensElement.classList.contains('revealed')) {
-                                lensElement.style.color = 'white';
-                            }
-                            if (dividerElement && dividerElement.classList.contains('revealed')) {
-                                dividerElement.style.background = 'white';
-                            }
-                        } else {
-                            // When section is out of view, turn background white
-                            behindLensSection.style.background = '#fff';
-                            // Make revealed text dark on white background
-                            if (behindElement && behindElement.classList.contains('revealed')) {
-                                behindElement.style.color = '#333';
-                            }
-                            if (lensElement && lensElement.classList.contains('revealed')) {
-                                lensElement.style.color = '#333';
-                            }
-                            if (dividerElement && dividerElement.classList.contains('revealed')) {
-                                dividerElement.style.background = '#333';
-                            }
-                        }
-                    });
-                }, {
-                    threshold: 0.3,
-                    rootMargin: '-30% 0px -30% 0px'
-                });
-
-                // REMOVED: backgroundObserver to prevent re-triggering
-                // Keep section with permanent white background
-                behindLensSection.style.background = '#fff';
+            // Start cycling every 4 seconds
+            if (aboutImage) {
+                setInterval(cycleAboutImage, 4000);
+                console.log(`🖼️ About image cycling started with ${lewkinModelingImages.length} images`);
             }
 
-            // Fallback: reveal about section after 8 seconds if not already revealed
+            // Fallback: reveal about section after 5 seconds if not already revealed
             setTimeout(() => {
-                const aboutPhoto = document.querySelector('.main-photo');
-                const aboutText = document.querySelector('.about-text');
-                const aboutHeading = document.querySelector('.about-heading');
-                const aboutParagraphs = document.querySelectorAll('.about-paragraph');
-                const aboutCta = document.querySelector('.about-cta');
-
-                // Reveal all elements at once if not already revealed
-                if (aboutPhoto && !aboutPhoto.classList.contains('revealed')) {
-                    aboutPhoto.classList.add('revealed');
+                const aboutSection = document.querySelector('.about-me-section');
+                if (aboutSection && !aboutSection.classList.contains('about-section-revealed')) {
+                    aboutSection.classList.add('about-section-revealed');
+                    console.log('🎯 About section revealed by fallback timer');
                 }
-                if (aboutText && !aboutText.classList.contains('revealed')) {
-                    aboutText.classList.add('revealed');
-                }
-                if (aboutHeading && !aboutHeading.classList.contains('revealed')) {
-                    aboutHeading.classList.add('revealed');
-                }
-                aboutParagraphs.forEach(p => {
-                    if (!p.classList.contains('revealed')) {
-                        p.classList.add('revealed');
-                    }
-                });
-                if (aboutCta && !aboutCta.classList.contains('revealed')) {
-                    aboutCta.classList.add('revealed');
-                }
-            }, 8000);
+            }, 5000);
 
             // About section gallery navigation
             const aboutGalleryImages = [
@@ -1405,13 +1041,6 @@
             if (aboutPrevBtn) aboutPrevBtn.addEventListener('click', prevAboutImage);
 
             // Elements are now visible via CSS - no JavaScript needed
-
-            // Static Behind the Lens background - no scroll-based animation needed
-            const behindLensSection = document.querySelector('.behind-lens-section');
-            if (behindLensSection) {
-                // Set initial white background
-                behindLensSection.style.background = '#fff';
-            }
 
             // Load all image assets
             import('/src/js/imageAssets.js').then(({ loadImages, imageAssets }) => {

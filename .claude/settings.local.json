@@ -4,7 +4,9 @@
       "Bash(find:*)",
       "Bash(npm run build:*)",
       "Bash(npm run preview:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(git -C \"C:\\Users\\zachs\\christine_portfolio\" diff --stat)",
+      "Bash(git -C \"C:\\Users\\zachs\\christine_portfolio\" log --oneline)"
     ],
     "deny": [],
     "ask": []
