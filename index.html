@@ -11,45 +11,25 @@
     <style>
         /* CRITICAL MOBILE FIXES - MAXIMUM PRIORITY */
 
-        /* Hero title mobile fixes */
+        /* Mobile fixes for all devices */
         @media (max-width: 768px) {
             .hero-name {
-                font-size: clamp(2rem, 10vw, 4rem) !important;
-            }
-
-            .hero-buttons {
-                flex-direction: column !important;
-                gap: 1rem !important;
-                align-items: center !important;
-            }
-
-            .hero-btn {
-                min-width: 250px !important;
-            }
-
-            .graduation-scroll {
-                display: none !important;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-name {
-                font-size: 2.2rem !important;
+                font-size: 3rem !important;
                 line-height: 1.1 !important;
             }
 
             .hero-buttons {
                 flex-direction: column !important;
                 gap: 1rem !important;
+                align-items: center !important;
                 width: 100% !important;
-                max-width: 280px !important;
-                margin: 1.5rem auto 0 auto !important;
             }
 
             .hero-btn {
-                width: 100% !important;
-                padding: 0.9rem 1.5rem !important;
-                font-size: 0.85rem !important;
+                width: 90% !important;
+                max-width: 300px !important;
+                padding: 1rem 1.5rem !important;
+                font-size: 0.9rem !important;
                 text-align: center !important;
             }
 
@@ -57,12 +37,43 @@
                 display: none !important;
             }
 
-            .paintbrush-container {
-                transform: scale(1.3) !important;
+            /* Fix commencement section height */
+            .graduation-section {
+                min-height: 150vh !important;
             }
 
-            .brush-animation text {
-                font-size: 80 !important;
+            .paintbrush-container {
+                transform: scale(1.5) !important;
+                padding: 2rem 1rem !important;
+            }
+        }
+
+        /* Small phone specific */
+        @media (max-width: 480px) {
+            .hero-name {
+                font-size: 2.5rem !important;
+            }
+
+            .hero-tagline {
+                font-size: 1rem !important;
+            }
+
+            .hero-btn {
+                font-size: 0.85rem !important;
+            }
+
+            .graduation-section {
+                min-height: 120vh !important;
+            }
+
+            .graduation-gallery-content {
+                top: 100vh !important;
+                min-height: 60vh !important;
+                padding: 1rem !important;
+            }
+
+            .graduation-image-container {
+                height: 400px !important;
             }
         }
     </style>
@@ -1740,7 +1751,39 @@
                     }
                 });
             });
-            
+
+            // Handle anchor links for smooth scrolling to sections
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        // Check if locomotive scroll exists
+                        const scrollContainer = document.querySelector('[data-controller="scroll-animations"]');
+
+                        if (scrollContainer && scrollContainer.locomotive) {
+                            // Use locomotive scroll
+                            scrollContainer.locomotive.scrollTo(targetElement, {
+                                offset: 0,
+                                duration: 800,
+                                easing: [0.25, 0.0, 0.35, 1.0]
+                            });
+                        } else {
+                            // Fallback to native smooth scroll
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
         });
     </script>
 </body>
