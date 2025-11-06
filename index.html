@@ -513,6 +513,7 @@
             filter: blur(0) !important;
             opacity: 1 !important;
             transform: translateY(0) !important;
+            transition: none !important;
         }
 
         .hero-tagline {
@@ -530,6 +531,7 @@
             filter: blur(0) !important;
             opacity: 1 !important;
             transform: translateY(0) !important;
+            transition: none !important;
         }
 
         .hero-scroll-indicator {
@@ -541,6 +543,19 @@
         .hero-scroll-indicator.revealed {
             opacity: 1 !important;
             transform: translateY(0) !important;
+            transition: none !important;
+        }
+
+        .hero-buttons {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .hero-buttons.revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: none !important;
         }
 
 
@@ -764,65 +779,6 @@
             transition: transform 0.8s ease 0.5s;
         }
         
-        /* Make sure hero buttons are visible */
-        .hero-buttons {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-        
-        /* Hero elements - initial hidden state for scroll animations */
-        .hero-name {
-            opacity: 0 !important;
-            transform: translateY(30px) !important;
-            filter: blur(4px) !important;
-        }
-        
-        .hero-tagline {
-            opacity: 0 !important;
-            transform: translateY(20px) !important;
-            filter: blur(2px) !important;
-        }
-        
-        .hero-scroll-indicator {
-            opacity: 0 !important;
-            transform: translateY(20px) !important;
-        }
-        
-        .hero-buttons {
-            opacity: 0 !important;
-            transform: translateY(20px) !important;
-        }
-        
-        /* Revealed states for hero elements */
-        .hero-name.revealed {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-            filter: blur(0) !important;
-            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        }
-        
-        .hero-tagline.revealed {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-            filter: blur(0) !important;
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s !important;
-        }
-        
-        .hero-scroll-indicator.revealed {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.8s !important;
-        }
-        
-        .hero-buttons.revealed {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.5s !important;
-        }
-        
-        
-            filter: none !important;
-        }
 
         /* Animation keyframes */
         @keyframes smoothFadeIn {
