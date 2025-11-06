@@ -13,6 +13,11 @@
 
         /* Mobile fixes for all devices */
         @media (max-width: 768px) {
+            /* HIDE CORNER PHOTOS ON MOBILE */
+            .corner-photos {
+                display: none !important;
+            }
+
             .hero-name {
                 font-size: 3rem !important;
                 line-height: 1.1 !important;
@@ -37,14 +42,27 @@
                 display: none !important;
             }
 
-            /* Fix commencement section height */
-            .graduation-section {
-                min-height: 150vh !important;
+            /* Simplify commencement - hide fancy SVG, show simple text */
+            .paintbrush-container {
+                display: none !important;
             }
 
-            .paintbrush-container {
-                transform: scale(1.5) !important;
-                padding: 2rem 1rem !important;
+            .graduation-title::before {
+                content: "Commencement" !important;
+                display: block !important;
+                font-size: 3rem !important;
+                font-weight: 700 !important;
+                color: #333 !important;
+                text-align: center !important;
+                font-family: 'Kalam', 'Caveat', cursive !important;
+            }
+
+            .graduation-subtitle-container {
+                margin-top: 1rem !important;
+            }
+
+            .graduation-section {
+                min-height: 150vh !important;
             }
         }
 
@@ -60,6 +78,10 @@
 
             .hero-btn {
                 font-size: 0.85rem !important;
+            }
+
+            .graduation-title::before {
+                font-size: 2.5rem !important;
             }
 
             .graduation-section {
