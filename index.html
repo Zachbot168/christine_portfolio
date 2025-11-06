@@ -9,40 +9,72 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&family=Kalam:wght@300;400;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/styles/styles.scss">
     <style>
-        /* CRITICAL MOBILE FIXES - MAXIMUM PRIORITY */
+        /* ===================================
+           MOBILE ONLY - COMPLETE OVERRIDE
+           =================================== */
 
-        /* Mobile fixes for all devices */
         @media (max-width: 768px) {
-            /* HIDE CORNER PHOTOS ON MOBILE */
+            /* HIDE CORNER PHOTOS */
             .corner-photos {
                 display: none !important;
             }
 
-            .hero-name {
-                font-size: 3rem !important;
-                line-height: 1.1 !important;
-            }
-
-            .hero-buttons {
-                flex-direction: column !important;
-                gap: 1rem !important;
-                align-items: center !important;
-                width: 100% !important;
-            }
-
-            .hero-btn {
-                width: 90% !important;
-                max-width: 300px !important;
-                padding: 1rem 1.5rem !important;
-                font-size: 0.9rem !important;
+            /* HERO TITLE - SIMPLE AND FIXED */
+            .hero .hero-name,
+            h1.hero-name,
+            .hero-content .hero-name {
+                font-size: 2.5rem !important;
+                line-height: 1.2 !important;
+                margin-bottom: 1rem !important;
                 text-align: center !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 1rem !important;
             }
 
+            /* HERO TAGLINE */
+            .hero .hero-tagline,
+            h2.hero-tagline,
+            .hero-content .hero-tagline {
+                font-size: 1.1rem !important;
+                line-height: 1.4 !important;
+                text-align: center !important;
+                margin-bottom: 1.5rem !important;
+                padding: 0 1rem !important;
+            }
+
+            /* HERO BUTTONS CONTAINER */
+            .hero .hero-buttons,
+            .hero-content .hero-buttons {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                width: 100% !important;
+                gap: 1rem !important;
+                margin-top: 1.5rem !important;
+                padding: 0 1rem !important;
+            }
+
+            /* INDIVIDUAL BUTTONS */
+            .hero-btn.hero-btn--primary,
+            .hero-btn.hero-btn--secondary,
+            a.hero-btn {
+                display: block !important;
+                width: 100% !important;
+                max-width: 280px !important;
+                padding: 1rem 1.5rem !important;
+                font-size: 0.95rem !important;
+                text-align: center !important;
+                margin: 0 auto !important;
+                box-sizing: border-box !important;
+            }
+
+            /* GRADUATION/COMMENCEMENT */
             .graduation-scroll {
                 display: none !important;
             }
 
-            /* Simplify commencement - hide fancy SVG, show simple text */
             .paintbrush-container {
                 display: none !important;
             }
@@ -50,52 +82,51 @@
             .graduation-title::before {
                 content: "Commencement" !important;
                 display: block !important;
-                font-size: 3rem !important;
+                font-size: 2.5rem !important;
                 font-weight: 700 !important;
                 color: #333 !important;
                 text-align: center !important;
                 font-family: 'Kalam', 'Caveat', cursive !important;
             }
 
-            .graduation-subtitle-container {
-                margin-top: 1rem !important;
+            .graduation-section {
+                min-height: 140vh !important;
             }
 
-            .graduation-section {
-                min-height: 150vh !important;
+            .graduation-gallery-content {
+                top: 100vh !important;
+                padding: 1rem !important;
             }
         }
 
-        /* Small phone specific */
+        /* EXTRA SMALL PHONES */
         @media (max-width: 480px) {
-            .hero-name {
-                font-size: 2.5rem !important;
+            .hero .hero-name,
+            h1.hero-name,
+            .hero-content .hero-name {
+                font-size: 2rem !important;
             }
 
-            .hero-tagline {
+            .hero .hero-tagline,
+            h2.hero-tagline {
                 font-size: 1rem !important;
             }
 
             .hero-btn {
                 font-size: 0.85rem !important;
+                padding: 0.9rem 1.25rem !important;
             }
 
             .graduation-title::before {
-                font-size: 2.5rem !important;
+                font-size: 2rem !important;
             }
 
             .graduation-section {
                 min-height: 120vh !important;
             }
 
-            .graduation-gallery-content {
-                top: 100vh !important;
-                min-height: 60vh !important;
-                padding: 1rem !important;
-            }
-
             .graduation-image-container {
-                height: 400px !important;
+                height: 350px !important;
             }
         }
     </style>
