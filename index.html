@@ -843,7 +843,7 @@
             triggerHeroAnimations();
 
             // Safeguard: Ensure hero elements stay revealed permanently
-            setTimeout(() => {
+            function lockHeroVisibility() {
                 const heroName = document.querySelector('.hero-name');
                 const heroTagline = document.querySelector('.hero-tagline');
                 const heroButtons = document.querySelector('.hero-buttons');
@@ -851,24 +851,47 @@
 
                 // Lock in the revealed state permanently
                 if (heroName) {
+                    heroName.classList.add('revealed');
                     heroName.style.opacity = '1';
                     heroName.style.filter = 'blur(0)';
                     heroName.style.transform = 'translateY(0)';
                 }
                 if (heroTagline) {
+                    heroTagline.classList.add('revealed');
                     heroTagline.style.opacity = '1';
                     heroTagline.style.filter = 'blur(0)';
                     heroTagline.style.transform = 'translateY(0)';
                 }
                 if (heroButtons) {
+                    heroButtons.classList.add('revealed');
                     heroButtons.style.opacity = '1';
                     heroButtons.style.transform = 'translateY(0)';
                 }
                 if (heroScrollIndicator) {
+                    heroScrollIndicator.classList.add('revealed');
                     heroScrollIndicator.style.opacity = '1';
                     heroScrollIndicator.style.transform = 'translateY(0)';
                 }
-            }, 2000); // After all animations complete
+            }
+
+            // Lock visibility after animations complete
+            setTimeout(lockHeroVisibility, 2000);
+
+            // Re-lock visibility when page is restored from cache (browser back button)
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted) {
+                    // Page was restored from bfcache (back/forward cache)
+                    console.log('🔄 Page restored from cache - ensuring hero visibility');
+                    lockHeroVisibility();
+
+                    // Also ensure about image is visible
+                    const aboutImage = document.getElementById('about-cycling-image');
+                    if (aboutImage) {
+                        aboutImage.style.opacity = '1';
+                        console.log('🖼️ About image visibility restored');
+                    }
+                }
+            });
             
             // About Me Image Cycling - Lewkin Modeling Photos
             const lewkinModelingImages = [
