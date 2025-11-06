@@ -64,31 +64,30 @@
 
             <!-- About Me Section -->
             <section class="about-me-section" style="padding: 4rem 2rem; background: white;">
-                <!-- About Content -->
-                <div class="about-content" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; margin: 0 auto; align-items: center; max-width: 1200px;">
+                <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; margin: 0 auto; align-items: center; max-width: 1200px;">
 
                     <!-- Photo on Left -->
-                    <div class="about-image main-photo">
-                        <img id="about-cycling-image" src="/content%202/marketing/lewkin/modeling/P1030493.JPG" alt="Christine Shin" class="hover-image" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); transition: opacity 0.5s ease, transform 0.2s ease, box-shadow 0.2s ease; will-change: transform;">
+                    <div>
+                        <img id="about-cycling-image" src="/content%202/marketing/lewkin/modeling/P1030493.JPG" alt="Christine Shin" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.15);">
                     </div>
 
                     <!-- Text on Right -->
-                    <div class="about-text">
-                        <h3 class="about-heading" style="font-size: 2rem; margin-bottom: 1.5rem; color: #333; font-weight: 400;">A Global Perspective, Local Impact</h3>
+                    <div>
+                        <h3 style="font-size: 2rem; margin-bottom: 1.5rem; color: #333; font-weight: 400;">A Global Perspective, Local Impact</h3>
 
-                        <p class="about-paragraph" style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.1rem; color: #555;">
+                        <p style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.1rem; color: #555;">
                             Christine Shin is a Northwestern University journalism student whose work spans continents and causes. From managing partnerships with 100+ global influencers at Seoul-based fashion brand Lewkin to directing documentaries that raised $13,000 for underprivileged communities in the Philippines, she brings both strategic thinking and humanitarian heart to every project.
                         </p>
 
-                        <p class="about-paragraph" style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.1rem; color: #555;">
+                        <p style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.1rem; color: #555;">
                             Her multimedia expertise shines through roles at Northwestern Admissions, where she creates authentic student stories, and at Philstar National Newspaper, where her content reached 15 million users. As Publisher of nuAZN Magazine and Head of Ad Sales at North by Northwestern, she's proven her ability to build brands, secure partnerships, and drive meaningful engagement.
                         </p>
 
-                        <p class="about-paragraph" style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.1rem; color: #555;">
+                        <p style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.1rem; color: #555;">
                             With an International Baccalaureate background from Manila and current studies in Journalism and International Studies with an Integrated Marketing Communications Certificate, Christine bridges cultures through compelling visual narratives—whether capturing the spirit of adventure, the texture of everyday moments, or the serenity found in quiet contemplation.
                         </p>
 
-                        <div class="about-cta" style="margin-top: 2rem;">
+                        <div style="margin-top: 2rem;">
                             <a href="#contact" class="hero-btn hero-btn--primary">
                                 Let's Connect
                             </a>
@@ -544,27 +543,6 @@
             transform: translateY(0) !important;
         }
 
-        /* About section - simple one-time reveal */
-        .about-me-section .main-photo,
-        .about-me-section .about-text,
-        .about-me-section .about-heading,
-        .about-me-section .about-paragraph,
-        .about-me-section .about-cta {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
-        }
-
-        /* Once revealed, everything appears together permanently */
-        .about-me-section.about-section-revealed .main-photo,
-        .about-me-section.about-section-revealed .about-text,
-        .about-me-section.about-section-revealed .about-heading,
-        .about-me-section.about-section-revealed .about-paragraph,
-        .about-me-section.about-section-revealed .about-cta {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-            transition: all 0.8s ease !important;
-        }
 
         /* Fix text wrapping - prevent mid-word breaks but handle overflow */
         p, .about-paragraph, .hero-tagline, h1, h2, h3, h4, h5, h6 {
@@ -898,37 +876,6 @@
             // Trigger hero animations
             triggerHeroAnimations();
             
-            // Experience More section scroll animations and color cycling
-            const observerOptions = {
-                root: null,
-                rootMargin: '-10% 0px -10% 0px',
-                threshold: 0.1
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (entry.target.classList.contains('about-me-section')) {
-                            // Only reveal once - permanent reveal
-                            if (!entry.target.classList.contains('about-section-revealed')) {
-                                entry.target.classList.add('about-section-revealed');
-                                console.log('🎯 About section revealed permanently - all content shown immediately');
-
-                                // Disconnect this observer so it never triggers again
-                                observer.unobserve(entry.target);
-                            }
-                        }
-                    }
-                });
-            }, observerOptions);
-            
-
-            // About section elements - observe the main container
-            const aboutSection = document.querySelector('.about-me-section');
-            if (aboutSection) {
-                observer.observe(aboutSection);
-            }
-
             // About Me Image Cycling - Lewkin Modeling Photos
             const lewkinModelingImages = [
                 '/content 2/marketing/lewkin/modeling/P1030493.JPG',
@@ -970,14 +917,6 @@
                 console.log(`🖼️ About image cycling started with ${lewkinModelingImages.length} images`);
             }
 
-            // Fallback: reveal about section after 5 seconds if not already revealed
-            setTimeout(() => {
-                const aboutSection = document.querySelector('.about-me-section');
-                if (aboutSection && !aboutSection.classList.contains('about-section-revealed')) {
-                    aboutSection.classList.add('about-section-revealed');
-                    console.log('🎯 About section revealed by fallback timer');
-                }
-            }, 5000);
 
             // About section gallery navigation
             const aboutGalleryImages = [
