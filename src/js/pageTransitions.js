@@ -323,18 +323,24 @@ export function initPageTransitions() {
     barba.init({
       // STEP 10A: Prevent default browser navigation
       preventRunning: true,
-      
+
       // STEP 10B: Cache management
       cacheIgnore: ['/api/', '/admin/'],
-      
+
       // STEP 10C: Request timeout
       timeout: 10000,
-      
+
       // STEP 10D: Custom request headers for better caching
       requestError: (trigger, action, url, response) => {
         console.error(`Barba request failed: ${url}`, response);
         // Fallback to standard navigation
         window.location.href = url;
+      },
+
+      // STEP 10E: Prevent transitions - force full page reload for all navigation
+      prevent: ({ el, href }) => {
+        // Force full page reload for all links
+        return true;
       }
     });
     
