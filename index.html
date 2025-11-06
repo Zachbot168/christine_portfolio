@@ -589,7 +589,7 @@
     <style>
         /* Hero name styling */
         .hero-name {
-            font-size: clamp(4rem, 12vw, 10rem) !important;
+            font-size: clamp(2.5rem, 12vw, 10rem) !important;
             font-weight: 900 !important;
             margin: 0 0 1rem 0 !important;
             line-height: 0.9 !important;
@@ -598,6 +598,13 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.8s ease;
+        }
+
+        /* Mobile title adjustment */
+        @media (max-width: 480px) {
+            .hero-name {
+                font-size: clamp(2rem, 10vw, 3rem) !important;
+            }
         }
 
         .hero-name.revealed {

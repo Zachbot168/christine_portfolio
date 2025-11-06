@@ -1096,8 +1096,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .paintbrush-container {
-    transform: scale(0.9) !important;
+    transform: scale(1.1) !important; // Increase from 0.9 to 1.1 for better readability
     padding: 1rem 0.5rem !important;
+  }
+
+  // Make commencement text larger on mobile
+  .brush-animation text {
+    font-size: 70 !important;
   }
 
   .contact-section {
@@ -1112,6 +1117,26 @@ h1, h2, h3, h4, h5, h6 {
   // Reduce menu font size further
   .menu-nav a {
     font-size: 1.5rem !important;
+  }
+
+  // Stack hero buttons on mobile
+  .hero-buttons {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    max-width: 300px !important;
+    margin: 0 auto !important;
+  }
+
+  .hero-btn {
+    width: 100% !important;
+    padding: 0.875rem 1.5rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  // Hide graduation scroll indicator on mobile
+  .graduation-scroll {
+    display: none !important;
   }
 }
 
