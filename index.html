@@ -516,6 +516,16 @@
             transition: none !important;
         }
 
+        /* Permanent visibility - never hide hero elements after reveal */
+        .hero .hero-name.revealed,
+        .hero .hero-tagline.revealed,
+        .hero .hero-buttons.revealed,
+        .hero .hero-scroll-indicator.revealed {
+            opacity: 1 !important;
+            filter: blur(0) !important;
+            transform: translateY(0) !important;
+        }
+
         .hero-tagline {
             font-size: clamp(1.2rem, 3vw, 2rem) !important;
             font-weight: 400 !important;
@@ -831,6 +841,34 @@
             
             // Trigger hero animations
             triggerHeroAnimations();
+
+            // Safeguard: Ensure hero elements stay revealed permanently
+            setTimeout(() => {
+                const heroName = document.querySelector('.hero-name');
+                const heroTagline = document.querySelector('.hero-tagline');
+                const heroButtons = document.querySelector('.hero-buttons');
+                const heroScrollIndicator = document.querySelector('.hero-scroll-indicator');
+
+                // Lock in the revealed state permanently
+                if (heroName) {
+                    heroName.style.opacity = '1';
+                    heroName.style.filter = 'blur(0)';
+                    heroName.style.transform = 'translateY(0)';
+                }
+                if (heroTagline) {
+                    heroTagline.style.opacity = '1';
+                    heroTagline.style.filter = 'blur(0)';
+                    heroTagline.style.transform = 'translateY(0)';
+                }
+                if (heroButtons) {
+                    heroButtons.style.opacity = '1';
+                    heroButtons.style.transform = 'translateY(0)';
+                }
+                if (heroScrollIndicator) {
+                    heroScrollIndicator.style.opacity = '1';
+                    heroScrollIndicator.style.transform = 'translateY(0)';
+                }
+            }, 2000); // After all animations complete
             
             // About Me Image Cycling - Lewkin Modeling Photos
             const lewkinModelingImages = [
