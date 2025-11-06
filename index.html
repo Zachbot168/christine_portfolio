@@ -605,6 +605,21 @@
             .hero-name {
                 font-size: clamp(2rem, 10vw, 4rem) !important;
             }
+
+            .hero-buttons {
+                flex-direction: column !important;
+                gap: 1rem !important;
+                align-items: center !important;
+            }
+
+            .hero-btn {
+                min-width: 250px !important;
+            }
+
+            /* Hide graduation scroll indicator on tablets */
+            .graduation-scroll {
+                display: none !important;
+            }
         }
 
         @media (max-width: 480px) {
@@ -627,6 +642,20 @@
                 padding: 0.9rem 1.5rem !important;
                 font-size: 0.85rem !important;
                 text-align: center !important;
+            }
+
+            /* Hide graduation scroll indicator on mobile */
+            .graduation-scroll {
+                display: none !important;
+            }
+
+            /* Make commencement text bigger on mobile */
+            .paintbrush-container {
+                transform: scale(1.2) !important;
+            }
+
+            .brush-animation text {
+                font-size: 75 !important;
             }
         }
 
