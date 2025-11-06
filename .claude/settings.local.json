@@ -6,7 +6,9 @@
       "Bash(npm run preview:*)",
       "Bash(npm run dev:*)",
       "Bash(git -C \"C:\\Users\\zachs\\christine_portfolio\" diff --stat)",
-      "Bash(git -C \"C:\\Users\\zachs\\christine_portfolio\" log --oneline)"
+      "Bash(git -C \"C:\\Users\\zachs\\christine_portfolio\" log --oneline)",
+      "Bash(git -C \"C:\\Users\\zachs\\christine_portfolio\" add -A)",
+      "Bash(git -C \"C:\\Users\\zachs\\christine_portfolio\" commit -m \"$(cat <<''EOF''\nFix critical mobile responsiveness issues\n\n- Hero title: reduced to 2.2rem on mobile (fixes text overflow)\n- Hero buttons: stack vertically on mobile with proper sizing\n- Commencement text: increased scale to 1.3x and font-size to 80\n- Graduation scroll indicator: hidden on mobile (prevents overlap)\n- All mobile CSS moved to HEAD for maximum priority\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
     ],
     "deny": [],
     "ask": []

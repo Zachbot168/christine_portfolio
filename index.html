@@ -9,7 +9,62 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&family=Kalam:wght@300;400;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/styles/styles.scss">
     <style>
-        /* Removed CSS brush animation - using JavaScript instead */
+        /* CRITICAL MOBILE FIXES - MAXIMUM PRIORITY */
+
+        /* Hero title mobile fixes */
+        @media (max-width: 768px) {
+            .hero-name {
+                font-size: clamp(2rem, 10vw, 4rem) !important;
+            }
+
+            .hero-buttons {
+                flex-direction: column !important;
+                gap: 1rem !important;
+                align-items: center !important;
+            }
+
+            .hero-btn {
+                min-width: 250px !important;
+            }
+
+            .graduation-scroll {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-name {
+                font-size: 2.2rem !important;
+                line-height: 1.1 !important;
+            }
+
+            .hero-buttons {
+                flex-direction: column !important;
+                gap: 1rem !important;
+                width: 100% !important;
+                max-width: 280px !important;
+                margin: 1.5rem auto 0 auto !important;
+            }
+
+            .hero-btn {
+                width: 100% !important;
+                padding: 0.9rem 1.5rem !important;
+                font-size: 0.85rem !important;
+                text-align: center !important;
+            }
+
+            .graduation-scroll {
+                display: none !important;
+            }
+
+            .paintbrush-container {
+                transform: scale(1.3) !important;
+            }
+
+            .brush-animation text {
+                font-size: 80 !important;
+            }
+        }
     </style>
 </head>
 <body data-barba="wrapper">
@@ -598,65 +653,6 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.8s ease;
-        }
-
-        /* Mobile title adjustment */
-        @media (max-width: 768px) {
-            .hero-name {
-                font-size: clamp(2rem, 10vw, 4rem) !important;
-            }
-
-            .hero-buttons {
-                flex-direction: column !important;
-                gap: 1rem !important;
-                align-items: center !important;
-            }
-
-            .hero-btn {
-                min-width: 250px !important;
-            }
-
-            /* Hide graduation scroll indicator on tablets */
-            .graduation-scroll {
-                display: none !important;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-name {
-                font-size: 2.2rem !important;
-                line-height: 1.1 !important;
-            }
-
-            /* Stack hero buttons vertically on mobile */
-            .hero-buttons {
-                flex-direction: column !important;
-                gap: 1rem !important;
-                width: 100% !important;
-                max-width: 280px !important;
-                margin: 1.5rem auto 0 auto !important;
-            }
-
-            .hero-btn {
-                width: 100% !important;
-                padding: 0.9rem 1.5rem !important;
-                font-size: 0.85rem !important;
-                text-align: center !important;
-            }
-
-            /* Hide graduation scroll indicator on mobile */
-            .graduation-scroll {
-                display: none !important;
-            }
-
-            /* Make commencement text bigger on mobile */
-            .paintbrush-container {
-                transform: scale(1.2) !important;
-            }
-
-            .brush-animation text {
-                font-size: 75 !important;
-            }
         }
 
         .hero-name.revealed {
