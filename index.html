@@ -64,7 +64,7 @@
 
             <!-- About Me Section -->
             <section class="about-me-section" style="padding: 4rem 2rem; background: white;">
-                <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; margin: 0 auto; align-items: center; max-width: 1200px;">
+                <div class="about-grid" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; margin: 0 auto; align-items: center; max-width: 1200px;">
 
                     <!-- Photo on Left -->
                     <div>
@@ -211,13 +211,13 @@
             </section>
             
             <!-- Graduation Photography Section -->
-            <section class="graduation-section" style="min-height: 210vh; position: relative; background: white; transition: background-color 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); width: 100vw; margin-left: calc(-50vw + 50%);">
+            <section class="graduation-section" style="min-height: 210vh; position: relative; background: white; transition: background-color 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); width: 100%; overflow-x: hidden;">
 
                 <!-- Paintbrush Title - Sticky -->
                 <div class="graduation-title" style="position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100;">
-                    
+
                     <!-- Paintbrush Text Animation -->
-                    <div class="paintbrush-container" style="position: relative; width: 100vw; margin-left: calc(-50vw + 50%); padding: 2rem 1rem; transform: scale(2); transform-origin: center center;">
+                    <div class="paintbrush-container" style="position: relative; width: 100%; padding: 2rem 1rem; transform: scale(2); transform-origin: center center;">
                         <svg viewBox="0 0 800 200" class="brush-animation" style="width: 100%; height: 200px; filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.2));">
                             <defs>
                                 <!-- Brush stroke mask path -->
@@ -484,17 +484,17 @@
                     <!-- Contact Card -->
                     <div style="background: white; border-radius: 16px; padding: 3rem; box-shadow: 0 10px 40px rgba(0,0,0,0.08); margin-bottom: 2rem;">
                         <!-- Contact Methods -->
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                        <div class="contact-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
                             <!-- Email -->
                             <div style="text-align: center; padding: 1.5rem;">
-                                <div style="font-size: 2.5rem; margin-bottom: 1rem;">✉️</div>
+                                <div class="contact-icon" style="font-size: 2.5rem; margin-bottom: 1rem;">✉️</div>
                                 <h3 style="font-size: 0.9rem; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; opacity: 1 !important; filter: none !important;">Email</h3>
                                 <a href="mailto:christineshin2028@u.northwestern.edu" style="font-size: 1.1rem; color: #333; text-decoration: none; font-weight: 500; word-break: break-all; transition: color 0.2s;" onmouseover="this.style.color='#666'" onmouseout="this.style.color='#333'">christineshin2028@u.northwestern.edu</a>
                             </div>
 
                             <!-- LinkedIn -->
                             <div style="text-align: center; padding: 1.5rem;">
-                                <div style="font-size: 2.5rem; margin-bottom: 1rem;">💼</div>
+                                <div class="contact-icon" style="font-size: 2.5rem; margin-bottom: 1rem;">💼</div>
                                 <h3 style="font-size: 0.9rem; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; opacity: 1 !important; filter: none !important;">LinkedIn</h3>
                                 <a href="https://linkedin.com/in/christineshin1" target="_blank" rel="noopener noreferrer" style="font-size: 1.1rem; color: #333; text-decoration: none; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#666'" onmouseout="this.style.color='#333'">linkedin.com/in/christineshin1</a>
                             </div>
@@ -529,7 +529,6 @@
                     <li><a href="#photography" data-thumb="/content%202/photography/serenity/IMG_0594.JPG.jpg">Photography</a></li>
                     <li><a href="#marketing" data-thumb="/content%202/marketing/lewkin/modeling/DSC01604.JPG">Marketing</a></li>
                     <li><a href="#film" data-thumb="/content%202/photography/texture/IMG_3692.JPG.jpg">Film & Video</a></li>
-                    <li><a href="#journalism" data-thumb="/content%202/photography/texture/IMG_3692.JPG.jpg">Journalism</a></li>
                     <li><a href="#contact" data-thumb="/content%202/photography/community/IMG_4623.jpeg">Contact Me</a></li>
                 </ul>
             </nav>

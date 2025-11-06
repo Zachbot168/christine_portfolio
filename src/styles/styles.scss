@@ -1024,6 +1024,144 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+// ========================================
+// MOBILE RESPONSIVENESS FIXES
+// ========================================
+
+// About Section - Stack grid on mobile
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .about-me-section {
+    padding: 3rem 1.5rem !important;
+  }
+}
+
+// Graduation Section - Mobile adjustments
+@media (max-width: 768px) {
+  .graduation-section {
+    min-height: 180vh !important; // Reduce from 210vh
+  }
+
+  .graduation-nav {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 1.5rem !important;
+
+    &.graduation-nav--prev {
+      left: 10px !important; // Move from -100px offscreen
+    }
+
+    &.graduation-nav--next {
+      right: 10px !important; // Move from -100px offscreen
+    }
+  }
+
+  .paintbrush-container {
+    transform: scale(1.2) !important; // Reduce from scale(2)
+  }
+}
+
+// Contact Section - Mobile grid adjustments
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 4rem 1.5rem !important;
+
+    .contact-grid {
+      grid-template-columns: 1fr !important;
+      gap: 1.5rem !important;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    .contact-icon {
+      font-size: 2rem !important;
+    }
+  }
+}
+
+// Small phones optimization
+@media (max-width: 480px) {
+  .about-me-section {
+    padding: 2rem 1rem !important;
+  }
+
+  .graduation-section {
+    min-height: 160vh !important;
+  }
+
+  .paintbrush-container {
+    transform: scale(0.9) !important;
+    padding: 1rem 0.5rem !important;
+  }
+
+  .contact-section {
+    padding: 3rem 1rem !important;
+  }
+
+  // Hide vibe corner photos on very small screens
+  .vibe-corner-photos {
+    display: none !important;
+  }
+
+  // Reduce menu font size further
+  .menu-nav a {
+    font-size: 1.5rem !important;
+  }
+}
+
+// Touch target improvements - all buttons
+.hero-btn, button {
+  min-height: 48px !important;
+  min-width: 48px !important;
+}
+
+// Responsive iframe containers
+.tiktok-carousel {
+  iframe {
+    aspect-ratio: 9 / 16 !important;
+    height: auto !important;
+    max-height: 600px !important;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+
+    iframe {
+      max-height: 500px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr !important;
+
+    iframe {
+      max-height: 450px !important;
+    }
+  }
+}
+
+.film-videos {
+  iframe {
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    width: 100% !important;
+  }
+
+  @media (max-width: 768px) {
+    gap: 2rem !important;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1.5rem !important;
+  }
+}
+
 // Scroll Indicator
 .scroll-indicator {
   position: absolute;
