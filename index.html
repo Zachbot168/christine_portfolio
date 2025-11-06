@@ -877,19 +877,12 @@
             // Lock visibility after animations complete
             setTimeout(lockHeroVisibility, 2000);
 
-            // Re-lock visibility when page is restored from cache (browser back button)
+            // Force full page reload when coming back from cache (browser back button)
             window.addEventListener('pageshow', function(event) {
                 if (event.persisted) {
-                    // Page was restored from bfcache (back/forward cache)
-                    console.log('🔄 Page restored from cache - ensuring hero visibility');
-                    lockHeroVisibility();
-
-                    // Also ensure about image is visible
-                    const aboutImage = document.getElementById('about-cycling-image');
-                    if (aboutImage) {
-                        aboutImage.style.opacity = '1';
-                        console.log('🖼️ About image visibility restored');
-                    }
+                    // Page was restored from bfcache - force full reload
+                    console.log('🔄 Page restored from cache - forcing full reload');
+                    window.location.reload();
                 }
             });
             
